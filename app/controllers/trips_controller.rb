@@ -1,5 +1,10 @@
 class TripsController < ApplicationController
 
+  def index
+    @trips = Trip.all.future_trips
+    @past_trips = Trip.all.past_trips
+  end
+
   def new
     @trip = Trip.new
   end
@@ -14,4 +19,5 @@ class TripsController < ApplicationController
   def trip_params
     params.require(:trip).permet(:destination, :photo, :start_date, :end_date, :description, :name)
   end
+
 end
