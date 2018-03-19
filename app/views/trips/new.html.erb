@@ -1,5 +1,17 @@
-<h2>Add a trip</h2>
+<h2 class="text-center">Add a trip</h2>
 
-<%= simple.form_for(trip) do |f| %>
-  <%= f.input %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= simple_form_for(@trip) do |f| %>
+        <%= f.input :name %>
+        <%= f.input :destination %>
+        <%= f.input :photo %>
+        <%= f.input :description %>
+        <%= f.input :start_date %>
+        <%= f.input :end_date %>
+        <%= f.submit "Add trip", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>
