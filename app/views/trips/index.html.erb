@@ -1,2 +1,27 @@
-<h2>My trips</h2>
-<h2>My past trips</h2>
+<div class="container">
+
+  <h2>My trips</h2>
+  <div class="row">
+    <% @trips.each do |trip| %>
+      <div class="col-md-4">
+        <%= render 'shared/card' %>
+      </div>
+    <% end %>
+    <div class="col-md-4">
+      <div class="card text-center" style="background-color: $gray"><%= link_to "+", new_trip_path %></div>
+    </div>
+  </div>
+
+  <h2>My past trips</h2>
+  <div class="row">
+    <% @past_trips.each do |trip| %>
+      <div class="col-md-4">
+        <%= render 'shared/card' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+

@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
   def index
-    @trips = Trip.all.future_trips
-    @past_trips = Trip.all.past_trips
+    @trips = current_user.future_trips
+    @past_trips = current_user.past_trips
   end
 end
