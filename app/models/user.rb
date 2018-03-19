@@ -3,4 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  mount_uploader :avatar, PhotoUploader
+  has_many :participations
+  has_many :trips, through: :participations
+  has_many :transportations, through: :participations
+  has_many :accommodations, through: :participations
+  has_many :restaurants, through: :participations
+  has_many :activities, through: :participations
 end
