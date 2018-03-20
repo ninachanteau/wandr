@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :accommodations, through: :participations
   has_many :restaurants, through: :participations
   has_many :activities, through: :participations
+  validates_uniqueness_of :email
 end
