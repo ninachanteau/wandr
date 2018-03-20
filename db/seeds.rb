@@ -9,29 +9,93 @@
 require 'faker'
 
 puts "Destroying database..."
-# Trip.destroy_all
-# Participation.destroy_all
-# User.destroy_all
 
-
-# Transportation.destroy_all
-
-
+Participation.destroy_all
+User.destroy_all
+Transportation.destroy_all
+Trip.destroy_all
 
 puts "Creating 2 trips.."
 barcelona = Trip.create(
   destination: "Barcelona",
-  description: "Trip to Barcelona for Elsa's 30th"
+  description: "Trip to Barcelona for Elsa's 30th",
   name: "Barcelona - Elsa's Birthday"
 )
 
 stockholm = Trip.create(
   destination: "Stockholm",
-  description: "Let's meet in Stockholm for Nina's bachelorette"
+  description: "Let's meet in Stockholm for Nina's bachelorette",
   name: "Nina's Bachelorette"
 )
 
 puts "Trips created"
+
+"------"
+
+puts "Creating 2 users"
+
+nina = User.create(
+  email: "nina.chanteau@hec.edu",
+  first_name: "Nina",
+  last_name: "Chanteau")
+
+kenza = User.create(
+email: "kenza.aboudrar@gmail.com",
+first_name: "Kenza",
+last_name: "Aboudrar")
+
+puts "Users created"
+
+"------"
+
+puts "Creating 3 participations"
+
+kenza_barcelona = Participation.new
+kenza_barcelona.user = kenza
+kenza_barcelona.trip = barcelona
+kenza_barcelona.save
+
+nina_barcelona = Participation.new
+nina_barcelona.user = nina
+nina_barcelona.trip = barcelona
+nina_barcelona.save
+
+nina_stockholm = Participation.new
+nina_stockholm.user = nina
+nina_stockholm.trip = stockholm
+nina_stockholm.save
+
+puts "Participations created"
+
+"------------"
+
+puts "Creating 3 transportations"
+
+train_barcelona_kenza = Transportation.create(
+  departure_port: "Gare Montparnasse",
+  arrival_port: "Barcelona"
+  )
+train_barcelona_kenza.participation = kenza_barcelona
+train_barcelona_kenza.save
+
+train_barcelona_nina = Transportation.create(
+  departure_port: "Gare Montparnasse",
+  arrival_port: "Barcelona"
+  )
+train_barcelona_nina.participation = nina_barcelona
+train_barcelona_nina.save
+
+flight_stockholm_nina = Transportation.create(
+  departure_port: "ORY",
+  arrival_port: "STK"
+  )
+flight_stockholm_nina.participation = nina_stockholm
+flight_stockholm_nina.save
+
+
+puts "Transportations created"
+
+"----------"
 
 
 puts "Finished!"
