@@ -18,20 +18,6 @@ Trip.destroy_all
 puts "Creating 4 trips"
 
 barcelona = Trip.create(
-<<<<<<< HEAD
-  destination: "Barcelona",
-  description: "Trip to Barcelona for Elsa's 30th",
-  name: "Barcelona - Elsa's Birthday",
-  remote_photo_url: "http://tempemp.co/wp-content/uploads/2017/11/barcelona-cultura-historia.jpg"
-)
-
-stockholm = Trip.create(
-  destination: "Stockholm",
-  description: "Let's meet in Stockholm for Nina's bachelorette",
-  name: "Nina's Bachelorette",
-  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg"
-)
-=======
  destination: "Barcelona",
  description: "Trip to Barcelona for Elsa's 30th",
  name: "Barcelona - Elsa's Birthday",
@@ -42,7 +28,7 @@ stockholm = Trip.create(
  description: "Let's meet in Stockholm for Nina's bachelorette",
  name: "Nina's Bachelorette",
  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg")
->>>>>>> master
+
 
 cuba = Trip.create(
  destination: "Cuba",
@@ -65,29 +51,20 @@ puts "------"
 puts "Creating 2 users"
 
 nina = User.create(
-<<<<<<< HEAD
-  email: "nina.chanteau@hec.edu",
-  first_name: "Nina",
-  last_name: "Chanteau",
-  password: "123456")
-=======
  email: "nina.chanteau@hec.edu",
  first_name: "Nina",
  last_name: "Chanteau",
  password: "123456",
  remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/ninachanteau")
->>>>>>> master
+
 
 kenza = User.create(
 email: "kenza.aboudrar@gmail.com",
 first_name: "Kenza",
 last_name: "Aboudrar",
-<<<<<<< HEAD
-password: "123456")
-=======
 password: "123456",
 remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
->>>>>>> master
+
 
 puts "Users created"
 puts "------"
@@ -124,24 +101,30 @@ puts "Creating 3 transportations"
 
 train_barcelona_kenza = Transportation.create(
   departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona"
+  arrival_port: "Barcelona",
+  status: "Wishlist",
+  price_per_person: 99.00
   )
 train_barcelona_kenza.participation = kenza_barcelona
-train_barcelona_kenza.save
+train_barcelona_kenza.save!
 
 train_barcelona_nina = Transportation.create(
   departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona"
+  arrival_port: "Barcelona",
+  status: "Booked",
+  price_per_person: 123.00
   )
 train_barcelona_nina.participation = nina_barcelona
-train_barcelona_nina.save
+train_barcelona_nina.save!
 
 flight_stockholm_nina = Transportation.create(
   departure_port: "ORY",
-  arrival_port: "STK"
+  arrival_port: "STK",
+  status: "Wishlist",
+  price_per_person: 145.00
   )
 flight_stockholm_nina.participation = nina_stockholm
-flight_stockholm_nina.save
+flight_stockholm_nina.save!
 
 
 puts "Transportations created"
