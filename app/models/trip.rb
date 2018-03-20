@@ -6,11 +6,7 @@ class Trip < ApplicationRecord
   has_many :activities, through: :participations
   mount_uploader :photo, PhotoUploader
 
-  def future_trips
-    self.select { |trip| trip unless trip.end_date.past? }
-  end
-
-  def past_trips
-    self.select { |trip| trip if trip.end_date.past? }
-  end
+  scope :future, -> { where('end_date > ?', Date.today) }
+  scope :past, -> { where('end_date < ?', Date.today) }
+  scope :wishlist, -> { where('start_date = ?', nil) }
 end

@@ -1,0 +1,78 @@
+<div class="container">
+
+  <div class="header">
+    <div class="title"> <h2><%= @trip.name  %> > [Transportation icon]</h2>
+    </div>
+    <div class="add-btn"><%= link_to "+", new_trip_transportation  %></div>
+  </div>
+
+  <div class="transportations-container">
+
+    <div class="user-transportations">
+      <h3>Your transportation</h3>
+      <ul class="transpo-table">
+        <% @transportations.each do |transpo| %>
+          <% if transpo.participation.user_id == current_user.id %>
+            <li class="transpo">
+              <div class="departure">
+                <h2><%= transpo.departure_port%></h2>
+                <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
+              </div>
+              <div class="arrival">
+                <h2><%= transpo.arrival_port%></h2>
+                <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+              </div>
+              <div class="reference">
+                <%= transpo.reference_number%>
+              </div>
+              <div class="price-status">
+                <h2 class="ticket-price"><%= transpo.price_per_person%></h2>
+                <p class=pending><%= transpo.status%></p>
+              </div>
+              <div class="avatar-frame"><%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill %></div>
+            </li>
+          <% else %>
+            <p>No transportation currently saved for you</p>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+    <div class="other-transportations">
+      <h3>Other participants' transportation</h3>
+      <ul class="transpo-table">
+        <% @transportations.each do |transpo| %>
+          <% if transpo.participation.user_id != current_user.id %>
+            <li class="transpo">
+              <div class="departure">
+                <h2><%= transpo.departure_port%></h2>
+                <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
+              </div>
+              <div class="arrival">
+                <h2><%= transpo.arrival_port%></h2>
+                <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+              </div>
+              <div class="reference">
+                <%= transpo.reference_number%>
+              </div>
+              <div class="price-status">
+                <h2 class="ticket-price"><%= transpo.price_per_person%></h2>
+                <p class=pending><%= transpo.status%></p>
+              </div>
+              <div class="avatar-frame"><%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill %>
+              </div>
+            </li>
+          <% else %>
+            <p>No other transportation currently saved</p>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+
