@@ -29,7 +29,6 @@ stockholm = Trip.create(
  name: "Nina's Bachelorette",
  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg")
 
-
 cuba = Trip.create(
  destination: "Cuba",
  description: "Let's enjoy some sun and some mojitos",
@@ -57,14 +56,12 @@ nina = User.create(
  password: "123456",
  remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/ninachanteau")
 
-
 kenza = User.create(
 email: "kenza.aboudrar@gmail.com",
 first_name: "Kenza",
 last_name: "Aboudrar",
 password: "123456",
 remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
-
 
 puts "Users created"
 puts "------"
