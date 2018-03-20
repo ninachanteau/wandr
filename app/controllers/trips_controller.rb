@@ -17,6 +17,10 @@ class TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     if @trip.save
+      @participation = Participation.new
+      @participation.user = current_user
+      @participation.trip = @trip
+      @participation.save
       redirect_to trips_path
     else
       render :new
