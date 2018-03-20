@@ -1,8 +1,8 @@
 class TransportationsController < ApplicationController
 
 def index
-  @trip = Trip.find(params[:id])
-  @transportations = trip.transportations.all
+  @trip = Trip.find(params[:trip_id])
+  @transportations = @trip.transportations.all
 end
 
 

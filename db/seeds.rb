@@ -20,13 +20,15 @@ puts "Creating 2 trips.."
 barcelona = Trip.create(
   destination: "Barcelona",
   description: "Trip to Barcelona for Elsa's 30th",
-  name: "Barcelona - Elsa's Birthday"
+  name: "Barcelona - Elsa's Birthday",
+  remote_photo_url: "http://tempemp.co/wp-content/uploads/2017/11/barcelona-cultura-historia.jpg"
 )
 
 stockholm = Trip.create(
   destination: "Stockholm",
   description: "Let's meet in Stockholm for Nina's bachelorette",
-  name: "Nina's Bachelorette"
+  name: "Nina's Bachelorette",
+  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg"
 )
 
 puts "Trips created"
@@ -38,12 +40,14 @@ puts "Creating 2 users"
 nina = User.create(
   email: "nina.chanteau@hec.edu",
   first_name: "Nina",
-  last_name: "Chanteau")
+  last_name: "Chanteau",
+  password: "123456")
 
 kenza = User.create(
 email: "kenza.aboudrar@gmail.com",
 first_name: "Kenza",
-last_name: "Aboudrar")
+last_name: "Aboudrar",
+password: "123456")
 
 puts "Users created"
 
@@ -51,17 +55,17 @@ puts "Users created"
 
 puts "Creating 3 participations"
 
-kenza_barcelona = Participation.new
+kenza_barcelona = Participation.create
 kenza_barcelona.user = kenza
 kenza_barcelona.trip = barcelona
 kenza_barcelona.save
 
-nina_barcelona = Participation.new
+nina_barcelona = Participation.create
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
 nina_barcelona.save
 
-nina_stockholm = Participation.new
+nina_stockholm = Participation.create
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
 nina_stockholm.save
