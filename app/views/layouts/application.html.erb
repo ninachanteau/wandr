@@ -7,15 +7,21 @@
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%#= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' %>
-    <div class="wrapper">
-    <%= yield %>
-    </div>
+    <%= render 'shared/sidebar' %>
+    <% if params[:action] == "home" %>
+      <%= yield %>
+    <% else %>
+      <div class="wrapper" >
+      <%= yield %>
+      </div>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
