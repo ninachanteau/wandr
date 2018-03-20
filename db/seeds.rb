@@ -15,6 +15,8 @@ Participation.destroy_all
 User.destroy_all
 Trip.destroy_all
 
+puts "Creating 4 trips"
+
 barcelona = Trip.create(
  destination: "Barcelona",
  description: "Trip to Barcelona for Elsa's 30th",
@@ -26,6 +28,22 @@ stockholm = Trip.create(
  description: "Let's meet in Stockholm for Nina's bachelorette",
  name: "Nina's Bachelorette",
  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg")
+
+cuba = Trip.create(
+ destination: "Cuba",
+ description: "Let's enjoy some sun and some mojitos",
+ name: "End of semester trip",
+ start_date: "Mon, 23 Apr 2018",
+ end_date: "Thu, 03 May 2018",
+ remote_photo_url: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=15641eda0c2356f833f0c21dcfa3ddc8&auto=format&fit=crop&w=1650&q=80")
+
+norway = Trip.create(
+ destination: "Norway",
+ description: "Let's discover the fjords landscapes",
+ name: "Summer break",
+ start_date: "Tue, 01 Aug 2017",
+ end_date: "Sat, 12 Aug 2017",
+ remote_photo_url: "https://images.unsplash.com/photo-1506967554512-fc1ad1c0b21b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=df98a3f56f0729948a6cb360d9d916b1&auto=format&fit=crop&w=1655&q=80")
 
 puts "Trips created"
 puts "------"
@@ -47,7 +65,7 @@ remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
 
 puts "Users created"
 puts "------"
-puts "Creating 3 participations"
+puts "Creating 5 participations"
 
 kenza_barcelona = Participation.new
 kenza_barcelona.user = kenza
@@ -63,6 +81,16 @@ nina_stockholm = Participation.new
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
 nina_stockholm.save
+
+nina_cuba = Participation.new
+nina_cuba.user = nina
+nina_cuba.trip = cuba
+nina_cuba.save
+
+nina_norway = Participation.new
+nina_norway.user = nina
+nina_norway.trip = norway
+nina_norway.save
 
 puts "Participations created"
 puts "------"
