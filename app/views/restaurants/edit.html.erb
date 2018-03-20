@@ -1,15 +1,23 @@
-<img src="<%= @restaurant.photo %>" size="16" alt="Edit Entry">
+<img src="<%= @restaurant.photo %>" size="16" alt="Edit Entry" id="img-cover">
 
 <%= simple_form_for @restaurant do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :phone_number %>
-  <%= f.input :email %>
-  <%= f.input :url %>
-  <%= f.input :description %>
-  Reservation:
-  <%= f.input :date %>
-  <%= f.input :start_time %>
-  <%= f.input :participation_id %>
-  <%= f.button :submit %>
+  <div class="form-container" style="margin-right: 80px">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :phone_number %>
+          <%= f.input :email %>
+          <%= f.input :url %>
+          <%= f.input :description %>
+          Reservation:
+          <%= f.input :date %>
+          <%= f.input :start_time %>
+          <%= f.input :participation_id %>
+          <%= f.button :submit, class: "btn btn-info", style: "margin-bottom: 20px" %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
