@@ -1,5 +1,6 @@
 .sidebar-container {
   position: fixed;
+  display: block;
   width: 100px;
   height: 100vh;
   left: 0;
@@ -7,9 +8,13 @@
   bottom: 0;
   background-color: $yellow;
   box-shadow: 1px 0px 5px rgba(0,0,0,0.2);
+  .sidebar-avatar {
+    margin-top: 20px;
+    margin-left: 37px;
+  }
  ul {
   list-style: none;
-  margin-top: 60px;
+  margin-top: 30px;
  }
  i {
   color: white;
