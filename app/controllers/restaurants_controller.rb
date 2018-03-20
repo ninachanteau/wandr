@@ -3,13 +3,14 @@ require "nokogiri"
 
 class RestaurantsController < ApplicationController
 
+
   def new
     @restaurant = Restaurant.new
   end
 
   def create
-    @restaurant = Restaurant.new
-    url =
+    @restaurant = Restaurant.new(restaurant_params)
+    url = @restaurant.url
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
     name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
@@ -22,6 +23,15 @@ class RestaurantsController < ApplicationController
     @restaurant.description = description_array.last
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @restaurant.phone_number = phone_array[5]
+    if @restaurant.save
+      redirect_to edit_restaurant_path(@restaurant)
+    else
+      render 'trips/index'
+    end
+  end
+
+  def edit
+    @restaurant = Restaurant.find(params[:id])
   end
 
   private

@@ -1,6 +1,9 @@
 class TripsController < ApplicationController
 
   def index
+    @restaurant = Restaurant.new
+    @accommodation = Accommodation.new
+    @activity = Activity.new
     @future_trips = current_user.trips.future
     @past_trips = current_user.trips.past
     @wishlist_trips = current_user.trips.wishlist
