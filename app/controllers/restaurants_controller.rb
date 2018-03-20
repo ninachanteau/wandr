@@ -23,6 +23,8 @@ class RestaurantsController < ApplicationController
     @restaurant.description = description_array.last
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @restaurant.phone_number = phone_array[5]
+    img_array = doc.search('.page_images img').map{ |i| i['src'] }
+    @restaurant.remote_photo_url = img_array[1]
     if @restaurant.save
       redirect_to edit_restaurant_path(@restaurant)
     else
