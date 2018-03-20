@@ -17,8 +17,9 @@ class RestaurantsController < ApplicationController
     @restaurant.name = name_array[0]
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
-    country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
-    @restaurant.address = street_array[0]+","+city_array[0]+" "+country_array[0]
+    # country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
+    # +" "+country_array[0]
+    @restaurant.address = street_array[0]+","+city_array[0]
     description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
     @restaurant.description = description_array.last
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }

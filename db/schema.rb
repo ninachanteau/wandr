@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.integer "number_of_rooms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["participation_id"], name: "index_accommodations_on_participation_id"
   end
 
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["participation_id"], name: "index_activities_on_participation_id"
   end
 
@@ -78,6 +82,8 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["participation_id"], name: "index_restaurants_on_participation_id"
   end
 
