@@ -15,6 +15,7 @@
           <tr>
             <th scope="col">From</th>
             <th scope="col">To</th>
+            <th scope="col">Date</th>
             <th scope="col">#</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
@@ -28,11 +29,13 @@
               <tr>
                 <td class="departure">
                   <p><%= transpo.departure_port%></p>
-                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
                 </td>
                 <td class="arrival">
                   <p><%= transpo.arrival_port%></p>
-                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+                </td>
+                <td class="date-time">
+                  <p><%= transpo.departure_date%></p>
+                  <p><%= transpo.departure_time%></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>
@@ -87,11 +90,13 @@
               <tr>
                 <td class="departure">
                   <p><%= transpo.departure_port%></p>
-                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
                 </td>
                 <td class="arrival">
                   <p><%= transpo.arrival_port%></p>
-                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+                </td>
+                <td class="date-time">
+                  <p><%= transpo.departure_date%></p>
+                  <p><%= transpo.departure_time%></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>
