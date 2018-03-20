@@ -13,9 +13,10 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
 
     @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
+    @markers = []
     unless @accommodations.nil?
-      @accommodation_markers = @accommodations.map do |accommodation|
-        {
+      @accommodations.map do |accommodation|
+        @markers << {
           lat: accommodation.latitude,
           lng: accommodation.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
@@ -25,7 +26,7 @@ class TripsController < ApplicationController
     @restaurants = @trip.restaurants.select { |restaurant| restaurant unless restaurant.latitude == nil || restaurant.longitude == nil }
     unless @restaurants.nil?
       @restaurant_markers = @restaurants.map do |restaurant|
-        {
+        @markers << {
           lat: restaurant.latitude,
           lng: restaurant.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
@@ -35,7 +36,7 @@ class TripsController < ApplicationController
     @activities = @trip.activities.select { |activity| activity unless activity.latitude == nil || activity.longitude == nil }
     unless @activities.nil?
       @activity_markers = @activities.map do |activity|
-        {
+        @markers << {
           lat: activity.latitude,
           lng: activity.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
