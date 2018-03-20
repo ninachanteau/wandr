@@ -18,14 +18,16 @@ class AccommodationsController < ApplicationController
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
     country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
     @accommodation.address = street_array[0]+","+city_array[0]+" "+country_array[0]
-    description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    @accommodation.description = description_array.last
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @accommodation.phone_number = phone_array[5]
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1]
-    if @accommodation.save
+    if @acommodation.save
+      if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
+        redirect_to trip_accommodations
+      else
       redirect_to edit_accommodation_path(@accommodation)
+      end
     else
       render 'trips/index'
     end
