@@ -12,9 +12,14 @@
   <body>
     <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' %>
-    <div class="wrapper">
-    <%= yield %>
-    </div>
+    <%= render 'shared/sidebar' %>
+    <% if params[:action] == "home" %>
+      <%= yield %>
+    <% else %>
+      <div class="wrapper" >
+      <%= yield %>
+      </div>
+    <% end %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= render 'shared/footer' %>

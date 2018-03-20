@@ -1,0 +1,23 @@
+<% unless params[:action] == "home"  %>
+<% if user_signed_in? %>
+  <div class="sidebar-container">
+      <ul class="list-icons">
+        <li> <%= link_to trips_path do %>
+          <i class="fa fa-globe"></i>
+        <% end %></li>
+        <li> <%= link_to trips_path do %>
+          <i class="fa fa-plane"></i>
+        <% end %></li>
+        <li> <%= link_to trips_path do %>
+          <i class="fa fa-home"></i>
+        <% end %></li>
+        <li> <%= link_to trips_path do %>
+          <i class="fa fa-cutlery"></i>
+        <% end %></li>
+        <li> <%= link_to trips_path do %>
+          <i class="fa fa-star"></i>
+        <% end %></li>
+      </ul>
+  </div>
+<% end %>
+<% end %>
