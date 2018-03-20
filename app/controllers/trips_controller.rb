@@ -6,6 +6,10 @@ class TripsController < ApplicationController
     @wishlist_trips = current_user.trips.wishlist
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+  end
+
   def new
     @trip = Trip.new
   end
@@ -22,7 +26,7 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permet(:destination, :photo, :start_date, :end_date, :description, :name)
+    params.require(:trip).permit(:destination, :photo, :start_date, :end_date, :description, :name)
   end
 
 end
