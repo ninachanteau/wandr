@@ -1,7 +1,7 @@
 <div class="container">
 
   <div class="header">
-    <div class="title"> <h2><%= @trip.name  %> > [Transportation icon]</h2>
+    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-plane"></i></h2>
     </div>
     <div class="add-btn"><%= link_to "+", new_trip_transportation_path  %></div>
   </div>
@@ -15,14 +15,14 @@
           <tr>
             <th scope="col">From</th>
             <th scope="col">To</th>
-            <th scope="col">Departure</th>
-            <th scope="col">Arrival</th>
+            <th scope="col">#</th>
             <th scope="col">Price</th>
+            <th scope="col">Status</th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <% if @participation  %>
+          <% if @participation %>
             <% @transportations.each do |transpo| %>
               <% if transpo.participation.user_id == current_user.id %>
               <tr>
@@ -38,11 +38,25 @@
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%></p>
-                    <p class=pending><%= transpo.status%></p>
+                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
                 </td>
                 <td>
-                  <%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill, class: avatar %>
+                  <div class="<%= transpo.status%>">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= transpo.status%>
+                      </button>
+                      <div class="dropdown-menu">
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <%= cl_image_tag @avatar, class: "avatar", crop: :fill%>
                 </td>
               </tr>
               <% end %>
@@ -56,35 +70,60 @@
 
     <div class="other-transportations">
       <h3>Other participants' transportation</h3>
-      <ul class="transpo-table">
-        <% @transportations.each do |transpo| %>
-          <% if transpo.participation.user_id != current_user.id %>
-            <li class="transpo">
-              <div class="departure">
-                <p><%= transpo.departure_port%></p>
-                <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
-              </div>
-              <div class="arrival">
-                <p><%= transpo.arrival_port%></p>
-                <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
-              </div>
-              <div class="reference">
-                <%= transpo.reference_number%>
-              </div>
-              <div class="price-status">
-                <p class="ticket-price"><%= transpo.price_per_person%></p>
-                <p class=pending><%= transpo.status%></p>
-              </div>
-              <div class="avatar-frame"><%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill %>
-              </div>
-            </li>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">#</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @transportations.each do |transpo| %>
+            <% if transpo.participation.user != current_user %>
+              <tr>
+                <td class="departure">
+                  <p><%= transpo.departure_port%></p>
+                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
+                </td>
+                <td class="arrival">
+                  <p><%= transpo.arrival_port%></p>
+                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+                </td>
+                <td class="reference">
+                  <%= transpo.reference_number%>
+                </td>
+                <td class="price-status">
+                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
+                </td>
+                <td>
+                  <div class="<%= transpo.status%>">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= transpo.status%>
+                      </button>
+                      <div class="dropdown-menu">
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <%= cl_image_tag transpo.participation.user.avatar, class: "avatar", crop: :fill%>
+                </td>
+              </tr>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </tbody>
+      </table>
     </div>
-
   </div>
-
 </div>
 
 

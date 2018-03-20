@@ -11,6 +11,7 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+<<<<<<< HEAD
 
     @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     @markers = []
@@ -43,6 +44,10 @@ class TripsController < ApplicationController
         }
       end
     end
+=======
+    @participation = Participation.new
+    @participation.trip = Trip.find(params[:id])
+>>>>>>> b65eafa9159e352ed0b7e1bfdb2abe5786c97106
   end
 
   def new
@@ -60,6 +65,12 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def add_participant
+    @participation = Participation.new
+    @participation.trip = Trip.find(params[:id])
+    redirect_to trip_partipations(@participation.trip)
   end
 
   private

@@ -98,24 +98,30 @@ puts "Creating 3 transportations"
 
 train_barcelona_kenza = Transportation.create(
   departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona"
+  arrival_port: "Barcelona",
+  status: "Wishlist",
+  price_per_person: 99.00
   )
 train_barcelona_kenza.participation = kenza_barcelona
-train_barcelona_kenza.save
+train_barcelona_kenza.save!
 
 train_barcelona_nina = Transportation.create(
   departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona"
+  arrival_port: "Barcelona",
+  status: "Booked",
+  price_per_person: 123.00
   )
 train_barcelona_nina.participation = nina_barcelona
-train_barcelona_nina.save
+train_barcelona_nina.save!
 
 flight_stockholm_nina = Transportation.create(
   departure_port: "ORY",
-  arrival_port: "STK"
+  arrival_port: "STK",
+  status: "Wishlist",
+  price_per_person: 145.00
   )
 flight_stockholm_nina.participation = nina_stockholm
-flight_stockholm_nina.save
+flight_stockholm_nina.save!
 
 
 puts "Transportations created"
