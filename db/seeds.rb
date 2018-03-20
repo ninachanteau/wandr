@@ -10,9 +10,10 @@ require 'faker'
 
 puts "Destroying database..."
 
-Participation.destroy_all
+
 User.destroy_all
 Transportation.destroy_all
+Participation.destroy_all
 Trip.destroy_all
 
 puts "Creating 2 trips.."
