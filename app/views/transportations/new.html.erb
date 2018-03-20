@@ -1,0 +1,15 @@
+Enter details below:
+
+<%= form_for @transportation do |f| %>
+  <div class="form-group">
+    <%= f.label :departure_date %>
+    <%= f.text_field :departure_date, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :arrival_date %>
+    <%= f.text_field :arrival_date, class: 'form-control' %>
+  </div>
+
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
