@@ -1,0 +1,13 @@
+<%= simple_form_for @activity do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.input :email %>
+  <%= f.input :url %>
+  <%= f.input :description %>
+  Reservation:
+  <%= f.input :date %>
+  <%= f.input :start_time %>
+  <%= f.input :participation_id %>
+  <%= f.button :submit %>
+<% end %>

@@ -29,12 +29,19 @@ class ActivitiesController < ApplicationController
     end
   end
 
-  def
+  def edit
+    @activity = Activity.find(params[:id])
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    redirect_to root_path
+  end
 
   private
 
   def set_activity
-    @activity = Restaurant.find(@activity)
+    @activity = Activity.find(params[:id])
   end
 
   def activity_params

@@ -29,7 +29,14 @@ class AccommodationsController < ApplicationController
     end
   end
 
-  def
+  def edit
+    @accommodation = Accommodation.find(params[:id])
+  end
+
+  def update
+    @accommodation = Accommodation.find(params[:id])
+    redirect_to root_path
+  end
 
   private
 
