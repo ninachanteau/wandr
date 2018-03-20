@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :accommodations, only: [:create, :edit, :update]
     resources :restaurants, only: [:create, :edit, :update]
     resources :activities, only: [:create, :edit, :update]
+    resources :participations, only: [:create, :edit, :update, :destroy]
   end
 
   resources :restaurants, only: [:create, :edit, :update]

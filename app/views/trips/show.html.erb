@@ -1,1 +1,19 @@
-<h2><%= @trip.destination %></h2>
+<h2><%= @trip.name %></h2>
+
+<div class="new-container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= simple_form_for [@trip, @participation] do |f| %>
+        <%= f.input :email, placeholder: "boris@lewagon.org"%>
+        <%= f.input :pseudo, placeholder: "Papillard" %>
+        <%= f.submit "Add a participant", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>
+
+<div>
+
+</div>

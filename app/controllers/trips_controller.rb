@@ -11,6 +11,8 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    @participation = Participation.new
+    @participation.trip = Trip.find(params[:id])
   end
 
   def new
@@ -28,6 +30,12 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def add_participant
+    @participation = Participation.new
+    @participation.trip = Trip.find(params[:id])
+    redirect_to trip_partipations(@participation.trip)
   end
 
   private
