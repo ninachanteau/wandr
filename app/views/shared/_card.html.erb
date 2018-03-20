@@ -1,5 +1,5 @@
 <%= link_to trip_path(trip) do %>
-  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo, height: 300, width: 400,crop: :fill %>');">
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path trip.photo.url, height: 300, width: 400,crop: :fill %>');">
     <% if trip.start_date.present? %>
       <div class="card-category"><%= trip.start_date.strftime("%b %d, %Y") %> - <%= trip.end_date.strftime("%b %d, %Y") %></div>
     <% end %>

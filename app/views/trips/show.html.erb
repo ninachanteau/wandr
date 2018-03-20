@@ -1,1 +1,2 @@
 <h2><%= @trip.destination %></h2>
+<div id="map" style="width: 100%; height: 600px;" data-markers="<%= @accommodation_markers.to_json %> <%= @restaurant_markers.to_json %> <%= @activity_markers.to_json %>"></div>
