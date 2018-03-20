@@ -4,7 +4,7 @@
   <div class="row">
     <% @future_trips.each do |trip| %>
       <div class="col-md-4">
-        <%= render 'shared/card' %>
+        <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
     <div class="col-md-4">
@@ -18,16 +18,21 @@
   <div class="row">
     <% @wishlist_trips.each do |trip| %>
       <div class="col-md-4">
-        <%= render 'shared/card' %>
+        <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
+    <div class="col-md-4">
+      <div class="card text-center" style="background-color: $light-gray">
+        <h3><%= link_to "+", new_trip_path %></h3>
+      </div>
+    </div>
   </div>
 
   <h2>My past trips</h2>
   <div class="row">
     <% @past_trips.each do |trip| %>
       <div class="col-md-4">
-        <%= render 'shared/card' %>
+        <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
   </div>
