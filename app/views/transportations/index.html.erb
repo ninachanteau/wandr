@@ -41,7 +41,19 @@
                   <p class="ticket-price"><%= transpo.price_per_person%> €</p>
                 </td>
                 <td>
-                  <p class="<%= transpo.status%>"><%= transpo.status%></p>
+                  <div class="<%= transpo.status%>">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= transpo.status%>
+                      </button>
+                      <div class="dropdown-menu">
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
                 </td>
                 <td>
                   <%= cl_image_tag @avatar, class: "avatar", crop: :fill%>
@@ -88,7 +100,19 @@
                   <p class="ticket-price"><%= transpo.price_per_person%> €</p>
                 </td>
                 <td>
-                  <p class="<%= transpo.status%>"><%= transpo.status%></p>
+                  <div class="<%= transpo.status%>">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= transpo.status%>
+                      </button>
+                      <div class="dropdown-menu">
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
                 </td>
                 <td>
                   <%= cl_image_tag transpo.participation.user.avatar, class: "avatar", crop: :fill%>
