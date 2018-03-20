@@ -10,32 +10,48 @@
 
     <div class="user-transportations">
       <h3>Your transportation</h3>
-      <ul class="transpo-table">
-        <% @transportations.each do |transpo| %>
-          <% if transpo.participation.user_id == current_user.id %>
-            <li class="transpo">
-              <div class="departure">
-                <h2><%= transpo.departure_port%></h2>
-                <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
-              </div>
-              <div class="arrival">
-                <h2><%= transpo.arrival_port%></h2>
-                <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
-              </div>
-              <div class="reference">
-                <%= transpo.reference_number%>
-              </div>
-              <div class="price-status">
-                <h2 class="ticket-price"><%= transpo.price_per_person%></h2>
-                <p class=pending><%= transpo.status%></p>
-              </div>
-              <div class="avatar-frame"><%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill %></div>
-            </li>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Arrival</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if @participation  %>
+            <% @transportations.each do |transpo| %>
+              <% if transpo.participation.user_id == current_user.id %>
+              <tr>
+                <td class="departure">
+                  <p><%= transpo.departure_port%></p>
+                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
+                </td>
+                <td class="arrival">
+                  <p><%= transpo.arrival_port%></p>
+                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
+                </td>
+                <td class="reference">
+                  <%= transpo.reference_number%>
+                </td>
+                <td class="price-status">
+                  <p class="ticket-price"><%= transpo.price_per_person%></p>
+                    <p class=pending><%= transpo.status%></p>
+                </td>
+                <td>
+                  <%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill, class: avatar %>
+                </td>
+              </tr>
+              <% end %>
+            <% end %>
           <% else %>
             <p>No transportation currently saved for you</p>
           <% end %>
-        <% end %>
-      </ul>
+        </tbody>
+      </table>
     </div>
 
     <div class="other-transportations">
@@ -45,25 +61,23 @@
           <% if transpo.participation.user_id != current_user.id %>
             <li class="transpo">
               <div class="departure">
-                <h2><%= transpo.departure_port%></h2>
+                <p><%= transpo.departure_port%></p>
                 <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
               </div>
               <div class="arrival">
-                <h2><%= transpo.arrival_port%></h2>
+                <p><%= transpo.arrival_port%></p>
                 <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
               </div>
               <div class="reference">
                 <%= transpo.reference_number%>
               </div>
               <div class="price-status">
-                <h2 class="ticket-price"><%= transpo.price_per_person%></h2>
+                <p class="ticket-price"><%= transpo.price_per_person%></p>
                 <p class=pending><%= transpo.status%></p>
               </div>
               <div class="avatar-frame"><%= cl_image_tag transpo.participation.user.avatar, height: 300, width: 400, crop: :fill %>
               </div>
             </li>
-          <% else %>
-            <p>No other transportation currently saved</p>
           <% end %>
         <% end %>
       </ul>
