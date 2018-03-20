@@ -1,0 +1,8 @@
+const form = document.getElementById("url-form")
+if (form.value === "restaurant") {
+  <% render "restaurants/create" %>;
+} else if (form.value === "accommodation") {
+  <% render "accommodations/create" %>;
+} else {
+  <% render "activities/create" %>;
+}
