@@ -1,0 +1,24 @@
+.footer {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-item: center;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+  height: 60px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  font-size: 14px;
+  .footer-copyright {
+    padding-top: 20px;
+  }
+  #wagon-link {
+    text-decoration: none;
+    color: rgba(0,0,0,0.3);
+    &:hover {
+      color: rgba(0,0,0,0.6);
+    }
+  }
+}
