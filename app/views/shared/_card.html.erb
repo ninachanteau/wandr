@@ -9,5 +9,14 @@
         <p><%= trip.name %></p>
       <% end %>
     </div>
+    <div class="card-status">
+      <% if trip.end_date.nil? %>
+        <%= render 'shared/wishlist-icon' %>
+      <% elsif trip.end_date.past? %>
+        <%= render 'shared/past-icon' %>
+      <% else %>
+        <%= render 'shared/confirmed-icon' %>
+      <% end %>
+    </div>
   </div>
 <% end %>
