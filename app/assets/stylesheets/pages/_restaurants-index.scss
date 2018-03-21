@@ -1,0 +1,30 @@
+.restaurants-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.restaurants-card, .wishlist-card {
+  position: relative;
+  margin: 30px 20px;
+  padding: 20px;
+  background-color: $white-transparent;
+  border-radius: 5px;
+  &:hover {
+    background-color: $white-middle-transparent;
+    box-shadow: 2px 2px 3px $light-gray;
+  }
+}
+
+.restaurants-ctn {
+  flex-grow: 1;
+}
+
+.restaurants-card {
+  min-height: 160px;
+}
+
+.wishlist-card {
+  min-width: 300px;
+  min-height: 350px;
+}
