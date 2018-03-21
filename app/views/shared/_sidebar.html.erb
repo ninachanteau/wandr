@@ -26,16 +26,18 @@
     </div>
 
     <%# unless params[:action] == "index"  %>
+          <% if @trip %>
       <ul class="list-icons">
         <% if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trips_path(current_user) do %>
             <i class="fa fa-globe"></i>
           <% end %></li>
         <% else %>
-          <li> <%= link_to trip_path(@trip) do %>
-            <i class="fa fa-globe"></i>
-          <% end %></li>
-        <% end %>
+            <li> <%= link_to trip_path(@trip) do %>
+              <i class="fa fa-globe"></i>
+            <% end %></li>
+
+          <% end %>
 
         <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trip_transportations_path(@trip) do %>
@@ -52,6 +54,7 @@
           <% end %></li>
         <% end %>
       </ul>
+        <% end %>
     <%# end %>
   </div>
 
