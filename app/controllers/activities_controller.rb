@@ -33,6 +33,7 @@ class ActivitiesController < ApplicationController
     @activity.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @activity.remote_photo_url = img_array[1] if img_array[1].present?
+    @activity.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @activity.save
       # if Activity.where(@activity.name).where(@activity.trip).count > 1
       #   redirect_to trip_activities
@@ -51,11 +52,8 @@ class ActivitiesController < ApplicationController
   end
 
   def update
-    @trip = Trip.find_by_name(trip)
-    @current_user = current_user
-    @current_participation =  Participation.where(trip_id: @trip.id, user_id: @current_user.id)
     @activity = Activity.find(params[:id])
-    @activity.participation = @current_participation
+    @activity.trip = Trip.find_by_name(trip) unless @activity.trip.present?
     redirect_to root_path
   end
 

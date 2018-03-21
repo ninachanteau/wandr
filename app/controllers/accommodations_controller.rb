@@ -31,6 +31,7 @@ class AccommodationsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
+    @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @acommodation.save
       # if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
       #   redirect_to trip_accommodations
@@ -45,15 +46,13 @@ class AccommodationsController < ApplicationController
   def edit
     @current_user = current_user
     @trips = @current_user.trips.map {|trip| trip.name}
+
     @accommodation = Accommodation.find(params[:id])
   end
 
   def update
-    @trip = Trip.find_by_name(trip)
-    @current_user = current_user
-    @current_participation =  Participation.where(trip_id: @trip.id, user_id: @current_user.id)
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.participation = @current_participation
+    @accommodation.trip = Trip.find_by_name(trip) unless @accommodation.trip.present?
     redirect_to root_path
   end
 

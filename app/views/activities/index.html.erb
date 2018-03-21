@@ -2,15 +2,71 @@
 <div class="container">
 
   <div class="header">
-    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-star"></i></h2>
+    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
     </div>
-    <div class="add-btn"><%= link_to "New", new_trip_activity_path  %></div>
-  </div>
+
 </div>
 
+<div class="activities-container">
 
-Activities
-<% @activities.each do |act| %>
-  <%= act.name  %>
-<% end %>
-</div>
+    <div class="user-activities activities-card">
+      <div> <%= link_to new_trip_activity_path do %>
+        <i class="fa fa-plus-circle plus-btn"></i>
+      <% end %></div>
+      <h5>Activities:</h5>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Status</th>
+            <th scope="col">Participants</th>
+          </tr>
+        </thead>
+        <tbody>
+
+            <% @activities.each do |activity| %>
+              <tr>
+                <td class="name">
+                  <p><%= link_to activity.name, activity.url %></p>
+                </td>
+                <td class="contact">
+                  <p><%= activity.address%></p>
+                  <p><%= activity.email%></p>
+                  <p><%= activity.phone_number%></p>
+                </td>
+                <td class="date">
+                  <p><%= activity.date%></p>
+                  <p><%= activity.start_time%></p>
+                </td>
+                <td class="description">
+                  <p><%= activity.description%></p>
+                </td>
+                <td class="status">
+                  <div class="<%= activity.status%>">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%= activity.status%>
+                      </button>
+                      <div class="dropdown-menu">
+                        <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item" %>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <% activity.participations.users.each do |user| %>
+                    <%= cl_image_tag user.avatar, class: "avatar", crop: :fill%>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    </div>
