@@ -70,56 +70,65 @@ puts "Users created"
 puts "------"
 puts "Creating 5 participations"
 
-kenza_barcelona = Participation.new
-kenza_barcelona.user = kenza
-kenza_barcelona.trip = barcelona
-kenza_barcelona.save
+kenza_cuba = Participation.new
+kenza_cuba.user = kenza
+kenza_cuba.trip = cuba
+kenza_cuba.email = kenza.email
+kenza_cuba.save
 
 nina_barcelona = Participation.new
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
+nina_barcelona.email = nina.email
 nina_barcelona.save
 
 nina_stockholm = Participation.new
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
+nina_stockholm.email = nina.email
 nina_stockholm.save
 
 nina_cuba = Participation.new
 nina_cuba.user = nina
 nina_cuba.trip = cuba
+nina_cuba.email = nina.email
 nina_cuba.save
 
 nina_norway = Participation.new
 nina_norway.user = nina
 nina_norway.trip = norway
+nina_norway.email = nina.email
 nina_norway.save
 
 puts "Participations created"
 puts "------"
 puts "Creating 3 transportations"
 
-train_barcelona_kenza = Transportation.create(
-  departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona",
+flight_cuba_kenza = Transportation.new(
+  departure_port: "CDG",
+  arrival_port: "José Martí International Airport",
+  departure_date: "Mon, 23 Apr 2018",
+  arrival_date: "Tue, 24 Apr 2018",
   status: "Wishlist",
   price_per_person: 99.00
   )
-train_barcelona_kenza.participation = kenza_barcelona
-train_barcelona_kenza.save!
+flight_cuba_kenza.participation = kenza_cuba
+flight_cuba_kenza.save!
 
-train_barcelona_nina = Transportation.create(
-  departure_port: "Gare Montparnasse",
-  arrival_port: "Barcelona",
+flight_cuba_nina = Transportation.new(
+  departure_port: "CDG",
+  arrival_port: "José Martí International Airport",
+  departure_date: "Mon, 23 Apr 2018",
+  arrival_date: "Tue, 24 Apr 2018",
   status: "Booked",
   price_per_person: 123.00
   )
-train_barcelona_nina.participation = nina_barcelona
-train_barcelona_nina.save!
+flight_cuba_nina.participation = nina_cuba
+flight_cuba_nina.save!
 
-flight_stockholm_nina = Transportation.create(
-  departure_port: "ORY",
-  arrival_port: "STK",
+flight_stockholm_nina = Transportation.new(
+  departure_port: "Orly",
+  arrival_port: "Stockholm",
   status: "Wishlist",
   price_per_person: 145.00
   )
@@ -131,7 +140,8 @@ puts "------"
 puts "Creating 1 accommodation"
 
 hotel_cuba_nina = Accommodation.create(
-  name: "Casa Particulare",
+  name: "IBEROSTAR Parque Central",
+  address: "267 Agramonte, La Habana, Cuba",
   start_date: "Tue, 24 Apr 2018",
   end_date: "Thu, 26 Apr 2018",
   status: "Booked"
@@ -141,5 +151,33 @@ hotel_cuba_nina.participation = nina_cuba
 hotel_cuba_nina.save!
 
 puts "Accommodation created"
+puts "------"
+puts "Creating 1 restaurant"
+
+restaurant_cuba_nina = Restaurant.create(
+  name: "Bodeguita del medio",
+  address: "Empedrado, La Habana, Cuba",
+  date: "Tue, 24 Apr 2018",
+  status: "Booked"
+  )
+
+restaurant_cuba_nina.participation = nina_cuba
+restaurant_cuba_nina.save!
+
+puts "Restaurant created"
+puts "------"
+puts "Creating 1 activity"
+
+activity_cuba_nina = Activity.create(
+  name: "Museum of the Revolution",
+  address: "Avenida Bélgica, La Habana, Cuba",
+  date: "Wed, 25 Apr 2018",
+  status: "Booked"
+  )
+
+activity_cuba_nina.participation = nina_cuba
+activity_cuba_nina.save!
+
+puts "Activity created"
 puts "------"
 puts "Finished!"

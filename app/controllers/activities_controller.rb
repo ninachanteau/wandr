@@ -45,11 +45,17 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
+    @current_user = current_user
+    @trips = @current_user.trips.map {|trip| trip.name}
     @activity = Activity.find(params[:id])
   end
 
   def update
+    @trip = Trip.find_by_name(trip)
+    @current_user = current_user
+    @current_participation =  Participation.where(trip_id: @trip.id, user_id: @current_user.id)
     @activity = Activity.find(params[:id])
+    @activity.participation = @current_participation
     redirect_to root_path
   end
 

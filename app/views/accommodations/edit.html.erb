@@ -13,6 +13,8 @@
         <%= f.input :email %>
         <%= f.input :url %>
         <%= f.input :photo %>
+        <%= f.select :trip, options_for_select(@trips) %>
+        <%= f.button :submit, class: "btn btn-info btn-form", style: "margin-bottom: 20px" %>
         <%= f.submit "Update accommodation", class: "btn btn-info" %>
       <% end %>
     </div>
