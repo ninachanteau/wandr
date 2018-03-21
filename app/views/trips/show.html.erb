@@ -10,7 +10,7 @@
       <div class="participants-container">
         <% @trip.participations.each do |participation| %>
           <div class="participant">
-            <%= cl_image_tag participation.user.avatar, class: "avatar-large" %>
+            <%= cl_image_tag participation.avatar, class: "avatar-large" %>
           </div>
         <% end %>
         <div class="btn btn-info" style="width: 150px">Add participant</div>
@@ -23,15 +23,17 @@
       <div id="map" data-markers="<%= @markers.to_json %>"></div>
     </div>
   </div>
-</div>
-</div>
 
-
-
-<div class="participants-form">
+  <div class="participants-form">
   <%= simple_form_for [@trip, @participation] do |f| %>
     <%= f.input :email, placeholder: "boris@lewagon.org"%>
     <%= f.input :pseudo, placeholder: "Papillard" %>
     <%= f.submit "Add a participant", class: "btn btn-info" %>
   <% end %>
+  </div>
+
 </div>
+</div>
+
+
+

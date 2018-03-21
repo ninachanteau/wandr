@@ -68,8 +68,8 @@
                   </div>
                 </td>
                 <td>
-                  <% accom.participations.users.each do |user| %>
-                    <%= cl_image_tag user.avatar, class: "avatar", crop: :fill%>
+                  <% accom.participants.each do |participation| %>
+                    <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
                   <% end %>
                 </td>
               </tr>
