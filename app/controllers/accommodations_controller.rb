@@ -30,6 +30,7 @@ class AccommodationsController < ApplicationController
     @accommodation.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
+    @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
     if @acommodation.save
       # if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
       #   redirect_to trip_accommodations
@@ -57,6 +58,6 @@ class AccommodationsController < ApplicationController
   end
 
   def accommodation_params
-    params.require(:accommodation).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
+    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms)
   end
 end
