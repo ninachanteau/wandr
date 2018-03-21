@@ -27,7 +27,11 @@ class RestaurantsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @restaurant.remote_photo_url = img_array[1]
     if @restaurant.save
+      if Restaurant.where(@restaurant.name).where(@restaurant.trip).count > 1
+        redirect_to trip_restaurants
+      else
       redirect_to edit_restaurant_path(@restaurant)
+      end
     else
       render 'trips/index'
     end

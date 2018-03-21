@@ -5,7 +5,7 @@ class Participation < ApplicationRecord
   has_many :accommodations
   has_many :restaurants
   has_many :activities
-  validates_uniqueness_of :email
+  validates_uniqueness_of :email, scope: [:trip_id]
   has_secure_token
   after_create :send_join_trip_email
 
