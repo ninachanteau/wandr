@@ -1,3 +1,4 @@
+
 import "bootstrap";
 import "../plugins/flatpickr"
 
@@ -6,3 +7,6 @@ RefreshForm();
 
 import { autocomplete } from '../components/autocomplete';
 autocomplete();
+
+import { displayCalendar } from '../plugins/fullcalendar';
+displayCalendar();
