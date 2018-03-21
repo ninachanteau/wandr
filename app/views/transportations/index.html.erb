@@ -2,15 +2,18 @@
 <div class="container">
 
   <div class="header">
-    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-plane"></i></h2>
+    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-plane title-icon"></i></h2>
     </div>
-    <div class="add-btn"><%= link_to "New", new_trip_transportation_path  %></div>
+
   </div>
 
   <div class="transportations-container">
 
-    <div class="user-transportations">
-      <h3>Your transportation</h3>
+    <div class="user-transportations transportations-card">
+      <div> <%= link_to new_trip_transportation_path do %>
+        <i class="fa fa-plus-circle plus-btn"></i>
+      <% end %></div>
+      <h5>My transportation:</h5>
       <table class="table">
         <thead>
           <tr>
@@ -72,8 +75,11 @@
       </table>
     </div>
 
-    <div class="other-transportations">
-      <h3>Other participants' transportation</h3>
+    <div class="other-transportations transportations-card">
+      <div> <%= link_to do %>
+        <i class="fa fa-plus-circle plus-btn"></i>
+      <% end %></div>
+      <h5>Other participants' transportations:</h5>
       <table class="table">
         <thead>
           <tr>
