@@ -1,6 +1,9 @@
 class Transportation < ApplicationRecord
   belongs_to :participation
   delegate :trip, to: :participation
+  geocoded_by :arrival_port, latitude: :arrival_port_latitude, longitude: :arrival_port_longitude
+  geocoded_by :departure_port, latitude: :departure_port_latitude, longitude: :departure_port_longitude
+  after_validation :geocode_location, if: :will_save_change_to_departure_port? || :will_save_change_to_arrival_port?
 
   def add_participant(participant)
     @transportation = Transportation.new
@@ -29,6 +32,26 @@ class Transportation < ApplicationRecord
       )
     same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
     same_resa_trip.count
+  end
+
+  private
+
+  def geocode_location
+    if departure_port_changed?
+      departure_address = Geocoder.search(self.departure_port).first
+      if departure_address
+        self.departure_port_latitude = departure_address.latitude
+        self.departure_port_longitude = departure_address.longitude
+      end
+    end
+
+    if arrival_port_changed?
+      arrival_address = Geocoder.search(self.arrival_port).first
+      if arrival_address
+        self.arrival_port_latitude = arrival_address.latitude
+        self.arrival_port_longitude = arrival_address.longitude
+      end
+    end
   end
 
 end
