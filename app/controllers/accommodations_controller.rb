@@ -3,6 +3,13 @@ require "nokogiri"
 
 class AccommodationsController < ApplicationController
 
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
+    @avatar = current_user.avatar
+    @accommodations = @trip.accommodations.all
+  end
+
   def new
     @accommodation = Accommodation.new
   end

@@ -1,0 +1,16 @@
+<div class="container">
+
+  <div class="header">
+    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-cutlery"></i></h2>
+    </div>
+    <div class="add-btn"><%= link_to "New", new_trip_restaurant_path  %></div>
+  </div>
+
+</div>
+
+
+
+Restaurants
+<% @restaurants.each do |resto| %>
+  <%= resto.name  %>
+<% end %>
