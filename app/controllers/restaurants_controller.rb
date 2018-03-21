@@ -51,11 +51,9 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    @trip = Trip.find_by_name(trip)
-    @current_user = current_user
-    @current_participation =  Participation.where(trip_id: @trip.id, user_id: @current_user.id)
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.participation = @current_participation
+    @trip = Trip.find_by_name(trip)
+    @restaurant.trip = @trip
     redirect_to root_path
   end
 

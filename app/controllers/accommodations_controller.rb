@@ -49,11 +49,9 @@ class AccommodationsController < ApplicationController
   end
 
   def update
-    @trip = Trip.find_by_name(trip)
-    @current_user = current_user
-    @current_participation =  Participation.where(trip_id: @trip.id, user_id: @current_user.id)
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.participation = @current_participation
+    @trip = Trip.find_by_name(trip)
+    @activity.trip = @trip
     redirect_to root_path
   end
 
