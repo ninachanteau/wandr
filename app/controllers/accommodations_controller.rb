@@ -46,6 +46,7 @@ class AccommodationsController < ApplicationController
   def edit
     @current_user = current_user
     @trips = @current_user.trips.map {|trip| trip.name}
+
     @accommodation = Accommodation.find(params[:id])
   end
 

@@ -10,8 +10,11 @@ class TripsController < ApplicationController
   end
 
   def show
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @trip = Trip.find(params[:id])
+
+
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
+
     @markers = []
     @events = []
 
@@ -32,8 +35,11 @@ class TripsController < ApplicationController
         }
         if transportation.status == "Booked"
           @events << {
+            color: "#FFC61B",
             title: "Transportation",
-            start: transportation.departure_date
+            start: transportation.departure_date,
+            end: transportation.arrival_date,
+            allDay: false
           }
         end
       end

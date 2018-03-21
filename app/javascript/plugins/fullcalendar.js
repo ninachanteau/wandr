@@ -3,9 +3,12 @@ import "fullcalendar/dist/fullcalendar.min.css"
 import 'fullcalendar';
 
 function displayCalendar() {
+  const calendarElement = document.getElementById('calendar');
+  const events = JSON.parse(calendarElement.dataset.events);
   $('#calendar').fullCalendar({
-      // put your options and callbacks here
+      events: events
     })
 }
 
 export {displayCalendar}
+
