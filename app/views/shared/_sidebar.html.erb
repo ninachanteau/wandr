@@ -3,14 +3,18 @@
   <div class="sidebar-container">
     <div class="sidebar-item">
       <div class="dropdown">
-        <% if current_user.avatar.present? %>
-          <%= image_tag current_user.avatar, class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
-        <% else %>
-          <%= image_tag "http://www.clker.com/cliparts/m/3/I/C/c/2/grey-silhouette-of-man-hi.png", class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
-        <% end %>
+        <%# if current_user.avatar.present? %>
+          <%= image_tag current_user.avatar.url, class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+        <%# else %>
+          <%#= image_tag "http://www.clker.com/cliparts/m/3/I/C/c/2/grey-silhouette-of-man-hi.png", class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+        <%# end %>
         <ul class="dropdown-menu sidebar-dropdown-menu">
           <li>
             <%= link_to trips_path(current_user) do %><%= t(".index", default: "My Trips") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_registration_path do %><%= t(".edit", default: "Edit Profil") %>
             <% end %>
           </li>
           <li>
@@ -22,18 +26,20 @@
     </div>
 
     <%# unless params[:action] == "index"  %>
+          <% if @trip %>
       <ul class="list-icons">
-        <% if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") %>
-          <li> <%= link_to trips_path do %>
+        <% if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
+          <li> <%= link_to trips_path(current_user) do %>
             <i class="fa fa-globe"></i>
           <% end %></li>
         <% else %>
-          <li> <%= link_to trip_path(@trip) do %>
-            <i class="fa fa-globe"></i>
-          <% end %></li>
-        <% end %>
+            <li> <%= link_to trip_path(@trip) do %>
+              <i class="fa fa-globe"></i>
+            <% end %></li>
 
-        <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") %>
+          <% end %>
+
+        <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trip_transportations_path(@trip) do %>
             <i class="fa fa-plane"></i>
           <% end %></li>
@@ -48,6 +54,7 @@
           <% end %></li>
         <% end %>
       </ul>
+        <% end %>
     <%# end %>
   </div>
 
