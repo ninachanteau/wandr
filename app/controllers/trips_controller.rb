@@ -11,7 +11,10 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+
+
     @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
+
     @markers = []
     @events = []
 
