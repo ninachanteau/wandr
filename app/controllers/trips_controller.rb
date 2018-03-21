@@ -10,11 +10,10 @@ class TripsController < ApplicationController
   end
 
   def show
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @trip = Trip.find(params[:id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @markers = []
     @events = []
-
     @transportations = @trip.transportations.select { |transportation| transportation unless transportation.departure_port_latitude == nil || transportation.departure_port_longitude == nil || transportation.arrival_port_latitude == nil || transportation.arrival_port_longitude == nil }
     unless @transportations.nil?
       @transportations.map do |transportation|
