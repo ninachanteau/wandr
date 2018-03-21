@@ -2,22 +2,24 @@ class ParticipationsController < ApplicationController
 
 def create
   @trip = Trip.find(params[:trip_id])
+  @user = User.find_by_email(@participation.email)
   @participation = Participation.new(participation_params)
   @participation.trip = @trip
   @pseudo = @participation.pseudo
-  if @participation.pseudo == "" || @participation.pseudo.nil?
-    if User.find_by_email(@participation.email).nil?
-      @participation.pseudo = "You"
-    else
-      @participation.user = User.find_by_email(@participation.email)
-      @participation.pseudo = @participation.user.first_name
-    end
+  if @user.present?
+    @participation.user = @user
+    @participation.pseudo = @participation.user.first_name
+    @participation.photo = @participation.user.photo
   else
-    @participation.pseudo = @pseudo
+    @participation.photo = image_tag("default-user.png")
+    if @participation.pseudo.present?
+      @participation.pseudo = @pseudo
+    else
+      @participation.pseudo = "you"
+    end
   end
-  if @participation.save
-    redirect_to trip_path(@trip)
-  end
+  @participation.save
+  redirect_to trip_path(@trip)
 end
 
   private
