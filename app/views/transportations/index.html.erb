@@ -85,6 +85,7 @@
           <tr>
             <th scope="col">From</th>
             <th scope="col">To</th>
+            <th scope="col">Date</th>
             <th scope="col">#</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
@@ -127,7 +128,7 @@
                   </div>
                 </td>
                 <td>
-                  <%= cl_image_tag transpo.participants.avatar, class: "avatar", crop: :fill%>
+                  <%= cl_image_tag transpo.participation.avatar, class: "avatar", crop: :fill%>
                 </td>
               </tr>
             <% end %>
