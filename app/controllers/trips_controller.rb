@@ -35,7 +35,6 @@ class TripsController < ApplicationController
             title: "Transportation",
             start: transportation.departure_date,
             end: transportation.arrival_date,
-            allDay: false
           }
         end
       end
@@ -52,6 +51,7 @@ class TripsController < ApplicationController
         }
         if accommodation.status == "Booked"
           @events << {
+            color: "#FFDD75",
             title: accommodation.name,
             start: accommodation.start_date
           }

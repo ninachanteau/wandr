@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321151836) do
+
+ActiveRecord::Schema.define(version: 20180321155611) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,21 +99,19 @@ ActiveRecord::Schema.define(version: 20180321151836) do
   create_table "transportations", force: :cascade do |t|
     t.bigint "participation_id"
     t.string "type"
-    t.date "departure_date"
-    t.date "arrival_date"
     t.string "departure_port"
     t.string "arrival_port"
     t.string "reference_number"
     t.string "status"
     t.float "price_per_person"
-    t.time "arrival_time"
-    t.time "departure_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "departure_port_latitude"
     t.float "departure_port_longitude"
     t.float "arrival_port_latitude"
     t.float "arrival_port_longitude"
+    t.datetime "departure_date"
+    t.datetime "arrival_date"
     t.index ["participation_id"], name: "index_transportations_on_participation_id"
   end
 

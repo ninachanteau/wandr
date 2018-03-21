@@ -1,33 +1,32 @@
 <div class="new-container">
-<div class="container">
-
-  <div class="header">
-    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
+  <div class="container">
+    <div class="header">
+      <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
+      </div>
     </div>
-
-</div>
-
-<div class="activities-container">
-
-    <div class="user-activities activities-card">
-      <div> <%= link_to new_trip_activity_path do %>
-        <i class="fa fa-plus-circle plus-btn"></i>
-      <% end %></div>
-      <h5>Activities:</h5>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col">Participants</th>
-          </tr>
-        </thead>
-        <tbody>
-
+    <div class="activities-container">
+      <div class="activities-ctn">
+        <div class="activities-card">
++         <h5>Today Activities:</h5>
++       </div>
+        <div class="activities-card">
+          <div> <%= link_to new_trip_activity_path do %>
+            <i class="fa fa-plus-circle plus-btn"></i>
+          <% end %></div>
+          <h5>Activities:</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col">Participants</th>
+              </tr>
+            </thead>
+            <tbody>
             <% @activities.each do |activity| %>
               <tr>
                 <td class="name">
@@ -61,13 +60,27 @@
                   </div>
                 </td>
                 <td>
-                  <% activity.participations.users.each do |user| %>
-                    <%= cl_image_tag user.avatar, class: "avatar", crop: :fill%>
+                  <% activity.participants.each do |participation| %>
+                    <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
                   <% end %>
                 </td>
               </tr>
-            <% end %>
-        </tbody>
-      </table>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        <div class=" wishlist-card hidden-xs">
+    +      <h5>Wishlist:</h5>
+    +   </div>
++     </div>
+
     </div>
+<<<<<<< HEAD
+=======
+  </div>
+</div>
+
+
+
+>>>>>>> master
 

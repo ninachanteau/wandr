@@ -22,7 +22,6 @@ def create
   redirect_to trip_transportations_path(@trip)
 end
 
-
 def edit
   @transportation = Transportation.find(params[:id])
 end
@@ -45,7 +44,7 @@ end
 private
 
 def transpo_params
-  params.require(:transportation).permit(:status, :departure_time, :departure_port, :departure_date, :arrival_time, :arrival_port, :arrival_date, :price_per_person, :reference_number)
+  params.require(:transportation).permit(:status, :departure_port, :departure_date, :arrival_port, :arrival_date, :price_per_person, :reference_number)
 end
 
 end
