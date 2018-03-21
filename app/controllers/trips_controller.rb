@@ -21,8 +21,10 @@ class TripsController < ApplicationController
         if transportation.status == "Booked"
           @markers << {
             lat: transportation.departure_port_latitude,
-            lng: transportation.departure_port_longitude#,
-            #icon:
+            lng: transportation.departure_port_longitude,
+            icon: {
+              url: view_context.image_path('departure-red.svg')
+            }#,
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
           }
           @markers << {
@@ -41,7 +43,7 @@ class TripsController < ApplicationController
       end
     end
 
-    @accomodations = @current_participation.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
+    @accommodations = @current_participation.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     unless @accommodations.nil?
       @accommodations.map do |accommodation|
         if accommodation.status == "Booked"
@@ -54,7 +56,9 @@ class TripsController < ApplicationController
           @events << {
             color: "#FFDD75",
             title: accommodation.name,
-            start: accommodation.start_date
+            start: accommodation.start_date,
+            end: accommodation.end_date,
+            allDay: true
           }
         elsif accommodation.status == "Wishlist"
           @markers << {
@@ -78,6 +82,7 @@ class TripsController < ApplicationController
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
           }
           @events << {
+            color: "#FFDD75",
             title: restaurant.name,
             start: restaurant.date
           }
@@ -103,6 +108,7 @@ class TripsController < ApplicationController
             # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
           }
           @events << {
+            color: "#FFDD75",
             title: activity.name,
             start: activity.date
           }
