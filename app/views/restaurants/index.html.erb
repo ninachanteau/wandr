@@ -2,13 +2,16 @@
 <div class="container">
 
   <div class="header">
-    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-cutlery"></i></h2>
+    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-cutlery title-icon"></i></h2>
     </div>
   </div>
 
-<div class="restaurants-container">
 
-    <div class="user-restaurants restaurants-card">
+  <div class="restaurants-ctn">
+    <div class="restaurants-card">
+      <h5>Today Restaurants:</h5>
+    </div>
+    <div class="restaurants-card">
       <div> <%= link_to new_trip_restaurant_path do %>
         <i class="fa fa-plus-circle plus-btn"></i>
       <% end %></div>
@@ -69,3 +72,4 @@
         </tbody>
       </table>
     </div>
+
