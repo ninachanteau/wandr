@@ -38,8 +38,8 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date%></p>
-                  <p><%= transpo.departure_time%></p>
+                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p><%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>
@@ -102,8 +102,8 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date%></p>
-                  <p><%= transpo.departure_time%></p>
+                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p><%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>

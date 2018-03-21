@@ -9,5 +9,6 @@ flatpickr("#trip_start_date", {
 
 flatpickr("#transportation_departure_date", {
   altInput: true,
+  enableTime: true,
   plugins: [new rangePlugin({ input: "#transportation_arrival_date" })]
 })

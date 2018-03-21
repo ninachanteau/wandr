@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20180321151836) do
-
+ActiveRecord::Schema.define(version: 20180321155611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,21 +97,19 @@ ActiveRecord::Schema.define(version: 20180321151836) do
   create_table "transportations", force: :cascade do |t|
     t.bigint "participation_id"
     t.string "type"
-    t.date "departure_date"
-    t.date "arrival_date"
     t.string "departure_port"
     t.string "arrival_port"
     t.string "reference_number"
     t.string "status"
     t.float "price_per_person"
-    t.time "arrival_time"
-    t.time "departure_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float "departure_port_latitude"
     t.float "departure_port_longitude"
     t.float "arrival_port_latitude"
     t.float "arrival_port_longitude"
+    t.datetime "departure_date"
+    t.datetime "arrival_date"
     t.index ["participation_id"], name: "index_transportations_on_participation_id"
   end
 
@@ -148,21 +144,10 @@ ActiveRecord::Schema.define(version: 20180321151836) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "wishes", force: :cascade do |t|
-    t.bigint "trip_id"
-    t.string "wishable_type"
-    t.bigint "wishable_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["trip_id"], name: "index_wishes_on_trip_id"
-    t.index ["wishable_type", "wishable_id"], name: "index_wishes_on_wishable_type_and_wishable_id"
-  end
-
   add_foreign_key "accommodations", "participations"
   add_foreign_key "activities", "participations"
   add_foreign_key "participations", "trips"
   add_foreign_key "participations", "users"
   add_foreign_key "restaurants", "participations"
   add_foreign_key "transportations", "participations"
-  add_foreign_key "wishes", "trips"
 end
