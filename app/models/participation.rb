@@ -6,6 +6,7 @@ class Participation < ApplicationRecord
   has_many :restaurants
   has_many :activities
   validates_uniqueness_of :email, scope: [:trip_id]
+  mount_uploader :photo, PhotoUploader
   has_secure_token
   after_create :send_join_trip_email
 
