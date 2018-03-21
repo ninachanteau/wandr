@@ -75,7 +75,6 @@ kenza_barcelona.user = kenza
 kenza_barcelona.trip = barcelona
 kenza_barcelona.save
 
-p kenza_barcelona
 nina_barcelona = Participation.new
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
@@ -127,7 +126,20 @@ flight_stockholm_nina = Transportation.create(
 flight_stockholm_nina.participation = nina_stockholm
 flight_stockholm_nina.save!
 
-
 puts "Transportations created"
+puts "------"
+puts "Creating 1 accommodation"
+
+hotel_cuba_nina = Accommodation.create(
+  name: "Casa Particulare",
+  start_date: "Tue, 24 Apr 2018",
+  end_date: "Thu, 26 Apr 2018",
+  status: "Booked"
+  )
+
+hotel_cuba_nina.participation = nina_cuba
+hotel_cuba_nina.save!
+
+puts "Accommodation created"
 puts "------"
 puts "Finished!"

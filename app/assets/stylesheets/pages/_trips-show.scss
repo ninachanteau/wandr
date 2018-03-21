@@ -1,6 +1,20 @@
+.participants-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px 20px;
+  margin-bottom: 30px;
+}
+
 #map {
-  height: 100vh;
-  max-width: 45%;
+  height: 450px;
+  flex: 0 0 450px;
+  position: sticky !important;
+  top: 0 !important;
+}
+
+#calendar {
+  height: 450px;
   flex: 0 0 450px;
   position: sticky !important;
   top: 0 !important;
