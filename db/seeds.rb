@@ -20,19 +20,19 @@ Trip.destroy_all
 
 puts "Creating 4 trips"
 
-barcelona = Trip.create(
+barcelona = Trip.create!(
  destination: "Barcelona",
  description: "Trip to Barcelona for Elsa's 30th",
  name: "Barcelona - Elsa's Birthday",
  remote_photo_url: "http://tempemp.co/wp-content/uploads/2017/11/barcelona-cultura-historia.jpg")
 
-stockholm = Trip.create(
+stockholm = Trip.create!(
  destination: "Stockholm",
  description: "Let's meet in Stockholm for Nina's bachelorette",
  name: "Nina's Bachelorette",
  remote_photo_url: "https://handluggageonly.co.uk/wp-content/uploads/2017/12/Gamla-Stan-3.jpg")
 
-cuba = Trip.create(
+cuba = Trip.create!(
  destination: "Cuba",
  description: "Let's enjoy some sun and some mojitos",
  name: "End of semester trip",
@@ -40,7 +40,7 @@ cuba = Trip.create(
  end_date: "Thu, 03 May 2018",
  remote_photo_url: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=15641eda0c2356f833f0c21dcfa3ddc8&auto=format&fit=crop&w=1650&q=80")
 
-norway = Trip.create(
+norway = Trip.create!(
  destination: "Norway",
  description: "Let's discover the fjords landscapes",
  name: "Summer break",
@@ -52,14 +52,14 @@ puts "Trips created"
 puts "------"
 puts "Creating 2 users"
 
-nina = User.create(
+nina = User.create!(
  email: "nina.chanteau@hec.edu",
  first_name: "Nina",
  last_name: "Chanteau",
  password: "123456",
  remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/ninachanteau")
 
-kenza = User.create(
+kenza = User.create!(
 email: "kenza.aboudrar@gmail.com",
 first_name: "Kenza",
 last_name: "Aboudrar",
@@ -107,8 +107,8 @@ puts "Creating 3 transportations"
 flight_cuba_kenza = Transportation.new(
   departure_port: "CDG",
   arrival_port: "José Martí International Airport",
-  departure_date: "Mon, 23 Apr 2018",
-  arrival_date: "Tue, 24 Apr 2018",
+  departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",
   status: "Wishlist",
   price_per_person: 99.00
   )
@@ -118,8 +118,8 @@ flight_cuba_kenza.save!
 flight_cuba_nina = Transportation.new(
   departure_port: "CDG",
   arrival_port: "José Martí International Airport",
-  departure_date: "Mon, 23 Apr 2018",
-  arrival_date: "Tue, 24 Apr 2018",
+  departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",
   status: "Booked",
   price_per_person: 123.00
   )

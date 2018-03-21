@@ -11,12 +11,12 @@ class Transportation < ApplicationRecord
     @transportation.arrival_date = self.arrival_date
     @transportation.departure_port = self.departure_port
     @transportation.arrival_port = self.arrival_port
-    @transportation.departure_time = self.departure_time
-    @transportation.arrival_time = self.arrival_time
     @transportation.reference_number = self.reference_number
     @transportation.status = self.status
-    @transportation.latitude = self.latitude
-    @transportation.longitude = self.longitude
+    @transportation.departure_port_latitude = self.departure_port_latitude
+    @transportation.departure_port_longitude = self.departure_port_longitude
+    @transportation.arrival_port_latitude = self.arrival_port_latitude
+    @transportation.arrival_port_longitude = self.arrival_port_longitude
     @transportation.save
   end
 
@@ -24,10 +24,8 @@ class Transportation < ApplicationRecord
     same_resa =Transportation.all.where(
       departure_date: self.departure_date,
       departure_port: self.departure_port,
-      departure_time: self.departure_time,
       arrival_date: self.arrival_date,
       arrival_port: self.arrival_port,
-      arrival_time: self.arrival_time,
       status: self.status,
       )
     same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
