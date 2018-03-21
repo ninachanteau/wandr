@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @avatar = current_user.avatar
     @activities = @trip.activities.all
   end
@@ -20,24 +21,24 @@ class ActivitiesController < ApplicationController
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
     name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
-    @activity.name = name_array[0]
+    @activity.name = name_array[0] if name_array[0].present?
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
     # country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
     # +" "+country_array[0]
-    @activity.address = street_array[0]+","+city_array[0]
+    @activity.address = street_array[0]+","+city_array[0] if street_array[0].present? && city_array[0]
     description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    @activity.description = description_array.last
+    @activity.description = description_array.last if description_array.last.present?
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
-    @activity.phone_number = phone_array[5]
+    @activity.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
-    @activity.remote_photo_url = img_array[1]
+    @activity.remote_photo_url = img_array[1] if img_array[1].present?
     if @activity.save
-      if Activity.where(@activity.name).where(@activity.trip).count > 1
-        redirect_to trip_activities
-      else
+      # if Activity.where(@activity.name).where(@activity.trip).count > 1
+      #   redirect_to trip_activities
+      # else
       redirect_to edit_activities_path(@activity)
-      end
+      # end
     else
       render 'trips/index'
     end
