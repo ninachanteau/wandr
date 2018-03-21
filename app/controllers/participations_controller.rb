@@ -9,9 +9,9 @@ def create
   if @user.present?
     @participation.user = @user
     @participation.pseudo = @participation.user.first_name
-    @participation.photo = @participation.user.photo
+    @participation.avatar = @participation.user.avatar
   else
-    @participation.photo = image_tag("default-user.png")
+    @participation.avatar = image_tag("default-user.png")
     if @participation.pseudo.present?
       @participation.pseudo = @pseudo
     else
