@@ -11,15 +11,40 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
-
-    @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     @markers = []
     @events = []
+
+    @transportations = @trip.transportations.select { |transportation| transportation unless transportation.departure_port_latitude == nil || transportation.departure_port_longitude == nil || transportation.arrival_port_latitude == nil || transportation.arrival_port_longitude == nil }
+    unless @transportations.nil?
+      @transportations.map do |transportation|
+        @markers << {
+          lat: transportation.departure_port_latitude,
+          lng: transportation.departure_port_longitude#,
+          #icon:
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+        @markers << {
+          lat: transportation.arrival_port_latitude,
+          lng: transportation.arrival_port_longitude#,
+          #icon:
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+        if transportation.status == "Booked"
+          @events << {
+            title: "Transportation",
+            start: transportation.departure_date
+          }
+        end
+      end
+    end
+
+    @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     unless @accommodations.nil?
       @accommodations.map do |accommodation|
         @markers << {
           lat: accommodation.latitude,
           lng: accommodation.longitude#,
+          #icon:
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
         if accommodation.status == "Booked"
@@ -36,6 +61,7 @@ class TripsController < ApplicationController
         @markers << {
           lat: restaurant.latitude,
           lng: restaurant.longitude#,
+          #icon:
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
         if restaurant.status == "Booked"
@@ -52,6 +78,7 @@ class TripsController < ApplicationController
         @markers << {
           lat: activity.latitude,
           lng: activity.longitude#,
+          #icon:
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
         if activity.status == "Booked"
