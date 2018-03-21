@@ -18,7 +18,22 @@ class Activity < ApplicationRecord
     @activity.url = self.url
     @activity.email = self.email
     @activity.participation = participant
-    @activity.trip = self.trip
+    @activity.latitude = self.latitude
+    @activity.longitude = self.longitude
     @activity.save
+  end
+
+  def count_participants
+    same_resa =Activity.all.where(
+      start_time: self.start_time,
+      date: self.date,
+      status: self.status,
+      address: self.address,
+      name: self.name,
+      phone_number: self.phone_number,
+      description: self.description,
+      )
+    same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
+    same_resa_trip.count
   end
 end
