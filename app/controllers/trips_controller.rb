@@ -43,10 +43,8 @@ class TripsController < ApplicationController
         }
       end
     end
-
     @participation = Participation.new
     @participation.trip = Trip.find(params[:id])
-
   end
 
   def new

@@ -26,7 +26,11 @@ class ActivitiesController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @activity.remote_photo_url = img_array[1]
     if @activity.save
-      redirect_to edit_activity_path(@activity)
+      if Activity.where(@activity.name).where(@activity.trip).count > 1
+        redirect_to trip_activities
+      else
+      redirect_to edit_activities_path(@activity)
+      end
     else
       render 'trips/index'
     end
