@@ -10,8 +10,8 @@ class TripsController < ApplicationController
   end
 
   def show
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @trip = Trip.find(params[:id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
 
     @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     @markers = []

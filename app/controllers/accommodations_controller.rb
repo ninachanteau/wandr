@@ -31,7 +31,7 @@ class AccommodationsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
-    if @acommodation.save
+    if @accommodation.save
       # if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
       #   redirect_to trip_accommodations
       # else
@@ -43,6 +43,7 @@ class AccommodationsController < ApplicationController
   end
 
   def edit
+
     @accommodation = Accommodation.find(params[:id])
   end
 
