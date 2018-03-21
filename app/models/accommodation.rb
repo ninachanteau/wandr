@@ -6,20 +6,37 @@ class Accommodation < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   def add_participant(participant)
-   @accommodation = Accommodation.new
-   @accommodation.start_time = self.start_time
-   @accommodation.date = self.date
-   @accommodation.status = self.status
-   @accommodation.address = self.address
-   @accommodation.name = self.name
-   @accommodation.photo = self.photo
-   @accommodation.phone_number = self.phone_number
-   @accommodation.description = self.description
-   @accommodation.url = self.url
-   @accommodation.email = self.email
-   @accommodation.participation = participant
-   @accommodation.trip = self.trip
-   @accommodation.save
+    @accommodation = Accommodation.new
+    @accommodation.start_date = self.start_date
+    @accommodation.end_date = self.end_date
+    @accommodation.reference_number = self.reference_number
+    @accommodation.number_of_nights = self.number_of_nights
+    @accommodation.number_of_rooms = self.number_of_rooms
+    @accommodation.status = self.status
+    @accommodation.address = self.address
+    @accommodation.name = self.name
+    @accommodation.photo = self.photo
+    @accommodation.phone_number = self.phone_number
+    @accommodation.url = self.url
+    @accommodation.email = self.email
+    @accommodation.participation = participant
+    @accommodation.latitude = self.latitude
+    @accommodation.longitude = self.longitude
+    @accommodation.total_price = self.total_price
+    @accommodation.save
+  end
+
+  def count_participants
+    same_resa =Accommodation.all.where(
+      start_date: self.start_date,
+      end_date: self.end_date,
+      reference_number: self.reference_number,
+      address: self.address,
+      name: self.name,
+      phone_number: self.phone_number,
+      trip: self.trip,
+      )
+    same_resa.count
   end
 
 end

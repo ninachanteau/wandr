@@ -1,6 +1,6 @@
 class Restaurant < ApplicationRecord
   belongs_to :participation, optional: true
-  delegate :trip, to: :participation
+  delegate :trip, to: :participation, allow_nil: true
   mount_uploader :photo, PhotoUploader
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -18,8 +18,22 @@ class Restaurant < ApplicationRecord
     @restaurant.url = self.url
     @restaurant.email = self.email
     @restaurant.participation = participant
-    @restaurant.trip = self.trip
+    @restaurant.latitude = self.latitude
+    @restaurant.longitude = self.longitude
     @restaurant.save
   end
 
+  def count_participants
+    same_resa = Restaurant.where(
+      start_time: self.start_time,
+      date: self.date,
+      status: self.status,
+      address: self.address,
+      name: self.name,
+      phone_number: self.phone_number,
+      description: self.description,
+      )
+    same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
+    same_resa_trip.count
+  end
 end
