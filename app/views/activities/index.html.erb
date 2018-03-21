@@ -2,15 +2,29 @@
 <div class="container">
 
   <div class="header">
-    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-star"></i></h2>
+    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
     </div>
-    <div class="add-btn"><%= link_to "New", new_trip_activity_path  %></div>
   </div>
+
+  <div class="activities-container">
+    <div class="activities-ctn">
+      <div class="activities-card">
+        <h5>Today Activities:</h5>
+      </div>
+      <div class="activities-card">
+        <div> <%= link_to new_trip_activity_path do %>
+          <i class="fa fa-plus-circle plus-btn"></i>
+        <% end %></div>
+        <h5>Activities:</h5>
+        <div><% @activities.each do |act| %>
+          <%= act.name %>
+        <% end %></div>
+      </div>
+    </div>
+    <div class=" wishlist-card hidden-xs">
+      <h5>Wishlist:</h5>
+    </div>
+  </div>
+
 </div>
-
-
-Activities
-<% @activities.each do |act| %>
-  <%= act.name  %>
-<% end %>
 </div>
