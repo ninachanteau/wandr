@@ -33,6 +33,7 @@ class RestaurantsController < ApplicationController
     @restaurant.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
+    @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @restaurant.save
       # if Restaurant.where(name: name_array[0]) == []
         redirect_to edit_restaurant_path(@restaurant)
@@ -52,8 +53,7 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    @trip = Trip.find_by_name(trip)
-    @restaurant.trip = @trip
+    @restaurant.trip = Trip.find_by_name(trip) unless @restaurant.trip.present?
     redirect_to root_path
   end
 
