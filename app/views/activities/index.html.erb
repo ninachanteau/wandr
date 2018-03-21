@@ -1,14 +1,19 @@
 <div class="new-container">
   <div class="container">
+
     <div class="header">
       <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
       </div>
     </div>
+
     <div class="activities-container">
+
       <div class="activities-ctn">
+
         <div class="activities-card">
-+         <h5>Today Activities:</h5>
-+       </div>
+         <h5>Today Activities:</h5>
+        </div>
+
         <div class="activities-card">
           <div> <%= link_to new_trip_activity_path do %>
             <i class="fa fa-plus-circle plus-btn"></i>
@@ -27,57 +32,56 @@
               </tr>
             </thead>
             <tbody>
-            <% @activities.each do |activity| %>
-              <tr>
-                <td class="name">
-                  <p><%= link_to activity.name, activity.url %></p>
-                </td>
-                <td class="contact">
-                  <p><%= activity.address%></p>
-                  <p><%= activity.email%></p>
-                  <p><%= activity.phone_number%></p>
-                </td>
-                <td class="date">
-                  <p><%= activity.date%></p>
-                  <p><%= activity.start_time%></p>
-                </td>
-                <td class="description">
-                  <p><%= activity.description%></p>
-                </td>
-                <td class="status">
-                  <div class="<%= activity.status%>">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= activity.status%>
-                      </button>
-                      <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                        <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item" %>
-                        <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item" %>
+              <% @activities.each do |activity| %>
+                <tr>
+                  <td class="name">
+                    <p><%= link_to activity.name, activity.url %></p>
+                  </td>
+                  <td class="contact">
+                    <p><%= activity.address%></p>
+                    <p><%= activity.email%></p>
+                    <p><%= activity.phone_number%></p>
+                  </td>
+                  <td class="date">
+                    <p><%= activity.date%></p>
+                    <p><%= activity.start_time%></p>
+                  </td>
+                  <td class="description">
+                    <p><%= activity.description%></p>
+                  </td>
+                  <td class="status">
+                    <div class="<%= activity.status%>">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <%= activity.status%>
+                        </button>
+                        <div class="dropdown-menu">
+                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                          <div class="dropdown-divider"></div>
+                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item" %>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-                <td>
-                  <% activity.participants.each do |participation| %>
-                    <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
-                  <% end %>
-                </td>
-              </tr>
+                  </td>
+                  <td>
+                    <% activity.participants.each do |participation| %>
+                      <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
+                    <% end %>
+                  </td>
+                </tr>
               <% end %>
-              </tbody>
-            </table>
-          </div>
-        <div class=" wishlist-card hidden-xs">
-    +      <h5>Wishlist:</h5>
-    +   </div>
-+     </div>
+            </tbody>
+          </table>
+        </div>
+        </div>
 
+        <div class=" wishlist-card hidden-xs">
+          <h5>Wishlist:</h5>
+        </div>
     </div>
   </div>
 </div>
-
 
 
 

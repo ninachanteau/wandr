@@ -8,8 +8,12 @@
   color: white;
 }
 .alert-info {
-  background: $green;
+  background: $light-gray;
+  color: $yellow;
+  border: none;
 }
 .alert-warning {
-  background: $red;
+  background: $light-gray;
+  color: $middle-gray;
+  border: none;
 }
