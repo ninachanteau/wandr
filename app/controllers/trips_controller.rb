@@ -10,8 +10,8 @@ class TripsController < ApplicationController
   end
 
   def show
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @trip = Trip.find(params[:id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id)
     @markers = []
     @events = []
 
@@ -31,7 +31,6 @@ class TripsController < ApplicationController
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
         if transportation.status == "Booked"
-          raise
           @events << {
             color: "#FFC61B",
             title: "Transportation",
