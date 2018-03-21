@@ -1,5 +1,5 @@
 class Transportation < ApplicationRecord
-  belongs_to :participation
+  belongs_to :participation, optional: true
   delegate :trip, to: :participation
   geocoded_by :arrival_port, latitude: :arrival_port_latitude, longitude: :arrival_port_longitude
   geocoded_by :departure_port, latitude: :departure_port_latitude, longitude: :departure_port_longitude
