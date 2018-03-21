@@ -1,22 +1,22 @@
 <div class="new-container">
-<div class="container">
+  <div class="container">
 
-  <div class="header">
-    <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-cutlery title-icon"></i></h2>
+    <div class="header">
+      <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-cutlery title-icon"></i></h2>
+      </div>
     </div>
-  </div>
 
-
-  <div class="restaurants-ctn">
-    <div class="restaurants-card">
-      <h5>Today Restaurants:</h5>
-    </div>
-    <div class="restaurants-card">
-      <div> <%= link_to new_trip_restaurant_path do %>
-        <i class="fa fa-plus-circle plus-btn"></i>
-      <% end %></div>
-      <h5>Restaurants:</h5>
-      <table class="table">
+    <div class="restaurants-container">
+      <div class="restaurants-ctn">
+        <div class="restaurants-card">
+          <h5>Today Restaurants:</h5>
+        </div>
+        <div class="restaurants-card">
+          <div> <%= link_to new_trip_restaurant_path do %>
+            <i class="fa fa-plus-circle plus-btn"></i>
+          <% end %></div>
+        <h5>Restaurants:</h5>
+        <table class="table">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -29,47 +29,51 @@
           </tr>
         </thead>
         <tbody>
-
-            <% @restaurants.each do |restaurant| %>
-              <tr>
-                <td class="name">
-                  <p><%= link_to restaurant.name, restaurant.url %></p>
-                </td>
-                <td class="contact">
-                  <p><%= restaurant.address%></p>
-                  <p><%= restaurant.email%></p>
-                  <p><%= restaurant.phone_number%></p>
-                </td>
-                <td class="date">
-                  <p><%= restaurant.date%></p>
-                  <p><%= restaurant.start_time%></p>
-                </td>
-                <td class="description">
-                  <p><%= restaurant.description%></p>
-                </td>
-                <td class="status">
-                  <div class="<%= restaurant.status%>">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= restaurant.status%>
-                      </button>
-                      <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                        <%= link_to "Booked", trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item" %>
-                        <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item" %>
-                      </div>
+          <% @restaurants.each do |restaurant| %>
+            <tr>
+              <td class="name">
+                <p><%= link_to restaurant.name, restaurant.url %></p>
+              </td>
+              <td class="contact">
+                <p><%= restaurant.address%></p>
+                <p><%= restaurant.email%></p>
+                <p><%= restaurant.phone_number%></p>
+              </td>
+              <td class="date">
+                <p><%= restaurant.date%></p>
+                <p><%= restaurant.start_time%></p>
+              </td>
+              <td class="description">
+                <p><%= restaurant.description%></p>
+              </td>
+              <td class="status">
+                <div class="<%= restaurant.status%>">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= restaurant.status%>
+                    </button>
+                    <div class="dropdown-menu">
+                      <%= link_to "Wishlist", trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                      <%= link_to "Booked", trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                      <div class="dropdown-divider"></div>
+                      <%= link_to "Delete", trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item" %>
                     </div>
                   </div>
-                </td>
-                <td>
-                  <% restaurant.participants.each do |participation| %>
-                    <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
-                  <% end %>
-                </td>
-              </tr>
-            <% end %>
+                </div>
+              </td>
+              <td>
+                <% restaurant.participants.each do |participation| %>
+                  <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
+    <div class=" wishlist-card hidden-xs">
+      <h5>Wishlist:</h5>
+    </div>
+  </div>
+</div>
 

@@ -74,35 +74,40 @@ kenza_cuba = Participation.new
 kenza_cuba.user = kenza
 kenza_cuba.trip = cuba
 kenza_cuba.email = kenza.email
+kenza_cuba.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar"
 kenza_cuba.save!
 
 nina_barcelona = Participation.new
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
 nina_barcelona.email = nina.email
+nina_barcelona.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_barcelona.save!
 
 nina_stockholm = Participation.new
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
 nina_stockholm.email = nina.email
+nina_stockholm.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_stockholm.save!
 
 nina_cuba = Participation.new
 nina_cuba.user = nina
 nina_cuba.trip = cuba
 nina_cuba.email = nina.email
+nina_cuba.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_cuba.save!
 
 nina_norway = Participation.new
 nina_norway.user = nina
 nina_norway.trip = norway
 nina_norway.email = nina.email
+nina_norway.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_norway.save!
 
 puts "Participations created"
 puts "------"
-puts "Creating 3 transportations"
+puts "Creating 2 transportations"
 
 flight_cuba_kenza = Transportation.new(
   departure_port: "CDG",
@@ -125,15 +130,6 @@ flight_cuba_nina = Transportation.new(
   )
 flight_cuba_nina.participation = nina_cuba
 flight_cuba_nina.save!
-
-flight_stockholm_nina = Transportation.new(
-  departure_port: "Orly",
-  arrival_port: "Stockholm",
-  status: "Wishlist",
-  price_per_person: 145.00
-  )
-flight_stockholm_nina.participation = nina_stockholm
-flight_stockholm_nina.save!
 
 puts "Transportations created"
 puts "------"
