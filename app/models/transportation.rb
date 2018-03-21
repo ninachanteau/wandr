@@ -17,10 +17,11 @@ class Transportation < ApplicationRecord
     @transportation.status = self.status
     @transportation.latitude = self.latitude
     @transportation.longitude = self.longitude
+    @transportation.trip = self.trip
     @transportation.save
   end
 
-  def count_participants
+  def same_reservation
     same_resa =Transportation.all.where(
       departure_date: self.departure_date,
       departure_port: self.departure_port,
@@ -31,7 +32,18 @@ class Transportation < ApplicationRecord
       status: self.status,
       )
     same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
-    same_resa_trip.count
+  end
+
+  def count_participants
+    self.same_reservation.count
+  end
+
+  def participants
+    participants = []
+    self.same_reservation.each do |instance|
+      participants << instance.participation
+    end
+    return participants
   end
 
   private

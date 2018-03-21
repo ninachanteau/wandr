@@ -20,10 +20,11 @@ class Activity < ApplicationRecord
     @activity.participation = participant
     @activity.latitude = self.latitude
     @activity.longitude = self.longitude
+    @activity.trip = self.trip
     @activity.save
   end
 
-  def count_participants
+  def same_reservation
     same_resa =Activity.all.where(
       start_time: self.start_time,
       date: self.date,
@@ -32,8 +33,19 @@ class Activity < ApplicationRecord
       name: self.name,
       phone_number: self.phone_number,
       description: self.description,
+      trip: self.trip,
       )
-    same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
-    same_resa_trip.count
+  end
+
+  def count_participants
+    self.same_reservation.count
+  end
+
+  def participants
+    participants = []
+    self.same_reservation.each do |instance|
+      participants << instance.participation
+    end
+    return participants
   end
 end
