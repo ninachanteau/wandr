@@ -14,6 +14,7 @@ class TripsController < ApplicationController
 
     @accomodations = @trip.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     @markers = []
+    @events = []
     unless @accommodations.nil?
       @accommodations.map do |accommodation|
         @markers << {
@@ -21,6 +22,12 @@ class TripsController < ApplicationController
           lng: accommodation.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
+        if accommodation.status == "Booked"
+          @events << {
+            title: accommodation.name,
+            start: accommodation.start_date
+          }
+        end
       end
     end
     @restaurants = @trip.restaurants.select { |restaurant| restaurant unless restaurant.latitude == nil || restaurant.longitude == nil }
@@ -31,6 +38,12 @@ class TripsController < ApplicationController
           lng: restaurant.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
+        if restaurant.status == "Booked"
+          @events << {
+            title: restaurant.name,
+            start: restaurant.date
+          }
+        end
       end
     end
     @activities = @trip.activities.select { |activity| activity unless activity.latitude == nil || activity.longitude == nil }
@@ -41,6 +54,12 @@ class TripsController < ApplicationController
           lng: activity.longitude#,
           # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
         }
+        if activity.status == "Booked"
+          @events << {
+            title: activity.name,
+            start: activity.date
+          }
+        end
       end
     end
     @participation = Participation.new

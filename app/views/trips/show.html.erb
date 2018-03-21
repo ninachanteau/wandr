@@ -1,20 +1,37 @@
-
 <div class="new-container">
 <div class="container">
-  <div class="row">
-    <h2><%= @trip.destination %></h2>
-    <div class="col-md-3">
-      <%= simple_form_for [@trip, @participation] do |f| %>
-        <%= f.input :email, placeholder: "boris@lewagon.org"%>
-        <%= f.input :pseudo, placeholder: "Papillard" %>
-        <%= f.submit "Add a participant", class: "btn btn-info" %>
+  <h2><strong><%= @trip.destination %>:</strong>
+      <% if @trip.start_date.present? %>
+        <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
       <% end %>
+  </h2>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="participants-container">
+        <% @trip.participations.each do |participation| %>
+          <div class="participant">
+            <%= cl_image_tag participation.user.avatar, class: "avatar-large" %>
+          </div>
+          <div class="btn btn-info" style="width: 150px">Add participant</div>
+        <% end %>
+      </div>
     </div>
-    <div id="map" data-markers="<%= @markers.to_json %>"></div>
+    <div class="col-md-6">
+      <div id="calendar" data-events="<%= @events.to_json %>">></div>
+    </div>
+    <div class="col-md-6">
+      <div id="map" data-markers="<%= @markers.to_json %>"></div>
+    </div>
   </div>
 </div>
 </div>
 
-<div>
 
+
+<div class="participants-form">
+  <%= simple_form_for [@trip, @participation] do |f| %>
+    <%= f.input :email, placeholder: "boris@lewagon.org"%>
+    <%= f.input :pseudo, placeholder: "Papillard" %>
+    <%= f.submit "Add a participant", class: "btn btn-info" %>
+  <% end %>
 </div>
