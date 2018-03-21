@@ -63,7 +63,7 @@
                   </div>
                 </td>
                 <td>
-                  <% restaurant.participations.each do |participation| %>
+                  <% restaurant.participants.each do |participation| %>
                     <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
                   <% end %>
                 </td>

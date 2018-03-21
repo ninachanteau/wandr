@@ -61,7 +61,7 @@
                   </div>
                 </td>
                 <td>
-                  <% activity.participations.each do |participation| %>
+                  <% activity.participants.each do |participation| %>
                     <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
                   <% end %>
                 </td>
