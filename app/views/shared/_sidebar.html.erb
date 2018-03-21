@@ -30,27 +30,27 @@
       <ul class="list-icons">
         <% if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trips_path(current_user) do %>
-            <%= render 'shared/globe-icone' %>
+            <%= render 'shared/globe-icon' %>
           <% end %></li>
         <% else %>
             <li> <%= link_to trip_path(@trip) do %>
-              <i class="fa fa-globe"></i>
+              <%= render 'shared/globe-icon' %>
             <% end %></li>
 
           <% end %>
 
         <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trip_transportations_path(@trip) do %>
-            <i class="fa fa-plane"></i>
+            <%= render 'shared/plane-icon' %>
           <% end %></li>
           <li> <%= link_to trip_accommodations_path(@trip) do %>
-            <i class="fa fa-home"></i>
+            <%= render 'shared/home-icon' %>
           <% end %></li>
           <li> <%= link_to trip_restaurants_path(@trip) do %>
-            <i class="fa fa-cutlery"></i>
+            <%= render 'shared/cutlery-icon' %>
           <% end %></li>
           <li> <%= link_to trip_activities_path(@trip) do %>
-            <i class="fa fa-star"></i>
+            <%= render 'shared/star-icon' %>
           <% end %></li>
         <% end %>
       </ul>
