@@ -1,6 +1,6 @@
 class Activity < ApplicationRecord
   belongs_to :participation, optional: true
-  delegate :trip, to: :participation
+  belongs_to :trip, optional: true
   mount_uploader :photo, PhotoUploader
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
