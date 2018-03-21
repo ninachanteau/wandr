@@ -70,17 +70,18 @@ puts "Users created"
 puts "------"
 puts "Creating 5 participations"
 
-kenza_barcelona = Participation.create
+kenza_barcelona = Participation.new
 kenza_barcelona.user = kenza
 kenza_barcelona.trip = barcelona
 kenza_barcelona.save
 
-nina_barcelona = Participation.create
+p kenza_barcelona
+nina_barcelona = Participation.new
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
 nina_barcelona.save
 
-nina_stockholm = Participation.create
+nina_stockholm = Participation.new
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
 nina_stockholm.save
