@@ -163,7 +163,7 @@ puts "Creating 1 restaurant"
 restaurant_cuba_nina = Restaurant.create(
   name: "Bodeguita del medio",
   address: "Empedrado, La Habana, Cuba",
-  date: "Sun, 25 Mar 2018",
+  date: "Sun, 25 Mar 2018 20:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0753644527",
   description: "best bar in Cuba",
