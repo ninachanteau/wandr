@@ -110,6 +110,7 @@ class Trips::UnauthenticatedController < ApplicationController
 
     @participation = Participation.new
     @participation.trip = @trip
+    render 'trips/show'
   end
 
   def add_participant
