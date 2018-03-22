@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @restaurants.where(date: Date.today).each do |restaurant| %>
+          <% @my_restaurants.where(date: Date.today).each do |restaurant| %>
             <tr>
               <td class="name">
                 <p><%= link_to restaurant.name, restaurant.url %></p>
@@ -32,8 +32,12 @@
                 <p><%= restaurant.phone_number%></p>
               </td>
               <td class="date">
-                <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                <p>@ <%= restaurant.date.strftime("%H:%M") %></p>
+                <% if restaurant.date %>
+                  <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
+                  <p><%= restaurant.date.strftime("%H:%M") %></p>
+                <% else %>
+                  <p>Not scheduled yet</p>
+                <% end %>
               </td>
               <td class="description">
                 <p><%= restaurant.description%></p>
@@ -52,6 +56,11 @@
                     </div>
                   </div>
                 </div>
+              </td>
+              <td class="participants">
+                <% restaurant.participants.each do |participant| %>
+                  <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                <% end %>
               </td>
             </tr>
           <% end %>
@@ -87,6 +96,14 @@
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
                     <%= f.submit class: 'btn btn-info' %>
+                    <form action="restaurant/create">
+                      <% @trip.participations.each do |part| %>
+                        <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <%#= f.label part.pseudo %>
+                        <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                      <% end %>
+                      <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                      </form>
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -120,8 +137,12 @@
                 <p><%= restaurant.phone_number%></p>
               </td>
               <td class="date">
-                <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                <p>@ <%= restaurant.date.strftime("%H:%M") %></p>
+                <% if restaurant.date %>
+                  <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
+                  <p><%= restaurant.date.strftime("%H:%M") %></p>
+                <% else %>
+                  <p>Not scheduled yet</p>
+                <% end %>
               </td>
               <td class="description">
                 <p><%= restaurant.description%></p>
@@ -141,6 +162,11 @@
                   </div>
                 </div>
               </td>
+              <td class="participants">
+                <% restaurant.participants.each do |participant| %>
+                  <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           <% end %>
@@ -148,9 +174,9 @@
       </table>
     </div>
     </div>
-    <div class=" wishlist-card hidden-xs">
+<!--     <div class=" wishlist-card hidden-xs">
       <h5>Wishlist:</h5>
-    </div>
+    </div> -->
     </div>
   </div>
 </div>
