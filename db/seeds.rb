@@ -181,7 +181,7 @@ puts "Creating 1 activity"
 activity_cuba_nina = Activity.create(
   name: "Museum of the Revolution",
   address: "Avenida Bélgica, La Habana, Cuba",
-  date: "Mon, 26 Mar 2018",
+  date: "Mon, 26 Mar 2018 11:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0753644527",
   description: "amazing museum",
