@@ -4,6 +4,13 @@ require "nokogiri"
 class Accommodations::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @current_participation = Participation.find_by_token(params[:token])
+    @avatar = @current_participation.avatar
+    @accommodation = @trip.accommodation.all
+  end
+
   def new
     @accommodation = Accommodation.new
   end
@@ -39,14 +46,13 @@ class Accommodations::UnauthenticatedController < ApplicationController
 
   def edit
     @current_participation = Participation.find_by_token(params[:token])
-    @trips = @current_participation.trip.first.name
-
     @accommodation = Accommodation.find(params[:id])
   end
 
   def update
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.trip = Trip.find_by_name(trip) unless @accommodation.trip.present?
+    @current_participation = Participation.find_by_token(params[:token])
+    @accommodation.trip = @current_participation.trip unless @accommodation.trip.present?
     redirect_to root_path
   end
 
