@@ -18,4 +18,16 @@ Rails.application.routes.draw do
   resources :restaurants, only: [:create, :edit, :update]
   resources :activities, only: [:create, :edit, :update]
   resources :accommodations, only: [:create, :edit, :update]
+
+  namespace :trips do
+    resources :unauthentified, only: [:show, :new, :create, :edit, :update]
+     # do
+      # resources :transportations, only: [:index, :new, :create, :edit, :update, :destroy]
+      # resources :accommodations, only: [:index, :new, :create, :edit, :update]
+      # resources :restaurants, only: [:index, :new, :create, :edit, :update]
+      # resources :activities, only: [:index, :new, :create, :edit, :update]
+      # resources :participations, only: [:create, :edit, :update, :destroy]
+    # end
+  end
+
 end

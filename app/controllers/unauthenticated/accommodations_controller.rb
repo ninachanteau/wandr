@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Accommodations::UnauthenticatedController < ApplicationController
+class Unauthenticated::AccommodationsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
@@ -69,3 +69,4 @@ end
 
 
 end
+

@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Activities::UnauthenticatedController < ApplicationController
+class Unauthenticated::ActivitiesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index

@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Restaurants::UnauthenticatedController < ApplicationController
+class Unauthenticated::RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!
 
 def index
