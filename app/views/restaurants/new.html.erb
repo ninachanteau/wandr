@@ -20,7 +20,7 @@
 
           <%= f.input :url, label: "link", class: 'form-control' %>
           <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
-          <%= f.submit, class: 'btn btn-primary' %>
+          <%= f.submit class: 'btn btn-primary' %>
 
           <p>or</p>
           <p>Enter a new restaurant manually: </p>
@@ -31,7 +31,7 @@
           <%= f.input :description, label: "Description", class: 'form-control' %>
           <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control' %>
           <!-- Add participants -->
-          <%= f.submit, class: 'btn btn-primary' %>
+          <%= f.submit class: 'btn btn-primary' %>
         <% end %>
       </div>
     </div>

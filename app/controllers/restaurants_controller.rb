@@ -12,9 +12,9 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @trip = Trip.find(params[:trip_id])
     @restaurant = Restaurant.new
-    @restaurant.trip = @trip
+    # @trip = Trip.find([params(:trip_id)])
+    # @restaurant.trip = @trip
   end
 
   def create
@@ -54,9 +54,11 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    # @trip =
     @restaurant = Restaurant.find(params[:id])
     @restaurant.trip = Trip.find_by_name(trip) unless @restaurant.trip.present?
     redirect_to root_path
+    # redirect_to trip_restaurants_path(@trip, @restaurant)
   end
 
   private
