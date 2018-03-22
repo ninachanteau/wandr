@@ -66,6 +66,7 @@ kenza_cuba = Participation.new
 kenza_cuba.user = kenza
 kenza_cuba.trip = cuba
 kenza_cuba.email = kenza.email
+kenza_cuba.pseudo = kenza.first_name
 kenza_cuba.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar"
 kenza_cuba.save!
 
@@ -73,6 +74,7 @@ nina_barcelona = Participation.new
 nina_barcelona.user = nina
 nina_barcelona.trip = barcelona
 nina_barcelona.email = nina.email
+nina_barcelona.pseudo = nina.first_name
 nina_barcelona.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_barcelona.save!
 
@@ -80,6 +82,7 @@ nina_stockholm = Participation.new
 nina_stockholm.user = nina
 nina_stockholm.trip = stockholm
 nina_stockholm.email = nina.email
+nina_stockholm.pseudo = nina.first_name
 nina_stockholm.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_stockholm.save!
 
@@ -87,6 +90,7 @@ nina_cuba = Participation.new
 nina_cuba.user = nina
 nina_cuba.trip = cuba
 nina_cuba.email = nina.email
+nina_cuba.pseudo = nina.first_name
 nina_cuba.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_cuba.save!
 
@@ -94,8 +98,10 @@ nina_norway = Participation.new
 nina_norway.user = nina
 nina_norway.trip = norway
 nina_norway.email = nina.email
+nina_norway.pseudo = nina.first_name
 nina_norway.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_norway.save!
+
 alex_norway = Participation.new
 alex_norway.trip = norway
 alex_norway.email = "alexandre.smadja@hec.edu"

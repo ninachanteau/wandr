@@ -118,8 +118,16 @@
                 </div>
                 <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                <!-- Add participants -->
                 <%= f.submit class: 'btn btn-info' %>
+                                <!-- Add participants -->
+                <form action="accommodation/create">
+                <% @trip_participants.each do |part| %>
+                  <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                  <%#= f.label part.pseudo %>
+                  <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                <% end %>
+                <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                </form>
               <% end %>
             </div>
             <div class="modal-footer">
