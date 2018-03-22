@@ -58,6 +58,17 @@ class RestaurantsController < ApplicationController
 
   private
 
+  def one_reservation(array)
+    one_reservation = array.select do |resa|
+      if resa.same_reservation.length == 0
+        resa
+      else
+        resa.same_reservation[0]
+      end
+    end
+    return one_reservation
+  end
+
   def set_restaurant
     @restaurant = Restaurant.find(@restaurant)
   end
