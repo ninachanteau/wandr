@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Unauthenticated::TransportationsController < ApplicationController
+class Transportations::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
@@ -49,5 +49,4 @@ class Unauthenticated::TransportationsController < ApplicationController
   def transpo_params
     params.require(:transportation).permit(:status, :departure_port, :departure_date, :arrival_port, :arrival_date, :price_per_person, :reference_number)
   end
-
 end

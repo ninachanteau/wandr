@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Unauthenticated::ActivitiesController < ApplicationController
+class Activities::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
@@ -64,7 +64,5 @@ class Unauthenticated::ActivitiesController < ApplicationController
   def activity_params
     params.require(:activity).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
   end
-
-end
 
 end

@@ -1,7 +1,10 @@
-class ParticipationsController < ApplicationController
+require "open-uri"
+require "nokogiri"
+
+class Participations::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
-def create
+  def create
   @trip = Trip.find(params[:trip_id])
   @user = User.find_by_email(@participation.email)
   @participation = Participation.new(participation_params)
@@ -28,5 +31,7 @@ end
   def participation_params
     params.require(:participation).permit(:user_id, :pseudo, :email)
   end
+
+
 
 end

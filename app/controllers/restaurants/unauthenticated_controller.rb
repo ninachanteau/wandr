@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Unauthenticated::RestaurantsController < ApplicationController
+class Restaurants::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
 def index
@@ -66,6 +66,5 @@ def index
   def restaurant_params
     params.require(:restaurant).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
   end
-
 
 end
