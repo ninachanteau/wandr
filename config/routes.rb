@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       resources :activities, only: [:index, :new, :create, :edit, :update]
       resources :participations, only: [:create, :edit, :update, :destroy]
     end
+    resources :navbar_restaurants, only: [:new, :create, :edit, :update]
+    resources :navbar_accommodations, only: [:new, :create, :edit, :update]
+    resources :navbar_activities, only: [:new, :create, :edit, :update]
   end
 
 end

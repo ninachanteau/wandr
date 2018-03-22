@@ -8,39 +8,36 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-
-      <div class="dropdown dropdown-choose">
-      <form action="<%= root_path %>">
-        <select name="type" size="1" class="form-control" id="url-form">
-          <option value="nil">Choose a type</option>
-          <option value="restaurant">Restaurant</option>
-          <option value="accommodation">Accommodation</option>
-          <option value="activity">Activity</option>
-        </select>
-      </form>
-      </div>
-      <% if params["type"] == "restaurant"  %>
-        <%= simple_form_for @restaurant do |f| %>
-          <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
-        <% end %>
-
-      <% elsif params["type"] == "accommodation" %>
-        <%= simple_form_for @accommodation do |f| %>
-          <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
-        <% end %>
-      <% elsif params["type"] == "activity" %>
-        <%= simple_form_for @activity do |f| %>
-          <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
-        <% end %>
-      <% else %>
-        <form action="">
-          <input placeholder="enter url", class="navbar-input">
+      <% if params[:controller] == "trips" && params[:action] == "index"%>
+        <div class="dropdown dropdown-choose">
+        <form action="<%= root_path %>">
+          <select name="type" size="1" class="form-control" id="url-form">
+            <option value="nil">Choose a type</option>
+            <option value="restaurant">Restaurant</option>
+            <option value="accommodation">Accommodation</option>
+            <option value="activity">Activity</option>
+          </select>
         </form>
+        </div>
+        <% if params["type"] == "restaurant"  %>
+            <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post do |f| %>
+              <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
+            <% end %>
+        <% elsif params["type"] == "accommodation" %>
+          <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post do |f| %>
+            <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
+          <% end %>
+        <% elsif params["type"] == "activity" %>
+          <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post do |f| %>
+            <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
+          <% end %>
+        <% else %>
+          <form action="">
+            <input placeholder="enter url", class="navbar-input">
+          </form>
+        <% end %>
+        <div>
       <% end %>
-
-
-
-      <div>
         <div>
 
         </div>
