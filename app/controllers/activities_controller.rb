@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @activities = Activity.where(trip_id: @trip.id)
+    @activity = Activity.new
   end
 
   def new
