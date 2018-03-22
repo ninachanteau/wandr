@@ -10,12 +10,6 @@ Enter details below:
           <%= f.input :arrival_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control' %>
           <%= f.input :price_per_person, label: "Price", class: 'form-control' %>
           <%= f.input :reference_number, label: "#", class: 'form-control' %>
-          <%= f.input :participation_id, label: "Participants", id: ""
-
-
-
-
-          collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control' %>
           <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control' %>
           <%= f.submit class: 'btn btn-primary' %>
         <% end %>
@@ -24,3 +18,6 @@ Enter details below:
   </div>
 </div>
 
+
+<!-- for each trip participation (user with name || participation with pseudo) do -->
+<%= link_to participant.name, new_trip_transportation_path(@trip), participant_id: participant.id), method: :post, class: "dropdown-item" %>
