@@ -16,7 +16,9 @@ end
 def create
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.create(transpo_params)
+
   @participation = Participation.find_by(user_id: current_user.id)
+
   @transportation.participation = @participation
   @transportation.save!
   redirect_to trip_transportations_path(@trip)
@@ -46,5 +48,7 @@ private
 def transpo_params
   params.require(:transportation).permit(:status, :departure_port, :departure_date, :arrival_port, :arrival_date, :price_per_person, :reference_number)
 end
+
+
 
 end
