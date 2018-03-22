@@ -108,13 +108,6 @@ alex_cuba.email = "alexandre.smadja@hec.edu"
 alex_cuba.pseudo = "Alex"
 alex_cuba.save!
 
-jb_istanbul = Participation.new
-jb_istanbul.trip = istanbul
-jb_istanbul.email = "jbmartinelli@outlook.fr"
-jb_istanbul.pseudo = "Jean-Baptou"
-jb_istanbul.save!
-
-
 puts "Participations created"
 puts "------"
 puts "Creating 2 transportations"
