@@ -9,6 +9,7 @@ class RestaurantsController < ApplicationController
     # @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
     # @avatar = current_user.avatar
     @restaurants = Restaurant.where(trip_id: @trip.id)
+    @restaurant = Restaurant.new
   end
 
   def new
