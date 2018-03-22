@@ -4,10 +4,8 @@
   background-size: cover;
 }
 
-h1 {
+.home-title {
+  font-weight: 800;
+  font-size: 52px;
   color: $gray;
-}
-
-h3 {
-  color: $middle-gray;
 }
