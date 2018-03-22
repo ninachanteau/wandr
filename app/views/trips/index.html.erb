@@ -1,42 +1,42 @@
 <div class="new-container">
 <div class="container">
 
-  <h2>My future trips:</h2>
+  <h2 class="trip-title">My future trips:</h2>
   <div class="row">
     <% @future_trips.order(:start_date).each do |trip| %>
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-4">
         <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
-    <div class="col-md-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'add.jpg', height: 300, width: 400,crop: :fill %>')">
-        <div class="card-description">
-          <h2><%= link_to "Add a future trip", new_trip_path %></h2>
-        </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="card add-card">
+          <div> <%= link_to new_trip_path do %>
+            <i class="fa fa-plus-circle btn-card"></i>
+          <% end %></div>
       </div>
     </div>
   </div>
 
-  <h2>My wishlisted trips:</h2>
+  <h2 class="trip-title">My wishlisted trips:</h2>
   <div class="row">
     <% @wishlist_trips.order(:destination).each do |trip| %>
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-4">
         <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
-    <div class="col-md-4">
-      <div class="card text-center" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path 'add.jpg', height: 300, width: 400,crop: :fill %>')">
-        <div class="card-description">
-          <h2><%= link_to "Add a wish trip", new_trip_path %></h2>
-        </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="card add-card">
+        <div> <%= link_to new_trip_path do %>
+          <i class="fa fa-plus-circle btn-card"></i>
+        <% end %></div>
       </div>
     </div>
   </div>
 
-  <h2>My past trips:</h2>
+  <h2 class="trip-title">My past trips:</h2>
   <div class="row">
     <% @past_trips.order(end_date: :desc).each do |trip| %>
-      <div class="col-md-4">
+      <div class="col-sm-6 col-md-4">
         <%= render 'shared/card', trip: trip %>
       </div>
     <% end %>
