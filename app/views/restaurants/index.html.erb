@@ -9,14 +9,8 @@
     <div class="restaurants-container">
       <div class="restaurants-ctn">
         <div class="restaurants-card">
-          <h5>Today Restaurants:</h5>
-        </div>
-        <div class="restaurants-card">
-          <div> <%= link_to new_trip_restaurant_path(@trip, @restaurant) do %>
-            <i class="fa fa-plus-circle plus-btn"></i>
-          <% end %></div>
-        <h5>Restaurants:</h5>
-        <table class="table">
+          <h5>Today (<%= Date.today %>)</h5>
+          <table class="table">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -27,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @restaurants.each do |restaurant| %>
+          <% @restaurants.where(date: Date.today).each do |restaurant| %>
             <tr>
               <td class="name">
                 <p><%= link_to restaurant.name, restaurant.url %></p>
@@ -60,6 +54,62 @@
                 </div>
               </td>
             </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+        </div>
+        <div class="restaurants-card">
+          <div> <%= link_to new_trip_restaurant_path(@trip, @restaurant) do %>
+            <i class="fa fa-plus-circle plus-btn"></i>
+          <% end %></div>
+        <h5>All Restaurants</h5>
+        <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @restaurants.each do |restaurant| %>
+            <% if restaurant.date != Date.today %>
+            <tr>
+              <td class="name">
+                <p><%= link_to restaurant.name, restaurant.url %></p>
+              </td>
+              <td class="contact">
+                <p><%= restaurant.address%></p>
+                <p><%= restaurant.email%></p>
+                <p><%= restaurant.phone_number%></p>
+              </td>
+              <td class="date">
+                <p><%= restaurant.date%></p>
+                <p><%= restaurant.start_time%></p>
+              </td>
+              <td class="description">
+                <p><%= restaurant.description%></p>
+              </td>
+              <td class="status">
+                <div class="<%= restaurant.status%>">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <%= restaurant.status%>
+                    </button>
+                    <div class="dropdown-menu">
+                      <%= link_to "Wishlist", trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
+                      <%= link_to "Booked", trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                      <div class="dropdown-divider"></div>
+                      <%= link_to "Delete", trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item" %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <% end %>
           <% end %>
         </tbody>
       </table>

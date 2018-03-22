@@ -6,6 +6,7 @@ def index
   @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
   @avatar = current_user.avatar
   @transportations = @trip.transportations.all
+  @transportation = Transportation.new
 end
 
 def new

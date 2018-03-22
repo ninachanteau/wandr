@@ -40,7 +40,7 @@ class RestaurantsController < ApplicationController
     # @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @restaurant.save!
       # if Restaurant.where(name: name_array[0]) == []
-        redirect_to trip_restaurants_path(@trip, @restaurant)
+        redirect_to trip_restaurants_path(@trip)
       # elsif  Restaurant.where(name: @restaurant.name).where(trip_id: @restaurant.trip.id).count > 1
       #   redirect_to trip_restaurants
       # end
@@ -59,7 +59,7 @@ class RestaurantsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @restaurant = Restaurant.find(params[:id])
     @restaurant.update(status: params[:status])
-    redirect_to trip_restaurants_path(@trip, @restaurant)
+    redirect_to trip_restaurants_path(@trip)
   end
 
   def destroy
