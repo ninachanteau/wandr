@@ -10,7 +10,11 @@
       <div class="participants-container">
         <% @trip.participations.each do |participation| %>
           <div class="participant">
-            <%= cl_image_tag participation.avatar, class: "avatar-large" %>
+            <% if participation.user %>
+              <%= cl_image_tag participation.user.avatar, class: "avatar-large" %>
+            <% else %>
+              <%= image_tag "default-user.png", class: "avatar-large" %>
+            <% end %>
           </div>
         <% end %>
 <!--         <div class="btn btn-info" style="width: 150px">Add participant</div> -->
