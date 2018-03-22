@@ -60,7 +60,7 @@ remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
 
 puts "Users created"
 puts "------"
-puts "Creating 9 participations"
+puts "Creating 6 participations"
 
 kenza_cuba = Participation.new
 kenza_cuba.user = kenza
@@ -143,7 +143,14 @@ hotel_cuba_nina = Accommodation.create(
   address: "267 Agramonte, La Habana, Cuba",
   start_date: "Sun, 25 Mar 2018",
   end_date: "Mon, 26 Mar 2018",
-  status: "Booked"
+  status: "Booked",
+  reference_number: "GRYJSL",
+  number_of_nights: 1,
+  phone_number: "0273527353",
+  url: "https://www.iberostar.com/en/hotels/la-habana/iberostar-parque-central",
+  email: "iberostar@lahavane.com",
+  total_price: 150.00,
+  number_of_rooms: 2
   )
 hotel_cuba_nina.trip = cuba
 hotel_cuba_nina.participation = nina_cuba
@@ -157,7 +164,11 @@ restaurant_cuba_nina = Restaurant.create(
   name: "Bodeguita del medio",
   address: "Empedrado, La Habana, Cuba",
   date: "Sun, 25 Mar 2018",
-  status: "Booked"
+  status: "Booked",
+  phone_number: "0753644527",
+  description: "best bar in Cuba",
+  url: "http://labodeguitarestaurant.restaurantwebx.com/",
+  email: "bodeguita@lahavane.com"
   )
 restaurant_cuba_nina.trip = cuba
 restaurant_cuba_nina.participation = nina_cuba
@@ -171,7 +182,11 @@ activity_cuba_nina = Activity.create(
   name: "Museum of the Revolution",
   address: "Avenida Bélgica, La Habana, Cuba",
   date: "Mon, 26 Mar 2018",
-  status: "Booked"
+  status: "Booked",
+  phone_number: "0753644527",
+  description: "amazing museum",
+  url: "https://www.tripadvisor.fr/Attraction_Review-g147271-d147980-Reviews-Museum_of_the_Revolution_Museo_de_la_Revolucion-Havana_Ciudad_de_la_Habana_Provinc.html",
+  email: "museum@lahavane.com"
   )
 activity_cuba_nina.trip = cuba
 activity_cuba_nina.participation = nina_cuba
