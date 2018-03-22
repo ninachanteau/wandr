@@ -12,7 +12,7 @@
           <h5>Today Restaurants:</h5>
         </div>
         <div class="restaurants-card">
-          <div> <%= link_to new_trip_restaurant_path do %>
+          <div> <%= link_to new_trip_restaurant_path(@trip, @restaurant) do %>
             <i class="fa fa-plus-circle plus-btn"></i>
           <% end %></div>
         <h5>Restaurants:</h5>
