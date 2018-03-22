@@ -26,7 +26,7 @@
     </div>
 
     <%# unless params[:action] == "index"  %>
-          <% if @trip %>
+          <% if @trip && @trip.id.present? %>
       <ul class="list-icons">
         <% if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <li> <%= link_to trips_path(current_user) do %>
