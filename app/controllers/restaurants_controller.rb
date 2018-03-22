@@ -5,10 +5,12 @@ class RestaurantsController < ApplicationController
 
   def index
     @trip = Trip.find(params[:trip_id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
     # @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
     # @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
     # @avatar = current_user.avatar
-    @restaurants = Restaurant.where(trip_id: @trip.id)
+    @my_restaurants = @current_participation.restaurants
+    @restaurants = Restaurant.where(trip_id: @trip.id).reject {|resto| resto if resto.participation == @current_participation}
     @restaurant = Restaurant.new
   end
 
@@ -22,29 +24,13 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.create(restaurant_params)
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
-    # url = @restaurant.url
-    # html_content = open(url).read
-    # doc = Nokogiri::HTML(html_content)
-    # name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
-    # @restaurant.name = name_array[0] if name_array[0].present?
-    # street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
-    # city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
-    # # country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
-    # # +" "+country_array[0]
-    # @restaurant.address = street_array[0]+","+city_array[0] if street_array[0].present? && city_array[0]
-    # description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    # @restaurant.description = description_array.last if description_array.last.present?
-    # phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
-    # @restaurant.phone_number = phone_array[5] if phone_array[5].present?
-    # img_array = doc.search('.page_images img').map{ |i| i['src'] }
-    # @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
-    # @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    @trip_participants =  @trip.participations
+    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
     if @restaurant.save!
-      # if Restaurant.where(name: name_array[0]) == []
+      @resto_participants.each do |part|
+        @restaurant.add_participant(part)
+      end
         redirect_to trip_restaurants_path(@trip)
-      # elsif  Restaurant.where(name: @restaurant.name).where(trip_id: @restaurant.trip.id).count > 1
-      #   redirect_to trip_restaurants
-      # end
     else
       render 'new'
     end
@@ -71,6 +57,17 @@ class RestaurantsController < ApplicationController
   end
 
   private
+
+  def one_reservation(array)
+    one_reservation = array.select do |resa|
+      if resa.same_reservation.length == 0
+        resa
+      else
+        resa.same_reservation[0]
+      end
+    end
+    return one_reservation
+  end
 
   def set_restaurant
     @restaurant = Restaurant.find(@restaurant)
