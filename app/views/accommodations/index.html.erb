@@ -26,8 +26,9 @@
               </tr>
             </thead>
             <tbody>
-              <% @my_accommodations.each do |accom| %>
-                <% if accom.start_date != Date.today  %>
+
+              <% @accommodations.each do |accom| %>
+                <% if accom.start_date == Date.today  %>
                 <tr>
                   <td class="name">
                     <p><%= link_to accom.name, accom.url %></p>
@@ -67,7 +68,7 @@
                   </td>
                   <td class="participants">
                     <% accom.participants.each do |participant| %>
-                      <%= participant.avatar %>
+                      <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
                     <% end %>
                   </td>
                 </tr>
@@ -152,6 +153,7 @@
         </thead>
         <tbody>
           <% @accommodations.each do |accom| %>
+            <% if accom.start_date != Date.today  %>
             <tr>
               <td class="name">
                 <p><%= link_to accom.name, accom.url %></p>
@@ -197,6 +199,7 @@
                 <% end %>
               </td>
             </tr>
+            <% end %>
             <% end %>
           </tbody>
         </table>

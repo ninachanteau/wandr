@@ -7,7 +7,6 @@ class Restaurant < ApplicationRecord
 
   def add_participant(participant)
     @restaurant = Restaurant.new
-    @restaurant.start_time = self.start_time
     @restaurant.date = self.date
     @restaurant.status = self.status
     @restaurant.address = self.address
@@ -26,7 +25,6 @@ class Restaurant < ApplicationRecord
 
   def same_reservation
     same_resa = Restaurant.where(
-      start_time: self.start_time,
       date: self.date,
       status: self.status,
       address: self.address,

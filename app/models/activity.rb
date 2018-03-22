@@ -7,7 +7,6 @@ class Activity < ApplicationRecord
 
   def add_participant(participant)
     @activity = Activity.new
-    @activity.start_time = self.start_time
     @activity.date = self.date
     @activity.status = self.status
     @activity.address = self.address
@@ -26,7 +25,6 @@ class Activity < ApplicationRecord
 
   def same_reservation
     same_resa =Activity.all.where(
-      start_time: self.start_time,
       date: self.date,
       status: self.status,
       address: self.address,
