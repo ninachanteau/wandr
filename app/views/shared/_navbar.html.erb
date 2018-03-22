@@ -23,6 +23,7 @@
         <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post do |f| %>
           <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>
         <% end %>
+
       <% elsif params["type"] == "accommodation" %>
         <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post do |f| %>
           <%= f.input :url, class: "navbar-input", placeholder: "enter url" %>

@@ -12,7 +12,7 @@
           <h5>Today Restaurants:</h5>
         </div>
         <div class="restaurants-card">
-          <div> <%= link_to new_trip_restaurant_path do %>
+          <div> <%= link_to new_trip_restaurant_path(@trip, @restaurant) do %>
             <i class="fa fa-plus-circle plus-btn"></i>
           <% end %></div>
         <h5>Restaurants:</h5>
@@ -23,9 +23,7 @@
             <th scope="col">Contact</th>
             <th scope="col">Date</th>
             <th scope="col">Description</th>
-            <th scope="col">Price</th>
             <th scope="col">Status</th>
-            <th scope="col">Participants</th>
           </tr>
         </thead>
         <tbody>
@@ -60,11 +58,6 @@
                     </div>
                   </div>
                 </div>
-              </td>
-              <td>
-                <% restaurant.participants.each do |participation| %>
-                  <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
-                <% end %>
               </td>
             </tr>
           <% end %>

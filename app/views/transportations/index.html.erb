@@ -10,7 +10,7 @@
   <div class="transportations-container">
 
     <div class="user-transportations transportations-card">
-      <div> <%= link_to new_trip_transportation_path do %>
+      <div> <%= link_to new_trip_transportation_path(@trip, @transportation) do %>
         <i class="fa fa-plus-circle plus-btn"></i>
       <% end %></div>
       <h5>My transportation:</h5>
