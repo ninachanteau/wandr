@@ -145,7 +145,7 @@ hotel_cuba_nina = Accommodation.create(
   end_date: "Mon, 26 Mar 2018",
   status: "Booked"
   )
-
+hotel_cuba_nina.trip = cuba
 hotel_cuba_nina.participation = nina_cuba
 hotel_cuba_nina.save!
 
@@ -159,7 +159,7 @@ restaurant_cuba_nina = Restaurant.create(
   date: "Sun, 25 Mar 2018",
   status: "Booked"
   )
-
+restaurant_cuba_nina.trip = cuba
 restaurant_cuba_nina.participation = nina_cuba
 restaurant_cuba_nina.save!
 
@@ -173,7 +173,7 @@ activity_cuba_nina = Activity.create(
   date: "Mon, 26 Mar 2018",
   status: "Booked"
   )
-
+activity_cuba_nina.trip = cuba
 activity_cuba_nina.participation = nina_cuba
 activity_cuba_nina.save!
 
