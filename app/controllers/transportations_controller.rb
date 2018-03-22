@@ -47,4 +47,6 @@ def transpo_params
   params.require(:transportation).permit(:status, :departure_port, :departure_date, :arrival_port, :arrival_date, :price_per_person, :reference_number)
 end
 
+
+
 end
