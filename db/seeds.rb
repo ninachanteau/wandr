@@ -108,13 +108,6 @@ alex_cuba.email = "alexandre.smadja@hec.edu"
 alex_cuba.pseudo = "Alex"
 alex_cuba.save!
 
-jb_istanbul = Participation.new
-jb_istanbul.trip = istanbul
-jb_istanbul.email = "jbmartinelli@outlook.fr"
-jb_istanbul.pseudo = "Jean-Baptou"
-jb_istanbul.save!
-
-
 puts "Participations created"
 puts "------"
 puts "Creating 2 transportations"
@@ -122,8 +115,8 @@ puts "Creating 2 transportations"
 flight_cuba_kenza = Transportation.new(
   departure_port: "Paris",
   arrival_port: "José Martí International Airport",
-  departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
-  arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",
+  departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
   status: "Wishlist",
   price_per_person: 99.00
   )
@@ -133,8 +126,8 @@ flight_cuba_kenza.save!
 flight_cuba_nina = Transportation.new(
   departure_port: "Paris",
   arrival_port: "José Martí International Airport",
-  departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
-  arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",
+  departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
   status: "Booked",
   price_per_person: 123.00
   )
@@ -148,8 +141,8 @@ puts "Creating 1 accommodation"
 hotel_cuba_nina = Accommodation.create(
   name: "IBEROSTAR Parque Central",
   address: "267 Agramonte, La Habana, Cuba",
-  start_date: "Tue, 24 Apr 2018",
-  end_date: "Thu, 26 Apr 2018",
+  start_date: "Sun, 25 Mar 2018",
+  end_date: "Mon, 26 Mar 2018",
   status: "Booked"
   )
 
@@ -163,7 +156,7 @@ puts "Creating 1 restaurant"
 restaurant_cuba_nina = Restaurant.create(
   name: "Bodeguita del medio",
   address: "Empedrado, La Habana, Cuba",
-  date: "Tue, 24 Apr 2018",
+  date: "Sun, 25 Mar 2018",
   status: "Booked"
   )
 
@@ -177,7 +170,7 @@ puts "Creating 1 activity"
 activity_cuba_nina = Activity.create(
   name: "Museum of the Revolution",
   address: "Avenida Bélgica, La Habana, Cuba",
-  date: "Wed, 25 Apr 2018",
+  date: "Mon, 26 Mar 2018",
   status: "Booked"
   )
 
