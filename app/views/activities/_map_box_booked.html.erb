@@ -1,7 +1,6 @@
 <div class="text-center">
   <h4><%= activity.name %></h4>
   <h5>Reservation: <%= render 'shared/booked-icon' %></h5>
-  <h6>On: <%= activity.date.strftime("%b %d, %Y") %></h6>
-<!--   <h6>@: <%#=  %></h6> -->
+  <h6>On: <%= activity.date.strftime("%b %d, %Y") %> @ <%= activity.date.strftime("%H:%M") %></h6>
   <p><%= activity.address %></p>
 </div>
