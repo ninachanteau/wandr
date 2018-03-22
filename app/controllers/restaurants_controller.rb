@@ -57,6 +57,7 @@ class RestaurantsController < ApplicationController
     # @trip =
     @restaurant = Restaurant.find(params[:id])
     @restaurant.trip = Trip.find_by_name(trip) unless @restaurant.trip.present?
+    @restaurant.update(restaurant_params)
     redirect_to root_path
     # redirect_to trip_restaurants_path(@trip, @restaurant)
   end
