@@ -12,7 +12,9 @@ class RestaurantsController < ApplicationController
   end
 
   def new
+    @trip = Trip.find(params[:trip_id])
     @restaurant = Restaurant.new
+    @restaurant.trip = @trip
   end
 
   def create
