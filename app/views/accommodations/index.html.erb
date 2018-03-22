@@ -26,7 +26,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @accommodations.each do |accom| %>
+              <% @my_accommodations.each do |accom| %>
                 <% if accom.start_date != Date.today  %>
                 <tr>
                   <td class="name">
@@ -64,6 +64,11 @@
                         </div>
                       </div>
                     </div>
+                  </td>
+                  <td class="participants">
+                    <% accom.participants.each do |participant| %>
+                      <%= participant.avatar %>
+                    <% end %>
                   </td>
                 </tr>
                 <% end %>
@@ -176,15 +181,22 @@
                   </div>
                 </div>
               </td>
+              <td class="participants">
+                <% if accom.participation.present? %>
+                  <% accom.participants.each do |participant|  %>
+                    <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
             <% end %>
           </tbody>
         </table>
       </div>
       </div>
-      <div class=" wishlist-card hidden-xs">
+<!--       <div class=" wishlist-card hidden-xs">
         <h5>Wishlist:</h5>
-      </div>
+      </div> -->
     </div>
     </div>
   </div>

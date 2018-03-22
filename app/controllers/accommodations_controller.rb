@@ -5,7 +5,9 @@ class AccommodationsController < ApplicationController
 
   def index
     @trip = Trip.find(params[:trip_id])
-    @accommodations = Accommodation.where(trip_id: @trip.id)
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+    @my_accommodations = @current_participation.accommodations
+    @accommodations = Accommodation.where(trip_id: @trip.id).reject {|acc| acc if acc.participation == @current_participation}
     @accommodation = Accommodation.new
   end
 
