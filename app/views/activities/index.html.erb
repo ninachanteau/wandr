@@ -34,8 +34,8 @@
                     <p><%= activity.phone_number%></p>
                   </td>
                   <td class="date">
-                    <p><%= activity.date%></p>
-                    <p><%= activity.start_time%></p>
+                    <p><%= activity.date.strftime("%b %d, %Y") %></p>
+                    <p>@ <%= activity.date.strftime("%H:%M") %></p>
                   </td>
                   <td class="description">
                     <p><%= activity.description%></p>
@@ -79,8 +79,6 @@
                 <div class="modal-body">
                   <%= simple_form_for [@trip, @activity] do |f| %>
                     <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
-                    <%= f.input :start_time, class: 'form-control', placeholder: "Start time", label: false %>
-
                     <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
                     <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
                     <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
@@ -124,8 +122,8 @@
                     <p><%= activity.phone_number%></p>
                   </td>
                   <td class="date">
-                    <p><%= activity.date%></p>
-                    <p><%= activity.start_time%></p>
+                    <p><%= activity.date.strftime("%b %d, %Y") %></p>
+                    <p>@ <%= activity.date.strftime("%H:%M") %></p>
                   </td>
                   <td class="description">
                     <p><%= activity.description%></p>

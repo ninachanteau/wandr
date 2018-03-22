@@ -27,7 +27,8 @@
             </thead>
             <tbody>
               <% @accommodations.each do |accom| %>
-                <% if accom.start_date != Date.today  %>
+
+                <% if accom.start_date == Date.today  %>
                 <tr>
                   <td class="name">
                     <p><%= link_to accom.name, accom.url %></p>
@@ -139,6 +140,7 @@
         </thead>
         <tbody>
           <% @accommodations.each do |accom| %>
+            <% if accom.start_date != Date.today  %>
             <tr>
               <td class="name">
                 <p><%= link_to accom.name, accom.url %></p>
@@ -177,6 +179,7 @@
                 </div>
               </td>
             </tr>
+            <% end %>
             <% end %>
           </tbody>
         </table>
