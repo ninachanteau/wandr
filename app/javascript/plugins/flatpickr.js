@@ -18,3 +18,9 @@ flatpickr("#restaurant_date", {
   enableTime: true
 })
 
+flatpickr("#accommodation_start_date", {
+  altInput: true,
+  enableTime: true,
+  plugins: [new rangePlugin({ input: "#accommodation_end_date" })]
+})
+
