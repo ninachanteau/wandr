@@ -1,7 +1,7 @@
 require "open-uri"
 require "nokogiri"
 
-class Unauthenticated::AccommodationsController < ApplicationController
+class Accommodations::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
@@ -65,8 +65,5 @@ class Unauthenticated::AccommodationsController < ApplicationController
   def accommodation_params
     params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms)
   end
-end
-
 
 end
-
