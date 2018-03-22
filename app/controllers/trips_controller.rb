@@ -7,6 +7,7 @@ class TripsController < ApplicationController
     @future_trips = current_user.trips.future
     @past_trips = current_user.trips.past
     @wishlist_trips = current_user.trips.wishlist
+    @trip = Trip.new
   end
 
   def show

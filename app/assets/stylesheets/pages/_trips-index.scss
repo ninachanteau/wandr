@@ -24,3 +24,13 @@
   font-size: 48px;
 }
 
+.modal-content {
+  background-color: $white-middle-transparent;
+  border-radius: 4px;
+  color: $gray;
+}
+
+.modal-backdrop {
+  background-color: transparent;
+}
+
