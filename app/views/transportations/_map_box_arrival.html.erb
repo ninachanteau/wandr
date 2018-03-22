@@ -1,0 +1,5 @@
+<div class="text-center">
+  <h4><%= transportation.arrival_port %></h4>
+  <h5>arrival: <%= render 'shared/booked-icon' %></h5>
+  <h6><%= transportation.arrival_date.strftime("%b %d, %Y") %> @ <%= transportation.arrival_date.strftime("%H:%M") %></h6>
+</div>
