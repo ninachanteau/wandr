@@ -40,7 +40,7 @@ class AccommodationsController < ApplicationController
       # if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
       #   redirect_to trip_accommodations
       # else
-      redirect_to trip_accommodations_path(@trip, @accommodation)
+      redirect_to trip_accommodations_path(@trip)
       # end
     else
       render 'new'
@@ -48,9 +48,8 @@ class AccommodationsController < ApplicationController
   end
 
   def edit
-    @current_user = current_user
-    @trips = @current_user.trips.map {|trip| trip.name}
-
+    # @current_user = current_user
+    # @trips = @current_user.trips.map {|trip| trip.name}
     @accommodation = Accommodation.find(params[:id])
   end
 
@@ -58,7 +57,7 @@ class AccommodationsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
     @accommodation.update(status: params[:status])
-    redirect_to trip_accommodations_path(@trip, @accommodation)
+    redirect_to trip_accommodations_path(@trip)
   end
 
   def destroy

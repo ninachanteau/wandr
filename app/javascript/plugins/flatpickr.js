@@ -28,3 +28,7 @@ flatpickr("#accommodation_start_date", {
   plugins: [new rangePlugin({ input: "#accommodation_end_date" })]
 })
 
+flatpickr("#activity_date", {
+  altInput: true,
+  enableTime: true
+})
