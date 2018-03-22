@@ -11,7 +11,7 @@
 <div class="accommodations-container">
   <div class="accommodations-ctn">
     <div class="accommodations-card">
-      <div> <%= link_to new_trip_accommodation_path do %>
+      <div> <%= link_to new_trip_accommodation_path(@trip) do %>
         <i class="fa fa-plus-circle plus-btn"></i>
       <% end %></div>
       <h5>Accommodation:</h5>
@@ -25,7 +25,6 @@
             <th scope="col"># rooms</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
-            <th scope="col">Participants</th>
           </tr>
         </thead>
         <tbody>
@@ -66,11 +65,6 @@
                     </div>
                   </div>
                 </div>
-              </td>
-              <td>
-                <% accom.participants.each do |participation| %>
-                  <%= cl_image_tag participation.avatar, class: "avatar", crop: :fill%>
-                <% end %>
               </td>
             </tr>
             <% end %>
