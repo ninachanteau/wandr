@@ -36,7 +36,7 @@
                   <%= simple_form_for [@trip, @participation] do |f| %>
                     <%= f.input :email, placeholder: "Email", label: false%>
                     <%= f.input :pseudo, placeholder: "Pseudo", label: false %>
-                    <%= f.submit "Add a participant", class: "btn btn-info" %>
+                    <%= f.submit "Add a participant", class: "btn btn-info", style: "width: 100%" %>
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -51,7 +51,7 @@
     <div class="col-md-6">
       <div id="calendar" data-events="<%= @events.to_json %>">></div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" style="margin-bottom: 10px">
       <div id="map" data-markers="<%= @markers.to_json %>"></div>
     </div>
   </div>

@@ -11,7 +11,7 @@
 <div class="accommodations-container">
   <div class="accommodations-ctn">
     <div class="activities-card">
-      <h5>Today (<%= Date.today %>) </h5>
+      <h4>Today (<%= Date.today %>) </h4>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -115,7 +115,7 @@
                 <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                 <!-- Add participants -->
-                <%= f.submit class: 'btn btn-info' %>
+                <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
               <% end %>
             </div>
             <div class="modal-footer">
@@ -125,7 +125,7 @@
         </div>
       </div>
 
-      <h5>All accommodation</h5>
+      <h4>All accommodation</h4>
       <table class="table">
         <thead>
           <tr>
@@ -186,7 +186,7 @@
       </div>
       </div>
       <div class=" wishlist-card hidden-xs">
-        <h5>Wishlist:</h5>
+        <h4>Wishlist</h4>
       </div>
     </div>
     </div>
