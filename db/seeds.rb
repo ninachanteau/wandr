@@ -28,8 +28,8 @@ cuba = Trip.create!(
  destination: "Cuba",
  description: "Let's enjoy some sun and some mojitos",
  name: "End of semester trip",
- start_date: "Mon, 23 Apr 2018",
- end_date: "Thu, 03 May 2018",
+ start_date: "Sat, 24 Mar 2018",
+ end_date: "Sat, 31 Mar 2018",
  remote_photo_url: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=15641eda0c2356f833f0c21dcfa3ddc8&auto=format&fit=crop&w=1650&q=80")
 
 norway = Trip.create!(
