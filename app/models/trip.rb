@@ -7,6 +7,7 @@ class Trip < ApplicationRecord
   has_many :activities, through: :participations
   mount_uploader :photo, PhotoUploader
   validates :destination, presence: true
+  validates :name, presence: true
 
   scope :future, -> { where('end_date >= ?', Date.today) }
   scope :past, -> { where('end_date < ?', Date.today) }

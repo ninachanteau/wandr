@@ -15,10 +15,8 @@ end
 
 def create
   @trip = Trip.find(params[:trip_id])
-  @transportation = Transportation.create(transpo_params)
-
-  @participation = Participation.find_by(user_id: current_user.id)
-
+  @transportation = Transportation.new(transpo_params)
+  @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
   @transportation.participation = @participation
   @transportation.save!
   redirect_to trip_transportations_path(@trip)
