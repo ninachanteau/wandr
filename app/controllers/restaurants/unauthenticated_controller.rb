@@ -1,20 +1,18 @@
 require "open-uri"
 require "nokogiri"
 
-class RestaurantsController < ApplicationController
+class Restaurants::UnauthenticatedController < ApplicationController
+  skip_before_action :authenticate_user!
 
-  def index
+def index
     @trip = Trip.find(params[:trip_id])
-    @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @avatar = current_user.avatar
+    @current_participation = Participation.find_by_token(params[:token])
+    @avatar = @current_participation.avatar
     @restaurants = @trip.restaurants.all
   end
 
   def new
     @restaurant = Restaurant.new
-    @trip = Trip.find(params[:trip_id])
-    @restaurant.trip = @trip
   end
 
   def create
@@ -48,18 +46,15 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @current_user = current_user
-    @trips = @current_user.trips.map {|trip| trip.name}
+    @current_participation = Participation.find_by_token(params[:token])
     @restaurant = Restaurant.find(params[:id])
   end
 
   def update
-    # @trip =
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.trip = Trip.find_by_name(trip) unless @restaurant.trip.present?
-    @restaurant.update(restaurant_params)
+    @current_participation = Participation.find_by_token(params[:token])
+    @restaurant.trip = @current_participation.trip unless @restaurant.trip.present?
     redirect_to root_path
-    # redirect_to trip_restaurants_path(@trip, @restaurant)
   end
 
   private
@@ -71,5 +66,5 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
   end
-end
 
+end

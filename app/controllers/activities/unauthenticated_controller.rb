@@ -1,13 +1,13 @@
 require "open-uri"
 require "nokogiri"
 
-class ActivitiesController < ApplicationController
+class Activities::UnauthenticatedController < ApplicationController
+  skip_before_action :authenticate_user!
 
   def index
     @trip = Trip.find(params[:trip_id])
-    @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @avatar = current_user.avatar
+    @current_participation = Participation.find_by_token(params[:token])
+    @avatar = @current_participation.avatar
     @activities = @trip.activities.all
   end
 
@@ -44,14 +44,14 @@ class ActivitiesController < ApplicationController
   end
 
   def edit
-    @current_user = current_user
-    @trips = @current_user.trips.map {|trip| trip.name}
+    @current_participation = Participation.find_by_token(params[:token])
     @activity = Activity.find(params[:id])
   end
 
   def update
     @activity = Activity.find(params[:id])
-    @activity.trip = Trip.find_by_name(trip) unless @activity.trip.present?
+    @current_participation = Participation.find_by_token(params[:token])
+    @activity.trip = @current_participation.trip unless @activity.trip.present?
     redirect_to root_path
   end
 
@@ -66,4 +66,3 @@ class ActivitiesController < ApplicationController
   end
 
 end
-

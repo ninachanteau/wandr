@@ -21,15 +21,19 @@ class TripsController < ApplicationController
         if transportation.status == "Booked"
           @markers << {
             lat: transportation.departure_port_latitude,
-            lng: transportation.departure_port_longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: transportation.departure_port_longitude,
+            icon: {
+              url: view_context.image_path('departure-yellow.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/transportations/map_box_departure", locals: { transportation: transportation }) }
           }
           @markers << {
             lat: transportation.arrival_port_latitude,
-            lng: transportation.arrival_port_longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: transportation.arrival_port_longitude,
+            icon: {
+              url: view_context.image_path('arrival-yellow.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/transportations/map_box_arrival", locals: { transportation: transportation }) }
           }
           @events << {
             color: "#FFC61B",
@@ -41,27 +45,33 @@ class TripsController < ApplicationController
       end
     end
 
-    @accomodations = @current_participation.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
+    @accommodations = @current_participation.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
     unless @accommodations.nil?
       @accommodations.map do |accommodation|
         if accommodation.status == "Booked"
           @markers << {
             lat: accommodation.latitude,
-            lng: accommodation.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: accommodation.longitude,
+            icon: {
+              url: view_context.image_path('accommodation-yellow.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/accommodations/map_box_booked", locals: { accommodation: accommodation }) }
           }
           @events << {
             color: "#FFDD75",
             title: accommodation.name,
-            start: accommodation.start_date
+            start: accommodation.start_date,
+            end: accommodation.end_date,
+            allDay: true
           }
         elsif accommodation.status == "Wishlist"
           @markers << {
             lat: accommodation.latitude,
-            lng: accommodation.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: accommodation.longitude,
+            icon: {
+              url: view_context.image_path('accommodation.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/accommodations/map_box_wishlist", locals: { accommodation: accommodation }) }
           }
         end
       end
@@ -73,20 +83,25 @@ class TripsController < ApplicationController
         if restaurant.status == "Booked"
           @markers << {
             lat: restaurant.latitude,
-            lng: restaurant.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: restaurant.longitude,
+            icon: {
+              url: view_context.image_path('restaurant-yellow.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/restaurants/map_box_booked", locals: { restaurant: restaurant }) }
           }
           @events << {
+            color: "#FFDD75",
             title: restaurant.name,
             start: restaurant.date
           }
         elsif restaurant.status == "Wishlist"
           @markers << {
             lat: restaurant.latitude,
-            lng: restaurant.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: restaurant.longitude,
+            icon: {
+              url: view_context.image_path('restaurant.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/restaurants/map_box_wishlist", locals: { restaurant: restaurant }) }
           }
         end
       end
@@ -98,20 +113,25 @@ class TripsController < ApplicationController
         if activity.status == "Booked"
           @markers << {
             lat: activity.latitude,
-            lng: activity.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: activity.longitude,
+            icon: {
+              url: view_context.image_path('activity-yellow.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/activities/map_box_booked", locals: { activity: activity }) }
           }
           @events << {
+            color: "#FFDD75",
             title: activity.name,
             start: activity.date
           }
         elsif activity.status == "Wishlist"
           @markers << {
             lat: activity.latitude,
-            lng: activity.longitude#,
-            #icon:
-            # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+            lng: activity.longitude,
+            icon: {
+              url: view_context.image_path('activity.svg')
+            },
+            infoWindow: { content: render_to_string(partial: "/activities/map_box_wishlist", locals: { activity: activity }) }
           }
         end
       end
@@ -131,6 +151,7 @@ class TripsController < ApplicationController
       @participation = Participation.new
       @participation.user = current_user
       @participation.trip = @trip
+      @participation.avatar = current_user.avatar
       @participation.save
       redirect_to trips_path
     else

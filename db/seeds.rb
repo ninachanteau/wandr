@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 require 'faker'
 
 puts "Destroying database..."
@@ -68,7 +60,7 @@ remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
 
 puts "Users created"
 puts "------"
-puts "Creating 5 participations"
+puts "Creating 9 participations"
 
 kenza_cuba = Participation.new
 kenza_cuba.user = kenza
@@ -104,13 +96,31 @@ nina_norway.trip = norway
 nina_norway.email = nina.email
 nina_norway.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_norway.save!
+alex_norway = Participation.new
+alex_norway.trip = norway
+alex_norway.email = "alexandre.smadja@hec.edu"
+alex_norway.pseudo = "Alex"
+alex_norway.save!
+
+alex_cuba = Participation.new
+alex_cuba.trip = cuba
+alex_cuba.email = "alexandre.smadja@hec.edu"
+alex_cuba.pseudo = "Alex"
+alex_cuba.save!
+
+jb_istanbul = Participation.new
+jb_istanbul.trip = istanbul
+jb_istanbul.email = "jbmartinelli@outlook.fr"
+jb_istanbul.pseudo = "Jean-Baptou"
+jb_istanbul.save!
+
 
 puts "Participations created"
 puts "------"
 puts "Creating 2 transportations"
 
 flight_cuba_kenza = Transportation.new(
-  departure_port: "CDG",
+  departure_port: "Paris",
   arrival_port: "José Martí International Airport",
   departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
   arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",
@@ -121,7 +131,7 @@ flight_cuba_kenza.participation = kenza_cuba
 flight_cuba_kenza.save!
 
 flight_cuba_nina = Transportation.new(
-  departure_port: "CDG",
+  departure_port: "Paris",
   arrival_port: "José Martí International Airport",
   departure_date: "Mon, 23 Apr 2018 17:00:00 UTC +00:00,",
   arrival_date: "Tue, 24 Apr 2018 10:00:00 UTC +00:00,",

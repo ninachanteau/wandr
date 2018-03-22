@@ -1,0 +1,9 @@
+<div class="text-center">
+  <h4><%= accommodation.name %></h4>
+  <h5>reservation: <%= render 'shared/wishlist-icon' %></h5>
+  <% if accommodation.start_date.present? %>
+    <h6>From: <%= accommodation.start_date.strftime("%b %d, %Y") %></h6>
+    <h6>To: <%= accommodation.end_date.strftime("%b %d, %Y") %></h6>
+  <% end %>
+  <p><%= accommodation.address %></p>
+</div>
