@@ -77,6 +77,15 @@
                       </div>
                     </div>
                   </td>
+                  <td class="participants">
+                    <% activity.participants.each do |participant| %>
+                      <% if participant.user %>
+                        <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <% end %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
@@ -210,6 +219,17 @@
                       </div>
                       </div>
                     </div>
+                  </td>
+                  <td class="participants">
+                    <% if activity.participation.present? %>
+                      <% activity.participants.each do |participant|  %>
+                          <% if participant.user %>
+                            <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                          <% else %>
+                            <%= image_tag "default-user.jpg", class: "avatar" %>
+                          <% end %>
+                      <% end %>
+                    <% end %>
                   </td>
                 </tr>
 

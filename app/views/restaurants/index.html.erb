@@ -81,7 +81,11 @@
               </td>
               <td class="participants">
                 <% restaurant.participants.each do |participant| %>
-                  <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar" %>
+                    <% end %>
                 <% end %>
               </td>
             </tr>
