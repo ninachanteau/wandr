@@ -82,14 +82,14 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
-                <td class="reference">
+                <td class="reference text-center">
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
@@ -98,7 +98,7 @@
                 <td>
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if transpo.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
@@ -174,14 +174,14 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
-                <td class="reference">
+                <td class="reference text-center">
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
@@ -190,7 +190,7 @@
                 <td>
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if transpo.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
