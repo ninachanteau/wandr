@@ -140,7 +140,7 @@
                   <td class="date">
                     <% if activity.date %>
                     <p><%= activity.date.strftime("%b %d, %Y") %></p>
-                    <p><%= activity.date.strftime("%H:%M") %></p>
+                    <p>@ <%= activity.date.strftime("%H:%M") %></p>
                     <% else %>
                     <p>Not scheduled yet</p>
                     <% end %>
