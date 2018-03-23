@@ -1,6 +1,6 @@
-<%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(:user) %><br />
-<% end -%>
+<%#- if controller_name != 'sessions' %>
+  <%#= link_to "Log in", new_session_path(:user) %><!-- <br /> -->
+<%# end -%>
 
 <%- if Devise.mappings[:user].registerable? && controller_name != 'registrations' %>
   <%= link_to "Sign up", new_registration_path(:user) %><br />

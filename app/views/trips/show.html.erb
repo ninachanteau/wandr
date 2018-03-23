@@ -9,12 +9,13 @@
     <div class="col-md-12">
       <div class="participants-container">
         <% @trip.participations.each do |participation| %>
-          <div class="participant">
+          <div class="participant text-center">
             <% if participation.user %>
               <%= cl_image_tag participation.user.avatar, class: "avatar-large" %>
             <% else %>
-              <%= image_tag "default-user.png", class: "avatar-large" %>
+              <%= image_tag "default-user.jpg", class: "avatar-large" %>
             <% end %>
+            <p><%= participation.pseudo %></p>
           </div>
         <% end %>
 <!--         <div class="btn btn-info" style="width: 150px">Add participant</div> -->

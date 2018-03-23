@@ -11,7 +11,7 @@
 <div class="accommodations-container">
   <div class="accommodations-ctn">
     <div class="activities-card">
-      <h4>Today (<%= Date.today.strftime("%b %d, %Y") %>) </h4>
+      <h4>Upcoming accommodation </h4>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -19,16 +19,15 @@
                 <th scope="col">Name</th>
                 <th scope="col">Contact</th>
                 <th scope="col">Date</th>
-                <th scope="col"># nights</th>
-                <th scope="col"># rooms</th>
+                <th scope="col">Nights</th>
+                <th scope="col">Rooms</th>
                 <th scope="col">Price</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
 
-              <% @my_accommodations.each do |accom| %>
-                <% if accom.start_date == Date.today  %>
+              <% @my_accommodations.order(:start_date).each do |accom| %>
                 <tr>
                   <td class="name">
                     <p><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
@@ -55,14 +54,36 @@
                     <div class="<%= accom.status%>">
                       <div class="btn-group">
                         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <%= accom.status%>
+                        <% if accom.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                         </button>
                         <div class="dropdown-menu">
-                          <%= link_to "Wishlist", trip_accommodation_path(@trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <%= link_to "Booked", trip_accommodation_path(@trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <div class="dropdown-divider"></div>
-                          <%= link_to "Delete", trip_accommodation_path(@trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" %>
-                        </div>
+                        <% if accom.status == "Booked" %>
+                          <%= link_to trip_accommodation_path(@trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif accom.status == "Wishlist" %>
+                          <%= link_to trip_accommodation_path(@trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_accommodation_path(@trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
                       </div>
                     </div>
                   </td>
@@ -72,7 +93,6 @@
                     <% end %>
                   </td>
                 </tr>
-                <% end %>
                 <% end %>
               </tbody>
           </table>
@@ -137,7 +157,7 @@
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
 
-                <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
               <% end %>
             </div>
@@ -190,14 +210,36 @@
                 <div class="<%= accom.status%>">
                   <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= accom.status%>
+                      <% if accom.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                     </button>
                     <div class="dropdown-menu">
-                      <%= link_to "Wishlist", trip_accommodation_path(@trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                      <%= link_to "Booked", trip_accommodation_path(@trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                      <div class="dropdown-divider"></div>
-                      <%= link_to "Delete", trip_accommodation_path(@trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" %>
-                    </div>
+                        <% if accom.status == "Booked" %>
+                          <%= link_to trip_accommodation_path(@trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif accom.status == "Wishlist" %>
+                          <%= link_to trip_accommodation_path(@trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_accommodation_path(@trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
                   </div>
                 </div>
               </td>

@@ -60,7 +60,7 @@ remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar")
 
 puts "Users created"
 puts "------"
-puts "Creating 6 participations"
+puts "Creating 7 participations"
 
 kenza_cuba = Participation.new
 kenza_cuba.user = kenza
@@ -124,7 +124,8 @@ flight_cuba_kenza = Transportation.new(
   departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
   arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
   status: "Wishlist",
-  price_per_person: 99.00
+  price_per_person: 99.00,
+  reference_number: "HYTGLI"
   )
 flight_cuba_kenza.participation = kenza_cuba
 flight_cuba_kenza.save!
@@ -135,7 +136,8 @@ flight_cuba_nina = Transportation.new(
   departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
   arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
   status: "Booked",
-  price_per_person: 123.00
+  price_per_person: 123.00,
+  reference_number: "NIUFRY"
   )
 flight_cuba_nina.participation = nina_cuba
 flight_cuba_nina.save!

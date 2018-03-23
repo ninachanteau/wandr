@@ -1,6 +1,5 @@
-<div class="text-center">
-  <h4><%= activity.name %></h4>
-  <h5>Reservation: <%= render 'shared/wishlist-icon' %></h5>
+<div class="info-window text-center">
+  <h4><%= link_to activity.name, trip_activities_path(@trip) %> <%= render 'shared/wishlist-icon' %></h4>
   <% if activity.date.present? %>
     <h6>On: <%= activity.date.strftime("%b %d, %Y") %> @ <%= activity.date.strftime("%H:%M") %></h6>
   <% end %>

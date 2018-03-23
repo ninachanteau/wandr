@@ -3,15 +3,15 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   def default_url(*args)
     if self.model.class == User
-      ActionController::Base.helpers.asset_path(["default-user.png"].compact.join('_'))
+      ActionController::Base.helpers.asset_path(["default-user.jpg"].compact.join('_'))
     elsif self.model.class == Trip
-      ActionController::Base.helpers.asset_path(["default-trip.jpeg"].compact.join('_'))
+      ActionController::Base.helpers.asset_path(["default-trip.jpg"].compact.join('_'))
     elsif self.model.class == Accommodation
-      ActionController::Base.helpers.asset_path(["default-accommodation.jpeg"].compact.join('_'))
+      ActionController::Base.helpers.asset_path(["default-accommodation.jpg"].compact.join('_'))
     elsif self.model.class == Restaurant
-      ActionController::Base.helpers.asset_path(["default-restaurant.jpeg"].compact.join('_'))
+      ActionController::Base.helpers.asset_path(["default-restaurant.jpg"].compact.join('_'))
     elsif self.model.class == Activity
-      ActionController::Base.helpers.asset_path(["default-activity.jpeg"].compact.join('_'))
+      ActionController::Base.helpers.asset_path(["default-activity.jpg"].compact.join('_'))
     end
   end
 
