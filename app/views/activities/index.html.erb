@@ -88,7 +88,17 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
+
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                    <form action="activity/create">
+                      <% @trip.participations.each do |part| %>
+                        <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <%#= f.label part.pseudo %>
+                        <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                      <% end %>
+                      <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                      </form>
+
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -122,8 +132,12 @@
                     <p><%= activity.phone_number%></p>
                   </td>
                   <td class="date">
+                    <% if activity.date %>
                     <p><%= activity.date.strftime("%b %d, %Y") %></p>
-                    <p>@ <%= activity.date.strftime("%H:%M") %></p>
+                    <p><%= activity.date.strftime("%H:%M") %></p>
+                    <% else %>
+                    <p>Not scheduled yet</p>
+                    <% end %>
                   </td>
                   <td class="description">
                     <p><%= activity.description%></p>
@@ -150,10 +164,12 @@
           </table>
         </div>
         </div>
-
+<!--
         <div class=" wishlist-card hidden-xs">
+
           <h4>Wishlist</h4>
         </div>
+
     </div>
   </div>
 </div>

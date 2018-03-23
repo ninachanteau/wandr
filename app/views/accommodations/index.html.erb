@@ -26,8 +26,8 @@
               </tr>
             </thead>
             <tbody>
-              <% @accommodations.each do |accom| %>
 
+              <% @my_accommodations.each do |accom| %>
                 <% if accom.start_date == Date.today  %>
                 <tr>
                   <td class="name">
@@ -65,6 +65,11 @@
                         </div>
                       </div>
                     </div>
+                  </td>
+                  <td class="participants">
+                    <% accom.participants.each do |participant| %>
+                      <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                    <% end %>
                   </td>
                 </tr>
                 <% end %>
@@ -114,8 +119,17 @@
                 </div>
                 <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                <!-- Add participants -->
+
                 <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                                <!-- Add participants -->
+                <form action="accommodation/create">
+                <% @trip_participants.each do |part| %>
+                  <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                  <%#= f.label part.pseudo %>
+                  <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                <% end %>
+                <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                </form>
               <% end %>
             </div>
             <div class="modal-footer">
@@ -178,6 +192,13 @@
                   </div>
                 </div>
               </td>
+              <td class="participants">
+                <% if accom.participation.present? %>
+                  <% accom.participants.each do |participant|  %>
+                    <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
             <% end %>
             <% end %>
@@ -185,9 +206,10 @@
         </table>
       </div>
       </div>
-      <div class=" wishlist-card hidden-xs">
-        <h4>Wishlist</h4>
-      </div>
+
+<!--       <div class=" wishlist-card hidden-xs">
+        <h4>Wishlist:</h4>
+      </div> -->
     </div>
     </div>
   </div>

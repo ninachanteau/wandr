@@ -142,10 +142,21 @@ ActiveRecord::Schema.define(version: 20180322170647) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "wishes", force: :cascade do |t|
+    t.bigint "trip_id"
+    t.string "wishable_type"
+    t.bigint "wishable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_wishes_on_trip_id"
+    t.index ["wishable_type", "wishable_id"], name: "index_wishes_on_wishable_type_and_wishable_id"
+  end
+
   add_foreign_key "accommodations", "participations"
   add_foreign_key "activities", "participations"
   add_foreign_key "participations", "trips"
   add_foreign_key "participations", "users"
   add_foreign_key "restaurants", "participations"
   add_foreign_key "transportations", "participations"
+  add_foreign_key "wishes", "trips"
 end
