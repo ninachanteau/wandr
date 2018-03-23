@@ -21,6 +21,16 @@
   top: 0 !important;
 }
 
+.info-window {
+  a {
+  color: $gray;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $yellow;
+  }
+}
+
 #calendar {
   height: 450px;
   flex: 0 0 450px;
