@@ -1,5 +1,5 @@
 <% unless params[:action] == "home"  %>
-<% if user_signed_in? %>
+ <% if user_signed_in? || params[:token].present? %>
   <div class="sidebar-container">
     <div class="sidebar-item">
 

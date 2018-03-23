@@ -12,13 +12,11 @@ function displayCalendar() {
           },
           views: {
             months: {
-            type: 'agendaWeek',
-            duration: { days: 31 },
+            type: 'month',
             buttonText: 'Months'
             },
             weeks: {
-            type: 'agenda',
-            duration: { days: 7 },
+            type: 'agendaWeek',
             buttonText: 'Weeks'
             },
             days: {

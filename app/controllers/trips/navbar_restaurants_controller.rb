@@ -26,13 +26,17 @@ class Trips::NavbarRestaurantsController < ApplicationController
     @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
     @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @restaurant.save
-      # if Restaurant.where(name: name_array[0]) == []
-        redirect_to edit_trips_navbar_restaurant_path(@restaurant)
-      # elsif  Restaurant.where(name: @restaurant.name).where(trip_id: @restaurant.trip.id).count > 1
-      #   redirect_to trip_restaurants
+      redirect_to edit_trips_navbar_restaurant_path(@restaurant)
+      #  respond_to do |format|
+      #   format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
+      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
       # end
     else
       render 'trips/index'
+      # respond_to do |format|
+      #   format.html { render 'trips/index' }
+      #   format.js  # <-- idem
+      # end
     end
   end
 
