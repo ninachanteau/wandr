@@ -93,6 +93,15 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title text-center" id="myModalLabel">Add Accommodation</h4>
             </div>
+            <p>Who's going ?</p>
+            <form action="accommodation/create">
+              <% @trip_participants.each do |part| %>
+                <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                <%#= f.label part.pseudo %>
+                <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+              <% end %>
+              <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+            </form>
             <div class="modal-body">
               <%= simple_form_for [@trip, @accommodation] do |f| %>
                 <div class="row">
@@ -130,14 +139,6 @@
 
                 <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
-                <form action="accommodation/create">
-                <% @trip_participants.each do |part| %>
-                  <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
-                  <%#= f.label part.pseudo %>
-                  <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                <% end %>
-                <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                </form>
               <% end %>
             </div>
             <div class="modal-footer">
