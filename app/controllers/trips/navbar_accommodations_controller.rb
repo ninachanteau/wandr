@@ -29,13 +29,17 @@ class Trips::NavbarAccommodationsController < ApplicationController
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
     @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @accommodation.save
-      # if Accommodation.where(@accommodation.name).where(@accommodation.trip).count > 1
-      #   redirect_to trip_accommodations
-      # else
       redirect_to edit_trips_navbar_accommodation_path(@accommodation)
+      #  respond_to do |format|
+      #   format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
+      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
       # end
     else
       render 'trips/index'
+      # respond_to do |format|
+      #   format.html { render 'trips/index' }
+      #   format.js  # <-- idem
+      # end
     end
   end
 
