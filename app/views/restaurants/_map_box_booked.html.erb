@@ -1,6 +1,5 @@
 <div class="text-center">
-  <h4><%= restaurant.name %></h4>
-  <h5>Reservation: <%= render 'shared/booked-icon' %></h5>
+  <h4><%= restaurant.name %> <%= render 'shared/booked-icon' %></h4>
   <h6>On: <%= restaurant.date.strftime("%b %d, %Y") %> @ <%= restaurant.date.strftime("%H:%M") %></h6>
   <p><%= restaurant.address %></p>
 </div>
