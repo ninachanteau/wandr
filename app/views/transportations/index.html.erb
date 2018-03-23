@@ -8,7 +8,7 @@
   </div>
 
   <div class="transportations-container">
-
+  <div class="transportations-ctn">
     <div class="user-transportations transportations-card">
 
       <!-- Button trigger modal -->
@@ -97,10 +97,10 @@
                         <%= transpo.status%>
                       </button>
                       <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" %>
                       </div>
                     </div>
                   </div>
@@ -162,10 +162,10 @@
                         <%= transpo.status%>
                       </button>
                       <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item" %>
+                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" %>
                       </div>
                     </div>
                   </div>
@@ -180,6 +180,7 @@
       </table>
     </div>
   </div>
+</div>
 </div>
 </div>
 
