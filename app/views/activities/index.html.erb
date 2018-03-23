@@ -96,9 +96,13 @@
                     <!-- Add participants -->
 
                     <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                    <br>
+                    <br>
+                    <p>Don't forget to pick participants</p>
                     <form action="activity/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <br>
                         <%#= f.label part.pseudo %>
                         <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
                       <% end %>

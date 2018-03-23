@@ -84,15 +84,6 @@
                   <h4 class="modal-title text-center" id="myModalLabel">Add a restaurant</h4>
                 </div>
                 <!-- Add participants -->
-                <form action="restaurant/create">
-                  <p>Who's going ?</p>
-                  <% @trip.participations.each do |part| %>
-                    <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
-                    <%#= f.label part.pseudo %>
-                    <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                  <% end %>
-                  <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                </form>
                 <div class="modal-body">
                   <%= simple_form_for [@trip, @restaurant] do |f| %>
                     <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
@@ -112,6 +103,19 @@
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                  <br>
+                  <br>
+                  <p>Don't forget to pick the participants</p>
+                  <form action="restaurant/create">
+                      <% @trip.participations.each do |part| %>
+                        <input type="checkbox" name="<%= part.pseudo %>">
+                        <%= part.pseudo %>
+                        <br>
+                        <%#= f.label part.pseudo %>
+                        <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                      <% end %>
+                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                  </form>
                   <% end %>
                 </div>
                 <div class="modal-footer">
