@@ -1,4 +1,4 @@
-<div class="text-center">
-  <h4><%= transportation.departure_port %> <%= render 'shared/booked-icon' %></h4>
+<div class="info-window text-center">
+  <h4><%= link_to transportation.departure_port, trip_transportations_path(@trip) %> <%= render 'shared/booked-icon' %></h4>
   <h6><%= transportation.departure_date.strftime("%b %d, %Y") %> @ <%= transportation.departure_date.strftime("%H:%M") %></h6>
 </div>
