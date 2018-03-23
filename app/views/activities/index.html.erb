@@ -26,7 +26,7 @@
               <% @activities.where(date: Date.today).each do |activity|  %>
                 <tr>
                   <td class="name">
-                    <p><%= link_to activity.name, activity.url %></p>
+                    <p><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></p>
                   </td>
                   <td class="contact">
                     <p><%= activity.address%></p>
@@ -47,10 +47,10 @@
                           <%= activity.status%>
                         </button>
                         <div class="dropdown-menu">
-                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
                           <div class="dropdown-divider"></div>
-                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item" %>
+                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" %>
                         </div>
                       </div>
                     </div>
@@ -83,8 +83,14 @@
                     <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
                     <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
                     <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                    <div class="row">
+                    <div class="col-xs-6">
                     <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+                    </div>
+                    <div class="col-xs-6">
                     <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                    </div>
+                    </div>
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
@@ -124,7 +130,7 @@
                 <% if activity.date != Date.today %>
                 <tr>
                   <td class="name">
-                    <p><%= link_to activity.name, activity.url %></p>
+                    <p><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></p>
                   </td>
                   <td class="contact">
                     <p><%= activity.address%></p>
@@ -149,10 +155,10 @@
                           <%= activity.status%>
                         </button>
                         <div class="dropdown-menu">
-                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item" %>
-                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item" %>
+                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
                           <div class="dropdown-divider"></div>
-                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item" %>
+                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" %>
                         </div>
                       </div>
                     </div>

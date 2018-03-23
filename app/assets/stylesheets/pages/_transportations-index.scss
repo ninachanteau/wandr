@@ -29,14 +29,33 @@
   }
 }
 
+.transportations-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.transportations-ctn {
+  flex-grow: 1;
+}
+
 .transportations-card {
   position: relative;
   margin: 30px 20px;
   padding: 20px;
   background-color: $white-transparent;
   border-radius: 5px;
+  min-height: 160px;
   &:hover {
     background-color: $white-middle-transparent;
     box-shadow: 2px 2px 3px $light-gray;
+  }
+}
+
+.status-dropdown-item {
+  text-decoration: none !important;
+  color: $gray;
+  &:hover {
+    color: $yellow;
   }
 }

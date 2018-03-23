@@ -28,3 +28,11 @@
   min-width: 300px;
   min-height: 350px;
 }
+
+.name-link {
+  text-decoration: none !important;
+  color: $gray;
+  &:hover {
+    color: $yellow;
+  }
+}
