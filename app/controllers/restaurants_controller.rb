@@ -6,11 +6,13 @@ class RestaurantsController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    # @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    # @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    # @avatar = current_user.avatar
     @my_restaurants = @current_participation.restaurants
-    @restaurants = Restaurant.where(trip_id: @trip.id).reject {|resto| resto if resto.participation == @current_participation}
+    @all_reservations = Restaurant.where(trip_id: @trip.id)
+    @all_restaurants = []
+    @trip.all_restaurants.each do |key, _value|
+      @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
+    end
+    @restaurants = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
     @restaurant = Restaurant.new
   end
 
@@ -37,8 +39,6 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    # @current_user = current_user
-    # @trips = @current_user.trips.map {|trip| trip.name}
     @restaurant = Restaurant.find(params[:id])
   end
 
@@ -57,17 +57,6 @@ class RestaurantsController < ApplicationController
   end
 
   private
-
-  def one_reservation(array)
-    one_reservation = array.select do |resa|
-      if resa.same_reservation.length == 0
-        resa
-      else
-        resa.same_reservation[0]
-      end
-    end
-    return one_reservation
-  end
 
   def set_restaurant
     @restaurant = Restaurant.find(@restaurant)

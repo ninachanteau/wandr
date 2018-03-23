@@ -83,7 +83,11 @@
               </td>
               <td class="participants">
                 <% restaurant.participants.each do |participant| %>
-                  <%= cl_image_tag participant.avatar, class: "avatar", crop: :fill%>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar" %>
+                    <% end %>
                 <% end %>
               </td>
             </tr>
@@ -107,6 +111,7 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h4 class="modal-title text-center" id="myModalLabel">Add a restaurant</h4>
                 </div>
+                <!-- Add participants -->
                 <div class="modal-body">
                   <%= simple_form_for [@trip, @restaurant] do |f| %>
                     <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
@@ -125,17 +130,20 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-
-                    <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
-                    <form action="restaurant/create">
+                    <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                  <br>
+                  <br>
+                  <p>Don't forget to pick the participants</p>
+                  <form action="restaurant/create">
                       <% @trip.participations.each do |part| %>
-                        <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <input type="checkbox" name="<%= part.pseudo %>">
+                        <%= part.pseudo %>
+                        <br>
                         <%#= f.label part.pseudo %>
                         <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
                       <% end %>
-                      <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                      </form>
-
+                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                  </form>
                   <% end %>
                 </div>
                 <div class="modal-footer">

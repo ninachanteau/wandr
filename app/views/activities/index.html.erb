@@ -77,6 +77,15 @@
                       </div>
                     </div>
                   </td>
+                  <td class="participants">
+                    <% activity.participants.each do |participant| %>
+                      <% if participant.user %>
+                        <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <% end %>
+                    <% end %>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
@@ -86,17 +95,17 @@
         <div class="activities-card">
 
           <!-- Button trigger modal -->
-          <div type="button" data-toggle="modal" data-target="#myModal">
+          <div type="button" data-toggle="modal" data-target="#ActivityModal">
             <i class="fa fa-plus-circle plus-btn"></i>
           </div>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="myAModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myModalLabel">Add an activity</h4>
+                  <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
                 </div>
                 <div class="modal-body">
                   <%= simple_form_for [@trip, @activity] do |f| %>
@@ -118,9 +127,13 @@
                     <!-- Add participants -->
 
                     <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                    <br>
+                    <br>
+                    <p>Don't forget to pick participants</p>
                     <form action="activity/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <br>
                         <%#= f.label part.pseudo %>
                         <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
                       <% end %>
@@ -206,6 +219,17 @@
                       </div>
                       </div>
                     </div>
+                  </td>
+                  <td class="participants">
+                    <% if activity.participation.present? %>
+                      <% activity.participants.each do |participant|  %>
+                          <% if participant.user %>
+                            <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                          <% else %>
+                            <%= image_tag "default-user.jpg", class: "avatar" %>
+                          <% end %>
+                      <% end %>
+                    <% end %>
                   </td>
                 </tr>
 
