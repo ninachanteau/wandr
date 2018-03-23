@@ -2,8 +2,8 @@ class ParticipationsController < ApplicationController
 
 def create
   @trip = Trip.find(params[:trip_id])
-  @user = User.find_by_email(@participation.email)
   @participation = Participation.new(participation_params)
+  @user = User.find_by_email(@participation.email)
   @participation.trip = @trip
   @pseudo = @participation.pseudo
   if @user.present?
@@ -11,7 +11,6 @@ def create
     @participation.pseudo = @participation.user.first_name
     @participation.avatar = @participation.user.avatar
   else
-    @participation.avatar = image_tag("default-user.png")
     if @participation.pseudo.present?
       @participation.pseudo = @pseudo
     else
