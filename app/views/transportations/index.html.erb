@@ -65,7 +65,7 @@
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
             <th scope="col">Booking ref.</th>
-            <th scope="col">Price</th>
+            <th scope="col">Price (€)</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
           </tr>
@@ -82,23 +82,23 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
-                <td class="reference">
+                <td class="reference text-center">
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
+                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
                 </td>
                 <td>
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if transpo.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
@@ -158,7 +158,7 @@
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
             <th scope="col">Booking ref.</th>
-            <th scope="col">Price</th>
+            <th scope="col">Price (€)</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
           </tr>
@@ -174,23 +174,23 @@
                   <p><%= transpo.arrival_port%></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="date-time">
-                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
-                <td class="reference">
+                <td class="reference text-center">
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
+                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
                 </td>
                 <td>
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if transpo.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>

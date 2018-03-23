@@ -21,7 +21,7 @@
                 <th scope="col">Date</th>
                 <th scope="col">Nights</th>
                 <th scope="col">Rooms</th>
-                <th scope="col">Price</th>
+                <th scope="col">Price (€)</th>
                 <th scope="col">Status</th>
               </tr>
             </thead>
@@ -48,12 +48,12 @@
                     <p><%= accom.number_of_rooms%></p>
                   </td>
                   <td class="price">
-                    <%= accom.total_price%>
+                    <%= number_with_precision(accom.total_price, precision: 2)%>€
                   </td>
                   <td class="status">
                     <div class="<%= accom.status%>">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if accom.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
@@ -183,9 +183,9 @@
             <th scope="col">Name</th>
             <th scope="col">Contact</th>
             <th scope="col">Date</th>
-            <th scope="col"># nights</th>
-            <th scope="col"># rooms</th>
-            <th scope="col">Price</th>
+            <th scope="col">Nights</th>
+            <th scope="col">Rooms</th>
+            <th scope="col">Price (€)</th>
             <th scope="col">Status</th>
           </tr>
         </thead>
@@ -212,12 +212,12 @@
                 <p><%= accom.number_of_rooms%></p>
               </td>
               <td class="price">
-                <%= accom.total_price%>
+                <<%= number_with_precision(accom.total_price, precision: 2)%>€
               </td>
               <td class="status">
                 <div class="<%= accom.status%>">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <% if accom.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
