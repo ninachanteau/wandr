@@ -65,7 +65,7 @@
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
             <th scope="col">Booking ref.</th>
-            <th scope="col">Price</th>
+            <th scope="col">Price (€)</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
           </tr>
@@ -93,7 +93,7 @@
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
+                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
                 </td>
                 <td>
                   <div class="<%= transpo.status%>">
@@ -158,7 +158,7 @@
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
             <th scope="col">Booking ref.</th>
-            <th scope="col">Price</th>
+            <th scope="col">Price (€)</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
           </tr>
@@ -185,7 +185,7 @@
                   <%= transpo.reference_number%>
                 </td>
                 <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
+                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
                 </td>
                 <td>
                   <div class="<%= transpo.status%>">

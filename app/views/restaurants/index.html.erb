@@ -9,7 +9,7 @@
     <div class="restaurants-container">
       <div class="restaurants-ctn">
         <div class="restaurants-card">
-          <h4>Today (<%= Date.today.strftime("%b %d, %Y") %>)</h4>
+          <h4>Upcoming Restaurants</h4>
           <table class="table">
         <thead>
           <tr>
@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @my_restaurants.where(date: Date.today).each do |restaurant| %>
+          <% @my_restaurants.order(:date).each do |restaurant| %>
             <tr>
               <td class="name">
                 <p><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
@@ -45,15 +45,39 @@
               <td class="status">
                 <div class="<%= restaurant.status%>">
                   <div class="btn-group">
+
                     <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= restaurant.status%>
+                      <% if restaurant.status == "Wishlist" %>
+                        <%= render 'shared/wishlist-icon' %>
+                      <% else %>
+                        <%= render 'shared/booked-icon' %>
+                      <% end %>
+
                     </button>
                     <div class="dropdown-menu">
-                      <%= link_to "Wishlist", trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                      <%= link_to "Booked", trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                      <% if restaurant.status == "Booked" %>
+                        <%= link_to trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/wishlist-icon'  %>
+                            Wishlist
+                          </span>
+                        <% end %>
+                      <% elsif restaurant.status == "Wishlist" %>
+                        <%= link_to trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/booked-icon'  %>
+                            Booked
+                          </span>
+                        <% end %>
+                      <% end %>
                       <div class="dropdown-divider"></div>
-                      <%= link_to "Delete", trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item status-dropdown-item" %>
-                    </div>
+                      <%= link_to trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/delete-icon'  %>
+                            Delete
+                          </span>
+                        <% end %>
+                      </div>
                   </div>
                 </div>
               </td>
@@ -134,7 +158,7 @@
         </thead>
         <tbody>
           <% @restaurants.each do |restaurant| %>
-            <% if restaurant.date != Date.today %>
+
             <tr>
               <td class="name">
                 <p><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
@@ -159,13 +183,36 @@
                 <div class="<%= restaurant.status%>">
                   <div class="btn-group">
                     <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <%= restaurant.status%>
+                      <% if restaurant.status == "Wishlist" %>
+                        <%= render 'shared/wishlist-icon' %>
+                      <% else %>
+                        <%= render 'shared/booked-icon' %>
+                      <% end %>
+
                     </button>
                     <div class="dropdown-menu">
-                      <%= link_to "Wishlist", trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                      <%= link_to "Booked", trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                      <div class="dropdown-divider"></div>
-                      <%= link_to "Delete", trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item status-dropdown-item" %>
+                      <% if restaurant.status == "Booked" %>
+                        <%= link_to trip_restaurant_path(@trip, restaurant, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/wishlist-icon'  %>
+                            Wishlist
+                          </span>
+                        <% end %>
+                      <% elsif restaurant.status == "Wishlist" %>
+                        <%= link_to trip_restaurant_path(@trip, restaurant, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/booked-icon'  %>
+                            Booked
+                          </span>
+                        <% end %>
+                      <% end %>
+                    <div class="dropdown-divider"></div>
+                      <%= link_to trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                        <span>
+                          <%= render 'shared/delete-icon'  %>
+                            Delete
+                        </span>
+                      <% end %>
                     </div>
                   </div>
                 </div>
@@ -180,7 +227,7 @@
                 <% end %>
               </td>
             </tr>
-            <% end %>
+
           <% end %>
         </tbody>
       </table>

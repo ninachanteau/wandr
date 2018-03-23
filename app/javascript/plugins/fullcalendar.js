@@ -8,21 +8,32 @@ function displayCalendar() {
     const events = JSON.parse(calendarElement.dataset.events);
       $('#calendar').fullCalendar({
           header: {
-            left: 'months,weeks,days'
+            left:   'title',
+            center: 'months,weeks,days'
+          },
+          buttonText: {
+            today:    'today',
+            month:    'M',
+            week:     'W',
+            day:      'D'
           },
           views: {
             months: {
-            type: 'month',
-            buttonText: 'Months'
+              type: 'month',
             },
             weeks: {
-            type: 'agendaWeek',
-            buttonText: 'Weeks'
+              type: 'agendaWeek',
+              titleFormat: 'MMM D',
+              columnHeaderFormat: 'ddd D',
+              scrollTime: "08:00:00",
+              nowIndicator: true
             },
             days: {
-            type: 'agenda',
-            duration: { days: 1 },
-            buttonText: 'Days'
+              type: 'agenda',
+              duration: { days: 1 },
+              titleFormat: 'MMMM D',
+              scrollTime: "08:00:00",
+              nowIndicator: true
             }
           },
           events: events
