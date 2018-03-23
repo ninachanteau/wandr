@@ -11,7 +11,7 @@
       <div class="activities-ctn">
 
         <div class="activities-card">
-         <h4>Today (<%= Date.today.strftime("%b %d, %Y") %>) </h4>
+         <h4>Upcoming activities</h4>
          <table class="table">
             <thead>
               <tr>
@@ -23,7 +23,7 @@
               </tr>
             </thead>
             <tbody>
-              <% @activities.where(date: Date.today).each do |activity|  %>
+              <% @my_activities.order(:date).each do |activity|  %>
                 <tr>
                   <td class="name">
                     <p><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></p>
@@ -44,14 +44,36 @@
                     <div class="<%= activity.status%>">
                       <div class="btn-group">
                         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <%= activity.status%>
+                        <% if activity.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                         </button>
                         <div class="dropdown-menu">
-                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <div class="dropdown-divider"></div>
-                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" %>
-                        </div>
+                        <% if activity.status == "Booked" %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif activity.status == "Wishlist" %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
                       </div>
                     </div>
                   </td>
@@ -131,7 +153,7 @@
             </thead>
             <tbody>
               <% @activities.each do |activity| %>
-                <% if activity.date != Date.today %>
+
                 <tr>
                   <td class="name">
                     <p><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></p>
@@ -156,19 +178,41 @@
                     <div class="<%= activity.status%>">
                       <div class="btn-group">
                         <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <%= activity.status%>
+                        <% if activity.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                         </button>
                         <div class="dropdown-menu">
-                          <%= link_to "Wishlist", trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <%= link_to "Booked", trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                          <div class="dropdown-divider"></div>
-                          <%= link_to "Delete", trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" %>
-                        </div>
+                        <% if activity.status == "Booked" %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif activity.status == "Wishlist" %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
                       </div>
                     </div>
                   </td>
                 </tr>
-                <% end %>
+
               <% end %>
             </tbody>
           </table>
