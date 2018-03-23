@@ -9,7 +9,7 @@
     <div class="restaurants-container">
       <div class="restaurants-ctn">
         <div class="restaurants-card">
-          <h5>Today (<%= Date.today %>)</h5>
+          <h4>Today (<%= Date.today %>)</h4>
           <table class="table">
         <thead>
           <tr>
@@ -95,7 +95,8 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-                    <%= f.submit class: 'btn btn-info' %>
+
+                    <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                     <form action="restaurant/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
@@ -104,6 +105,7 @@
                       <% end %>
                       <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
                       </form>
+                  
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -113,7 +115,7 @@
             </div>
           </div>
 
-        <h5>All Restaurants</h5>
+        <h4>All Restaurants</h4>
         <table class="table">
         <thead>
           <tr>
@@ -178,9 +180,11 @@
       </table>
     </div>
     </div>
+
 <!--     <div class=" wishlist-card hidden-xs">
-      <h5>Wishlist:</h5>
+      <h4>Wishlist:</h4>
     </div> -->
+
     </div>
   </div>
 </div>

@@ -28,8 +28,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all' %>
   </head>
   <body>
-    <%= render 'shared/flashes' %>
     <%= render 'shared/navbar' %>
+    <%= render 'shared/flashes' %>
     <%= render 'shared/sidebar' %>
     <% if params[:action] == "home" %>
       <%= yield %>
