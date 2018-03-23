@@ -225,7 +225,11 @@
                   </div>
                 </td>
                 <td>
-                  <%= cl_image_tag transpo.participation.avatar, class: "avatar", crop: :fill%>
+                <% if transpo.participation.user %>
+                  <%= cl_image_tag transpo.participation.user.avatar, class: "avatar", crop: :fill%>
+                  <% else %>
+                  <%= cl_image_tag "default-user.png", class: "avatar", crop: :fill%>
+                  <% end %>
                 </td>
               </tr>
             <% end %>
