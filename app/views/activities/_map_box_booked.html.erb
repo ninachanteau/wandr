@@ -1,5 +1,5 @@
-<div class="text-center">
-  <h4><%= activity.name %> <%= render 'shared/booked-icon' %></h4>
+<div class="info-window text-center">
+  <h4><%= link_to activity.name, trip_activities_path(@trip) %> <%= render 'shared/booked-icon' %></h4>
   <h6>On: <%= activity.date.strftime("%b %d, %Y") %> @ <%= activity.date.strftime("%H:%M") %></h6>
   <p><%= activity.address %></p>
 </div>
