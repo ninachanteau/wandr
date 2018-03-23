@@ -39,7 +39,7 @@ class Transportation < ApplicationRecord
   def participants
     participants = []
     self.same_reservation.each do |instance|
-      participants << instance.participation
+      participants << instance.participation unless instance.participation.nil?
     end
     return participants
   end
