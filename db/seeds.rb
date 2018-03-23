@@ -28,8 +28,8 @@ cuba = Trip.create!(
  destination: "Cuba",
  description: "Let's enjoy some sun and some mojitos",
  name: "End of semester trip",
- start_date: "Sat, 24 Mar 2018",
- end_date: "Sat, 31 Mar 2018",
+ start_date: "Fri, 06 Apr 2018",
+ end_date: "Fri, 13 Apr 2018",
  remote_photo_url: "https://images.unsplash.com/photo-1500759285222-a95626b934cb?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=15641eda0c2356f833f0c21dcfa3ddc8&auto=format&fit=crop&w=1650&q=80")
 
 norway = Trip.create!(
@@ -121,8 +121,8 @@ puts "Creating 2 transportations"
 flight_cuba_kenza = Transportation.new(
   departure_port: "Paris",
   arrival_port: "José Martí International Airport",
-  departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
-  arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
+  departure_date: "Fri, 06 Apr 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Sat, 07 Apr 2018 10:00:00 UTC +00:00,",
   status: "Wishlist",
   price_per_person: 99.00,
   reference_number: "HYTGLI"
@@ -133,8 +133,8 @@ flight_cuba_kenza.save!
 flight_cuba_nina = Transportation.new(
   departure_port: "Paris",
   arrival_port: "José Martí International Airport",
-  departure_date: "Sat, 24 Mar 2018 17:00:00 UTC +00:00,",
-  arrival_date: "Sun, 25 Mar 2018 10:00:00 UTC +00:00,",
+  departure_date: "Fri, 06 Apr 2018 17:00:00 UTC +00:00,",
+  arrival_date: "Sat, 07 Apr 2018 10:00:00 UTC +00:00,",
   status: "Booked",
   price_per_person: 123.00,
   reference_number: "NIUFRY"
@@ -149,8 +149,8 @@ puts "Creating 1 accommodation"
 hotel_cuba_nina = Accommodation.create(
   name: "IBEROSTAR Parque Central",
   address: "267 Agramonte, La Habana, Cuba",
-  start_date: "Sun, 25 Mar 2018",
-  end_date: "Mon, 26 Mar 2018",
+  start_date: "Sat, 07 Apr 2018",
+  end_date: "Wed, 11 Apr 2018",
   status: "Booked",
   reference_number: "GRYJSL",
   number_of_nights: 1,
@@ -171,7 +171,7 @@ puts "Creating 1 restaurant"
 restaurant_cuba_nina = Restaurant.create(
   name: "Bodeguita del medio",
   address: "Empedrado, La Habana, Cuba",
-  date: "Sun, 25 Mar 2018 20:00:00 UTC +00:00,",
+  date: "Sat, 07 Apr 2018 20:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0753644527",
   description: "best bar in Cuba",
@@ -189,7 +189,7 @@ puts "Creating 1 activity"
 activity_cuba_nina = Activity.create(
   name: "Museum of the Revolution",
   address: "Avenida Bélgica, La Habana, Cuba",
-  date: "Mon, 26 Mar 2018 11:00:00 UTC +00:00,",
+  date: "Mon, 09 Apr 2018 11:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0753644527",
   description: "amazing museum",
