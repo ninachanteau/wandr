@@ -62,7 +62,8 @@
           <tr>
             <th scope="col">From</th>
             <th scope="col">To</th>
-            <th scope="col">Date</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Arrival</th>
             <th scope="col">#</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
@@ -82,7 +83,11 @@
                 </td>
                 <td class="date-time">
                   <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p><%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                </td>
+                <td class="date-time">
+                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>
@@ -128,7 +133,8 @@
           <tr>
             <th scope="col">From</th>
             <th scope="col">To</th>
-            <th scope="col">Date</th>
+            <th scope="col">Departure</th>
+            <th scope="col">Arrival</th>
             <th scope="col">#</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
@@ -147,7 +153,11 @@
                 </td>
                 <td class="date-time">
                   <p><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p><%= transpo.departure_date.strftime("%H:%M") %></p>
+                  <p>@ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                </td>
+                <td class="date-time">
+                  <p><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
+                  <p>@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
                 </td>
                 <td class="reference">
                   <%= transpo.reference_number%>
