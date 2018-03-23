@@ -102,7 +102,7 @@
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
 
-                    <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                    <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                     <form action="restaurant/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
