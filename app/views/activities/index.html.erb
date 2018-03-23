@@ -2,7 +2,7 @@
   <div class="container">
 
     <div class="header">
-      <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-university"></i></h2>
+      <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-university" style="color: #AAAAAA"></i></h2>
       </div>
     </div>
 
@@ -11,7 +11,7 @@
       <div class="activities-ctn">
 
         <div class="activities-card">
-         <h5>Today (<%= Date.today %>) </h5>
+         <h4>Today (<%= Date.today %>) </h4>
          <table class="table">
             <thead>
               <tr>
@@ -88,7 +88,8 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-                    <%= f.submit class: 'btn btn-info' %>
+
+                    <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                     <form action="activity/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
@@ -97,6 +98,7 @@
                       <% end %>
                       <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
                       </form>
+
                   <% end %>
                 </div>
                 <div class="modal-footer">
@@ -106,7 +108,7 @@
             </div>
           </div>
 
-          <h5>All activities</h5>
+          <h4>All activities</h4>
           <table class="table">
             <thead>
               <tr>
@@ -164,8 +166,10 @@
         </div>
 <!--
         <div class=" wishlist-card hidden-xs">
-          <h5>Wishlist:</h5>
-        </div> -->
+
+          <h4>Wishlist</h4>
+        </div>
+
     </div>
   </div>
 </div>
