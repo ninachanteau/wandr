@@ -153,7 +153,9 @@ class TripsController < ApplicationController
       @participation.user = current_user
       @participation.trip = @trip
       @participation.avatar = current_user.avatar.url
+      @participation.pseudo = current_user.first_name
       @participation.save
+      @trip.save
       redirect_to trips_path
     else
       render :new
