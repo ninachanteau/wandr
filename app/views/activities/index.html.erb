@@ -52,14 +52,14 @@
                         </button>
                         <div class="dropdown-menu">
                         <% if activity.status == "Booked" %>
-                          <%= link_to trip_activities_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/wishlist-icon'  %>
                               Wishlist
                             </span>
                           <% end %>
                         <% elsif activity.status == "Wishlist" %>
-                          <%= link_to trip_activities_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/booked-icon'  %>
                               Booked
@@ -67,7 +67,7 @@
                           <% end %>
                         <% end %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to trip_activities_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                        <%= link_to trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/delete-icon'  %>
                               Delete
@@ -182,14 +182,14 @@
                         </button>
                         <div class="dropdown-menu">
                         <% if activity.status == "Booked" %>
-                          <%= link_to trip_activities_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/wishlist-icon'  %>
                               Wishlist
                             </span>
                           <% end %>
                         <% elsif activity.status == "Wishlist" %>
-                          <%= link_to trip_activities_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <%= link_to trip_activity_path(@trip, activity, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/booked-icon'  %>
                               Booked
@@ -197,7 +197,7 @@
                           <% end %>
                         <% end %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to trip_activities_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                        <%= link_to trip_activity_path(@trip, activity), method: :delete, class: "dropdown-item status-dropdown-item" do %>
                             <span>
                               <%= render 'shared/delete-icon'  %>
                               Delete
