@@ -11,7 +11,7 @@
 <div class="accommodations-container">
   <div class="accommodations-ctn">
     <div class="activities-card">
-      <h4>Today (<%= Date.today %>) </h4>
+      <h4>Today (<%= Date.today.strftime("%b %d, %Y") %>) </h4>
         <div class="table-responsive">
           <table class="table">
             <thead>
@@ -39,8 +39,8 @@
                     <p><%= accom.phone_number%></p>
                   </td>
                   <td class="date">
-                    <p><%= accom.start_date%></p>
-                    <p><%= accom.end_date%></p>
+                    <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
+                    <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
                   </td>
                   <td class="nights">
                     <p><%= accom.number_of_nights%></p>
@@ -173,8 +173,8 @@
                 <p><%= accom.phone_number%></p>
               </td>
               <td class="date">
-                <p><%= accom.start_date%></p>
-                <p><%= accom.end_date%></p>
+                <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
+                <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
               </td>
               <td class="nights">
                 <p><%= accom.number_of_nights%></p>
