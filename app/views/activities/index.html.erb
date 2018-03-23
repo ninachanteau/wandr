@@ -64,17 +64,17 @@
         <div class="activities-card">
 
           <!-- Button trigger modal -->
-          <div type="button" data-toggle="modal" data-target="#myModal">
+          <div type="button" data-toggle="modal" data-target="#ActivityModal">
             <i class="fa fa-plus-circle plus-btn"></i>
           </div>
 
           <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="myAModalLabel">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myModalLabel">Add an activity</h4>
+                  <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
                 </div>
                 <div class="modal-body">
                   <%= simple_form_for [@trip, @activity] do |f| %>
