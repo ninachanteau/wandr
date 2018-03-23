@@ -212,7 +212,7 @@
                 <p><%= accom.number_of_rooms%></p>
               </td>
               <td class="price">
-                <<%= number_with_precision(accom.total_price, precision: 2)%>€
+                <%= number_with_precision(accom.total_price, precision: 2)%>€
               </td>
               <td class="status">
                 <div class="<%= accom.status%>">
