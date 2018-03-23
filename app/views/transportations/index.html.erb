@@ -46,7 +46,7 @@
                 <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                 <!-- Add participants -->
-                <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
               <% end %>
             </div>
             <div class="modal-footer">
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <h4>My transportation</h4>
+      <h4>Upcoming travel plans</h4>
       <table class="table">
         <thead>
           <tr>
@@ -64,7 +64,7 @@
             <th scope="col">To</th>
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
-            <th scope="col">#</th>
+            <th scope="col">Booking ref.</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
@@ -72,7 +72,7 @@
         </thead>
         <tbody>
           <% if @participation %>
-            <% @transportations.each do |transpo| %>
+            <% @transportations.order(:departure_date).each do |transpo| %>
               <% if transpo.participation.user_id == current_user.id %>
               <tr>
                 <td class="departure">
@@ -99,13 +99,35 @@
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
                       <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= transpo.status%>
+                        <% if transpo.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                       </button>
                       <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                        <% if transpo.status == "Booked" %>
+                          <%= link_to trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif transpo.status == "Wishlist" %>
+                          <%= link_to trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" %>
+                        <%= link_to trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
                       </div>
                     </div>
                   </div>
@@ -127,7 +149,7 @@
       <div> <%= link_to do %>
         <i class="fa fa-plus-circle plus-btn"></i>
       <% end %></div>
-      <h4>Other participants</h4>
+      <h4>Other travel plans</h4>
       <table class="table">
         <thead>
           <tr>
@@ -135,14 +157,14 @@
             <th scope="col">To</th>
             <th scope="col">Departure</th>
             <th scope="col">Arrival</th>
-            <th scope="col">#</th>
+            <th scope="col">Booking ref.</th>
             <th scope="col">Price</th>
             <th scope="col">Status</th>
             <th scope="col">Participant</th>
           </tr>
         </thead>
         <tbody>
-          <% @transportations.each do |transpo| %>
+          <% @transportations.order(:departure_date).each do |transpo| %>
             <% if transpo.participation.user != current_user %>
               <tr>
                 <td class="departure">
@@ -169,13 +191,35 @@
                   <div class="<%= transpo.status%>">
                     <div class="btn-group">
                       <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <%= transpo.status%>
+                        <% if transpo.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
                       </button>
                       <div class="dropdown-menu">
-                        <%= link_to "Wishlist", trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" %>
-                        <%= link_to "Booked", trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" %>
+                        <% if transpo.status == "Booked" %>
+                          <%= link_to trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif transpo.status == "Wishlist" %>
+                          <%= link_to trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
                         <div class="dropdown-divider"></div>
-                        <%= link_to "Delete", trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" %>
+                        <%= link_to trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
                       </div>
                     </div>
                   </div>
