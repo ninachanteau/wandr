@@ -128,7 +128,7 @@
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
 
-                <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
                 <form action="accommodation/create">
                 <% @trip_participants.each do |part| %>
