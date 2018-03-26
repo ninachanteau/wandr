@@ -36,5 +36,23 @@
   height: 50px;
   margin-left: 20px;
   margin-top: 15px;
+}
 
+.notification {
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  background-color: red;
+}
+
+.notification-position {
+  position: absolute;
+  bottom: 24px;
+  right: 14px;
+  height: 12px;
+  width: 12px;
+}
+
+.notification-holder {
+  position: relative;
 }

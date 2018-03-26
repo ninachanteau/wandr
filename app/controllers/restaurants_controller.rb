@@ -13,6 +13,7 @@ class RestaurantsController < ApplicationController
       @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
     end
     @restaurants = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
+    session[@trip.id][:restaurant] = Time.now
     @restaurant = Restaurant.new
   end
 

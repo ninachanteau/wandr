@@ -4,3 +4,10 @@ function loadTransportations(innerHTML) {
 };
 
 loadTransportations(`'<%= j render "index", transportations: @transportations, trip_participants: @trip_participants, trip: @trip, transportation: @transportation, participation: @participation, my_transportations: @my_transportations, avatar: @avatar %>'`);
+
+function removeNotification() {
+  const notification = document.getElementById('transportations-notif');
+  notification.remove();
+}
+
+removeNotification()
