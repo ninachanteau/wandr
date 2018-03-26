@@ -9,41 +9,31 @@
     <div class="restaurants-container">
       <div class="restaurants-ctn">
         <div class="restaurants-card">
-          <h4>Upcoming Restaurants</h4>
-          <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" class="table-name">Name</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @my_restaurants.order(:date).each do |restaurant| %>
-            <tr>
-              <td class="name">
-                <p><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
-              </td>
-              <td class="contact">
-                <p><%= restaurant.address%></p>
-                <p><%= restaurant.email%></p>
-                <p><%= restaurant.phone_number%></p>
-              </td>
-              <td class="date">
-                <% if restaurant.date %>
-                  <p ><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                  <p >@ <%= restaurant.date.strftime("%H:%M") %></p>
-                <% else %>
-                  <p>Not scheduled yet</p>
-                <% end %>
-              </td>
-              <td class="description">
-                <p><%= restaurant.description%></p>
-              </td>
-              <td class="status">
-                <div class="<%= restaurant.status%>">
+
+          <div class="index-title">
+            <h4 class="ind-title">Upcoming Restaurants</h4>
+          </div>
+          <div class="card-index-ctn">
+            <% @my_restaurants.order(:date).each do |restaurant| %>
+            <div class="index-card">
+              <div class="indax-name">
+                <p class="ind-name"><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
+              </div>
+              <div class="index-date">
+                <div class="ind-date">
+                  <% if restaurant.date %>
+                    <p ><%= restaurant.date.strftime("%b %d, %Y") %> @ <%= restaurant.date.strftime("%H:%M") %></p>
+                  <% else %>
+                    <p>Not scheduled yet</p>
+                  <% end %>
+                </div>
+              </div>
+              <div class="index-address">
+                <p class="ind-address"><%= restaurant.address%></p>
+              </div>
+              <div class="index-status">
+                <div class="status">
+                <div class="ind-status">
                   <div class="btn-group">
 
                     <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,22 +70,34 @@
                       </div>
                   </div>
                 </div>
-              </td>
-              <td class="participants">
+              </div>
+              </div>
+              <div class="index-participants">
+                <div class="participants">
                 <% restaurant.participants.each do |participant| %>
                     <% if participant.user %>
-                      <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar index-avatar" %>
                     <% else %>
-                      <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <%= image_tag "default-user.jpg", class: "avatar index-avatar" %>
                     <% end %>
                 <% end %>
-              </td>
-            </tr>
+              </div>
+              </div>
+            </div>
+            <div class="index-card card-back hidden">
+              <div class="index-contact">
+                <p><%= restaurant.email%></p>
+                <p><%= restaurant.phone_number%></p>
+              </div>
+              <div class="description">
+                <p><%= restaurant.description%></p>
+              </div>
+            </div>
           <% end %>
-        </tbody>
-      </table>
-
+          </div>
         </div>
+
+
         <div class="restaurants-card">
 
           <!-- Button trigger modal -->
@@ -142,62 +144,38 @@
                       <% end %>
                       <br>
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
-<!--                   <br>
-                  <br>
-                  <p>Don't forget to pick the participants</p> -->
-<!--                   <form action="restaurant/create">
-                      <% @trip.participations.each do |part| %>
-                        <input type="checkbox" name="<%= part.pseudo %>">
-                        <%= part.pseudo %>
-                        <br>
-                        <%#= f.label part.pseudo %>
-                        <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                      <% end %>
-                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                  </form> -->
                   <% end %>
                 </div>
               </div>
             </div>
           </div>
 
-        <h4>All Restaurants</h4>
-        <table class="table">
-        <thead>
-          <tr>
-            <th scope="col" class="table-name">Name</th>
-            <th scope="col">Contact</th>
-            <th scope="col">Date</th>
-            <th scope="col">Description</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @restaurants.each do |restaurant| %>
-
-            <tr>
-              <td class="name">
-                <p><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
-              </td>
-              <td class="contact">
-                <p><%= restaurant.address%></p>
-                <p><%= restaurant.email%></p>
-                <p><%= restaurant.phone_number%></p>
-              </td>
-              <td class="date">
-                <% if restaurant.date %>
-                  <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                  <p>@ <%= restaurant.date.strftime("%H:%M") %></p>
-                <% else %>
-                  <p>Not scheduled yet</p>
-                <% end %>
-              </td>
-              <td class="description">
-                <p><%= restaurant.description%></p>
-              </td>
-              <td class="status">
-                <div class="<%= restaurant.status%>">
+          <div class="index-title">
+            <h4 class="ind-title">All Restaurants</h4>
+          </div>
+          <div class="card-index-ctn">
+            <% @my_restaurants.order(:date).each do |restaurant| %>
+            <div class="index-card">
+              <div class="indax-name">
+                <p class="ind-name"><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
+              </div>
+              <div class="index-date">
+                <div class="date">
+                  <% if restaurant.date %>
+                    <p class="ind-date" ><%= restaurant.date.strftime("%b %d, %Y") %> @ <%= restaurant.date.strftime("%H:%M") %></p>
+                  <% else %>
+                    <p class="ind-date">Not scheduled yet</p>
+                  <% end %>
+                </div>
+              </div>
+              <div class="index-address">
+                <p class="ind-address"><%= restaurant.address%></p>
+              </div>
+              <div class="index-status">
+                <div class="status">
+                <div class="ind-status">
                   <div class="btn-group">
+
                     <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <% if restaurant.status == "Wishlist" %>
                         <%= render 'shared/wishlist-icon' %>
@@ -222,32 +200,45 @@
                           </span>
                         <% end %>
                       <% end %>
-                    <div class="dropdown-divider"></div>
+                      <div class="dropdown-divider"></div>
                       <%= link_to trip_restaurant_path(@trip, restaurant), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                        <span>
-                          <%= render 'shared/delete-icon'  %>
+                          <span>
+                            <%= render 'shared/delete-icon'  %>
                             Delete
-                        </span>
-                      <% end %>
-                    </div>
+                          </span>
+                        <% end %>
+                      </div>
                   </div>
                 </div>
-              </td>
-              <td class="participants">
-                <% restaurant.participants.each do |participant| %>
-                  <% if participant.user %>
-                  <%= cl_image_tag participant.user.avatar, class: "avatar", crop: :fill%>
-                  <% else %>
-                  <%= cl_image_tag "default-user.png", class: "avatar", crop: :fill%>
-                  <% end %>
+              </div>
+              </div>
+              <div class="index-participants">
+                <div class="participants">
+                <% @restaurants.each do |restaurant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar index-avatar" %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar index-avatar" %>
+                    <% end %>
                 <% end %>
-              </td>
-            </tr>
-
+                </div>
+              </div>
+            </div>
+            <div class="index-card card-back hidden">
+              <div class="index-contact">
+                <p><%= restaurant.email%></p>
+                <p><%= restaurant.phone_number%></p>
+              </div>
+              <div class="description">
+                <p><%= restaurant.description%></p>
+              </div>
+            </div>
           <% end %>
-        </tbody>
-      </table>
-    </div>
+
+        </div>
+
+
+
     </div>
 
 <!--     <div class=" wishlist-card hidden-xs">
