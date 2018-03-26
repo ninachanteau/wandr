@@ -18,6 +18,10 @@ class ActivitiesController < ApplicationController
     end
     @activities = @all_activities.reject { |resa| resa unless (resa.same_reservation & @my_activities).empty? }
     @activity = Activity.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
