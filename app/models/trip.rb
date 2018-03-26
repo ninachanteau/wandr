@@ -14,14 +14,14 @@ class Trip < ApplicationRecord
   scope :wishlist, -> { where(start_date: nil) }
 
   def all_restaurants
-    self.restaurants.group(:name, :date).count
+    Restaurant.where(trip_id: self.id).group(:name, :date).count
   end
 
   def all_accommodations
-    accommodations.group(:name, :start_date, :end_date).count
+    Accommodation.where(trip_id: self.id).group(:name, :start_date, :end_date).count
   end
 
   def all_activities
-    self.activities.group(:name, :date).count
+    Activity.where(trip_id: self.id).group(:name, :date).count
   end
 end
