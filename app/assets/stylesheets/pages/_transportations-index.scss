@@ -55,10 +55,15 @@
 
 .cards-ctn {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
+.transpo-title {
+    padding-left: 12px;
+  }
+
 .transportation-card {
+  margin-right: 30px !important;
   background-color: white;
   height: 300px;
   width: 250px;
@@ -67,7 +72,7 @@
   border-radius: 20px;
   position: relative;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  // border-left: 3px dashed $middle-gray;
+  border-left: 4px dashed $light-gray;
   .transpo-avatar {
     position: absolute;
     top: 5px;
@@ -82,6 +87,7 @@
 
 .details-card {
   border-radius: 20px;
+  margin-bottom: 20px;
   p {
     font-size: 14px;
     line-height: 1.2;
@@ -95,13 +101,12 @@
   }
   .ticket-price {
     margin-top: 20px;
-    margin-bottom: 20px;
   }
 }
 
 .reference-card {
   background-color: white;
-  border-top: 4px dashed $light-gray;
+  // border-top: 4px dashed $light-gray;
   border-radius: 20px;
   .reference {
     font-size: 20px;
