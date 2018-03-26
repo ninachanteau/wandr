@@ -9,8 +9,8 @@ class ParticipationMailerTest < ActionMailer::TestCase
   #   assert_match "Hi", mail.body.encoded
   # end
   def join_trip
-    participation = Participation.first
-    UserMailer.join_trip(participation)
+    @participation = Participation.first
+    UserMailer.join_trip(@participation)
   end
 
 end

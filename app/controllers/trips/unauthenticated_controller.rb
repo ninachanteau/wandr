@@ -2,8 +2,8 @@ class Trips::UnauthenticatedController < ApplicationController
   skip_before_action :authenticate_user!
 
   def show
-    @current_participation = Participation.find_by_token(params[:token])
-    @trip = Trip.find(params[:id])
+    @current_participation = Participation.find_by_token(params[:id])
+    @trip = @current_participation.trip
     @markers = []
     @events = []
     @transportations = @current_participation.transportations.select { |transportation| transportation unless transportation.departure_port_latitude == nil || transportation.departure_port_longitude == nil || transportation.arrival_port_latitude == nil || transportation.arrival_port_longitude == nil }
