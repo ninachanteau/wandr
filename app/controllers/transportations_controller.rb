@@ -6,21 +6,31 @@ def index
   @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
   @avatar = current_user.avatar
   @transportations = @trip.transportations.all
+  @trip_participants =  @trip.participations
   @transportation = Transportation.new
+
 end
 
 def new
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.new
+  @transportation.trip = @trip
 end
 
 def create
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.new(transpo_params)
-  @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-  @transportation.participation = @participation
-  @transportation.save!
-  redirect_to trip_transportations_path(@trip)
+  @transportation.trip = @trip
+  @trip_participants =  @trip.participations
+  @transpo_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
+  if @transportation.save!
+      @transpo_participants.each do |part|
+        @transportation.add_participant(part)
+      end
+        redirect_to trip_transportations_path(@trip)
+    else
+      render 'new'
+    end
 end
 
 def edit
