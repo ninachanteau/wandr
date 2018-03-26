@@ -15,6 +15,10 @@ class AccommodationsController < ApplicationController
     end
     @accommodations = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
     @accommodation = Accommodation.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
