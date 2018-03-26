@@ -45,15 +45,15 @@ class Trips::NavbarAccommodationsController < ApplicationController
 
   def edit
     @current_user = current_user
-    @trips = @current_user.trips.map {|trip| trip.name}
-
+    @trips = @current_user.trips.map {|trip| [trip.name, trip.id]}
     @accommodation = Accommodation.find(params[:id])
   end
 
   def update
     @accommodation = Accommodation.find(params[:id])
     @trip = params["accommodation"]["trip"]
-    @accommodation.trip = Trip.find_by_name(@trip) unless @accommodation.trip.present?
+    @accommodation.trip = Trip.find(@trip)
+    @accommodation.save
     redirect_to root_path
   end
 

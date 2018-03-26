@@ -30,7 +30,9 @@ class AccommodationsController < ApplicationController
     @accommodation.trip = @trip
     @trip_participants =  @trip.participations
     @acc_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
-    @accommodation.number_of_nights = @accommodation.end_date - @accommodation.start_date
+    if @accommodation.end_date && @accommodation.start_date
+      @accommodation.number_of_nights = @accommodation.end_date - @accommodation.start_date
+    end
     if @accommodation.save!
       @acc_participants.each do |part|
         @accommodation.add_participant(part)
