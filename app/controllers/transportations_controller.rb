@@ -20,9 +20,8 @@ end
 def create
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.new(transpo_params)
-  @transportation.trip = @trip
   @trip_participants =  @trip.participations
-  @transpo_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
+  @transpo_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
   if @transportation.save!
       @transpo_participants.each do |part|
         @transportation.add_participant(part)
