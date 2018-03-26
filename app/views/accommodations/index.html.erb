@@ -38,8 +38,10 @@
                     <p><%= accom.phone_number%></p>
                   </td>
                   <td class="date">
+                    <% if accom.start_date && accom.end_date %>
                     <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
                     <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
+                    <% end %>
                   </td>
                   <td class="nights">
                     <p><%= accom.number_of_nights%></p>
@@ -140,32 +142,25 @@
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-4">
+                  <div class="col-xs-6">
                 <%= f.input :number_of_rooms, class: 'form-control', placeholder: "Nb of rooms", label: false %>
                   </div>
-                  <div class="col-xs-4">
-                <%= f.input :number_of_nights, class: 'form-control', placeholder: "Nb of nights", label: false %>
-                  </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-6">
                 <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
                   </div>
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-
+                  <p>Who will be attending?</p>
+                  <%= form_tag(trip_accommodations_path, method: :post) %>
+                    <% @trip.participations.each do |part| %>
+                        <%= check_box_tag part.pseudo%>
+                        <%= h part.pseudo -%>
+                        <br>
+                      <% end %>
+                      <br>
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
-                <br>
-                <br>
-                <p>Don't forget to pick the participants</p>
-                  <form action="accommodation/create">
-                    <% @trip_participants.each do |part| %>
-                      <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
-                      <br>
-                      <%#= f.label part.pseudo %>
-                      <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                    <% end %>
-                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                  </form>
+
 
               <% end %>
             </div>
@@ -199,8 +194,10 @@
                 <p><%= accom.phone_number%></p>
               </td>
               <td class="date">
-                <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
-                <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
+                <% if accom.start_date && accom.end_date %>
+                  <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
+                  <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
+                <% end %>
               </td>
               <td class="nights">
                 <p><%= accom.number_of_nights%></p>

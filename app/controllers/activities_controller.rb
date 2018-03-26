@@ -30,7 +30,7 @@ class ActivitiesController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @activity.trip = @trip
     @trip_participants =  @trip.participations
-    @act_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
+    @act_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     if @activity.save!
       @act_participants.each do |part|
         @activity.add_participant(part)
