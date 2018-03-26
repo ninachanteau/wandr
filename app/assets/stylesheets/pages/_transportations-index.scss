@@ -46,6 +46,7 @@
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
+  max-width: 1000px;
   align-items: center;
   &:hover {
     background-color: $white-middle-transparent;
@@ -53,14 +54,15 @@
   }
 }
 
-.cards-ctn {
-  display: flex;
-  justify-content: flex-start;
-}
-
 .transpo-title {
     padding-left: 12px;
   }
+
+.cards-ctn {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
 
 .transportation-card {
   margin-right: 30px !important;

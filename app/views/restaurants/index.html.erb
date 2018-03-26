@@ -142,13 +142,13 @@
                   <br>
                   <p>Don't forget to pick the participants</p> -->
 <!--                   <form action="restaurant/create">
-                      <% @trip.participations.each do |part| %>
+                      <%# @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>">
                         <%= part.pseudo %>
                         <br>
                         <%#= f.label part.pseudo %>
                         <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                      <% end %>
+                      <%# end %>
                     <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
                   </form> -->
                   <% end %>
