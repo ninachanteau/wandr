@@ -44,7 +44,8 @@ function displayCalendar() {
             }
           },
           events: events
-        })
+        });
+      $('#calendar').fullCalendar('gotoDate', new Date(events[0].start));
   }
 }
 
