@@ -20,7 +20,9 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title text-center" id="myModalLabel">Add a transportation</h4>
               </div>
               <div class="modal-body">
@@ -44,13 +46,7 @@
                   <%= f.input :price_per_person, placeholder: "Price per person", label: false, class: 'form-control' %>
                   <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
                   <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                  <!-- Add participants -->
-                  <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
-                <% end %>
               </div>
-                <%= f.input :price_per_person, placeholder: "Price per person", label: false, class: 'form-control' %>
-                <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
-                <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                 <!-- Add participants -->
                 <p>Who will be attending?</p>
                   <%= form_tag(trip_transportations_path, method: :post) %>
@@ -65,87 +61,9 @@
             </div>
           </div>
         </div>
-      </div>
 
-      <h4>Upcoming travel plans</h4>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">From</th>
-            <th scope="col">To</th>
-            <th scope="col">Departure</th>
-            <th scope="col">Arrival</th>
-            <th scope="col">Booking ref.</th>
-            <th scope="col">Price (€)</th>
-            <th scope="col">Status</th>
-            <th scope="col">Participant</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @participation %>
-            <% @transportations.order(:departure_date).each do |transpo| %>
-              <% if transpo.participation.user_id == current_user.id %>
-              <tr>
-                <td class="departure">
-                  <p><%= transpo.departure_port%></p>
-                </td>
-                <td class="arrival">
-                  <p><%= transpo.arrival_port%></p>
-                </td>
-                <td class="date-time">
-                  <% if transpo.departure_date %>
-                  <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
-                  <% end %>
-                </td>
-                <td class="date-time">
-                  <% if transpo.arrival_date %>
-                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
-                  <% end %>
-                </td>
-                <td class="reference text-center">
-                  <%= transpo.reference_number%>
-                </td>
-                <td class="price-status">
-                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
-                </td>
-                <td>
-                  <div class="<%= transpo.status%>">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <% if transpo.status == "Wishlist" %>
-                          <%= render 'shared/wishlist-icon' %>
-                        <% else %>
-                          <%= render 'shared/booked-icon' %>
-                        <% end %>
-                      </button>
-                      <div class="dropdown-menu">
-                        <% if transpo.status == "Booked" %>
-                          <%= link_to trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
-                              <%= render 'shared/wishlist-icon'  %>
-                              Wishlist
-                            </span>
-                          <% end %>
-                        <% elsif transpo.status == "Wishlist" %>
-                          <%= link_to trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
-                              <%= render 'shared/booked-icon'  %>
-                              Booked
-                            </span>
-                          <% end %>
-                        <% end %>
-                        <div class="dropdown-divider"></div>
-                        <%= link_to trip_transportation_path(@trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
-                              <%= render 'shared/delete-icon'  %>
-                              Delete
-                            </span>
-                          <% end %>
-            </div>
-          </div>
-        </div>
+
+
           <div class="transportations-title">
             <h4 class="transpo-title">Upcoming travel plans</h4>
           </div>
@@ -212,66 +130,18 @@
       </div>
 
       <div class="other-transportations transportations-card">
-        <div> <%= link_to do %>
-          <i class="fa fa-plus-circle plus-btn"></i>
-        <% end %></div>
+        <div>
+          <%= link_to do %>
+            <i class="fa fa-plus-circle plus-btn"></i>
+          <% end %>
+        </div>
         <div class="transportations-title">
           <h4 class="transpo-title">Other travel plans</h4>
         </div>
         <div class="cards-ctn">
           <% @transportations.order(:departure_date).each do |transpo| %>
             <% if transpo.participation.user != current_user %>
-<<<<<<< HEAD
-              <tr>
-                <td class="departure">
-                  <p><%= transpo.departure_port%></p>
-                </td>
-                <td class="arrival">
-                  <p><%= transpo.arrival_port%></p>
-                </td>
-                <td class="date-time">
-                  <% if transpo.departure_date %>
-                    <p class="text-center"><%= transpo.departure_date.strftime("%b %d, %Y") %></p>
-                  <p class="text-center">@ <%= transpo.departure_date.strftime("%H:%M") %></p>
-                  <% end %>
-                </td>
-                <td class="date-time">
-                  <% if transpo.arrival_date %>
-                  <p class="text-center"><%= transpo.arrival_date.strftime("%b %d, %Y") %></p>
-                  <p class="text-center">@ <%= transpo.arrival_date.strftime("%H:%M") %></p>
-                  <% end %>
-                </td>
-                <td class="reference text-center">
-                  <%= transpo.reference_number%>
-                </td>
-                <td class="price-status">
-                  <p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
-                </td>
-                <td>
-                  <div class="<%= transpo.status%>">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <% if transpo.status == "Wishlist" %>
-                          <%= render 'shared/wishlist-icon' %>
-                        <% else %>
-                          <%= render 'shared/booked-icon' %>
-                        <% end %>
-                      </button>
-                      <div class="dropdown-menu">
-                        <% if transpo.status == "Booked" %>
-                          <%= link_to trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
-                              <%= render 'shared/wishlist-icon'  %>
-                              Wishlist
-                            </span>
-                          <% end %>
-                        <% elsif transpo.status == "Wishlist" %>
-                          <%= link_to trip_transportation_path(@trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
-                              <%= render 'shared/booked-icon'  %>
-                              Booked
-                            </span>
-=======
+
               <div class="transportation-card">
                 <div class="details-card">
                   <div class="departure"><p><strong>FROM:</strong> <%= transpo.departure_port%></p></div>
@@ -282,19 +152,21 @@
                   <div class="date-time">
                     <p ><%= transpo.arrival_date.strftime("%b %d, %Y") %> at <%= transpo.arrival_date.strftime("%H:%M") %></p>
                   </div>
-                  <div class="price-status"><p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p></div>
+                  <div class="price-status"><p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
+                  </div>
                 </div>
-                <div class="reference-card"><p class="reference text-center"><%= transpo.reference_number%></p></div>
+                <div class="reference-card"><p class="reference text-center">
+                  <%= transpo.reference_number%></p>
+                </div>
                 <div class="transpo-status">
-                      <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <% if transpo.status == "Wishlist" %>
                             <%= render 'shared/wishlist-icon' %>
                           <% else %>
                             <%= render 'shared/booked-icon' %>
->>>>>>> master
                           <% end %>
-                        </button>
+                      </button>
                         <div class="dropdown-menu">
                           <% if transpo.status == "Booked" %>
                             <%= link_to trip_transportation_path(@trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
@@ -319,7 +191,7 @@
                               </span>
                             <% end %>
                         </div>
-                      </div>
+                    </div>
                 </div>
                 <% if transpo.participation.user %>
                   <%= cl_image_tag transpo.participation.user.avatar, class: "avatar transpo-avatar", crop: :fill%>
