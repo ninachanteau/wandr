@@ -30,14 +30,18 @@ class Trips::NavbarActivitiesController < ApplicationController
     @activity.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @activity.remote_photo_url = img_array[1] if img_array[1].present?
-    @activity.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    @trips = current_user.trips.map {|trip| [trip.name, trip.id]}
+    raise
     if @activity.save
-      # if Activity.where(@activity.name).where(@activity.trip).count > 1
-      #   redirect_to trip_activities
-      redirect_to edit_trips_navbar_activity_path(@activity)
-       # end
+       respond_to do |format|
+        format.html { redirect_to edit_trips_navbar_activity_path(@activity) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'trips/index'
+      respond_to do |format|
+        format.html { render 'trips/index' }
+        format.js  # <-- idem
+      end
     end
   end
 

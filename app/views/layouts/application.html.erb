@@ -34,8 +34,8 @@
     <% if params[:action] == "home" %>
       <%= yield %>
     <% else %>
-      <div class="wrapper" >
-      <%= yield %>
+      <div class="wrapper">
+        <%= yield %>
       </div>
     <% end %>
     <%= javascript_include_tag 'application' %>
