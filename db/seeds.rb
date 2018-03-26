@@ -311,7 +311,8 @@ hotel_nyc_julie = Accommodation.create(
   url: "https://www.themarkhotel.com/",
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_julie.trip = nyc
 hotel_nyc_julie.participation = julie_nyc
@@ -329,7 +330,8 @@ hotel_nyc_julie = Accommodation.create(
   url: "http://www.ludlowhotel.com/",
   email: "ludlow@newyork.com",
   total_price: 899,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_julie.trip = nyc
 hotel_nyc_julie.participation = julie_nyc
@@ -347,7 +349,8 @@ hotel_nyc_julie = Accommodation.create(
   url: "https://www.choicehotels.com/new-york/brooklyn/ascend-hotels/ny473?source=gyxt",
   email: "theunionhotel@newyork.com",
   total_price: 448,
-  number_of_rooms: 1
+  number_of_rooms: 1,
+  remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_julie.trip = nyc
 hotel_nyc_julie.participation = julie_nyc
@@ -365,7 +368,8 @@ hotel_nyc_alex = Accommodation.create(
   url: "https://www.themarkhotel.com/",
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_alex.trip = nyc
 hotel_nyc_alex.participation = alex_nyc
@@ -383,7 +387,8 @@ hotel_nyc_alex = Accommodation.create(
   url: "http://www.ludlowhotel.com/",
   email: "ludlow@newyork.com",
   total_price: 899,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_alex.trip = nyc
 hotel_nyc_alex.participation = alex_nyc
@@ -401,7 +406,8 @@ hotel_nyc_alex = Accommodation.create(
   url: "https://www.choicehotels.com/new-york/brooklyn/ascend-hotels/ny473?source=gyxt",
   email: "theunionhotel@newyork.com",
   total_price: 448,
-  number_of_rooms: 1
+  number_of_rooms: 1,
+  remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_alex.trip = nyc
 hotel_nyc_alex.participation = alex_nyc
@@ -419,7 +425,8 @@ hotel_nyc_nina = Accommodation.create(
   url: "https://www.themarkhotel.com/",
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_nina.trip = nyc
 hotel_nyc_nina.participation = nina_nyc
@@ -437,7 +444,8 @@ hotel_nyc_nina = Accommodation.create(
   url: "http://www.ludlowhotel.com/",
   email: "ludlow@newyork.com",
   total_price: 899,
-  number_of_rooms: 2
+  number_of_rooms: 2,
+  remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_nina.trip = nyc
 hotel_nyc_nina.participation = nina_nyc
@@ -455,7 +463,8 @@ hotel_nyc_nina = Accommodation.create(
   url: "https://www.choicehotels.com/new-york/brooklyn/ascend-hotels/ny473?source=gyxt",
   email: "theunionhotel@newyork.com",
   total_price: 448,
-  number_of_rooms: 1
+  number_of_rooms: 1,
+  remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_nina.trip = nyc
 hotel_nyc_nina.participation = nina_nyc
@@ -473,7 +482,8 @@ hotel_lisbon_nina = Accommodation.create(
   url: "http://memmo-alfama-lisbon.hotel-rn.com",
   email: "memmo-alfama@lisbon.com",
   total_price: 149.00,
-  number_of_rooms: 1
+  number_of_rooms: 1,
+  remote_photo_url: "https://f22bfca7a5abd176cefa-59c40a19620c1f22577ade10e9206cf5.ssl.cf1.rackcdn.com/u/memmo-alfama-architecture-M-01-r.jpg"
   )
 hotel_lisbon_nina.trip = lisbon
 hotel_lisbon_nina.participation = nina_lisbon
@@ -491,7 +501,8 @@ hotel_lisbon_julia = Accommodation.create(
   url: "http://memmo-alfama-lisbon.hotel-rn.com",
   email: "memmo-alfama@lisbon.com",
   total_price: 149.00,
-  number_of_rooms: 1
+  number_of_rooms: 1,
+  remote_photo_url: "https://f22bfca7a5abd176cefa-59c40a19620c1f22577ade10e9206cf5.ssl.cf1.rackcdn.com/u/memmo-alfama-architecture-M-01-r.jpg"
   )
 hotel_lisbon_julia.trip = lisbon
 hotel_lisbon_julia.participation = julia_lisbon
@@ -509,7 +520,8 @@ restaurant_nyc_nina = Restaurant.create(
   phone_number: "+1 212-533-3348",
   description: "Argentinian meat",
   url: "https://www.balvaneranyc.com/",
-  email: "balvanera@newyork.com"
+  email: "balvanera@newyork.com",
+  remote_photo_url: "https://i.pinimg.com/originals/86/15/3a/86153af2f01f95eabae4e9c60a12ce3c.jpg"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -523,7 +535,8 @@ restaurant_nyc_alex = Restaurant.create(
   phone_number: "+1 212-533-3348",
   description: "Argentinian meat",
   url: "https://www.balvaneranyc.com/",
-  email: "balvanera@newyork.com"
+  email: "balvanera@newyork.com",
+  remote_photo_url: "https://i.pinimg.com/originals/86/15/3a/86153af2f01f95eabae4e9c60a12ce3c.jpg"
   )
 restaurant_nyc_alex.trip = nyc
 restaurant_nyc_alex.participation = alex_nyc
@@ -537,7 +550,8 @@ restaurant_nyc_julie = Restaurant.create(
   phone_number: "+1 212-533-3348",
   description: "Argentinian meat",
   url: "https://www.balvaneranyc.com/",
-  email: "balvanera@newyork.com"
+  email: "balvanera@newyork.com",
+  remote_photo_url: "https://i.pinimg.com/originals/86/15/3a/86153af2f01f95eabae4e9c60a12ce3c.jpg"
   )
 restaurant_nyc_julie.trip = nyc
 restaurant_nyc_julie.participation = julie_nyc
@@ -549,9 +563,10 @@ restaurant_nyc_nina = Restaurant.create(
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
   status: "Wishlist",
   phone_number: "+1 212-792-9000",
-  description: "seafood restaurant Midtown",
+  description: "Seafood restaurant Midtown",
   url: "https://www.thejohndory.com/",
-  email: "johndory@newyork.com"
+  email: "johndory@newyork.com",
+  remote_photo_url: "https://getbento.imgix.net/accounts/379950fdceb6e4b055a9692dbfd65e42/mediausers/galleries/images/c3/bYnyflz6SbSnLuJeCiMs_cRdYhuPyTOerbnJbrd3h_rawbarimage.jpg?w=1800&fit=max&auto=compress,format&h=1800"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -563,9 +578,10 @@ restaurant_nyc_alex = Restaurant.create(
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
   status: "Wishlist",
   phone_number: "+1 212-792-9000",
-  description: "seafood restaurant Midtown",
+  description: "Seafood restaurant Midtown",
   url: "https://www.thejohndory.com/",
-  email: "johndory@newyork.com"
+  email: "johndory@newyork.com",
+  remote_photo_url: "https://getbento.imgix.net/accounts/379950fdceb6e4b055a9692dbfd65e42/mediausers/galleries/images/c3/bYnyflz6SbSnLuJeCiMs_cRdYhuPyTOerbnJbrd3h_rawbarimage.jpg?w=1800&fit=max&auto=compress,format&h=1800"
   )
 restaurant_nyc_alex.trip = nyc
 restaurant_nyc_alex.participation = alex_nyc
@@ -577,9 +593,10 @@ restaurant_nyc_julie = Restaurant.create(
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
   status: "Wishlist",
   phone_number: "+1 212-792-9000",
-  description: "seafood restaurant Midtown",
+  description: "Seafood restaurant Midtown",
   url: "https://www.thejohndory.com/",
-  email: "johndory@newyork.com"
+  email: "johndory@newyork.com",
+  remote_photo_url: "https://getbento.imgix.net/accounts/379950fdceb6e4b055a9692dbfd65e42/mediausers/galleries/images/c3/bYnyflz6SbSnLuJeCiMs_cRdYhuPyTOerbnJbrd3h_rawbarimage.jpg?w=1800&fit=max&auto=compress,format&h=1800"
   )
 restaurant_nyc_julie.trip = nyc
 restaurant_nyc_julie.participation = julie_nyc
@@ -593,7 +610,8 @@ restaurant_nyc_nina = Restaurant.create(
   phone_number: "+1 718-387-3434",
   description: "Romantic dinner",
   url: "http://www.llamainnnyc.com/",
-  email: "llamainn@newyork.com"
+  email: "llamainn@newyork.com",
+  remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -607,7 +625,8 @@ restaurant_nyc_alex = Restaurant.create(
   phone_number: "+1 718-387-3434",
   description: "Romantic dinner",
   url: "http://www.llamainnnyc.com/",
-  email: "llamainn@newyork.com"
+  email: "llamainn@newyork.com",
+  remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
   )
 restaurant_nyc_alex.trip = nyc
 restaurant_nyc_alex.participation = alex_nyc
@@ -621,7 +640,8 @@ restaurant_nyc_nina = Restaurant.create(
   phone_number: "+1 212-533-3000",
   description: "Brunch!!!",
   url: "http://lafayetteny.com/",
-  email: "lafayette@newyork.com"
+  email: "lafayette@newyork.com",
+  remote_photo_url: "https://img2.10bestmedia.com/Images/Photos/289775/p-LAFAYETTE-2013-LORES-ADRIAN-1415x925_54_990x660.jpg"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -635,7 +655,8 @@ restaurant_nyc_alex = Restaurant.create(
   phone_number: "+1 212-533-3000",
   description: "Brunch!!!",
   url: "http://lafayetteny.com/",
-  email: "lafayette@newyork.com"
+  email: "lafayette@newyork.com",
+  remote_photo_url: "https://img2.10bestmedia.com/Images/Photos/289775/p-LAFAYETTE-2013-LORES-ADRIAN-1415x925_54_990x660.jpg"
   )
 restaurant_nyc_alex.trip = nyc
 restaurant_nyc_alex.participation = alex_nyc
@@ -649,7 +670,8 @@ restaurant_nyc_julie = Restaurant.create(
   phone_number: "+1 212-533-3000",
   description: "Brunch!!!",
   url: "http://lafayetteny.com/",
-  email: "lafayette@newyork.com"
+  email: "lafayette@newyork.com",
+  remote_photo_url: "https://img2.10bestmedia.com/Images/Photos/289775/p-LAFAYETTE-2013-LORES-ADRIAN-1415x925_54_990x660.jpg"
   )
 restaurant_nyc_julie.trip = nyc
 restaurant_nyc_julie.participation = julie_nyc
@@ -663,7 +685,8 @@ restaurant_nyc_nina = Restaurant.create(
   phone_number: "+1 234-768-4000",
   description: "Apparently it is very yumi!",
   url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com"
+  email: "mothersruin@newyork.com",
+  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -677,7 +700,8 @@ restaurant_nyc_alex = Restaurant.create(
   phone_number: "+1 234-768-4000",
   description: "Apparently it is very yumi!",
   url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com"
+  email: "mothersruin@newyork.com",
+  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
   )
 restaurant_nyc_alex.trip = nyc
 restaurant_nyc_alex.participation = alex_nyc
@@ -691,7 +715,8 @@ restaurant_nyc_julie = Restaurant.create(
   phone_number: "+1 234-768-4000",
   description: "Apparently it is very yumi!",
   url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com"
+  email: "mothersruin@newyork.com",
+  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
   )
 restaurant_nyc_julie.trip = nyc
 restaurant_nyc_julie.participation = julie_nyc
@@ -705,7 +730,8 @@ restaurant_nyc_nina = Restaurant.create(
   phone_number: "+1 212-675-6157",
   description: "Speakeasy on Bleecker",
   url: "http://www.garretnyc.com/",
-  email: "thegarret@newyork.com"
+  email: "thegarret@newyork.com",
+  remote_photo_url: "https://media.timeout.com/images/102940480/630/472/image.jpg"
   )
 restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
@@ -719,7 +745,8 @@ restaurant_nyc_julie = Restaurant.create(
   phone_number: "+1 212-675-6157",
   description: "Speakeasy on Bleecker",
   url: "http://www.garretnyc.com/",
-  email: "thegarret@newyork.com"
+  email: "thegarret@newyork.com",
+  remote_photo_url: "https://media.timeout.com/images/102940480/630/472/image.jpg"
   )
 restaurant_nyc_julie.trip = nyc
 restaurant_nyc_julie.participation = julie_nyc
@@ -733,7 +760,8 @@ restaurant_lisbon_nina = Restaurant.create(
   phone_number: "+351 21 803 8815",
   description: "The best restaurant in Lisboa",
   url: "https://www.instagram.com/explore/locations/516570481/a-cevicheria/?hl=en",
-  email: "acevicheria@lisbon.com"
+  email: "acevicheria@lisbon.com",
+  remote_photo_url: "https://media.timeout.com/images/103451712/630/472/image.jpg"
   )
 restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
@@ -747,7 +775,8 @@ restaurant_lisbon_julia = Restaurant.create(
   phone_number: "+351 21 803 8815",
   description: "The best restaurant in Lisboa",
   url: "https://www.instagram.com/explore/locations/516570481/a-cevicheria/?hl=en",
-  email: "acevicheria@lisbon.com"
+  email: "acevicheria@lisbon.com",
+  remote_photo_url: "https://media.timeout.com/images/103451712/630/472/image.jpg"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -761,7 +790,8 @@ restaurant_lisbon_nina = Restaurant.create(
   phone_number: "+351 21 314 3399",
   description: "The craziest and coolest bar in Lisboa",
   url: "http://www.pensaoamor.pt/PT/",
-  email: "pensaoamor@lisbon.com"
+  email: "pensaoamor@lisbon.com",
+  remote_photo_url: "https://www.heartofeverywhere.com/wp-content/uploads/2016/11/IMG_6061-1-Cópia.jpg"
   )
 restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
@@ -775,7 +805,8 @@ restaurant_lisbon_julia = Restaurant.create(
   phone_number: "+351 21 314 3399",
   description: "The craziest and coolest bar in Lisboa",
   url: "http://www.pensaoamor.pt/PT/",
-  email: "pensaoamor@lisbon.com"
+  email: "pensaoamor@lisbon.com",
+  remote_photo_url: "https://www.heartofeverywhere.com/wp-content/uploads/2016/11/IMG_6061-1-Cópia.jpg"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -789,7 +820,8 @@ restaurant_lisbon_nina = Restaurant.create(
   phone_number: "+351 21 395 1274",
   description: "Absolutly amazing!",
   url: "http://www.timeoutmarket.com/",
-  email: "timeoutmarket@lisbon.com"
+  email: "timeoutmarket@lisbon.com",
+  remote_photo_url: "https://i.pinimg.com/originals/c8/dc/4c/c8dc4c46a58262b9ca743bc1b88b023a.jpg"
   )
 restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
@@ -803,7 +835,8 @@ restaurant_lisbon_julia = Restaurant.create(
   phone_number: "+351 21 395 1274",
   description: "Absolutly amazing!",
   url: "http://www.timeoutmarket.com/",
-  email: "timeoutmarket@lisbon.com"
+  email: "timeoutmarket@lisbon.com",
+  remote_photo_url: "https://i.pinimg.com/originals/c8/dc/4c/c8dc4c46a58262b9ca743bc1b88b023a.jpg"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -817,7 +850,8 @@ restaurant_lisbon_nina = Restaurant.create(
   phone_number: "+351 21 342 0319",
   description: "Wine bar and tapas",
   url: "http://jmf.pt/index.php?id=375",
-  email: "wine@lisbon.com"
+  email: "wine@lisbon.com",
+  remote_photo_url: "http://lisboacool.com/sites/default/files/styles/ny_article_horizontal__w720xh480_watermark/public/imagens/artigos/lisboa_cool_sair_by_the_wine_27.jpg?itok=2_cX4s_T"
   )
 restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
@@ -831,7 +865,8 @@ restaurant_lisbon_julia = Restaurant.create(
   phone_number: "+351 21 342 0319",
   description: "Wine bar and tapas",
   url: "http://jmf.pt/index.php?id=375",
-  email: "wine@lisbon.com"
+  email: "wine@lisbon.com",
+  remote_photo_url: "http://lisboacool.com/sites/default/files/styles/ny_article_horizontal__w720xh480_watermark/public/imagens/artigos/lisboa_cool_sair_by_the_wine_27.jpg?itok=2_cX4s_T"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -845,7 +880,8 @@ restaurant_lisbon_nina = Restaurant.create(
   phone_number: "+351 919 485 256",
   description: "Typical portuguese restaurant with a small terrasse",
   url: "http://www.restaurantelisboatueeu.pt/fr_FR/",
-  email: "lisboatueeu@lisbon.com"
+  email: "lisboatueeu@lisbon.com",
+  remote_photo_url: "https://i1.wp.com/vandamiranda.pt/wp-content/uploads/2017/07/Lisboa-06.jpg"
   )
 restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
@@ -859,7 +895,8 @@ restaurant_lisbon_julia = Restaurant.create(
   phone_number: "+351 919 485 256",
   description: "Typical portuguese restaurant with a small terrasse",
   url: "http://www.restaurantelisboatueeu.pt/fr_FR/",
-  email: "lisboatueeu@lisbon.com"
+  email: "lisboatueeu@lisbon.com",
+  remote_photo_url: "https://i1.wp.com/vandamiranda.pt/wp-content/uploads/2017/07/Lisboa-06.jpg"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -867,7 +904,7 @@ restaurant_lisbon_julia.save!
 
 puts "Restaurant created"
 puts "------"
-puts "Creating 9 activity"
+puts "Creating 9 activities"
 
 activity_lisbon_nina = Activity.create(
   name: "Jerónimos Monastery",
@@ -877,7 +914,8 @@ activity_lisbon_nina = Activity.create(
   phone_number: "0725366630",
   description: "Former monastery near the Tagus river in the parish of Belém, very famous!",
   url: "http://www.mosteirojeronimos.gov.pt/pt/index.php",
-  email: "mosteirojeronimos@lisbon.com"
+  email: "mosteirojeronimos@lisbon.com",
+  remote_photo_url: "https://www.askideas.com/media/81/Balcony-Inside-Jeronimos-Monastery.jpg"
   )
 activity_lisbon_nina.trip = lisbon
 activity_lisbon_nina.participation = nina_lisbon
@@ -891,7 +929,8 @@ activity_lisbon_julia = Activity.create(
   phone_number: "0725366630",
   description: "Former monastery near the Tagus river in the parish of Belém, very famous!",
   url: "http://www.mosteirojeronimos.gov.pt/pt/index.php",
-  email: "mosteirojeronimos@lisbon.com"
+  email: "mosteirojeronimos@lisbon.com",
+  remote_photo_url: "https://www.askideas.com/media/81/Balcony-Inside-Jeronimos-Monastery.jpg"
   )
 activity_lisbon_julia.trip = lisbon
 activity_lisbon_julia.participation = julia_lisbon
@@ -905,7 +944,8 @@ activity_lisbon_nina = Activity.create(
   phone_number: "0744353637",
   description: "Best way to visit Lisbon",
   url: "https://www.viator.com/tours/Lisbon/Lisbon-Hills-Electric-Bike-Tour/d538-5509LSB7EBIKETOUR",
-  email: "electricbiketour@lisbon.com"
+  email: "electricbiketour@lisbon.com",
+  remote_photo_url: "http://www.cyclinglisbon.com/wp-content/uploads/2017/03/04-1.jpg"
   )
 activity_lisbon_nina.trip = lisbon
 activity_lisbon_nina.participation = nina_lisbon
@@ -919,7 +959,8 @@ activity_lisbon_julia = Activity.create(
   phone_number: "0744353637",
   description: "Best way to visit Lisbon",
   url: "https://www.viator.com/tours/Lisbon/Lisbon-Hills-Electric-Bike-Tour/d538-5509LSB7EBIKETOUR",
-  email: "electricbiketour@lisbon.com"
+  email: "electricbiketour@lisbon.com",
+  remote_photo_url: "http://www.cyclinglisbon.com/wp-content/uploads/2017/03/04-1.jpg"
   )
 activity_lisbon_julia.trip = lisbon
 activity_lisbon_julia.participation = julia_lisbon
@@ -933,7 +974,8 @@ activity_nyc_nina = Activity.create(
   phone_number: "+1 278-214-5000",
   description: "Unmissable",
   url: "https://www.guggenheim.org/",
-  email: "guggenheim@newyork.com"
+  email: "guggenheim@newyork.com",
+  remote_photo_url: "https://images.adsttc.com/media/images/5755/2501/e58e/ceff/0900/065d/large_jpg/copyright_laurian_ghinitoiu_guggenheim_ny_(18_of_30).jpg?1465197822"
   )
 activity_nyc_nina.trip = nyc
 activity_nyc_nina.participation = nina_nyc
@@ -947,7 +989,8 @@ activity_nyc_julie = Activity.create(
   phone_number: "+1 278-214-5000",
   description: "Unmissable",
   url: "https://www.guggenheim.org/",
-  email: "guggenheim@newyork.com"
+  email: "guggenheim@newyork.com",
+  remote_photo_url: "https://images.adsttc.com/media/images/5755/2501/e58e/ceff/0900/065d/large_jpg/copyright_laurian_ghinitoiu_guggenheim_ny_(18_of_30).jpg?1465197822"
   )
 activity_nyc_julie.trip = nyc
 activity_nyc_julie.participation = julie_nyc
@@ -961,7 +1004,8 @@ activity_nyc_nina = Activity.create(
   phone_number: "+1 718-486-7422",
   description: "Can we go there please please please!???",
   url: "http://brooklynbrewery.com/verify",
-  email: "brooklynbrewery@newyork.com"
+  email: "brooklynbrewery@newyork.com",
+  remote_photo_url: "https://cdn.viewing.nyc/assets/media/0b4fc8f7c444dc7fbd7bf03c095990d3/elements/491efb64e8b635a8c20da968987ebfdc/xl/8acd8050-2dbd-4069-887f-be3709cc7fd0_2x.jpg"
   )
 activity_nyc_nina.trip = nyc
 activity_nyc_nina.participation = nina_nyc
@@ -975,7 +1019,8 @@ activity_nyc_alex = Activity.create(
   phone_number: "+1 718-486-7422",
   description: "Can we go there please please please!???",
   url: "http://brooklynbrewery.com/verify",
-  email: "brooklynbrewery@newyork.com"
+  email: "brooklynbrewery@newyork.com",
+  remote_photo_url: "https://cdn.viewing.nyc/assets/media/0b4fc8f7c444dc7fbd7bf03c095990d3/elements/491efb64e8b635a8c20da968987ebfdc/xl/8acd8050-2dbd-4069-887f-be3709cc7fd0_2x.jpg"
   )
 activity_nyc_alex.trip = nyc
 activity_nyc_alex.participation = alex_nyc
@@ -989,7 +1034,8 @@ activity_nyc_julie = Activity.create(
   phone_number: "+1 718-486-7422",
   description: "Can we go there please please please!???",
   url: "http://brooklynbrewery.com/verify",
-  email: "brooklynbrewery@newyork.com"
+  email: "brooklynbrewery@newyork.com",
+  remote_photo_url: "https://cdn.viewing.nyc/assets/media/0b4fc8f7c444dc7fbd7bf03c095990d3/elements/491efb64e8b635a8c20da968987ebfdc/xl/8acd8050-2dbd-4069-887f-be3709cc7fd0_2x.jpg"
   )
 activity_nyc_julie.trip = nyc
 activity_nyc_julie.participation = julie_nyc

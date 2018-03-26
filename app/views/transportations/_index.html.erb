@@ -26,6 +26,7 @@
                 <h4 class="modal-title text-center" id="myModalLabel">Add a transportation</h4>
               </div>
               <div class="modal-body">
+                <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
                 <%= simple_form_for [trip, transportation] do |f| %>
                 <div class="row">
                   <div class="col-xs-6">

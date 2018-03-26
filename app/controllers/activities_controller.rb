@@ -18,6 +18,10 @@ class ActivitiesController < ApplicationController
     end
     @activities = @all_activities.reject { |resa| resa unless (resa.same_reservation & @my_activities).empty? }
     @activity = Activity.new
+    @trip_dates = {
+      start_date: @trip.start_date,
+      end_date: @trip.end_date
+    }
     respond_to do |format|
       format.html
       format.js

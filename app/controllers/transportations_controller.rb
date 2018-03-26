@@ -8,6 +8,10 @@ def index
   @transportations = @trip.transportations.all
   @trip_participants =  @trip.participations
   @transportation = Transportation.new
+  @trip_dates = {
+    start_date: @trip.start_date,
+    end_date: @trip.end_date
+  }
   respond_to do |format|
     format.html
     format.js

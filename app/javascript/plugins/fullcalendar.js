@@ -7,6 +7,9 @@ function displayCalendar() {
   if (calendarElement) {
     const events = JSON.parse(calendarElement.dataset.events);
       $('#calendar').fullCalendar({
+          locale: 'en',
+          firstDay: 1,
+          height: 450,
           header: {
             left:   'title',
             center: 'months,weeks,days'
@@ -19,25 +22,30 @@ function displayCalendar() {
           },
           views: {
             months: {
-              type: 'month',
+              type: 'month'
             },
             weeks: {
               type: 'agendaWeek',
               titleFormat: 'MMM D',
               columnHeaderFormat: 'ddd D',
-              scrollTime: "08:00:00",
-              nowIndicator: true
+              scrollTime: "10:00:00",
+              nowIndicator: true,
+              slotDuration:'01:00:00',
+              slotLabelInterval: "02:00"
             },
             days: {
               type: 'agenda',
               duration: { days: 1 },
               titleFormat: 'MMMM D',
-              scrollTime: "08:00:00",
-              nowIndicator: true
+              scrollTime: "10:00:00",
+              nowIndicator: true,
+              slotDuration:'01:00:00',
+              slotLabelInterval: "02:00"
             }
           },
           events: events
-        })
+        });
+      $('#calendar').fullCalendar('gotoDate', new Date(events[0].start));
   }
 }
 
