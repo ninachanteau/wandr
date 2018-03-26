@@ -17,7 +17,8 @@ class Transportation < ApplicationRecord
     @transportation.departure_port_longitude = self.departure_port_longitude
     @transportation.arrival_port_latitude = self.arrival_port_latitude
     @transportation.arrival_port_longitude = self.arrival_port_longitude
-    @transportation.trip = self.trip
+    @transportation.participation = participant
+    # @transportation.trip = self.trip
     @transportation.save
   end
 

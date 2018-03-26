@@ -46,9 +46,73 @@
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
+  align-items: center;
   &:hover {
     background-color: $white-middle-transparent;
     box-shadow: 2px 2px 3px $light-gray;
+  }
+}
+
+.cards-ctn {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.transpo-title {
+    padding-left: 12px;
+  }
+
+.transportation-card {
+  margin-right: 30px !important;
+  background-color: white;
+  height: 300px;
+  width: 250px;
+  margin: 10px;
+  display: block;
+  border-radius: 20px;
+  position: relative;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  border-left: 4px dashed $light-gray;
+  .transpo-avatar {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  .transpo-status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+.details-card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  p {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-left: 5px;
+  }
+  .departure {
+    margin-top: 70px;
+  }
+  .arrival {
+    margin-top: 20px;
+  }
+  .ticket-price {
+    margin-top: 20px;
+  }
+}
+
+.reference-card {
+  background-color: white;
+  // border-top: 4px dashed $light-gray;
+  border-radius: 20px;
+  .reference {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top: 15px;
+    color: $middle-gray;
   }
 }
 
@@ -60,7 +124,4 @@
   }
 }
 
-.price-status {
-  min-width: 80px;
-}
 

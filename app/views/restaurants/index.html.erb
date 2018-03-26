@@ -34,7 +34,7 @@
               <td class="date">
                 <% if restaurant.date %>
                   <p ><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                  <p ><%= restaurant.date.strftime("%H:%M") %></p>
+                  <p >@ <%= restaurant.date.strftime("%H:%M") %></p>
                 <% else %>
                   <p>Not scheduled yet</p>
                 <% end %>
@@ -113,6 +113,9 @@
                 </div>
                 <!-- Add participants -->
                 <div class="modal-body">
+                  <!-- New form_tag -->
+
+                  <!-- Old simple form for -->
                   <%= simple_form_for [@trip, @restaurant] do |f| %>
                     <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
                     <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
@@ -130,11 +133,19 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
+                  <p>Who will be attending?</p>
+                  <%= form_tag(trip_restaurants_path, method: :post) %>
+                    <% @trip.participations.each do |part| %>
+                        <%= check_box_tag part.pseudo%>
+                        <%= h part.pseudo -%>
+                        <br>
+                      <% end %>
+                      <br>
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+<!--                   <br>
                   <br>
-                  <br>
-                  <p>Don't forget to pick the participants</p>
-                  <form action="restaurant/create">
+                  <p>Don't forget to pick the participants</p> -->
+<!--                   <form action="restaurant/create">
                       <% @trip.participations.each do |part| %>
                         <input type="checkbox" name="<%= part.pseudo %>">
                         <%= part.pseudo %>
@@ -143,7 +154,7 @@
                         <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
                       <% end %>
                     <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                  </form>
+                  </form> -->
                   <% end %>
                 </div>
               </div>
@@ -176,7 +187,7 @@
               <td class="date">
                 <% if restaurant.date %>
                   <p><%= restaurant.date.strftime("%b %d, %Y") %></p>
-                  <p><%= restaurant.date.strftime("%H:%M") %></p>
+                  <p>@ <%= restaurant.date.strftime("%H:%M") %></p>
                 <% else %>
                   <p>Not scheduled yet</p>
                 <% end %>

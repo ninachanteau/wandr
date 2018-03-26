@@ -23,11 +23,11 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create(restaurant_params)
+    @restaurant = Restaurant.new(restaurant_params)
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
     @trip_participants =  @trip.participations
-    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo.to_sym] == "on"}
+    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     if @restaurant.save!
       @resto_participants.each do |part|
         @restaurant.add_participant(part)
