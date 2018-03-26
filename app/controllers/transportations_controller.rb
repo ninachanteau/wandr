@@ -8,7 +8,10 @@ def index
   @transportations = @trip.transportations.all
   @trip_participants =  @trip.participations
   @transportation = Transportation.new
-
+  respond_to do |format|
+    format.html
+    format.js
+  end
 end
 
 def new
