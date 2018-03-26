@@ -1,0 +1,7 @@
+
+function loadAccommodations(innerHTML) {
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = innerHTML;
+};
+
+loadAccommodations('<%= j render "index", accommodations: @accommodations, trip_participants: @trip_participants, trip: @trip, accommodation: @accommodation, my_accommodations: @my_accommodations %>');

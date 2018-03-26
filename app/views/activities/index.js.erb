@@ -1,0 +1,6 @@
+function loadRestaurants(innerHTML) {
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = innerHTML;
+};
+
+loadRestaurants(`'<%= j render "index", activities: @activities, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);

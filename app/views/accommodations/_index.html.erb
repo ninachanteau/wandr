@@ -1,0 +1,276 @@
+<div class="new-container">
+<div class="container">
+
+  <div class="header">
+    <div class="title text-center"> <h2><%= trip.name  %>  ...  <i class="fa fa-home title-icon"></i></h2>
+    </div>
+  </div>
+
+</div>
+
+<div class="accommodations-container">
+  <div class="accommodations-ctn">
+    <div class="activities-card">
+      <h4>Upcoming accommodation </h4>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Date</th>
+                <th scope="col">Nights</th>
+                <th scope="col">Rooms</th>
+                <th scope="col">Price (€)</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <% my_accommodations.order(:start_date).each do |accom| %>
+                <tr>
+                  <td class="name">
+                    <p><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
+                  </td>
+                  <td class="contact">
+                    <p><%= accom.address%></p>
+                    <p><%= accom.email%></p>
+                    <p><%= accom.phone_number%></p>
+                  </td>
+                  <td class="date">
+                    <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
+                    <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
+                  </td>
+                  <td class="nights">
+                    <p><%= accom.number_of_nights%></p>
+                  </td>
+                  <td class="rooms">
+                    <p><%= accom.number_of_rooms%></p>
+                  </td>
+                  <td class="price">
+                    <%= number_with_precision(accom.total_price, precision: 2)%>€
+                  </td>
+                  <td class="status">
+                    <div class="<%= accom.status%>">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% if accom.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
+                        </button>
+                        <div class="dropdown-menu">
+                        <% if accom.status == "Booked" %>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif accom.status == "Wishlist" %>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_accommodation_path(trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="participants">
+                    <% accom.participants.each do |participant| %>
+                      <% if participant.user %>
+                        <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+                <% end %>
+              </tbody>
+          </table>
+        </div>
+    </div>
+    <div class="accommodations-card">
+
+      <!-- Button trigger modal -->
+      <div type="button" data-toggle="modal" data-target="#myModal">
+        <i class="fa fa-plus-circle plus-btn"></i>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title text-center" id="myModalLabel">Add Accommodation</h4>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [trip, accommodation] do |f| %>
+                <div class="row">
+                  <div class="col-xs-6">
+                <%= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Start date", label: false, data_altinput: true, data_enabletime: true %>
+                  </div>
+                  <div class="col-xs-6">
+                <%= f.input :end_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "End date", label: false, data_altinput: true, data_enabletime: true %>
+                  </div>
+                </div>
+                <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+                <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+                <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                <div class="row">
+                  <div class="col-xs-6">
+                <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+                  </div>
+                  <div class="col-xs-6">
+                <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-4">
+                <%= f.input :number_of_rooms, class: 'form-control', placeholder: "Nb of rooms", label: false %>
+                  </div>
+                  <div class="col-xs-4">
+                <%= f.input :number_of_nights, class: 'form-control', placeholder: "Nb of nights", label: false %>
+                  </div>
+                  <div class="col-xs-4">
+                <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
+                  </div>
+                </div>
+                <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+
+                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                                <!-- Add participants -->
+                <br>
+                <br>
+                <p>Don't forget to pick the participants</p>
+                  <form action="accommodation/create">
+                    <% trip_participants.each do |part| %>
+                      <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                      <br>
+                      <%#= f.label part.pseudo %>
+                      <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                    <% end %>
+                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
+                  </form>
+
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h4>All accommodation</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Contact</th>
+            <th scope="col">Date</th>
+            <th scope="col">Nights</th>
+            <th scope="col">Rooms</th>
+            <th scope="col">Price (€)</th>
+            <th scope="col">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% accommodations.each do |accom| %>
+            <% if accom.start_date != Date.today  %>
+            <tr>
+              <td class="name">
+                <p><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
+              </td>
+              <td class="contact">
+                <p><%= accom.address%></p>
+                <p><%= accom.email%></p>
+                <p><%= accom.phone_number%></p>
+              </td>
+              <td class="date">
+                <p><%= accom.start_date.strftime("%b %d, %Y")%></p>
+                <p><%= accom.end_date.strftime("%b %d, %Y")%></p>
+              </td>
+              <td class="nights">
+                <p><%= accom.number_of_nights%></p>
+              </td>
+              <td class="rooms">
+                <p><%= accom.number_of_rooms%></p>
+              </td>
+              <td class="price">
+                <%= number_with_precision(accom.total_price, precision: 2)%>€
+              </td>
+              <td class="status">
+                <div class="<%= accom.status%>">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <% if accom.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
+                    </button>
+                    <div class="dropdown-menu">
+                        <% if accom.status == "Booked" %>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif accom.status == "Wishlist" %>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_accommodation_path(trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
+                  </div>
+                </div>
+              </td>
+              <td class="participants">
+                <% if accom.participation.present? %>
+                  <% accom.participants.each do |participant|  %>
+                      <% if participant.user %>
+                        <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <% end %>
+                  <% end %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      </div>
+
+<!--       <div class=" wishlist-card hidden-xs">
+        <h4>Wishlist:</h4>
+      </div> -->
+    </div>
+    </div>
+  </div>
+

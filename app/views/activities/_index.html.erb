@@ -1,0 +1,249 @@
+<div class="new-container">
+  <div class="container">
+
+    <div class="header">
+      <div class="title text-center"> <h2><%= trip.name  %>  ...  <i class="fa fa-university" style="color: #AAAAAA"></i></h2>
+      </div>
+    </div>
+
+    <div class="activities-container">
+
+      <div class="activities-ctn">
+
+        <div class="activities-card">
+         <h4>Upcoming activities</h4>
+         <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="table-name">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col" class="table-status">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% my_activities.order(:date).each do |activ|  %>
+                <tr>
+                  <td class="name">
+                    <p><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
+                  </td>
+                  <td class="contact">
+                    <p><%= activ.address%></p>
+                    <p><%= activ.email%></p>
+                    <p><%= activ.phone_number%></p>
+                  </td>
+                  <td class="date">
+                    <p><%= activ.date.strftime("%b %d, %Y") %></p>
+                    <p> <%= activ.date.strftime("%H:%M") %></p>
+                  </td>
+                  <td class="description">
+                    <p><%= activ.description%></p>
+                  </td>
+                  <td class="status">
+                    <div class="<%= activ.status%>">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% if activ.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
+                        </button>
+                        <div class="dropdown-menu">
+                        <% if activ.status == "Booked" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif activ.status == "Wishlist" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_activity_path(trip, activ), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="participants">
+                    <% activ.participants.each do |participant| %>
+                      <% if participant.user %>
+                        <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                      <% else %>
+                        <%= image_tag "default-user.jpg", class: "avatar" %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="activities-card">
+
+          <!-- Button trigger modal -->
+          <div type="button" data-toggle="modal" data-target="#ActivityModal">
+            <i class="fa fa-plus-circle plus-btn"></i>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="myAModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for [trip, activity] do |f| %>
+                    <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
+                    <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+                    <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                    <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+                    <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                    <div class="row">
+                    <div class="col-xs-6">
+                    <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+                    </div>
+                    <div class="col-xs-6">
+                    <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                    </div>
+                    </div>
+                    <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
+                    <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+                    <!-- Add participants -->
+
+                    <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                    <br>
+                    <br>
+                    <p>Don't forget to pick participants</p>
+                    <form action="activity/create">
+                      <% trip.participations.each do |part| %>
+                        <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
+                        <br>
+                        <%#= f.label part.pseudo %>
+                        <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
+                      <% end %>
+                      <%#= f.select :participants, collection: trip_participants, {multiple: true} %>
+                      </form>
+
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4>All activities</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="table-name">Name</th>
+                <th scope="col">Contact</th>
+                <th scope="col">Date</th>
+                <th scope="col">Description</th>
+                <th scope="col" class="table-status">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% activities.each do |activity| %>
+
+                <tr>
+                  <td class="name">
+                    <p><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></p>
+                  </td>
+                  <td class="contact">
+                    <p><%= activ.address%></p>
+                    <p><%= activ.email%></p>
+                    <p><%= activ.phone_number%></p>
+                  </td>
+                  <td class="date">
+                    <% if activ.date %>
+                    <p><%= activ.date.strftime("%b %d, %Y") %></p>
+                    <p> <%= activ.date.strftime("%H:%M") %></p>
+                    <% else %>
+                    <p>Not scheduled yet</p>
+                    <% end %>
+                  </td>
+                  <td class="description">
+                    <p><%= activ.description%></p>
+                  </td>
+                  <td class="status">
+                    <div class="<%= activ.status%>">
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% if activ.status == "Wishlist" %>
+                          <%= render 'shared/wishlist-icon' %>
+                        <% else %>
+                          <%= render 'shared/booked-icon' %>
+                        <% end %>
+                        </button>
+                        <div class="dropdown-menu">
+                        <% if activ.status == "Booked" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/wishlist-icon'  %>
+                              Wishlist
+                            </span>
+                          <% end %>
+                        <% elsif activ.status == "Wishlist" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/booked-icon'  %>
+                              Booked
+                            </span>
+                          <% end %>
+                        <% end %>
+                        <div class="dropdown-divider"></div>
+                        <%= link_to trip_activity_path(trip, activ), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                            <span>
+                              <%= render 'shared/delete-icon'  %>
+                              Delete
+                            </span>
+                          <% end %>
+                      </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="participants">
+                    <% if activ.participation.present? %>
+                      <% activ.participants.each do |participant|  %>
+                          <% if participant.user %>
+                            <%= cl_image_tag participant.user.avatar, class: "avatar" %>
+                          <% else %>
+                            <%= image_tag "default-user.jpg", class: "avatar" %>
+                          <% end %>
+                      <% end %>
+                    <% end %>
+                  </td>
+                </tr>
+
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+<!--
+        <div class=" wishlist-card hidden-xs">
+
+          <h4>Wishlist</h4>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+
