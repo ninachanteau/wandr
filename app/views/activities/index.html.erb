@@ -126,7 +126,7 @@
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
                     <p>Who will be attending?</p>
-                    <%= form_tag(trip_accommodations_path, method: :post) %>
+                    <%= form_tag(trip_activities_path, method: :post) %>
                     <% @trip.participations.each do |part| %>
                         <%= check_box_tag part.pseudo%>
                         <%= h part.pseudo -%>
