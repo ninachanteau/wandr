@@ -35,11 +35,8 @@
                             <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "End Date", label: false %>
                               </div>
                             </div>
-                            <%= f.submit "Add trip", class: "btn btn-info" %>
+                            <%= f.submit "Add trip", class: "btn btn-info", style: "width: 100%" %>
                           <% end %>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                       </div>
                     </div>
@@ -85,11 +82,8 @@
                   <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "End Date", label: false, data_altinput: true, data_enabletime: true %>
                     </div>
                   </div>
-                  <%= f.submit "Add trip", class: "btn btn-info" %>
+                  <%= f.submit "Add trip", class: "btn btn-info", style: "width: 100%" %>
                 <% end %>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
