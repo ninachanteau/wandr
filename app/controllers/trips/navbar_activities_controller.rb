@@ -50,7 +50,8 @@ class Trips::NavbarActivitiesController < ApplicationController
   def update
     @activity = Activity.find(params[:id])
     @trip = params["activity"]["trip"]
-    @activity.trip = Trip.find_by_name(@trip) unless @activity.trip.present?
+    @activity.trip = Trip.find_by_name(@trip)
+    @activity.save
     redirect_to root_path
   end
 

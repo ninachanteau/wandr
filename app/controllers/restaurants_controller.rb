@@ -23,7 +23,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.create(restaurant_params)
+    @restaurant = Restaurant.new(restaurant_params)
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
     @trip_participants =  @trip.participations
