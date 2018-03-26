@@ -1,0 +1,25 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  <h4 class="modal-title text-center" id="myModalLabel">Add Activity</h4>
+</div>
+<div class="modal-body">
+  <%= simple_form_for activity, url: trips_navbar_activity_path(activity), method: :patch  do |f| %>
+  <div class="new-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+          <%= f.input :name %>
+          <%= f.input :address %>
+          <%= f.input :phone_number %>
+          <%= f.input :email %>
+          <%= f.input :url %>
+          <%= f.input :description %>
+          <%= f.input :photo %>
+          <%= f.select :trip, options_for_select(trips) %>
+          <%= f.button :submit, class: "btn btn-info btn-form", style: "margin: 20px" %>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

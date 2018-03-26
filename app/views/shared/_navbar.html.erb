@@ -20,21 +20,17 @@
         </form>
         </div>
         <% if params["type"] == "restaurant"  %>
-            <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post do |f| %>
+            <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
               <%= f.input :url, class: "navbar-input", placeholder: "enter url", label: false %>
             <% end %>
         <% elsif params["type"] == "accommodation" %>
-          <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post do |f| %>
+          <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
             <%= f.input :url, class: "navbar-input", placeholder: "enter url", label: false %>
           <% end %>
         <% elsif params["type"] == "activity" %>
-          <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post do |f| %>
+          <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
             <%= f.input :url, class: "navbar-input", placeholder: "enter url", label: false %>
           <% end %>
-        <% else %>
-          <form action="">
-            <input placeholder="enter url", class="navbar-input", label="false">
-          </form>
         <% end %>
         <div>
       <% end %>
@@ -83,3 +79,13 @@
     </div>
   </div> -->
 </div>
+      <a href="#" id="Modalbutton" data-toggle="modal" data-target="#UrlModal"></a>
+      <!-- Modal -->
+      <div class="modal fade" id="UrlModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="EditFormUrl>
+              <!-- yield -->
+          </div>
+        </div>
+      </div>
+
