@@ -1,0 +1,21 @@
+#header {
+  #logo {
+    height: 50px;
+  }
+}
+
+.participants-container {
+  .participant {
+    display: inline-block;
+  }
+  padding: 20px 20px;
+  margin-bottom: 30px;
+}
+
+.participant {
+  margin-right: 18px;
+  p {
+    font-size: 15px;
+    color: $middle-gray;
+  }
+}
