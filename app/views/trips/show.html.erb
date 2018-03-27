@@ -5,6 +5,7 @@
         <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
       <% end %>
   </h2>
+  <%= link_to "PDF", recap_trip_path(@trip, :format => 'pdf') %>
   <div class="row">
     <div class="col-md-12">
       <div class="participants-container">

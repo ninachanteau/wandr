@@ -189,9 +189,7 @@ class TripsController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: @trip.destination,
-        template: "trips/recap.html.erb"
-        layout: 'pdf.html'
+        render pdf: "recap", disposition: "attachment"
       end
     end
   end
