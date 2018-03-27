@@ -17,6 +17,7 @@
       <div class="card-index-ctn">
         <% my_accommodations.order(:start_date).each do |accom| %>
         <div class="index-card">
+          <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<% cl_image_path accommodation.photo_url%>')"></div>
           <div class="index-name">
             <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
           </div>
