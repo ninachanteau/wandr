@@ -18,6 +18,10 @@ class RestaurantsController < ApplicationController
       start_date: @trip.start_date,
       end_date: @trip.end_date
     }
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new

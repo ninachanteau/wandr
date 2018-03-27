@@ -8,6 +8,10 @@ class TripsController < ApplicationController
     @past_trips = current_user.trips.past
     @wishlist_trips = current_user.trips.wishlist
     @trip = Trip.new
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show
@@ -141,6 +145,11 @@ class TripsController < ApplicationController
     @events = @events.sort_by { |event| event[:start] }
     @participation = Participation.new
     @participation.trip = @trip
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def new
@@ -166,7 +175,7 @@ class TripsController < ApplicationController
   def add_participant
     @participation = Participation.new
     @participation.trip = Trip.find(params[:id])
-    redirect_to trip_partipations(@participation.trip)
+    redirect_to trip_participations(@participation.trip)
   end
 
   private

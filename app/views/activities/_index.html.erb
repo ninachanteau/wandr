@@ -18,7 +18,7 @@
             <% my_activities.order(:date).each do |activ| %>
               <div class="index-card">
                 <div class="index-photo">
-                  <%= cl_image_tag activity.photo.url class: "ind-photo" crop: :fill %>
+                  <%= cl_image_tag activ.photo.url class: "ind-photo", crop: :fill %>
                 </div>
                 <div class="index-name">
                   <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
