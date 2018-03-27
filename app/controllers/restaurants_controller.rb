@@ -15,6 +15,10 @@ class RestaurantsController < ApplicationController
     @restaurants = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
     session[:notifications][@trip.id][:restaurant] = Time.now
     @restaurant = Restaurant.new
+    @trip_dates = {
+      start_date: @trip.start_date,
+      end_date: @trip.end_date
+    }
   end
 
   def new

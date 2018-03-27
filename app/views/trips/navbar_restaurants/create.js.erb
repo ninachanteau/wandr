@@ -1,0 +1,12 @@
+function openModal() {
+  const button = document.getElementById("Modalbutton");
+  button.click();
+}
+
+function getForm() {
+  const form = document.getElementById("EditFormUrl");
+  form.innerHTML = "<%= j render 'trips/navbar_restaurants/edit_form', restaurant: @restaurant, trips: @trips %>"
+}
+
+getForm();
+openModal();

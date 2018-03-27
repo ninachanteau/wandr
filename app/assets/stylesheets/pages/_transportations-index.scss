@@ -46,6 +46,7 @@
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
+  max-width: 1050px;
   align-items: center;
   &:hover {
     background-color: $white-middle-transparent;
@@ -56,6 +57,7 @@
 .cards-ctn {
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .transpo-title {
@@ -64,6 +66,7 @@
 
 .transportation-card {
   margin-right: 30px !important;
+  margin-bottom: 30px !important;
   background-color: white;
   height: 300px;
   width: 250px;

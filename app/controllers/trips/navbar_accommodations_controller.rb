@@ -27,19 +27,18 @@ class Trips::NavbarAccommodationsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
+    @trips = current_user.trips.map {|trip| [trip.name, trip.id]}
     @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @accommodation.save
-      redirect_to edit_trips_navbar_accommodation_path(@accommodation)
-      #  respond_to do |format|
-      #   format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
-      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
-      # end
+       respond_to do |format|
+        format.html { redirect_to edit_trips_navbar_accommodation_path(@accommodation) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'trips/index'
-      # respond_to do |format|
-      #   format.html { render 'trips/index' }
-      #   format.js  # <-- idem
-      # end
+      respond_to do |format|
+        format.html { render 'trips/index' }
+        format.js  # <-- idem
+      end
     end
   end
 

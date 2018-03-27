@@ -3,6 +3,7 @@ function loadActivities(innerHTML) {
   wrapper.innerHTML = innerHTML;
 };
 
+
 loadActivities(`'<%= j render "index", activities: @activities, participation: @participation, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
 
 function removeNotification() {
@@ -11,3 +12,4 @@ function removeNotification() {
 }
 
 removeNotification()
+

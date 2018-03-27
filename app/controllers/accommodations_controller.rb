@@ -16,6 +16,10 @@ class AccommodationsController < ApplicationController
     session[:notifications][@trip.id][:accommodation] = Time.now
     @accommodations = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
     @accommodation = Accommodation.new
+    @trip_dates = {
+      start_date: @trip.start_date,
+      end_date: @trip.end_date
+    }
     respond_to do |format|
       format.html
       format.js
