@@ -27,7 +27,6 @@
             <%= number_with_precision(accom.total_price, precision: 2)%>€
           </div>
 <!--           <div class="index-address">
-
           </div> -->
           <div class="index-status">
             <div class="ind-status">
@@ -41,19 +40,19 @@
                 </button>
               <div class="dropdown-menu">
                 <% if accom.status == "Booked" %>
-                  <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                  <span>
-                    <%= render 'shared/wishlist-icon'  %>
-                    Wishlist
-                  </span>
-                <% end %>
+                    <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                    <span>
+                      <%= render 'shared/wishlist-icon'  %>
+                      Wishlist
+                    </span>
+                  <% end %>
                 <% elsif accom.status == "Wishlist" %>
                   <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                <span>
-                  <%= render 'shared/booked-icon'  %>
-                  Booked
-                </span>
-                <% end %>
+                    <span>
+                    <%= render 'shared/booked-icon'  %>
+                    Booked
+                    </span>
+                  <% end %>
                 <% end %>
               <div class="dropdown-divider"></div>
                 <%= link_to trip_accommodation_path(trip, accom), method: :delete, class: "dropdown-item status-dropdown-item" do %>
@@ -164,6 +163,7 @@
           </div>
         </div>
       </div>
+
 
       <div class="index-title">
         <h4>All accommodation</h4>

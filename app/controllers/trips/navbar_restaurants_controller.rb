@@ -24,19 +24,17 @@ class Trips::NavbarRestaurantsController < ApplicationController
     @restaurant.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
-    @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    @trips =  current_user.trips.map {|trip| "#{trip.destination} - #{trip.name}"}
     if @restaurant.save
-      redirect_to edit_trips_navbar_restaurant_path(@restaurant)
-      #  respond_to do |format|
-      #   format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
-      #   format.js  # <-- will render `app/views/reviews/create.js.erb`
-      # end
+       respond_to do |format|
+        format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
+        format.js  # <-- will render `app/views/reviews/create.js.erb`
+      end
     else
-      render 'trips/index'
-      # respond_to do |format|
-      #   format.html { render 'trips/index' }
-      #   format.js  # <-- idem
-      # end
+      respond_to do |format|
+        format.html { render 'trips/index' }
+        format.js  # <-- idem
+      end
     end
   end
 
