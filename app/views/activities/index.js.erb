@@ -4,7 +4,7 @@ function loadActivities(innerHTML) {
 };
 
 
-loadActivities(`'<%= j render "index", activities: @activities, participation: @participation, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
+loadActivities(`'<%= j render "index", activities: @activities, participation: @participation, trip_dates: @trip_dates, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
 
 function removeNotification() {
   const notification = document.getElementById('activities-notif');
