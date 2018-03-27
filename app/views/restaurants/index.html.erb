@@ -16,7 +16,8 @@
           <div class="card-index-ctn">
             <% @my_restaurants.order(:date).each do |restaurant| %>
             <div class="index-card">
-              <div class="indax-name">
+<!--               <div class="index-photo"><%#= cl_image_tag restaurant.photo.url class: "ind-photo" %></div> -->
+              <div class="index-name">
                 <p class="ind-name"><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
               </div>
               <div class="index-date">
