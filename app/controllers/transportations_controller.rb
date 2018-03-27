@@ -8,7 +8,7 @@ def index
   @transportations = @trip.transportations.all
   @trip_participants =  @trip.participations
   @transportation = Transportation.new
-  session[@trip.id][:transportation] = Time.now
+  session[:notification][@trip.id][:transportation] = Time.now
   respond_to do |format|
     format.html
     format.js
