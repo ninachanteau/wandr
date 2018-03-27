@@ -34,6 +34,20 @@
   position: relative;
 }
 
+.nav-link {
+  border: none;
+  &:hover {
+    border: none;
+  }
+}
+
+.nav-tabs > li > a {
+  border: none;
+  &:hover {
+    border: none;
+  }
+}
+
 .sidebar-container a.active {
   i {
     color: rgb(100, 100, 100);
