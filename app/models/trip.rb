@@ -26,6 +26,6 @@ class Trip < ApplicationRecord
   end
 
   def all_transportations
-    self.transportations.group(:departure_port, :arrival_port, :departure_date, :arrival_date).count
+    self.transportations.group(:departure_port, :arrival_port, :departure_date, :arrival_date, :status).count
   end
 end
