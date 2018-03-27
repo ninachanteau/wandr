@@ -24,4 +24,8 @@ class Trip < ApplicationRecord
   def all_activities
     Activity.where(trip_id: self.id).group(:name, :date).count
   end
+
+  def all_transportations
+    self.transportations.group(:departure_port, :arrival_port, :departure_date, :arrival_date, :status).count
+  end
 end
