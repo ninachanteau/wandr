@@ -1,6 +1,18 @@
 <div class="navbar-wagon">
   <!-- Logo -->
 
+<div class="navbar-wagon-left">
+  <% if params[:controller] == "trips" && params[:action] == "show"%>
+    <h3 class="navbar-title"><strong><%= @trip.destination %></strong>
+      <% if @trip.start_date.present? %>
+        <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
+      <% end %>
+    </h3>
+  <% end %>
+  <% if params[:controller] == "transportations" && params[:action] == "index"%>
+    <h3 class="navbar-title"><strong><%= @trip.destination %></strong> | <h2><%= @trip.name  %>  ...  <i class="fa fa-plane title-icon"></i>
+  <% end %>
+</div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
