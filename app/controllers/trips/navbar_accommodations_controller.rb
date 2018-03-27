@@ -58,7 +58,16 @@ class Trips::NavbarAccommodationsController < ApplicationController
       @accommodation.trip = Trip.find(@trip)
     end
     @accommodation.save
-    redirect_to root_path
+    @accom_participants = []
+    if params[:accommodation][:participations][:pseudo]
+      params[:accommodation][:participations][:pseudo].each do |part|
+        @accom_participants << Participation.find(part) if part.present?
+      end
+      @accom_participants.each do |part|
+        @accommodation.add_participant(part)
+      end
+      redirect_to root_path
+    end
   end
 
   private
