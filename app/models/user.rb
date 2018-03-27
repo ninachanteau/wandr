@@ -11,4 +11,14 @@ class User < ApplicationRecord
   has_many :restaurants, through: :participations
   has_many :activities, through: :participations
   validates_uniqueness_of :email
+
+  def new_count(trip, method_name, notifications_hash)
+    @new_items = method_name.all.select do |item|
+      item.created_at > self.last_sign_in_at && item.trip.id == trip.id  # && (item.created_at > notifications_hash[trip.id][method_name.to_s.downcase.to_sym] if notifications_hash[trip.id][method_name.to_s.downcase.to_sym])
+    end
+    return @new_items.count
+  end
 end
+
+
+
