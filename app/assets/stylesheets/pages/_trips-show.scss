@@ -14,6 +14,17 @@
   }
 }
 
+.btn-participants {
+  margin-bottom: 30px;
+}
+
+.btn-pdf {
+  color: $gray;
+  background-color: white;
+  border-radius: 50%;
+  padding: 10px;
+}
+
 #map {
   height: 450px;
   flex: 0 0 450px;

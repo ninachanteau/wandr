@@ -33,7 +33,7 @@
               </div>
             <% end %>
             </li>
-            <li> <%= link_to trip_accommodations_path(@trip, :data => "home"), remote: true do %>
+            <li class="nav-item"> <%= link_to trip_accommodations_path(@trip, :data => "home"), remote: true do %>
               <i class="fa fa-home <%= 'jaune' if params[:data] == 'home' %>"></i>
             <% end %>
             <% if current_user.new_count(@trip, Accommodation, session[:notifications]) != 0 %>

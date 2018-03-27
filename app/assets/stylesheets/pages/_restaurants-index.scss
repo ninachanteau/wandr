@@ -20,7 +20,6 @@
 
 .restaurants-card {
   min-height: 160px;
-  align-items: center;
 }
 
 .card-index-ctn {
@@ -34,20 +33,22 @@
   }
 
 .index-card {
-  background-color: $white-middle-transparent;
+  background-color: white;
   height: 200px;
   width: 380px;
   margin: 10px 10px 20px 35px;
-  display: block;
+  display: flex;
   border-radius: 5px;
   position: relative;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  border-left: 4px dashed $light-gray;
+  // border-left: 4px dashed $light-gray;
   &:hover {
-    background-color: white;
+    background-color: $white-middle-transparent;
   }
-  .ind-photo {
-    width: 30px;
+  .index-photo {
+    width: 120px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
   }
   .index-participants {
     position: absolute;
@@ -66,6 +67,10 @@
     line-height: 1.2;
     margin-left: 5px;
   }
+}
+
+.index-content {
+  display: block;
 }
 
 .ind-name {

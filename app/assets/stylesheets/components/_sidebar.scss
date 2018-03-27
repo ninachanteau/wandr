@@ -34,8 +34,10 @@
   position: relative;
 }
 
-.jaune {
-  background-color: $light-yellow;
+.sidebar-container a.active {
+  i {
+    color: $gray;
+  }
 }
 
 .sidebar-wagon-brand img {
