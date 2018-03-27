@@ -13,6 +13,8 @@ class AccommodationsController < ApplicationController
     @trip.all_accommodations.each do |key, _value|
       @all_accommodations << @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).first unless @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).nil?
     end
+    session[:notifications] = {}
+    session[:notifications][@trip.id] = {}
     session[:notifications][@trip.id][:accommodation] = Time.now
     @accommodations = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
     @accommodation = Accommodation.new
