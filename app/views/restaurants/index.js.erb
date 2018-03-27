@@ -4,3 +4,13 @@ function loadRestaurants(innerHTML) {
 };
 
 loadRestaurants(`'<%= j render "index", restaurants: @restaurants, participation: @participation, trip: @trip, restaurant: @restaurant, my_restaurants: @my_restaurants, avatar: @avatar, trip_dates: @trip_dates %>'`);
+
+function removeNotification() {
+  const notification = document.getElementById('restaurants-notif');
+  if (notification) {
+    notification.remove();
+  }
+}
+
+removeNotification()
+
