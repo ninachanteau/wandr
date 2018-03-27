@@ -25,7 +25,10 @@ class Trips::NavbarRestaurantsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
     @trips =  current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
-    @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    if params[:trip_id].present?
+    @trip = Trip.find(params[:trip_id])
+    @restaurant.trip = @trip
+    end
     if @restaurant.save
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
