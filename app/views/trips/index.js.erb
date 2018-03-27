@@ -1,0 +1,6 @@
+function loadTrips(innerHTML) {
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = innerHTML;
+};
+
+loadTrips(`'<%= j render "index",  past_trips: @past_trips, future_trips: @future_trips, trip: @trip, wishlist_trips: @wishlist_trips%>'`);

@@ -5,12 +5,13 @@ def index
   @participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
   @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
   @avatar = current_user.avatar
+  @my_transportations = @current_participation.transportations
   @all_reservations = @trip.transportations.all
   @all_transportations = []
   @trip.all_transportations.each do |key, _value|
-    @all_transportations << @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3]).first unless @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3]).nil?
+    @all_transportations << @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3], status:key[4]).first unless @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3]).nil?
   end
-  @transportations_unsorted = @all_transportations.reject { |resa| resa unless (resa.same_reservation & @current_participation.transportations).empty? }
+  @transportations_unsorted = @all_transportations.reject { |resa| resa unless (resa.same_reservation & @my_transportations).empty? }
   @transportations = @transportations_unsorted.sort_by { |transpo| transpo.departure_date}
   @trip_participants =  @trip.participations
   @transportation = Transportation.new

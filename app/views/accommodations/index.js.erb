@@ -9,7 +9,9 @@ loadAccommodations('<%= j render "index", accommodations: @accommodations, trip_
 
 function removeNotification() {
   const notification = document.getElementById('accommodations-notif');
-  notification.remove();
+  if (notification) {
+    notification.remove();
+  }
 }
 
 removeNotification()

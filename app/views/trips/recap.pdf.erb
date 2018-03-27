@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <%= wicked_pdf_stylesheet_link_tag "application" -%>
+    <%= wicked_pdf_javascript_include_tag "number_pages" %>
+  </head>
+  <body onload='number_pages'>
+    <div id="header">
+      <%= wicked_pdf_image_tag 'logo.png' %>
+    </div>
+    <div id="content">
+
+      <!-- Title -->
+      <div class="text-center">
+        <h1><strong><%= @trip.destination %></strong></h1>
+        <h2><strong>From</strong> <%= @trip.start_date.strftime("%b %d, %Y") %> <strong>To</strong> <%= @trip.end_date.strftime("%b %d, %Y") %></h2>
+        <div class="participants-container">
+          <% @trip.participations.each do |participation| %>
+            <div class="participant text-center">
+              <% if participation.user %>
+                <%= cl_image_tag participation.user.avatar, class: "avatar-large" %>
+              <% else %>
+                <%= image_tag "default-user.jpg", class: "avatar-large" %>
+              <% end %>
+              <p><%= participation.pseudo %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Transports -->
+      <div>
+        <h2><strong>Transportations</strong></h2>
+        <% @transportations.each do |transpo| %>
+          <p><strong><%= transpo.departure_date.strftime("%b %d, %Y") %></strong>: <%= transpo.departure_port%> <strong>TO:</strong> <%= transpo.arrival_port %> <strong>@</strong> <%= transpo.departure_date.strftime("%H:%M") %></p>
+        <% end %>
+      </div>
+
+      <!-- Stages -->
+      <div>
+        <% @accommodations.each_with_index do |accommo, index| %>
+          <h2><strong>Stage <%= index + 1 %>:</strong> <%= accommo.start_date.strftime("%b %d, %Y") %> - <%= accommo.end_date.strftime("%b %d, %Y") %></h2>
+          <p><strong><%= link_to accommo.name, accommo.url, class: "name-link", target: "_blank" %></strong> for <%= accommo.number_of_nights %> nights, <%= accommo.address %> -
+            <% if accommo.description.present? %>
+              <em><%= accommo.description %></em></p>
+            <% end %>
+          <p><strong>Restaurants</strong></p>
+          <ul>
+            <% @restaurants.each do |resto| %>
+              <% if resto.date >= accommo.start_date && resto.date <= accommo.end_date %>
+                <li><strong><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></strong>, <%= resto.address %> -
+                  <% if resto.description.present? %>
+                    <em><%= resto.description %></em></p>
+                  <% end %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+
+          <p><strong>Activities</strong></p>
+          <ul>
+            <% @activities.each do |activity| %>
+              <% if activity.date >= accommo.start_date && activity.date <= accommo.end_date %>
+                <li><strong><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></strong>, <%= activity.address %> -
+                  <% if activity.description.present? %>
+                    <em><%= activity.description %></em></p>
+                  <% end %>
+                  </li>
+              <% end %>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <!-- Also recommended -->
+        <div>
+          <h2><strong>Also recommended:</strong></h2>
+          <p><strong>Accommodations</strong></p>
+          <ul>
+            <% @wishlist_accommodations.each do |accommo| %>
+              <li><strong><%= link_to accommo.name, accommo.url, class: "name-link", target: "_blank" %></strong>, <%= accommo.address %> -
+                <% if accommo.description.present? %>
+                  <em><%= accommo.description %></em></li>
+                <% end %>
+            <% end %>
+          </ul>
+          <p><strong>Restaurants</strong></p>
+          <ul>
+            <% @wishlist_restaurants.each do |resto| %>
+              <li><strong><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></strong>, <%= resto.address %> -
+                <% if resto.description.present? %>
+                  <em><%= resto.description %></em></li>
+                <% end %>
+            <% end %>
+          </ul>
+          <p><strong>Activities</strong></p>
+          <ul>
+            <% @wishlist_activities.each do |activity| %>
+              <li><strong><%= link_to activity.name, activity.url, class: "name-link", target: "_blank" %></strong>, <%= activity.address %> -
+                <% if activity.description.present? %>
+                  <em><%= activity.description %></em></li>
+                <% end %>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
