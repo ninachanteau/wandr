@@ -1,5 +1,5 @@
 meta_product_name: "Wandr"
 meta_title: "Wandr - Your group travel planner"
 meta_description: "All the information you need to plan your group trip in one place"
-meta_image: "assets/images/logo.png"                       # should exist in `app/assets/images/`
+meta_image: "cover.jpg"  # should exist in `app/assets/images/`
 twitter_account: "@product_twitter_account"
