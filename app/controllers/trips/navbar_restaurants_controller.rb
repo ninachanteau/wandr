@@ -24,7 +24,8 @@ class Trips::NavbarRestaurantsController < ApplicationController
     @restaurant.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
-    @trips =  current_user.trips.map {|trip| "#{trip.destination} - #{trip.name}"}
+    @trips =  current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
+    @restaurant.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @restaurant.save
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
@@ -47,8 +48,10 @@ class Trips::NavbarRestaurantsController < ApplicationController
   def update
     # @trip =
     @restaurant = Restaurant.find(params[:id])
-    @trip = params["restaurant"]["trip"]
-    @restaurant.trip = Trip.find_by_name(@trip)
+    unless @restaurant.trip
+      @trip = params["restaurant"]["trip"]
+      @restaurant.trip = Trip.find(@trip)
+    end
     @restaurant.save
     redirect_to root_path
     # redirect_to trip_restaurants_path(@trip, @restaurant)

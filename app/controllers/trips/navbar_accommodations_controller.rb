@@ -27,7 +27,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
-    @trips = current_user.trips.map {|trip| [trip.name, trip.id]}
+    @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
     @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
     if @accommodation.save
        respond_to do |format|
@@ -50,8 +50,10 @@ class Trips::NavbarAccommodationsController < ApplicationController
 
   def update
     @accommodation = Accommodation.find(params[:id])
-    @trip = params["accommodation"]["trip"]
-    @accommodation.trip = Trip.find(@trip)
+    unless @accommodation.trip
+      @trip = params["accommodation"]["trip"]
+      @accommodation.trip = Trip.find(@trip)
+    end
     @accommodation.save
     redirect_to root_path
   end
