@@ -29,16 +29,53 @@
           <% if @trip %>
             <li class="nav-item"> <%= link_to trip_transportations_path(@trip), remote: true do %>
               <i class="fa fa-plane"></i>
-            <% end %></li>
-            <li class="nav-item"> <%= link_to trip_accommodations_path(@trip), remote: true do %>
+            <% end %>
+            <% if current_user.new_count(@trip, Transportation, session[:notifications]) != 0 %>
+              <div id="transportations-notif" class="notification-holder">
+                <div class="notification notification-position text-center"
+              data-user-id="<%= current_user.id %>">
+                <%= current_user.new_count(@trip, Transportation, session[:notifications]) %>
+                </div>
+              </div>
+            <% end %>
+            </li>
+            <li> <%= link_to trip_accommodations_path(@trip), remote: true do %>
               <i class="fa fa-home"></i>
-            <% end %></li>
+            <% end %>
+            <% if current_user.new_count(@trip, Accommodation, session[:notifications]) != 0 %>
+              <div id="accommodations-notif" class="notification-holder">
+                <div class="notification notification-position text-center"
+              data-user-id="<%= current_user.id %>">
+                <%= current_user.new_count(@trip, Accommodation, session[:notifications]) %>
+                </div>
+              </div>
+            <% end %>
+            </li>
+
             <li class="nav-item"> <%= link_to trip_restaurants_path(@trip), remote: true do %>
               <i class="fa fa-cutlery"></i>
-            <% end %></li>
+            <% end %>
+            <% if current_user.new_count(@trip, Restaurant, session[:notifications]) != 0 %>
+              <div id="restaurants-notif" class="notification-holder">
+                <div class="notification notification-position text-center"
+              data-user-id="<%= current_user.id %>">
+                <%= current_user.new_count(@trip, Restaurant, session[:notifications]) %>
+                </div>
+              </div>
+            <% end %>
+            </li>
             <li class="nav-item"> <%= link_to trip_activities_path(@trip), remote: true do %>
               <i class="fa fa-university" style="font-size: 26px"></i>
-            <% end %></li>
+            <% end %>
+            <% if current_user.new_count(@trip, Activity, session[:notifications]) != 0 %>
+              <div id="activities-notif" class="notification-holder">
+                <div class="notification notification-position text-center"
+              data-user-id="<%= current_user.id %>">
+                <%= current_user.new_count(@trip, Activity, session[:notifications]) %>
+                </div>
+              </div>
+            <% end %>
+            </li>
           <% end %>
         <% end %>
       </ul>

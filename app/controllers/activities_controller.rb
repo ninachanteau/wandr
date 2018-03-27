@@ -17,6 +17,9 @@ class ActivitiesController < ApplicationController
       @all_activities << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
     end
     @activities = @all_activities.reject { |resa| resa unless (resa.same_reservation & @my_activities).empty? }
+    session[:notifications] = {}
+    session[:notifications][@trip.id] = {}
+    session[:notifications][@trip.id][:activity] = Time.now
     @activity = Activity.new
     @trip_dates = {
       start_date: @trip.start_date,

@@ -178,6 +178,24 @@ class TripsController < ApplicationController
     redirect_to trip_participations(@participation.trip)
   end
 
+  def recap
+    @trip = Trip.find(params[:id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+
+    @transportations_unsorted = @current_participation.transportations.select { |transpo| transpo if transpo.status == "Booked" }
+    @transportations = @transportations_unsorted.sort_by { |transpo| transpo.departure_date}
+    @accommodations_unsorted = @current_participation.accommodations.select { |accommo| accommo if accommo.status == "Booked" }
+    @accommodations = @accommodations_unsorted.sort_by { |accommo| accommo.start_date}
+    @restaurants_unsorted = @current_participation.restaurants.select { |resto| resto if resto.status == "Booked" }
+    @restaurants = @restaurants_unsorted.sort_by { |resto| resto.date}
+    @activities_unsorted = @current_participation.activities.select { |activity| activity if activity.status == "Booked" }
+    @activities = @activities_unsorted.sort_by { |activity| activity.date}
+
+    @wishlist_accommodations = @current_participation.accommodations.select { |accommo| accommo if accommo.status == "Wishlist" }
+    @wishlist_restaurants = @current_participation.restaurants.select { |resto| resto if resto.status == "Wishlist" }
+    @wishlist_activities = @current_participation.activities.select { |activity| activity if activity.status == "Wishlist" }
+  end
+
   private
 
   def trip_params
