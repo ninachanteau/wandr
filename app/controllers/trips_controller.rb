@@ -63,7 +63,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/accommodations/map_box_booked", locals: { accommodation: accommodation }) }
           }
           @events << {
-            color: "#FFDD75",
+            color: "#FFC61B",
             title: accommodation.name,
             start: accommodation.start_date,
             end: accommodation.end_date,
@@ -95,7 +95,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/restaurants/map_box_booked", locals: { restaurant: restaurant }) }
           }
           @events << {
-            color: "#FFDD75",
+            color: "#FFC61B",
             title: restaurant.name,
             start: restaurant.date
           }
@@ -125,7 +125,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/activities/map_box_booked", locals: { activity: activity }) }
           }
           @events << {
-            color: "#FFDD75",
+            color: "#FFC61B",
             title: activity.name,
             start: activity.date
           }
@@ -194,6 +194,13 @@ class TripsController < ApplicationController
     @wishlist_accommodations = @current_participation.accommodations.select { |accommo| accommo if accommo.status == "Wishlist" }
     @wishlist_restaurants = @current_participation.restaurants.select { |resto| resto if resto.status == "Wishlist" }
     @wishlist_activities = @current_participation.activities.select { |activity| activity if activity.status == "Wishlist" }
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "recap", disposition: "attachment"
+      end
+    end
   end
 
   private
