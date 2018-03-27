@@ -8,7 +8,9 @@ loadActivities(`'<%= j render "index", activities: @activities, participation: @
 
 function removeNotification() {
   const notification = document.getElementById('activities-notif');
-  notification.remove();
+  if (notification) {
+    notification.remove();
+  }
 }
 
 removeNotification()

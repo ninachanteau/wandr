@@ -8,7 +8,9 @@ loadTransportations(`'<%= j render "index", transportations: @transportations, t
 
 function removeNotification() {
   const notification = document.getElementById('transportations-notif');
-  notification.remove();
+  if (notification) {
+    notification.remove();
+  }
 }
 
 removeNotification()
