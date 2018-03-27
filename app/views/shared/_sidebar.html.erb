@@ -11,18 +11,12 @@
     <%# unless params[:action] == "index"  %>
           <%# if @trip && @trip.id.present? %>
       <ul class="list-icons nav nav-tabs" id="myTab" role="tablist">
-        <%# if (params[:controller] == "trips" && params[:action] == "index" || params[:action] == "show") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
-          <li class="nav-item"> <%= link_to trips_path(current_user), class: "nav-link active", remote: true do %>
-            <%= render 'shared/globe-icon' %>
-          <% end %></li>
-        <%# else %>
-
           <% if @trip.id %>
             <li class="nav-item"> <%= link_to trip_path(@trip), class: "nav-link active", remote: true do %>
               <%= render 'shared/globe-icon' %>
             <% end %></li>
           <% end %>
-        <%# end %>
+
 
 
         <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
