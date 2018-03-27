@@ -40,7 +40,7 @@ class TripsController < ApplicationController
             color: "#FFC61B",
             title: "Transportation",
             start: transportation.departure_date,
-            end: transportation.arrival_date,
+            end: transportation.arrival_date
           }
         end
       end
@@ -138,6 +138,7 @@ class TripsController < ApplicationController
       end
     end
 
+    @events = @events.sort_by { |event| event[:start] }
     @participation = Participation.new
     @participation.trip = @trip
   end
