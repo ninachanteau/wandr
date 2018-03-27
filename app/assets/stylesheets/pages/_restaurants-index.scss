@@ -44,11 +44,14 @@
   height: 200px;
   width: 450px;
   margin: 10px;
-  display: block;
-  border-radius: 20px;
+  display: flex;
+  border-radius: 5px;
   position: relative;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
   border-left: 4px dashed $light-gray;
+  .ind-photo {
+    width: 30px;
+  }
   .index-participants {
     position: absolute;
     top: 5px;
@@ -91,9 +94,6 @@
 //   min-height: 350px;
 // }
 
-.table-name {
-  width: 300px;
-}
 
 // .table-status {
 //   text-align: right;
