@@ -17,7 +17,7 @@ class Trips::NavbarActivitiesController < ApplicationController
     url = @activity.url
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
+    name_array = doc.search('#HEADING').map { |element| element.text.strip.to_s }
     @activity.name = name_array[0] if name_array[0].present?
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
@@ -33,8 +33,13 @@ class Trips::NavbarActivitiesController < ApplicationController
     if params[:trip_id].present?
       @trip = Trip.find(params[:trip_id])
       @activity.trip = @trip
+      @trip_participants =  @trip.participations
+    @act_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     end
     if @activity.save
+      @activ_participants.each do |part|
+        @activity.add_participant(part)
+      end
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_activity_path(@activity) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`

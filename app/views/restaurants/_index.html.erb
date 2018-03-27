@@ -120,6 +120,12 @@
                 <div class="modal-body">
                   <!-- New form_tag -->
                   <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+                  <%= simple_form_for @restaurant, url: trip_trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
+                    <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                    <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+                  <% end %>
+                  <br>
+                  <div id="UpdateForm">
                   <!-- Old simple form for -->
                   <%= simple_form_for [trip, restaurant] do |f| %>
                     <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
@@ -148,6 +154,7 @@
                       <br>
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -189,7 +196,7 @@
                     </button>
                     <div class="dropdown-menu">
                       <% if resto.status == "Booked" %>
-                        <%= link_to trip_resto_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                        <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                           <span>
                             <%= render 'shared/wishlist-icon'  %>
                             Wishlist

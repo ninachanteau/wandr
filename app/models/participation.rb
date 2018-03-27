@@ -10,6 +10,11 @@ class Participation < ApplicationRecord
   has_secure_token
   #after_create :send_join_trip_email
 
+
+  def name
+    self.pseudo
+  end
+
   private
 
   #def send_join_trip_email

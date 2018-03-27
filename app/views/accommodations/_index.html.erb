@@ -21,7 +21,9 @@
             <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
           </div>
           <div class="index-date">
+            <% if accom.start_date %>
             <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
+            <% end %>
           </div>
           <div class="index-price">
             <%= number_with_precision(accom.total_price, precision: 2)%>€
@@ -178,7 +180,9 @@
                   <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
+                  <% if accom.start_date %>
                   <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
+                  <% end %>
                 </div>
                 <div class="index-price">
                   <%= number_with_precision(accom.total_price, precision: 2)%>€

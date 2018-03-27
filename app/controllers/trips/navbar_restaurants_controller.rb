@@ -11,7 +11,7 @@ class Trips::NavbarRestaurantsController < ApplicationController
     url = @restaurant.url
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
+    name_array = doc.search('#HEADING').map { |element| element.text.strip.to_s }
     @restaurant.name = name_array[0] if name_array[0].present?
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
@@ -19,17 +19,19 @@ class Trips::NavbarRestaurantsController < ApplicationController
     # +" "+country_array[0]
     @restaurant.address = street_array[0]+","+city_array[0] if street_array[0].present? && city_array[0]
     description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    @restaurant.description = description_array.last if description_array.last.present?
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @restaurant.phone_number = phone_array[5] if phone_array[5].present?
-    img_array = doc.search('.page_images img').map{ |i| i['src'] }
-    @restaurant.remote_photo_url = img_array[1] if img_array[1].present?
     @trips =  current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
     if params[:trip_id].present?
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
+    @trip_participants =  @trip.participations
+    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     end
     if @restaurant.save
+      @resto_participants.each do |part|
+        @restaurant.add_participant(part)
+      end
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`

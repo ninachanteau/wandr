@@ -15,7 +15,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
     url = @accommodation.url
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
+    name_array = doc.search('#HEADING').map { |element| element.text.strip.to_s }
     @accommodation.name = name_array[0] if name_array[0].present?
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
@@ -68,7 +68,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
   end
 
   def accommodation_params
-    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms)
+    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms, :trip_id)
   end
 
 end
