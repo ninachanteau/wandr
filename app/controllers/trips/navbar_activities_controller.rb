@@ -30,7 +30,10 @@ class Trips::NavbarActivitiesController < ApplicationController
     @activity.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
-    @activity.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    if params[:trip_id].present?
+      @trip = Trip.find(params[:trip_id])
+      @activity.trip = @trip
+    end
     if @activity.save
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_activity_path(@activity) }

@@ -109,6 +109,7 @@
             </div>
             <div class="modal-body">
               <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+
               <%= simple_form_for @accommodation, url: trip_trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
                 <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
                 <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
