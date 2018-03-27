@@ -28,7 +28,10 @@ class Trips::NavbarAccommodationsController < ApplicationController
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
     @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
-    @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    if params[:trip_id].present?
+    @trip = Trip.find(params[:trip_id])
+    @accommodation.trip = @trip
+    end
     if @accommodation.save
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_accommodation_path(@accommodation) }
