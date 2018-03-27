@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :participations, only: [:create, :edit, :update, :destroy]
+    get :recap, on: :member
   end
 
   resources :restaurants, only: [:create, :edit, :update]

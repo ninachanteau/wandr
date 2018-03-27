@@ -312,6 +312,7 @@ hotel_nyc_julie = Accommodation.create(
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
   number_of_rooms: 2,
+  description: "Very fancy",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_julie.trip = nyc
@@ -331,6 +332,7 @@ hotel_nyc_julie = Accommodation.create(
   email: "ludlow@newyork.com",
   total_price: 899,
   number_of_rooms: 2,
+  description: "Perfect location in Lower East Side!",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_julie.trip = nyc
@@ -350,6 +352,7 @@ hotel_nyc_julie = Accommodation.create(
   email: "theunionhotel@newyork.com",
   total_price: 448,
   number_of_rooms: 1,
+  description: "Nice and cheap hostel but far from city center",
   remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_julie.trip = nyc
@@ -369,6 +372,7 @@ hotel_nyc_alex = Accommodation.create(
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
   number_of_rooms: 2,
+  description: "Very fancy",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_alex.trip = nyc
@@ -388,6 +392,7 @@ hotel_nyc_alex = Accommodation.create(
   email: "ludlow@newyork.com",
   total_price: 899,
   number_of_rooms: 2,
+  description: "Perfect location in Lower East Side!",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_alex.trip = nyc
@@ -407,6 +412,7 @@ hotel_nyc_alex = Accommodation.create(
   email: "theunionhotel@newyork.com",
   total_price: 448,
   number_of_rooms: 1,
+  description: "Nice and cheap hostel but far from city center",
   remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_alex.trip = nyc
@@ -426,6 +432,7 @@ hotel_nyc_nina = Accommodation.create(
   email: "lemarkhotel@newyork.com",
   total_price: 1387,
   number_of_rooms: 2,
+  description: "Very fancy",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
 hotel_nyc_nina.trip = nyc
@@ -445,6 +452,7 @@ hotel_nyc_nina = Accommodation.create(
   email: "ludlow@newyork.com",
   total_price: 899,
   number_of_rooms: 2,
+  description: "Perfect location in Lower East Side!",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
 hotel_nyc_nina.trip = nyc
@@ -464,6 +472,7 @@ hotel_nyc_nina = Accommodation.create(
   email: "theunionhotel@newyork.com",
   total_price: 448,
   number_of_rooms: 1,
+  description: "Nice and cheap hostel but far from city center",
   remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
 hotel_nyc_nina.trip = nyc
@@ -483,6 +492,7 @@ hotel_lisbon_nina = Accommodation.create(
   email: "memmo-alfama@lisbon.com",
   total_price: 149.00,
   number_of_rooms: 1,
+  description: "Amazing view and perfect location in Alfama",
   remote_photo_url: "https://f22bfca7a5abd176cefa-59c40a19620c1f22577ade10e9206cf5.ssl.cf1.rackcdn.com/u/memmo-alfama-architecture-M-01-r.jpg"
   )
 hotel_lisbon_nina.trip = lisbon
@@ -502,6 +512,7 @@ hotel_lisbon_julia = Accommodation.create(
   email: "memmo-alfama@lisbon.com",
   total_price: 149.00,
   number_of_rooms: 1,
+  description: "Amazing view and perfect location in Alfama",
   remote_photo_url: "https://f22bfca7a5abd176cefa-59c40a19620c1f22577ade10e9206cf5.ssl.cf1.rackcdn.com/u/memmo-alfama-architecture-M-01-r.jpg"
   )
 hotel_lisbon_julia.trip = lisbon
@@ -909,7 +920,7 @@ puts "Creating 9 activities"
 activity_lisbon_nina = Activity.create(
   name: "Jerónimos Monastery",
   address: "Praça do Império 1400-206 Lisboa, Portugal",
-  date: "Sat, 10 Apr 2018 10:00:00 UTC +00:00,",
+  date: "Sat, 10 Mar 2018 10:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0725366630",
   description: "Former monastery near the Tagus river in the parish of Belém, very famous!",
@@ -924,7 +935,7 @@ activity_lisbon_nina.save!
 activity_lisbon_julia = Activity.create(
   name: "Jerónimos Monastery",
   address: "Praça do Império 1400-206 Lisboa, Portugal",
-  date: "Sat, 10 Apr 2018 10:00:00 UTC +00:00,",
+  date: "Sat, 10 Mar 2018 10:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0725366630",
   description: "Former monastery near the Tagus river in the parish of Belém, very famous!",
@@ -939,7 +950,7 @@ activity_lisbon_julia.save!
 activity_lisbon_nina = Activity.create(
   name: "Lisbon Go 7 Hills Electric Bike Tour",
   address: "Praça do Comércio, 1100-148 Lisboa, Portugal",
-  date: "Sun, 11 Apr 2018 15:00:00 UTC +00:00,",
+  date: "Sun, 11 Mar 2018 15:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0744353637",
   description: "Best way to visit Lisbon",
@@ -954,7 +965,7 @@ activity_lisbon_nina.save!
 activity_lisbon_julia = Activity.create(
   name: "Lisbon Go 7 Hills Electric Bike Tour",
   address: "Praça do Comércio, 1100-148 Lisboa, Portugal",
-  date: "Sun, 11 Apr 2018 15:00:00 UTC +00:00,",
+  date: "Sun, 11 Mar 2018 15:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "0744353637",
   description: "Best way to visit Lisbon",
