@@ -4,4 +4,13 @@ function loadAccommodations(innerHTML) {
   wrapper.innerHTML = innerHTML;
 };
 
-loadAccommodations('<%= j render "index", trip_dates: @trip_dates, accommodations: @accommodations, trip_participants: @trip_participants, trip: @trip, accommodation: @accommodation, my_accommodations: @my_accommodations %>');
+
+loadAccommodations('<%= j render "index", accommodations: @accommodations, trip_participants: @trip_participants, trip: @trip, accommodation: @accommodation, my_accommodations: @my_accommodations %>');
+
+function removeNotification() {
+  const notification = document.getElementById('accommodations-notif');
+  notification.remove();
+}
+
+removeNotification()
+

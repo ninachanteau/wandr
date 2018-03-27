@@ -3,4 +3,13 @@ function loadActivities(innerHTML) {
   wrapper.innerHTML = innerHTML;
 };
 
-loadActivities(`'<%= j render "index", trip_dates: @trip_dates, activities: @activities, participation: @participation, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
+
+loadActivities(`'<%= j render "index", activities: @activities, participation: @participation, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
+
+function removeNotification() {
+  const notification = document.getElementById('activities-notif');
+  notification.remove();
+}
+
+removeNotification()
+
