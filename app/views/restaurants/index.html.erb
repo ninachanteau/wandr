@@ -16,7 +16,9 @@
           <div class="card-index-ctn">
             <% @my_restaurants.order(:date).each do |restaurant| %>
             <div class="index-card">
-              <div class="indax-name">
+<!--             <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_tag restaurant.photo.url%>')"></div> -->
+              <div class="card-details">
+              <div class="index-name">
                 <p class="ind-name"><%= link_to restaurant.name, restaurant.url, class: "name-link", target: "_blank" %></p>
               </div>
               <div class="index-date">
@@ -81,6 +83,7 @@
                       <%= image_tag "default-user.jpg", class: "avatar index-avatar" %>
                     <% end %>
                 <% end %>
+              </div>
               </div>
               </div>
             </div>

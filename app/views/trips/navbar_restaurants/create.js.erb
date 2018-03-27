@@ -5,7 +5,7 @@ function openModal() {
 
 function getForm() {
   const form = document.getElementById("EditFormUrl");
-  form.innerHTML = "<%= j render 'trips/navbar_activities/edit_form', activity: @activity, trips: @trips %>"
+  form.innerHTML = "<%= j render 'trips/navbar_restaurants/edit_form', restaurant: @restaurant, trips: @trips %>"
 }
 
 getForm();
