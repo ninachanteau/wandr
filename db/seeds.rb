@@ -297,7 +297,7 @@ back_lisbon_julia.save!
 
 puts "Transportations created"
 puts "------"
-puts "Creating 11 accommodations"
+puts "Creating 13 accommodations"
 
 hotel_nyc_julie = Accommodation.create(
   name: "The Mark Hotel",
@@ -519,9 +519,49 @@ hotel_lisbon_julia.trip = lisbon
 hotel_lisbon_julia.participation = julia_lisbon
 hotel_lisbon_julia.save!
 
+hotel_lisbon_nina = Accommodation.create(
+  name: "Pousada de Lisboa",
+  address: "Praça do Comércio 31-34, 1100-148 Lisboa, Portugal",
+  start_date: "Fri, 09 Mar 2018",
+  end_date: "Mon, 12 Mar 2018",
+  status: "Wishlist",
+  reference_number: "KODY45",
+  number_of_nights: 3,
+  phone_number: "+351 21 040 7640",
+  url: "https://www.pousadas.pt/en/hotel/pousada-lisboa?utm_medium=organic&utm_source=google&utm_campaign=GoogleMyBusiness",
+  email: "pousada@lisbon.com",
+  total_price: 475,
+  number_of_rooms: 1,
+  description: "Luxury hotel with the perfect location",
+  remote_photo_url: "https://www.slh.com/globalassets/hotels/p/pousada-de-lisboa/pousadadelisboa_heronew.jpg?width=1024"
+  )
+hotel_lisbon_nina.trip = lisbon
+hotel_lisbon_nina.participation = nina_lisbon
+hotel_lisbon_nina.save!
+
+hotel_lisbon_julia = Accommodation.create(
+  name: "Pousada de Lisboa",
+  address: "Praça do Comércio 31-34, 1100-148 Lisboa, Portugal",
+  start_date: "Fri, 09 Mar 2018",
+  end_date: "Mon, 12 Mar 2018",
+  status: "Wishlist",
+  reference_number: "KODY45",
+  number_of_nights: 3,
+  phone_number: "+351 21 040 7640",
+  url: "https://www.pousadas.pt/en/hotel/pousada-lisboa?utm_medium=organic&utm_source=google&utm_campaign=GoogleMyBusiness",
+  email: "pousada@lisbon.com",
+  total_price: 475,
+  number_of_rooms: 1,
+  description: "Luxury hotel with the perfect location",
+  remote_photo_url: "https://www.slh.com/globalassets/hotels/p/pousada-de-lisboa/pousadadelisboa_heronew.jpg?width=1024"
+  )
+hotel_lisbon_julia.trip = lisbon
+hotel_lisbon_julia.participation = julia_lisbon
+hotel_lisbon_julia.save!
+
 puts "Accommodation created"
 puts "------"
-puts "Creating 26 restaurants"
+puts "Creating 30 restaurants"
 
 restaurant_nyc_nina = Restaurant.create(
   name: "Balvanera",
@@ -908,6 +948,66 @@ restaurant_lisbon_julia = Restaurant.create(
   url: "http://www.restaurantelisboatueeu.pt/fr_FR/",
   email: "lisboatueeu@lisbon.com",
   remote_photo_url: "https://i1.wp.com/vandamiranda.pt/wp-content/uploads/2017/07/Lisboa-06.jpg"
+  )
+restaurant_lisbon_julia.trip = lisbon
+restaurant_lisbon_julia.participation = julia_lisbon
+restaurant_lisbon_julia.save!
+
+restaurant_lisbon_nina = Restaurant.create(
+  name: "Quiosque Ribeira das Naus",
+  address: "Av. Ribeira das Naus 5, Lisboa, Portugal",
+  date: "Sun, 11 Mar 2018 17:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 917 427 013",
+  description: "Wonderful bar with terrasse to enjoy some sun with Margaritas!",
+  url: "https://www.facebook.com/RibeiradasNausLisboa",
+  email: "ribeira@lisbon.com",
+  remote_photo_url: "https://aperuadetenis.files.wordpress.com/2015/09/dsc_0020.jpg"
+  )
+restaurant_lisbon_nina.trip = lisbon
+restaurant_lisbon_nina.participation = nina_lisbon
+restaurant_lisbon_nina.save!
+
+restaurant_lisbon_julia = Restaurant.create(
+  name: "Quiosque Ribeira das Naus",
+  address: "Av. Ribeira das Naus 5, Lisboa, Portugal",
+  date: "Sun, 11 Mar 2018 17:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 917 427 013",
+  description: "Wonderful bar with terrasse to enjoy some sun with Margaritas!",
+  url: "https://www.facebook.com/RibeiradasNausLisboa",
+  email: "ribeira@lisbon.com",
+  remote_photo_url: "https://aperuadetenis.files.wordpress.com/2015/09/dsc_0020.jpg"
+  )
+restaurant_lisbon_julia.trip = lisbon
+restaurant_lisbon_julia.participation = julia_lisbon
+restaurant_lisbon_julia.save!
+
+restaurant_lisbon_nina = Restaurant.create(
+  name: "Pois Café",
+  address: "R. de São João da Praça 93-95, 1100-521 Lisboa, Portugal",
+  date: "Sat, 10 Mar 2018 13:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 21 886 2497",
+  description: "Cafe, bakery & restaurant serving Portuguese-influenced fare.",
+  url: "http://www.poiscafe.com/",
+  email: "poiscafe@lisbon.com",
+  remote_photo_url: "https://www.likealocalguide.com/media/cache/99/97/999757744ce5721bb317584ceda6d901.jpg"
+  )
+restaurant_lisbon_nina.trip = lisbon
+restaurant_lisbon_nina.participation = nina_lisbon
+restaurant_lisbon_nina.save!
+
+restaurant_lisbon_julia = Restaurant.create(
+  name: "Pois Café",
+  address: "R. de São João da Praça 93-95, 1100-521 Lisboa, Portugal",
+  date: "Sat, 10 Mar 2018 13:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 21 886 2497",
+  description: "Cafe, bakery & restaurant serving Portuguese-influenced fare.",
+  url: "http://www.poiscafe.com/",
+  email: "poiscafe@lisbon.com",
+  remote_photo_url: "https://www.likealocalguide.com/media/cache/99/97/999757744ce5721bb317584ceda6d901.jpg"
   )
 restaurant_lisbon_julia.trip = lisbon
 restaurant_lisbon_julia.participation = julia_lisbon
@@ -915,7 +1015,7 @@ restaurant_lisbon_julia.save!
 
 puts "Restaurant created"
 puts "------"
-puts "Creating 9 activities"
+puts "Creating 11 activities"
 
 activity_lisbon_nina = Activity.create(
   name: "Jerónimos Monastery",
@@ -972,6 +1072,36 @@ activity_lisbon_julia = Activity.create(
   url: "https://www.viator.com/tours/Lisbon/Lisbon-Hills-Electric-Bike-Tour/d538-5509LSB7EBIKETOUR",
   email: "electricbiketour@lisbon.com",
   remote_photo_url: "http://www.cyclinglisbon.com/wp-content/uploads/2017/03/04-1.jpg"
+  )
+activity_lisbon_julia.trip = lisbon
+activity_lisbon_julia.participation = julia_lisbon
+activity_lisbon_julia.save!
+
+activity_lisbon_nina = Activity.create(
+  name: "Museu do Fado",
+  address: "Largo Chafariz de Dentro 1, 1100-139 Lisboa, Portugal",
+  date: "Sat, 10 Mar 2018 09:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 21 882 3470",
+  description: "Museum of the typical Portuguese dance, a must see!",
+  url: "http://www.museudofado.pt/",
+  email: "museufado@lisbon.com",
+  remote_photo_url: "https://itinari.imgix.net/activity/images/original/f49f1a80-848b-47ad-adf4-c6525d30e587-museu-do-fado-2-2x.jpg?fm=pjpg&ch=DPR&dpr=2&w=800&fit=clip&trim=auto&auto=enhance"
+  )
+activity_lisbon_nina.trip = lisbon
+activity_lisbon_nina.participation = nina_lisbon
+activity_lisbon_nina.save!
+
+activity_lisbon_julia = Activity.create(
+  name: "Museu do Fado",
+  address: "Largo Chafariz de Dentro 1, 1100-139 Lisboa, Portugal",
+  date: "Sat, 10 Mar 2018 09:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+351 21 882 3470",
+  description: "Museum of the typical Portuguese dance, a must see!",
+  url: "http://www.museudofado.pt/",
+  email: "museufado@lisbon.com",
+  remote_photo_url: "https://itinari.imgix.net/activity/images/original/f49f1a80-848b-47ad-adf4-c6525d30e587-museu-do-fado-2-2x.jpg?fm=pjpg&ch=DPR&dpr=2&w=800&fit=clip&trim=auto&auto=enhance"
   )
 activity_lisbon_julia.trip = lisbon
 activity_lisbon_julia.participation = julia_lisbon
