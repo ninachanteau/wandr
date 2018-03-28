@@ -6,12 +6,12 @@
 
 .activities-card {
   position: relative;
-  margin: 20px;
-  padding: 20px;
+  margin: 0px 10px 20px 10px;
+  padding: 10px;
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
-  max-width: 1050px;
+  max-width: 1052px;
 }
 
 .activities-ctn {
@@ -28,10 +28,6 @@
   justify-content: flex-start;
   flex-wrap: wrap;
 }
-
-.ind-title {
-  padding-left: 12px;
-  }
 
 // .index-card {
 //   margin-right: 30px !important;
