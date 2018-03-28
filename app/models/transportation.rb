@@ -40,7 +40,7 @@ class Transportation < ApplicationRecord
 
   def participants(current_participation)
     participants = []
-    self.same_reservation.each do |instance|
+    self.same_reservation(current_participation).each do |instance|
       participants << instance.participation unless instance.participation.nil? || instance.participation == current_participation
     end
     return participants

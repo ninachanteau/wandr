@@ -11,7 +11,8 @@ def index
   @trip.all_transportations.each do |key, _value|
     @all_transportations << @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3], status:key[4]).first unless @all_reservations.where(departure_port:key[0], arrival_port:key[1], departure_date:key[2], arrival_date:key[3]).nil?
   end
-  @transportations_unsorted = @all_transportations.reject { |resa| resa unless (resa.same_reservation(@current_participation) & @my_transportations).empty? }
+  @others_transportations = @all_transportations - @my_transportations
+  @transportations_unsorted = @others_transportations.reject { |resa| resa unless (resa.same_reservation(@current_participation) & @my_transportations).empty? }
   @transportations = @transportations_unsorted.sort_by { |transpo| transpo.departure_date}
   @trip_participants =  @trip.participations
   @transportation = Transportation.new
