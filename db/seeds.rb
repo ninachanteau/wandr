@@ -42,14 +42,14 @@ lisbon = Trip.create!(
 
 puts "Trips created"
 puts "------"
-puts "Creating 5 users"
+puts "Creating 6 users"
 
 nina = User.create!(
- email: "nina.chanteau@hec.edu",
- first_name: "Nina",
- last_name: "Chanteau",
- password: "123456",
- remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/ninachanteau")
+email: "nina.chanteau@hec.edu",
+first_name: "Nina",
+last_name: "Chanteau",
+password: "123456",
+remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/ninachanteau")
 
 kenza = User.create!(
 email: "kenza.aboudrar@gmail.com",
@@ -79,9 +79,16 @@ last_name: "Smadja",
 password: "123456",
 remote_avatar_url: "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/29543098_10215116936744465_3595477249990075681_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeEC2-E-EPYNojIXayOXoirl5JSKnlQ4RsME5K_714Nlfx1-ElObyILJHPoCBu5o0umauwQaamIv9KIiJpA7ejD5Hm1bJz5Yzql8-mzWNbMlKA&oh=c4c082e1ea326b7859bb3beadf4ec777&oe=5B312742")
 
+elsa = User.create!(
+email: "elsa.gounot@gmail.com",
+first_name: "Elsa",
+last_name: "Gounot",
+password: "123456",
+remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/elsagt")
+
 puts "Users created"
 puts "------"
-puts "Creating 8 participations"
+puts "Creating 9 participations"
 
 nina_lisbon = Participation.new
 nina_lisbon.user = nina
@@ -107,21 +114,21 @@ nina_nyc.pseudo = nina.first_name
 nina_nyc.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_nyc.save!
 
-alex_nyc = Participation.new
-alex_nyc.user = alex
-alex_nyc.trip = nyc
-alex_nyc.email = alex.email
-alex_nyc.pseudo = alex.first_name
-alex_nyc.remote_avatar_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/29543098_10215116936744465_3595477249990075681_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeEC2-E-EPYNojIXayOXoirl5JSKnlQ4RsME5K_714Nlfx1-ElObyILJHPoCBu5o0umauwQaamIv9KIiJpA7ejD5Hm1bJz5Yzql8-mzWNbMlKA&oh=c4c082e1ea326b7859bb3beadf4ec777&oe=5B312742"
-alex_nyc.save!
+kenza_nyc = Participation.new
+kenza_nyc.user = kenza
+kenza_nyc.trip = nyc
+kenza_nyc.email = kenza.email
+kenza_nyc.pseudo = kenza.first_name
+kenza_nyc.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/kenzaaboudrar"
+kenza_nyc.save!
 
-julie_nyc = Participation.new
-julie_nyc.user = julie
-julie_nyc.trip = nyc
-julie_nyc.email = julie.email
-julie_nyc.pseudo = julie.first_name
-julie_nyc.remote_avatar_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t31.0-8/29352174_10215116937744490_3178796321440473683_o.jpg?_nc_cat=0&_nc_eui2=v1%3AAeEbHeA7HXTgpahB8zETM7r05FJBEV0RxYlDJmOpFFQTdoZOcQ4dKbtwMOAYIZr7OIneq8zTbyarKEeNHIOAeyCS7LWDlTmLhn8C3Xy9LvN8rw&oh=0e524dc939c75105a45034347cd84722&oe=5B30E775"
-julie_nyc.save!
+elsa_nyc = Participation.new
+elsa_nyc.user = elsa
+elsa_nyc.trip = nyc
+elsa_nyc.email = elsa.email
+elsa_nyc.pseudo = elsa.first_name
+elsa_nyc.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/elsagt"
+elsa_nyc.save!
 
 nina_costarica = Participation.new
 nina_costarica.user = nina
@@ -147,11 +154,19 @@ nina_namibia.pseudo = nina.first_name
 nina_namibia.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_namibia.save!
 
+alex_namibia = Participation.new
+alex_namibia.user = alex
+alex_namibia.trip = namibia
+alex_namibia.email = alex.email
+alex_namibia.pseudo = alex.first_name
+alex_namibia.remote_avatar_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/29543098_10215116936744465_3595477249990075681_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeEC2-E-EPYNojIXayOXoirl5JSKnlQ4RsME5K_714Nlfx1-ElObyILJHPoCBu5o0umauwQaamIv9KIiJpA7ejD5Hm1bJz5Yzql8-mzWNbMlKA&oh=c4c082e1ea326b7859bb3beadf4ec777&oe=5B312742"
+alex_namibia.save!
+
 puts "Participations created"
 puts "------"
 puts "Creating 12 transportations"
 
-go_nyc_alex = Transportation.new(
+go_nyc_kenza = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
   arrival_port: "JFK Terminal 1",
   departure_date: "Thu, 03 May 2018 10:00:00 UTC +00:00,",
@@ -160,10 +175,10 @@ go_nyc_alex = Transportation.new(
   price_per_person: 320.00,
   reference_number: "NKUSTG"
   )
-go_nyc_alex.participation = alex_nyc
-go_nyc_alex.save!
+go_nyc_kenza.participation = kenza_nyc
+go_nyc_kenza.save!
 
-back_nyc_alex = Transportation.new(
+back_nyc_kenza = Transportation.new(
   departure_port: "Newark airport (EWR)",
   arrival_port: "Aéroport CDG Terminal 1",
   departure_date: "Tue, 08 May 2018 22:00:00 UTC +00:00,",
@@ -172,10 +187,10 @@ back_nyc_alex = Transportation.new(
   price_per_person: 210.00,
   reference_number: "NKUSTG"
   )
-back_nyc_alex.participation = alex_nyc
-back_nyc_alex.save!
+back_nyc_kenza.participation = kenza_nyc
+back_nyc_kenza.save!
 
-go_nyc_julie = Transportation.new(
+go_nyc_elsa = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
   arrival_port: "JFK Terminal 1",
   departure_date: "Thu, 03 May 2018 10:00:00 UTC +00:00,",
@@ -184,10 +199,10 @@ go_nyc_julie = Transportation.new(
   price_per_person: 320.00,
   reference_number: "NKUSTG"
   )
-go_nyc_julie.participation = julie_nyc
-go_nyc_julie.save!
+go_nyc_elsa.participation = elsa_nyc
+go_nyc_elsa.save!
 
-back_nyc_julie = Transportation.new(
+back_nyc_elsa = Transportation.new(
   departure_port: "Newark airport (EWR)",
   arrival_port: "Aéroport CDG Terminal 1",
   departure_date: "Tue, 08 May 2018 22:00:00 UTC +00:00,",
@@ -196,8 +211,8 @@ back_nyc_julie = Transportation.new(
   price_per_person: 210.00,
   reference_number: "NKUSTG"
   )
-back_nyc_julie.participation = julie_nyc
-back_nyc_julie.save!
+back_nyc_elsa.participation = elsa_nyc
+back_nyc_elsa.save!
 
 go_nyc_nina = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
@@ -299,7 +314,7 @@ puts "Transportations created"
 puts "------"
 puts "Creating 13 accommodations"
 
-hotel_nyc_julie = Accommodation.create(
+hotel_nyc_elsa = Accommodation.create(
   name: "The Mark Hotel",
   address: "25 E 77th St, New York, NY 10075, USA",
   start_date: "Thu, 03 May 2018",
@@ -315,11 +330,11 @@ hotel_nyc_julie = Accommodation.create(
   description: "Very fancy",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
-hotel_nyc_julie.trip = nyc
-hotel_nyc_julie.participation = julie_nyc
-hotel_nyc_julie.save!
+hotel_nyc_elsa.trip = nyc
+hotel_nyc_elsa.participation = elsa_nyc
+hotel_nyc_elsa.save!
 
-hotel_nyc_julie = Accommodation.create(
+hotel_nyc_elsa = Accommodation.create(
   name: "The Ludlow Hotel",
   address: "180 Ludlow St, New York, NY 10002, USA",
   start_date: "Thu, 03 May 2018",
@@ -335,11 +350,11 @@ hotel_nyc_julie = Accommodation.create(
   description: "Perfect location in Lower East Side!",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
-hotel_nyc_julie.trip = nyc
-hotel_nyc_julie.participation = julie_nyc
-hotel_nyc_julie.save!
+hotel_nyc_elsa.trip = nyc
+hotel_nyc_elsa.participation = elsa_nyc
+hotel_nyc_elsa.save!
 
-hotel_nyc_julie = Accommodation.create(
+hotel_nyc_elsa = Accommodation.create(
   name: "The Union Hotel",
   address: "611 Degraw St, Brooklyn, NY 11217, USA",
   start_date: "Thu, 03 May 2018",
@@ -355,11 +370,11 @@ hotel_nyc_julie = Accommodation.create(
   description: "Nice and cheap hostel but far from city center",
   remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
-hotel_nyc_julie.trip = nyc
-hotel_nyc_julie.participation = julie_nyc
-hotel_nyc_julie.save!
+hotel_nyc_elsa.trip = nyc
+hotel_nyc_elsa.participation = elsa_nyc
+hotel_nyc_elsa.save!
 
-hotel_nyc_alex = Accommodation.create(
+hotel_nyc_kenza = Accommodation.create(
   name: "The Mark Hotel",
   address: "25 E 77th St, New York, NY 10075, USA",
   start_date: "Thu, 03 May 2018",
@@ -375,11 +390,11 @@ hotel_nyc_alex = Accommodation.create(
   description: "Very fancy",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/434/43496058.jpg"
   )
-hotel_nyc_alex.trip = nyc
-hotel_nyc_alex.participation = alex_nyc
-hotel_nyc_alex.save!
+hotel_nyc_kenza.trip = nyc
+hotel_nyc_kenza.participation = kenza_nyc
+hotel_nyc_kenza.save!
 
-hotel_nyc_alex = Accommodation.create(
+hotel_nyc_kenza = Accommodation.create(
   name: "The Ludlow Hotel",
   address: "180 Ludlow St, New York, NY 10002, USA",
   start_date: "Thu, 03 May 2018",
@@ -395,11 +410,11 @@ hotel_nyc_alex = Accommodation.create(
   description: "Perfect location in Lower East Side!",
   remote_photo_url: "https://s-ec.bstatic.com/images/hotel/max1280x900/328/32845437.jpg"
   )
-hotel_nyc_alex.trip = nyc
-hotel_nyc_alex.participation = alex_nyc
-hotel_nyc_alex.save!
+hotel_nyc_kenza.trip = nyc
+hotel_nyc_kenza.participation = kenza_nyc
+hotel_nyc_kenza.save!
 
-hotel_nyc_alex = Accommodation.create(
+hotel_nyc_kenza = Accommodation.create(
   name: "The Union Hotel",
   address: "611 Degraw St, Brooklyn, NY 11217, USA",
   start_date: "Thu, 03 May 2018",
@@ -415,9 +430,9 @@ hotel_nyc_alex = Accommodation.create(
   description: "Nice and cheap hostel but far from city center",
   remote_photo_url: "https://exp.cdn-hotels.com/hotels/5000000/4460000/4453800/4453783/6521fa8e_z.jpg"
   )
-hotel_nyc_alex.trip = nyc
-hotel_nyc_alex.participation = alex_nyc
-hotel_nyc_alex.save!
+hotel_nyc_kenza.trip = nyc
+hotel_nyc_kenza.participation = kenza_nyc
+hotel_nyc_kenza.save!
 
 hotel_nyc_nina = Accommodation.create(
   name: "The Mark Hotel",
@@ -578,7 +593,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_alex = Restaurant.create(
+restaurant_nyc_kenza = Restaurant.create(
   name: "Balvanera",
   address: "152 Stanton St, New York, NY 10002, USA",
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
@@ -589,11 +604,11 @@ restaurant_nyc_alex = Restaurant.create(
   email: "balvanera@newyork.com",
   remote_photo_url: "https://i.pinimg.com/originals/86/15/3a/86153af2f01f95eabae4e9c60a12ce3c.jpg"
   )
-restaurant_nyc_alex.trip = nyc
-restaurant_nyc_alex.participation = alex_nyc
-restaurant_nyc_alex.save!
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
-restaurant_nyc_julie = Restaurant.create(
+restaurant_nyc_elsa = Restaurant.create(
   name: "Balvanera",
   address: "152 Stanton St, New York, NY 10002, USA",
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
@@ -604,9 +619,9 @@ restaurant_nyc_julie = Restaurant.create(
   email: "balvanera@newyork.com",
   remote_photo_url: "https://i.pinimg.com/originals/86/15/3a/86153af2f01f95eabae4e9c60a12ce3c.jpg"
   )
-restaurant_nyc_julie.trip = nyc
-restaurant_nyc_julie.participation = julie_nyc
-restaurant_nyc_julie.save!
+restaurant_nyc_elsa.trip = nyc
+restaurant_nyc_elsa.participation = elsa_nyc
+restaurant_nyc_elsa.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "The John Dory Oyster Bar",
@@ -623,7 +638,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_alex = Restaurant.create(
+restaurant_nyc_kenza = Restaurant.create(
   name: "The John Dory Oyster Bar",
   address: "1196 Broadway, New York, NY 10001, USA",
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
@@ -634,11 +649,11 @@ restaurant_nyc_alex = Restaurant.create(
   email: "johndory@newyork.com",
   remote_photo_url: "https://getbento.imgix.net/accounts/379950fdceb6e4b055a9692dbfd65e42/mediausers/galleries/images/c3/bYnyflz6SbSnLuJeCiMs_cRdYhuPyTOerbnJbrd3h_rawbarimage.jpg?w=1800&fit=max&auto=compress,format&h=1800"
   )
-restaurant_nyc_alex.trip = nyc
-restaurant_nyc_alex.participation = alex_nyc
-restaurant_nyc_alex.save!
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
-restaurant_nyc_julie = Restaurant.create(
+restaurant_nyc_elsa = Restaurant.create(
   name: "The John Dory Oyster Bar",
   address: "1196 Broadway, New York, NY 10001, USA",
   date: "Fri, 04 May 2018 21:00:00 UTC +00:00,",
@@ -649,9 +664,9 @@ restaurant_nyc_julie = Restaurant.create(
   email: "johndory@newyork.com",
   remote_photo_url: "https://getbento.imgix.net/accounts/379950fdceb6e4b055a9692dbfd65e42/mediausers/galleries/images/c3/bYnyflz6SbSnLuJeCiMs_cRdYhuPyTOerbnJbrd3h_rawbarimage.jpg?w=1800&fit=max&auto=compress,format&h=1800"
   )
-restaurant_nyc_julie.trip = nyc
-restaurant_nyc_julie.participation = julie_nyc
-restaurant_nyc_julie.save!
+restaurant_nyc_elsa.trip = nyc
+restaurant_nyc_elsa.participation = elsa_nyc
+restaurant_nyc_elsa.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "Llama Inn",
@@ -668,7 +683,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_alex = Restaurant.create(
+restaurant_nyc_kenza = Restaurant.create(
   name: "Llama Inn",
   address: "50 Withers St, Brooklyn, NY 11211, USA",
   date: "Sat, 05 May 2018 20:00:00 UTC +00:00,",
@@ -679,9 +694,9 @@ restaurant_nyc_alex = Restaurant.create(
   email: "llamainn@newyork.com",
   remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
   )
-restaurant_nyc_alex.trip = nyc
-restaurant_nyc_alex.participation = alex_nyc
-restaurant_nyc_alex.save!
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "Lafayette Grand Café & Bakery",
@@ -698,7 +713,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_alex = Restaurant.create(
+restaurant_nyc_kenza = Restaurant.create(
   name: "Lafayette Grand Café & Bakery",
   address: "380 Lafayette St, New York, NY 10003, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
@@ -709,11 +724,11 @@ restaurant_nyc_alex = Restaurant.create(
   email: "lafayette@newyork.com",
   remote_photo_url: "https://img2.10bestmedia.com/Images/Photos/289775/p-LAFAYETTE-2013-LORES-ADRIAN-1415x925_54_990x660.jpg"
   )
-restaurant_nyc_alex.trip = nyc
-restaurant_nyc_alex.participation = alex_nyc
-restaurant_nyc_alex.save!
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
-restaurant_nyc_julie = Restaurant.create(
+restaurant_nyc_elsa = Restaurant.create(
   name: "Lafayette Grand Café & Bakery",
   address: "380 Lafayette St, New York, NY 10003, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
@@ -724,9 +739,9 @@ restaurant_nyc_julie = Restaurant.create(
   email: "lafayette@newyork.com",
   remote_photo_url: "https://img2.10bestmedia.com/Images/Photos/289775/p-LAFAYETTE-2013-LORES-ADRIAN-1415x925_54_990x660.jpg"
   )
-restaurant_nyc_julie.trip = nyc
-restaurant_nyc_julie.participation = julie_nyc
-restaurant_nyc_julie.save!
+restaurant_nyc_elsa.trip = nyc
+restaurant_nyc_elsa.participation = elsa_nyc
+restaurant_nyc_elsa.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "Mother's Ruin",
@@ -743,7 +758,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_alex = Restaurant.create(
+restaurant_nyc_kenza = Restaurant.create(
   name: "Mother's Ruin",
   address: "18 Spring St, New York, NY 10012, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
@@ -754,11 +769,11 @@ restaurant_nyc_alex = Restaurant.create(
   email: "mothersruin@newyork.com",
   remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
   )
-restaurant_nyc_alex.trip = nyc
-restaurant_nyc_alex.participation = alex_nyc
-restaurant_nyc_alex.save!
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
-restaurant_nyc_julie = Restaurant.create(
+restaurant_nyc_elsa = Restaurant.create(
   name: "Mother's Ruin",
   address: "18 Spring St, New York, NY 10012, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
@@ -769,9 +784,9 @@ restaurant_nyc_julie = Restaurant.create(
   email: "mothersruin@newyork.com",
   remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
   )
-restaurant_nyc_julie.trip = nyc
-restaurant_nyc_julie.participation = julie_nyc
-restaurant_nyc_julie.save!
+restaurant_nyc_elsa.trip = nyc
+restaurant_nyc_elsa.participation = elsa_nyc
+restaurant_nyc_elsa.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "The Garret",
@@ -788,7 +803,7 @@ restaurant_nyc_nina.trip = nyc
 restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
-restaurant_nyc_julie = Restaurant.create(
+restaurant_nyc_elsa = Restaurant.create(
   name: "The Garret",
   address: "296 Bleecker St, New York, NY 10014, USA",
   date: "Mon, 07 May 2018 20:30:00 UTC +00:00,",
@@ -799,9 +814,9 @@ restaurant_nyc_julie = Restaurant.create(
   email: "thegarret@newyork.com",
   remote_photo_url: "https://media.timeout.com/images/102940480/630/472/image.jpg"
   )
-restaurant_nyc_julie.trip = nyc
-restaurant_nyc_julie.participation = julie_nyc
-restaurant_nyc_julie.save!
+restaurant_nyc_elsa.trip = nyc
+restaurant_nyc_elsa.participation = elsa_nyc
+restaurant_nyc_elsa.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "A Cevicheria",
@@ -1122,7 +1137,7 @@ activity_nyc_nina.trip = nyc
 activity_nyc_nina.participation = nina_nyc
 activity_nyc_nina.save!
 
-activity_nyc_julie = Activity.create(
+activity_nyc_elsa = Activity.create(
   name: "Solomon R. Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
   date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
@@ -1133,9 +1148,9 @@ activity_nyc_julie = Activity.create(
   email: "guggenheim@newyork.com",
   remote_photo_url: "https://images.adsttc.com/media/images/5755/2501/e58e/ceff/0900/065d/large_jpg/copyright_laurian_ghinitoiu_guggenheim_ny_(18_of_30).jpg?1465197822"
   )
-activity_nyc_julie.trip = nyc
-activity_nyc_julie.participation = julie_nyc
-activity_nyc_julie.save!
+activity_nyc_elsa.trip = nyc
+activity_nyc_elsa.participation = elsa_nyc
+activity_nyc_elsa.save!
 
 activity_nyc_nina = Activity.create(
   name: "Brooklyn Brewery",
@@ -1152,7 +1167,7 @@ activity_nyc_nina.trip = nyc
 activity_nyc_nina.participation = nina_nyc
 activity_nyc_nina.save!
 
-activity_nyc_alex = Activity.create(
+activity_nyc_kenza = Activity.create(
   name: "Brooklyn Brewery",
   address: "79 N 11th St, Brooklyn, NY 11249, USA",
   date: "Mon, 04 May 2018 17:00:00 UTC +00:00,",
@@ -1163,11 +1178,11 @@ activity_nyc_alex = Activity.create(
   email: "brooklynbrewery@newyork.com",
   remote_photo_url: "https://cdn.viewing.nyc/assets/media/0b4fc8f7c444dc7fbd7bf03c095990d3/elements/491efb64e8b635a8c20da968987ebfdc/xl/8acd8050-2dbd-4069-887f-be3709cc7fd0_2x.jpg"
   )
-activity_nyc_alex.trip = nyc
-activity_nyc_alex.participation = alex_nyc
-activity_nyc_alex.save!
+activity_nyc_kenza.trip = nyc
+activity_nyc_kenza.participation = kenza_nyc
+activity_nyc_kenza.save!
 
-activity_nyc_julie = Activity.create(
+activity_nyc_elsa = Activity.create(
   name: "Brooklyn Brewery",
   address: "79 N 11th St, Brooklyn, NY 11249, USA",
   date: "Mon, 04 May 2018 17:00:00 UTC +00:00,",
@@ -1178,9 +1193,9 @@ activity_nyc_julie = Activity.create(
   email: "brooklynbrewery@newyork.com",
   remote_photo_url: "https://cdn.viewing.nyc/assets/media/0b4fc8f7c444dc7fbd7bf03c095990d3/elements/491efb64e8b635a8c20da968987ebfdc/xl/8acd8050-2dbd-4069-887f-be3709cc7fd0_2x.jpg"
   )
-activity_nyc_julie.trip = nyc
-activity_nyc_julie.participation = julie_nyc
-activity_nyc_julie.save!
+activity_nyc_elsa.trip = nyc
+activity_nyc_elsa.participation = elsa_nyc
+activity_nyc_elsa.save!
 
 puts "Activity created"
 puts "------"

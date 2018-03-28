@@ -47,19 +47,20 @@ class Trips::NavbarRestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-    unless @restaurant.trip
-      @trip = params["restaurant"]["trip"]
-      @restaurant.trip = Trip.find(@trip)
-    end
-    @restaurant.update(restaurant_params)
-    @accom_participants = []
-    if params[:restaurant][:participations][:pseudo]
+    if request.referrer.include?('trips')
+      @restaurant.update(restaurant_params)
+      @accom_participants = []
       params[:restaurant][:participations][:pseudo].each do |part|
         @accom_participants << Participation.find(part) if part.present?
       end
       @accom_participants.each do |part|
         @restaurant.add_participant(part)
       end
+      redirect_to trip_restaurants_path
+    else
+      @trip = params["restaurant"]["trip"]
+      @restaurant.trip = Trip.find(@trip)
+      @restaurant.update(activity_params)
       redirect_to root_path
     end
   end

@@ -53,19 +53,20 @@ class Trips::NavbarAccommodationsController < ApplicationController
 
   def update
     @accommodation = Accommodation.find(params[:id])
-    unless @accommodation.trip
-      @trip = params["accommodation"]["trip"]
-      @accommodation.trip = Trip.find(@trip)
-    end
-    @accommodation.update(accommodation_params)
-    @accom_participants = []
-    if params[:accommodation][:participations][:pseudo]
+    if request.referrer.include?('trips')
+      @accommodation.update(accommodation_params)
+      @accom_participants = []
       params[:accommodation][:participations][:pseudo].each do |part|
         @accom_participants << Participation.find(part) if part.present?
       end
       @accom_participants.each do |part|
         @accommodation.add_participant(part)
       end
+      redirect_to  trip_accommodations_path
+    else
+      @trip = params["accommodation"]["trip"]
+      @accommodation.trip = Trip.find(@trip)
+      @accommodation.update(accommodation_params)
       redirect_to root_path
     end
   end
