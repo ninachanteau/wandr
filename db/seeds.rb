@@ -262,18 +262,6 @@ back_nyc_nina = Transportation.new(
 back_nyc_nina.participation = nina_nyc
 back_nyc_nina.save!
 
-go_lisbon_nina = Transportation.new(
-  departure_port: "Aéroport CDG Terminal 1",
-  arrival_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
-  departure_date: "Fri, 09 Mar 2018 14:00:00 UTC +00:00,",
-  arrival_date: "Fri, 09 Mar 2018 16:00:00 UTC +00:00,",
-  status: "Booked",
-  price_per_person: 75.00,
-  reference_number: "HYTGLI"
-  )
-go_lisbon_nina.participation = nina_lisbon
-go_lisbon_nina.save!
-
 back_lisbon_nina = Transportation.new(
   departure_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
   arrival_port: "Aéroport CDG Terminal 1",
@@ -285,6 +273,18 @@ back_lisbon_nina = Transportation.new(
   )
 back_lisbon_nina.participation = nina_lisbon
 back_lisbon_nina.save!
+
+go_lisbon_nina = Transportation.new(
+  departure_port: "Aéroport CDG Terminal 1",
+  arrival_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
+  departure_date: "Fri, 09 Mar 2018 14:00:00 UTC +00:00,",
+  arrival_date: "Fri, 09 Mar 2018 16:00:00 UTC +00:00,",
+  status: "Booked",
+  price_per_person: 75.00,
+  reference_number: "HYTGLI"
+  )
+go_lisbon_nina.participation = nina_lisbon
+go_lisbon_nina.save!
 
 go_lisbon_julia = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
