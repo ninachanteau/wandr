@@ -12,7 +12,8 @@ class RestaurantsController < ApplicationController
     @trip.all_restaurants.each do |key, _value|
       @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
     end
-    @restaurants = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
+    @restaurants_unsorted = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
+    @restaurants = @restaurants_unsorted.select(&:date).sort_by(&:date) + @restaurants_unsorted.reject(&:date)
     session[:notifications][params[:trip_id]][:restaurant] = Time.now
     @restaurant = Restaurant.new
     @trip_dates = {
