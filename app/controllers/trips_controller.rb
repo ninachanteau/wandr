@@ -1,3 +1,5 @@
+# require 'icalendar'
+
 class TripsController < ApplicationController
 
   def index
@@ -90,7 +92,8 @@ class TripsController < ApplicationController
 
     @restaurants = @current_participation.restaurants.select { |restaurant| restaurant unless restaurant.latitude == nil || restaurant.longitude == nil }
     unless @restaurants.nil?
-      @restaurant_markers = @restaurants.map do |restaurant|
+      # @restaurant_markers =
+      @restaurants.map do |restaurant|
         if restaurant.status == "Booked"
           @markers << {
             lat: restaurant.latitude,
@@ -120,7 +123,8 @@ class TripsController < ApplicationController
 
     @activities = @current_participation.activities.select { |activity| activity unless activity.latitude == nil || activity.longitude == nil }
     unless @activities.nil?
-      @activity_markers = @activities.map do |activity|
+      # @activity_markers =
+      @activities.map do |activity|
         if activity.status == "Booked"
           @markers << {
             lat: activity.latitude,
@@ -207,6 +211,77 @@ class TripsController < ApplicationController
         render pdf: "recap", disposition: "attachment"
       end
     end
+  end
+
+  def calendar
+    @trip = Trip.find(params[:id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+    @events = []
+
+    @transportations = @current_participation.transportations.select { |transportation| transportation unless transportation.departure_port_latitude == nil || transportation.departure_port_longitude == nil || transportation.arrival_port_latitude == nil || transportation.arrival_port_longitude == nil }
+    unless @transportations.nil?
+      @transportations.map do |transportation|
+        if transportation.status == "Booked"
+          @events << {
+            title: "Transportation",
+            start: transportation.departure_date,
+            end: transportation.arrival_date,
+            address: transportation.departure_port,
+          }
+        end
+      end
+    end
+
+    @accommodations = @current_participation.accommodations.select { |accommodation| accommodation unless accommodation.latitude == nil || accommodation.longitude == nil }
+    unless @accommodations.nil?
+      @accommodations.map do |accommodation|
+        if accommodation.status == "Booked"
+          @events << {
+            title: accommodation.name,
+            start: accommodation.start_date,
+            end: accommodation.end_date,
+            address: accommodation.address
+          }
+        end
+      end
+    end
+
+    @restaurants = @current_participation.restaurants.select { |restaurant| restaurant unless restaurant.latitude == nil || restaurant.longitude == nil }
+    unless @restaurants.nil?
+      @restaurants.map do |restaurant|
+        if restaurant.status == "Booked"
+          @events << {
+            title: restaurant.name,
+            start: restaurant.date,
+            address: restaurant.address
+          }
+        end
+      end
+    end
+
+    @activities = @current_participation.activities.select { |activity| activity unless activity.latitude == nil || activity.longitude == nil }
+    unless @activities.nil?
+      @activities.map do |activity|
+        if activity.status == "Booked"
+          @events << {
+            title: activity.name,
+            start: activity.date,
+            address: activity.address
+          }
+        end
+      end
+    end
+
+    @events.each do |event|
+      event = Icalendar::Event.new
+      event.dtstart = event[:start]
+      event.dtend = event[:end]
+      event.summary = event[:title]
+      cal.add_event(event)
+    end
+
+    cal.publish
+    render plain: cal.to_ical, content_type: 'text/plain'
   end
 
   private

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       resources :navbar_activities, only: [:new, :create, :edit, :update]
     end
     get :recap, on: :member
+    get :calendar, on: :member
   end
 
   resources :restaurants, only: [:create, :edit, :update]
