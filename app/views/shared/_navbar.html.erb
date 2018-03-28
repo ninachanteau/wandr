@@ -1,6 +1,5 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-
 <div class="navbar-wagon-left">
   <% if params[:controller] == "transportations" && params[:action] == "index"%>
     <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-plane title-icon"></i></div>
@@ -20,43 +19,54 @@
 </div>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right">
+
 
     <% if user_signed_in? %>
+
+    <div class="navbar-wagon-right">
 
       <!-- Links when logged in -->
       <% if params[:controller] == "trips" && params[:action] == "index"%>
         <div class="dropdown dropdown-choose">
-        <form action="<%= root_path %>">
-          <select name="type" size="1" class="form-control" id="url-form">
-            <option value="nil">Choose a type</option>
-            <option value="restaurant">Restaurant</option>
-            <option value="accommodation">Accommodation</option>
-            <option value="activity">Activity</option>
-          </select>
-        </form>
+          <% if params["type"] %>
+            <form action="<%= root_path %>">
+              <select name="type" size="1" class="form-control" id="url-form">
+                <option value="nil"><%= params['type'].capitalize  %></option>
+                <option value="restaurant">Restaurant</option>
+                <option value="accommodation">Accommodation</option>
+                <option value="activity">Activity</option>
+              </select>
+            </form>
+          <% else %>
+            <form action="<%= root_path %>">
+              <select name="type" size="1" class="form-control" id="url-form">
+                <option value="nil">Quick add...</option>
+                <option value="restaurant">Restaurant</option>
+                <option value="accommodation">Accommodation</option>
+                <option value="activity">Activity</option>
+              </select>
+            </form>
+          <% end %>
         </div>
-        <% if params["type"] == "restaurant"  %>
+        <div class="quick-add-url-container">
+          <% if params["type"] == "restaurant"  %>
             <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
-              <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
+              <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter restaurant url", label: false %>
             <% end %>
         <% elsif params["type"] == "accommodation" %>
           <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
+            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter accommodation url", label: false %>
           <% end %>
         <% elsif params["type"] == "activity" %>
           <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
+            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter activity url", label: false %>
           <% end %>
         <% end %>
-        <div>
-      <% end %>
-        <div>
-
-        </div>
-        <div></div>
-        <div></div>
       </div>
+
+
+      <% end %>
+
 
       <!-- Logo -->
       <div class="dropdown">
@@ -76,13 +86,16 @@
           </li>
         </ul>
       </div>
+    </div>
 
     <% else %>
+
+    <div class="navbar-wagon-right">
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
+      </div>
     <% end %>
-  </div>
 
   <!-- Dropdown list appearing on mobile only -->
   <!-- <div class="navbar-wagon-item hidden-md hidden-lg">
