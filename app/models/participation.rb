@@ -11,14 +11,16 @@ class Participation < ApplicationRecord
   #after_create :send_join_trip_email
 
 
+
   def name
     self.pseudo
   end
 
   private
 
-def send_join_trip_email
- ParticipationMailer.join_trip(self).deliver_now
-end
+
+  def send_join_trip_email
+    ParticipationMailer.join_trip(self).deliver_now
+  end
 
 end
