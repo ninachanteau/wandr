@@ -3,7 +3,7 @@
 
   <div class="transportations-container">
     <div class="transportations-ctn">
-      <div class="user-transportations transportations-card">
+      <div class="user-transportations transportations-card white-card">
 
         <!-- Button trigger modal -->
         <div type="button" data-toggle="modal" data-target="#myModal">
@@ -64,15 +64,11 @@
           </div>
         </div>
 
-        <div class="transportations-title">
-          <h4 class="transpo-title">Upcoming travel plans</h4>
-        </div>
         <div class="cards-ctn">
           <% if participation %>
             <% my_transportations.each do |transpo| %>
               <div class="transportation-card">
                 <div class="details-card">
-                  <div><i class="fa fa-plane little-plane"></i></div>
                   <div class="info-card">
                     <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p></div>
                     <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p></div>
@@ -140,7 +136,6 @@
           <% transportations.each do |transpo| %>
               <div class="transportation-card">
                 <div class="details-card">
-                  <div><i class="fa fa-plane little-plane"></i></div>
                   <div class="info-card">
                     <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p>
                     </div>
@@ -185,7 +180,7 @@
           <% end %>
         </div>
       </div>
-
+      <% end %>
     </div>
   </div>
 </div>
