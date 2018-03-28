@@ -6,7 +6,8 @@ class RestaurantsController < ApplicationController
   def index
     @trip = Trip.find(params[:trip_id])
     @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @my_restaurants = @current_participation.restaurants
+    @my_restaurants_unsorted = @current_participation.restaurants
+    @my_restaurants = @my_restaurants_unsorted.select(&:date).sort_by(&:date) + @my_restaurants_unsorted.reject(&:date)
     @all_reservations = Restaurant.where(trip_id: @trip.id)
     @all_restaurants = []
     @trip.all_restaurants.each do |key, _value|

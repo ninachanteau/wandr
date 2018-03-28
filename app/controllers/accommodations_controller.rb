@@ -1,12 +1,10 @@
-require "open-uri"
-require "nokogiri"
-
 class AccommodationsController < ApplicationController
 
   def index
     @trip = Trip.find(params[:trip_id])
     @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
-    @my_accommodations = @current_participation.accommodations
+    @my_accommodations_unsorted = @current_participation.accommodations
+    @my_accommodations = @my_accommodations_unsorted.select(&:date).sort_by(&:date) + @my_accommodations_unsorted.reject(&:date)
     @trip_participants =  @trip.participations
     @all_reservations = Accommodation.where(trip_id: @trip.id)
     @all_accommodations = []
