@@ -13,6 +13,11 @@ Rails.application.routes.draw do
     resources :restaurants, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :participations, only: [:create, :edit, :update, :destroy]
+    namespace :trips do
+      resources :navbar_restaurants, only: [:new, :create, :edit, :update]
+      resources :navbar_accommodations, only: [:new, :create, :edit, :update]
+      resources :navbar_activities, only: [:new, :create, :edit, :update]
+    end
     get :recap, on: :member
   end
 

@@ -15,7 +15,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
     url = @accommodation.url
     html_content = open(url).read
     doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
+    name_array = doc.search('#HEADING').map { |element| element.text.strip.to_s }
     @accommodation.name = name_array[0] if name_array[0].present?
     street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
     city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
@@ -27,8 +27,11 @@ class Trips::NavbarAccommodationsController < ApplicationController
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
-    @trips = current_user.trips.map {|trip| [trip.name, trip.id]}
-    @accommodation.trip = Trip.find(params[:trip_id]) if params[:trip_id].present?
+    @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
+    if params[:trip_id].present?
+    @trip = Trip.find(params[:trip_id])
+    @accommodation.trip = @trip
+    end
     if @accommodation.save
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_accommodation_path(@accommodation) }
@@ -50,10 +53,21 @@ class Trips::NavbarAccommodationsController < ApplicationController
 
   def update
     @accommodation = Accommodation.find(params[:id])
-    @trip = params["accommodation"]["trip"]
-    @accommodation.trip = Trip.find(@trip)
-    @accommodation.save
-    redirect_to root_path
+    unless @accommodation.trip
+      @trip = params["accommodation"]["trip"]
+      @accommodation.trip = Trip.find(@trip)
+    end
+    @accommodation.update(accommodation_params)
+    @accom_participants = []
+    if params[:accommodation][:participations][:pseudo]
+      params[:accommodation][:participations][:pseudo].each do |part|
+        @accom_participants << Participation.find(part) if part.present?
+      end
+      @accom_participants.each do |part|
+        @accommodation.add_participant(part)
+      end
+      redirect_to root_path
+    end
   end
 
   private
@@ -63,7 +77,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
   end
 
   def accommodation_params
-    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms)
+    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms, :trip_id)
   end
 
 end
