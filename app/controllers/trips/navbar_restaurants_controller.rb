@@ -53,13 +53,17 @@ class Trips::NavbarRestaurantsController < ApplicationController
     end
     @restaurant.update(restaurant_params)
     @accom_participants = []
-    if params[:restaurant][:participations][:pseudo]
-      params[:restaurant][:participations][:pseudo].each do |part|
-        @accom_participants << Participation.find(part) if part.present?
+    if params[:restaurant][:participations]
+      if params[:restaurant][:participations][:pseudo]
+        params[:restaurant][:participations][:pseudo].each do |part|
+          @accom_participants << Participation.find(part) if part.present?
+        end
+        @accom_participants.each do |part|
+          @restaurant.add_participant(part)
+        end
+        redirect_to root_path
       end
-      @accom_participants.each do |part|
-        @restaurant.add_participant(part)
-      end
+    else
       redirect_to root_path
     end
   end

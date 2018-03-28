@@ -59,13 +59,17 @@ class Trips::NavbarAccommodationsController < ApplicationController
     end
     @accommodation.update(accommodation_params)
     @accom_participants = []
-    if params[:accommodation][:participations][:pseudo]
-      params[:accommodation][:participations][:pseudo].each do |part|
-        @accom_participants << Participation.find(part) if part.present?
+    if params[:accommodation][:participations]
+      if params[:accommodation][:participations][:pseudo]
+        params[:accommodation][:participations][:pseudo].each do |part|
+          @accom_participants << Participation.find(part) if part.present?
+        end
+        @accom_participants.each do |part|
+          @accommodation.add_participant(part)
+        end
+        redirect_to root_path
       end
-      @accom_participants.each do |part|
-        @accommodation.add_participant(part)
-      end
+    else
       redirect_to root_path
     end
   end

@@ -63,13 +63,17 @@ class Trips::NavbarActivitiesController < ApplicationController
     end
     @activity.update(activity_params)
     @accom_participants = []
-    if params[:activity][:participations][:pseudo]
-      params[:activity][:participations][:pseudo].each do |part|
-        @accom_participants << Participation.find(part) if part.present?
+    if params[:activity][:participations]
+      if params[:activity][:participations][:pseudo]
+        params[:activity][:participations][:pseudo].each do |part|
+          @accom_participants << Participation.find(part) if part.present?
+        end
+        @accom_participants.each do |part|
+          @activity.add_participant(part)
+        end
+        redirect_to root_path
       end
-      @accom_participants.each do |part|
-        @activity.add_participant(part)
-      end
+    else
       redirect_to root_path
     end
   end
