@@ -16,7 +16,9 @@
             <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
           </div>
           <div class="index-date">
+            <% if accom.start_date %>
             <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
+            <% end %>
           </div>
           <div class="index-price">
             <%= number_with_precision(accom.total_price, precision: 2)%>€
@@ -104,56 +106,58 @@
             </div>
             <div class="modal-body">
               <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
-              <%= simple_form_for [trip, accommodation] do |f| %>
-                <div class="row">
-                  <div class="col-xs-6">
-                <%= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Start date", label: false, data_altinput: true, data_enabletime: true %>
-                  </div>
-                  <div class="col-xs-6">
-                <%= f.input :end_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "End date", label: false, data_altinput: true, data_enabletime: true %>
-                  </div>
-                </div>
-                <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+
+              <%= simple_form_for @accommodation, url: trip_trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
                 <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
-                <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
-                <div class="row">
-                  <div class="col-xs-6">
-                <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
-                  </div>
-                  <div class="col-xs-6">
-                <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-4">
-                <%= f.input :number_of_rooms, class: 'form-control', placeholder: "Nb of rooms", label: false %>
-                  </div>
-                  <div class="col-xs-4">
-                <%= f.input :number_of_nights, class: 'form-control', placeholder: "Nb of nights", label: false %>
-                  </div>
-                  <div class="col-xs-4">
-                <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
-                  </div>
-                </div>
-                <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-
-                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
-                                <!-- Add participants -->
-                <br>
-                <br>
-                <p>Don't forget to pick the participants</p>
-                  <form action="accommodation/create">
-                    <% trip_participants.each do |part| %>
-                      <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
-                      <br>
-                      <%#= f.label part.pseudo %>
-                      <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                    <% end %>
-                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                  </form>
-
+                <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
               <% end %>
+              <br>
+              <div id="UpdateForm">
+                <%= simple_form_for [trip, accommodation] do |f| %>
+                  <div class="row">
+                    <div class="col-xs-6">
+                  <%= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Start date", label: false, data_altinput: true, data_enabletime: true %>
+                    </div>
+                    <div class="col-xs-6">
+                  <%= f.input :end_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "End date", label: false, data_altinput: true, data_enabletime: true %>
+                    </div>
+                  </div>
+                  <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+                  <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                  <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+                  <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                  <div class="row">
+                    <div class="col-xs-6">
+                  <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+                    </div>
+                    <div class="col-xs-6">
+                  <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-4">
+                  <%= f.input :number_of_rooms, class: 'form-control', placeholder: "Nb of rooms", label: false %>
+                    </div>
+                    <div class="col-xs-4">
+                  <%= f.input :number_of_nights, class: 'form-control', placeholder: "Nb of nights", label: false %>
+                    </div>
+                    <div class="col-xs-4">
+                  <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
+                    </div>
+                  </div>
+                  <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+                  <!-- Add participants -->
+                  <p>Who will be attending?</p>
+                    <%= form_tag(trip_restaurants_path, method: :post) %>
+                      <% @trip.participations.each do |part| %>
+                          <%= check_box_tag part.pseudo%>
+                          <%= h part.pseudo -%>
+                          <br>
+                        <% end %>
+                        <br>
+                  <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -173,7 +177,8 @@
                   <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-                  <% if start_date && end_date %>
+
+                  <% if accom.start_date && accom.end_date %>
                     <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
                   <% end %>
                 </div>

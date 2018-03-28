@@ -1,0 +1,24 @@
+<%= simple_form_for restaurant, url: trip_trips_navbar_restaurant_path(trip, restaurant), method: :patch do |f| %>
+  <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
+  <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+  <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+  <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+  <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+<div class="row">
+  <div class="col-xs-6">
+  <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+  </div>
+  <div class="col-xs-6">
+  <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+  </div>
+</div>
+  <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
+  <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+  <!-- Add participants -->
+  <p>Who will be attending?</p>
+    <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+      <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+    <% end %>
+  <br>
+  <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
+<% end %>
