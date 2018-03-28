@@ -66,7 +66,8 @@ class AccommodationsController < ApplicationController
   def destroy
     @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.destroy
+    @accommodation.same_reservation.each { |resa| resa.destroy }
+    # @accommodation.destroy
     redirect_to trip_accommodations_path(@trip)
   end
 
