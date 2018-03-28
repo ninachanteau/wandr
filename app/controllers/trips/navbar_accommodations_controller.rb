@@ -33,7 +33,6 @@ class Trips::NavbarAccommodationsController < ApplicationController
     @accommodation.trip = @trip
     end
     if @accommodation.save
-      binding.pry
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_accommodation_path(@accommodation) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
