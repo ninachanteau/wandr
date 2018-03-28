@@ -67,3 +67,10 @@
   position: sticky !important;
   top: 0 !important;
 }
+
+.calendar-map-container {
+  background-color: $white-transparent;
+  border: black;
+  padding: 10px;
+  display: inline-block;
+}
