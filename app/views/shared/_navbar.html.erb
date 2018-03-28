@@ -48,6 +48,7 @@
             </form>
           <% end %>
         </div>
+
         <div class="quick-add-url-container">
           <% if params["type"] == "restaurant"  %>
             <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
@@ -60,13 +61,15 @@
         <% elsif params["type"] == "activity" %>
           <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
             <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter activity url", label: false %>
+
           <% end %>
+        </div>
         <% end %>
+
       </div>
 
 
       <% end %>
-
 
       <!-- Logo -->
       <div class="dropdown">

@@ -40,15 +40,15 @@
 }
 
 .transportations-card {
+  margin: 0px 10px 20px 10px;
   position: relative;
-  margin: 20px;
   padding: 10px;
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
-  max-width: 1050px;
-  align-items: center;
+  max-width: 1052px;
 }
+
 
 .cards-ctn {
   display: flex;
@@ -56,10 +56,10 @@
   flex-wrap: wrap;
 }
 
-.transpo-title {
-    padding-left: 12px;
-    color: white;
-  }
+// .transpo-title {
+//     padding-left: 12px;
+//     color: white;
+//   }
 
 .transportation-card {
   margin-right: 10px !important;

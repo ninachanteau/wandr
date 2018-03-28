@@ -5,22 +5,17 @@
 }
 
 .restaurants-card {
+  margin: 0px 10px 20px 10px;
   position: relative;
-  margin: 20px;
-  padding: 20px;
+  padding: 10px;
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
-  max-width: 1050px;
+  max-width: 1052px;
 }
 
 .restaurants-ctn {
   flex-grow: 1;
-}
-
-.restaurants-card {
-  min-height: 160px;
-  margin: 20px;
 }
 
 .card-index-ctn {
@@ -29,11 +24,11 @@
   flex-wrap: wrap;
 }
 
-.ind-title {
-  padding-left: 12px;
-  margin-top: 0px;
-  color: white;
-  }
+// .ind-title {
+//   padding-left: 12px;
+//   margin-top: 0px;
+//   color: white;
+//   }
 
 .index-card {
   background-color: white;
@@ -52,6 +47,15 @@
     width: 140px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+  }
+  .index-name {
+    height: 34px;
+  }
+  .index-date {
+    height: 15px;
+  }
+  .index-address {
+    height: 15px;
   }
   .index-participants {
     position: absolute;
@@ -72,9 +76,9 @@
     margin-left: 5px;
   }
 }
-
 .index-content {
   display: block;
+  width: 240px;
 }
 
 .ind-name {
@@ -87,7 +91,7 @@
   .ind-date {
     font-size: 14px;
   }
-  }
+}
 .index-address {
   margin-top: 30px;
   .ind-address {

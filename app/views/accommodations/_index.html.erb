@@ -75,9 +75,9 @@
         </div>
       </div>
 
-      <div class="index-title">
+<!--       <div class="index-title">
         <h4 class="ind-title">Upcoming accommodation </h4>
-      </div>
+      </div> -->
       <div class="card-index-ctn">
         <% my_accommodations.each do |accom| %>
         <div class="index-card">
@@ -160,85 +160,8 @@
       <% end %>
       </div>
     </div>
-
+  <% unless accommodations == [] %>
     <div class="accommodations-card">
-
-      <!-- Button trigger modal -->
-      <div type="button" data-toggle="modal" data-target="#myModal">
-        <i class="fa fa-plus-circle plus-btn"></i>
-      </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title text-center" id="myModalLabel">Add Accommodation</h4>
-            </div>
-            <div class="modal-body">
-              <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
-
-              <%= simple_form_for @accommodation, url: trip_trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
-                <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
-              <% end %>
-              <br>
-              <div id="UpdateForm">
-                <%= simple_form_for [trip, accommodation] do |f| %>
-                  <div class="row">
-                    <div class="col-xs-6">
-                  <%= f.input :start_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Start date", label: false, data_altinput: true, data_enabletime: true %>
-                    </div>
-                    <div class="col-xs-6">
-                  <%= f.input :end_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "End date", label: false, data_altinput: true, data_enabletime: true %>
-                    </div>
-                  </div>
-                  <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
-                  <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                  <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
-                  <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
-                  <div class="row">
-                    <div class="col-xs-6">
-                  <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
-                    </div>
-                    <div class="col-xs-6">
-                  <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-4">
-                  <%= f.input :number_of_rooms, class: 'form-control', placeholder: "Nb of rooms", label: false %>
-                    </div>
-                    <div class="col-xs-4">
-                  <%= f.input :number_of_nights, class: 'form-control', placeholder: "Nb of nights", label: false %>
-                    </div>
-                    <div class="col-xs-4">
-                  <%= f.input :total_price, class: 'form-control', placeholder: "Total price", label: false %>
-                    </div>
-                  </div>
-                  <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                  <!-- Add participants -->
-                  <p>Who will be attending?</p>
-                    <%= form_tag(trip_restaurants_path, method: :post) %>
-                      <% @trip.participations.each do |part| %>
-                          <%= check_box_tag part.pseudo%>
-                          <%= h part.pseudo -%>
-                          <br>
-                        <% end %>
-                        <br>
-                  <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="index-title">
-        <h4 class="ind-title">All accommodation</h4>
-      </div>
       <div class="card-index-ctn">
         <% accommodations.each do |accom| %>
           <% if accom.start_date != Date.today  %>
@@ -320,9 +243,10 @@
               </div>
             </div>
             <% end %>
-            <% end %>
-            </div>
-          </div>
+        <% end %>
+        <% end %>
+        </div>
+      </div>
 
 <!--       <div class=" wishlist-card hidden-xs">
         <h4>Wishlist:</h4>
