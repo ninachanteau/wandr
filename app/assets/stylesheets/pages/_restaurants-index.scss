@@ -48,6 +48,15 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
+  .index-name {
+    height: 34px;
+  }
+  .index-date {
+    height: 15px;
+  }
+  .index-address {
+    height: 15px;
+  }
   .index-participants {
     position: absolute;
     top: 5px;
@@ -68,9 +77,9 @@
     margin-right: 7px;
   }
 }
-
 .index-content {
   display: block;
+  width: 240px;
 }
 
 .ind-name {
@@ -83,7 +92,7 @@
   .ind-date {
     font-size: 14px;
   }
-  }
+}
 .index-address {
   margin-top: 30px;
   .ind-address {

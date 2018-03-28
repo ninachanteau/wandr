@@ -52,12 +52,15 @@
             <% end %>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="calendar-map-container">
+        <div class="col-md-6">
         <div id="calendar" data-events="<%= events.to_json %>"></div>
+        </div>
+        <div class="col-md-6">
+          <div id="map" data-markers="<%= markers.to_json %>"></div>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div id="map" data-markers="<%= markers.to_json %>"></div>
-      </div>
+
     </div>
   </div>
 </div>

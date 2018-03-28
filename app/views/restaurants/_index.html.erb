@@ -70,18 +70,18 @@
               <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');"></div>
               <div class="index-content">
               <div class="card-details">
-              <div class="index-name">
-                <p class="ind-name"><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></p>
-              </div>
-              <div class="index-date">
-                <div class="ind-date">
-                  <% if resto.date %>
-                    <p ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
-                  <% else %>
-                    <p>Not scheduled yet</p>
-                  <% end %>
+                <div class="index-name">
+                  <p class="ind-name"><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></p>
                 </div>
-              </div>
+                <div class="index-date">
+                  <div class="ind-date">
+                    <% if resto.date %>
+                      <p ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
+                    <% else %>
+                      <p>Not scheduled yet</p>
+                    <% end %>
+                  </div>
+                </div>
               <div class="index-address">
                 <p class="ind-address"><%= resto.address%></p>
               </div>
