@@ -69,11 +69,11 @@
                       <%= image_tag "default-user.jpg", class: "avatar-large accomadation-participant-avatar", data: { participation_id: participant.id } %>
                     <% end %>
                 <% end %>
-                <div style="visibility: hidden">
+           <!--      <div style="visibility: hidden"> -->
                 <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
                   <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
                 <% end %>
-                </div>
+              <!--   </div> -->
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
               <% end %>
