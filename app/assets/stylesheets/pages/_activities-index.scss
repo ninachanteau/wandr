@@ -14,6 +14,21 @@
   max-width: 1052px;
 }
 
+.index-name {
+  height: 34px;
+}
+.index-date {
+  height: 15px;
+}
+.index-address {
+  height: 15px;
+}
+
+.index-content {
+  display: block;
+  width: 240px;
+}
+
 .activities-ctn {
   flex-grow: 1;
 }
