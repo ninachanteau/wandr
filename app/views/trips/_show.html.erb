@@ -44,11 +44,11 @@
           </div>
 
 <!--           Export pdf -->
-          <%= link_to recap_trip_path(@trip), :format => 'pdf' do %>
+          <%= link_to recap_trip_path(@trip, :format => 'pdf') do %>
             <i class="fa fa-file-pdf-o name-link pdf-link"></i>
           <% end %>
 
-      </div>
+    </div>
     </div>
     <div class="col-md-6">
       <div id="calendar" data-events="<%= events.to_json %>"></div>
