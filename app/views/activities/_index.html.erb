@@ -21,7 +21,8 @@
                   <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
                 </div>
                 <div class="modal-body">
-                  <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+                  <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
+                  </div>
                  <%= simple_form_for @activity, url: trip_trips_navbar_activities_path, method: :post, remote: true do |f| %>
                   <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
                   <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
@@ -53,6 +54,7 @@
                     <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
                 </div>
+                </div>
               </div>
             </div>
           </div>
@@ -61,7 +63,7 @@
             <h4 class="ind-title">Upcoming activities</h4>
           </div>
           <div class="card-index-ctn">
-            <% my_activities.order(:date).each do |activ| %>
+            <% my_activities.each do |activ| %>
               <div class="index-card">
                 <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url, crop: :fill %>');"></div>
                 <div class="index-content">

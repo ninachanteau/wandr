@@ -20,7 +20,8 @@
             </div>
             <!-- pb here -->
             <div class="modal-body">
-              <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+              <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
+              </div>
                <%= simple_form_for @accommodation, url: trip_trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
                 <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
                 <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
@@ -68,6 +69,7 @@
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
               <% end %>
+              </div>
             </div>
           </div>
         </div>
@@ -77,21 +79,22 @@
         <h4 class="ind-title">Upcoming accommodation </h4>
       </div>
       <div class="card-index-ctn">
-        <% my_accommodations.order(:start_date).each do |accom| %>
+        <% my_accommodations.each do |accom| %>
         <div class="index-card">
-          <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path accom.photo.url ,crop: :fill %>');"></div>
+          <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path accom.photo.url ,crop: :fill %>');">
+          </div>
           <div class="index-content">
-          <div class="index-name">
-            <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
-          </div>
-          <div class="index-date">
-            <% if accom.start_date %>
-            <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
-            <% end %>
-          </div>
-          <div class="index-price">
-            <%= number_with_precision(accom.total_price, precision: 2)%>€
-          </div>
+            <div class="index-name">
+              <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
+            </div>
+            <div class="index-date">
+              <% if accom.start_date %>
+              <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
+              <% end %>
+            </div>
+            <div class="index-price">
+              <%= number_with_precision(accom.total_price, precision: 2)%>€
+            </div>
 <!--           <div><i class="fa fa-plus plus-return"></i></div> -->
           <div class="index-status">
             <div class="ind-status">
