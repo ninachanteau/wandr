@@ -37,9 +37,6 @@ class Trips::NavbarActivitiesController < ApplicationController
     @act_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     end
     if @activity.save
-      @activ_participants.each do |part|
-        @activity.add_participant(part)
-      end
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_activity_path(@activity) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
@@ -64,8 +61,17 @@ class Trips::NavbarActivitiesController < ApplicationController
       @trip = params["activity"]["trip"]
       @activity.trip = Trip.find(@trip)
     end
-    @activity.save
-    redirect_to root_path
+    @activity.update(activity_params)
+    @accom_participants = []
+    if params[:activity][:participations][:pseudo]
+      params[:activity][:participations][:pseudo].each do |part|
+        @accom_participants << Participation.find(part) if part.present?
+      end
+      @accom_participants.each do |part|
+        @activity.add_participant(part)
+      end
+      redirect_to root_path
+    end
   end
 
   private

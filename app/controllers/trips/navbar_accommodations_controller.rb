@@ -57,7 +57,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
       @trip = params["accommodation"]["trip"]
       @accommodation.trip = Trip.find(@trip)
     end
-    @accommodation.save
+    @accommodation.update(accommodation_params)
     @accom_participants = []
     if params[:accommodation][:participations][:pseudo]
       params[:accommodation][:participations][:pseudo].each do |part|

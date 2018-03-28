@@ -25,13 +25,8 @@ class Trips::NavbarRestaurantsController < ApplicationController
     if params[:trip_id].present?
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
-    @trip_participants =  @trip.participations
-    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
     end
     if @restaurant.save
-      @resto_participants.each do |part|
-        @restaurant.add_participant(part)
-      end
        respond_to do |format|
         format.html { redirect_to edit_trips_navbar_restaurant_path(@restaurant) }
         format.js  # <-- will render `app/views/reviews/create.js.erb`
@@ -51,15 +46,22 @@ class Trips::NavbarRestaurantsController < ApplicationController
   end
 
   def update
-    # @trip =
     @restaurant = Restaurant.find(params[:id])
     unless @restaurant.trip
       @trip = params["restaurant"]["trip"]
       @restaurant.trip = Trip.find(@trip)
     end
-    @restaurant.save
-    redirect_to root_path
-    # redirect_to trip_restaurants_path(@trip, @restaurant)
+    @restaurant.update(restaurant_params)
+    @accom_participants = []
+    if params[:restaurant][:participations][:pseudo]
+      params[:restaurant][:participations][:pseudo].each do |part|
+        @accom_participants << Participation.find(part) if part.present?
+      end
+      @accom_participants.each do |part|
+        @restaurant.add_participant(part)
+      end
+      redirect_to root_path
+    end
   end
 
   private

@@ -225,11 +225,13 @@
               <div class="index-participants">
                 <div class="participants">
                 <% restaurants.each do |resto| %>
+                  <% resto.participants.each do |participant| %>
                     <% if participant.user %>
                       <%= cl_image_tag participant.user.avatar, class: "avatar index-avatar" %>
                     <% else %>
                       <%= image_tag "default-user.jpg", class: "avatar index-avatar" %>
                     <% end %>
+                  <% end %>
                 <% end %>
                 </div>
               </div>
