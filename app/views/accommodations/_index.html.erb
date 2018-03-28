@@ -18,8 +18,15 @@
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               <h4 class="modal-title text-center" id="myModalLabel">Add Accommodation</h4>
             </div>
+            <!-- pb here -->
             <div class="modal-body">
               <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+               <%= simple_form_for @accommodation, url: trip_trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
+                <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+               <% end %>
+                <br>
+              <div id="UpdateForm">
               <%= simple_form_for [trip, accommodation] do |f| %>
                 <div class="row">
                   <div class="col-xs-6">
@@ -53,22 +60,13 @@
                   </div>
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-
+                  <p>Who will be attending?</p>
+                <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                  <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                <% end %>
+                <br>
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
-                <br>
-                <br>
-                <p>Don't forget to pick the participants</p>
-                  <form action="accommodation/create">
-                    <% trip_participants.each do |part| %>
-                      <input type="checkbox" name="<%= part.pseudo %>"> <%= part.pseudo %>
-                      <br>
-                      <%#= f.label part.pseudo %>
-                      <%#= f.check_box :participation, checked_value: part, unchecked_value: nil %>
-                    <% end %>
-                    <%#= f.select :participants, collection: @trip_participants, {multiple: true} %>
-                  </form>
-
               <% end %>
             </div>
           </div>
