@@ -174,10 +174,10 @@
                 <div class="modal-body">
                   <!-- New form_tag -->
                   <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
-                  <%= simple_form_for @restaurant, url: trip_trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
-                    <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                    <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
-                  <% end %>
+                 <%= simple_form_for @restaurant, url: trip_trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
+                  <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                  <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+                 <% end %>
                   <br>
                   <div id="UpdateForm">
                   <!-- Old simple form for -->
@@ -198,14 +198,11 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-                  <p>Who will be attending?</p>
-                  <%= form_tag(trip_restaurants_path, method: :post) %>
-                    <% trip.participations.each do |part| %>
-                        <%= check_box_tag part.pseudo%>
-                        <%= h part.pseudo -%>
-                        <br>
-                      <% end %>
-                      <br>
+                      <p>Who will be attending?</p>
+                    <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                      <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                    <% end %>
+                    <br>
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
                   </div>
