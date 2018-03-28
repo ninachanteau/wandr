@@ -22,7 +22,7 @@ class Transportation < ApplicationRecord
     @transportation.save
   end
 
-  def same_reservation
+  def same_reservation(current_participation)
     same_resa =Transportation.all.where(
       departure_date: self.departure_date,
       departure_port: self.departure_port,
@@ -30,17 +30,18 @@ class Transportation < ApplicationRecord
       arrival_port: self.arrival_port,
       status: self.status,
       )
-    same_resa_trip = same_resa.select {|resa| resa.participation.trip == self.participation.trip }
+    others_same_resa = same_resa.select {|resa| resa unless resa.participation == current_participation }
+    same_resa_trip = others_same_resa.select {|resa| resa.participation.trip == self.participation.trip }
   end
 
   def count_participants
     self.same_reservation.count
   end
 
-  def participants
+  def participants(current_participation)
     participants = []
-    self.same_reservation.each do |instance|
-      participants << instance.participation unless instance.participation.nil?
+    self.same_reservation(current_participation).each do |instance|
+      participants << instance.participation unless instance.participation.nil? || instance.participation == current_participation
     end
     return participants
   end

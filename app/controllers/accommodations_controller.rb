@@ -58,14 +58,16 @@ class AccommodationsController < ApplicationController
   def update
     @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.update(status: params[:status])
+    @accommodation.same_reservation.each { |resa| resa.update(status: params[:status]) }
+    # @accommodation.update(status: params[:status])
     redirect_to trip_accommodations_path(@trip)
   end
 
   def destroy
     @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
-    @accommodation.destroy
+    @accommodation.same_reservation.each { |resa| resa.destroy }
+    # @accommodation.destroy
     redirect_to trip_accommodations_path(@trip)
   end
 

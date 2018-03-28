@@ -76,11 +76,16 @@
   &:hover {
     background-color : $white-middle-transparent;
   }
-  .transpo-avatar {
+  .transpo-participants {
     position: absolute;
     top: 5px;
-    left: 5px;
+    left: 20px;
+    .transpo-avatar {
+    margin-left: -15px;
+    border: 2px solid white;
+    }
   }
+
   .transpo-status {
     position: absolute;
     top: 5px;
