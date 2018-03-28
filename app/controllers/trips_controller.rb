@@ -47,7 +47,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/transportations/map_box_arrival", locals: { transportation: transportation }) }
           }
           @events << {
-            color: "#FFC61B",
+            color: "#AAAAAA",
             title: "Transportation",
             start: transportation.departure_date,
             end: transportation.arrival_date
@@ -69,7 +69,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/accommodations/map_box_booked", locals: { accommodation: accommodation }) }
           }
           @events << {
-            color: "#FFC61B",
+            color: "#AAAAAA",
             title: accommodation.name,
             start: accommodation.start_date,
             end: accommodation.end_date,
@@ -101,7 +101,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/restaurants/map_box_booked", locals: { restaurant: restaurant }) }
           }
           @events << {
-            color: "#FFC61B",
+            color: "#AAAAAA",
             title: restaurant.name,
             start: restaurant.date
           }
@@ -131,7 +131,7 @@ class TripsController < ApplicationController
             infoWindow: { content: render_to_string(partial: "/activities/map_box_booked", locals: { activity: activity }) }
           }
           @events << {
-            color: "#FFC61B",
+            color: "#AAAAAA",
             title: activity.name,
             start: activity.date
           }
