@@ -1,10 +1,17 @@
 
-function loadAccommodationsWrapper(innerHTML) {
+function loadAccommodations(innerHTML) {
   const wrapper = document.querySelector('.wrapper');
   wrapper.innerHTML = innerHTML;
 };
 
-loadAccommodationsWrapper('<%= j render "index", accommodations: @accommodations, trip_participants: @trip_participants, trip_dates: @trip_dates, trip: @trip, accommodation: @accommodation, my_accommodations: @my_accommodations %>');
+loadAccommodations('<%= j render "index", accommodations: @accommodations, trip_participants: @trip_participants, trip_dates: @trip_dates, trip: @trip, accommodation: @accommodation, my_accommodations: @my_accommodations %>');
+
+function changeTitle(title) {
+  const navbarTitle = document.querySelector('.navbar-title');
+  navbarTitle.innerHTML = title;
+}
+
+changeTitle('<%= j render "shared/navbar_title", trip: @trip, icon: "home" %>');
 
 function removeNotification() {
   const notification = document.getElementById('accommodations-notif');

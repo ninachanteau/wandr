@@ -79,15 +79,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .form-control {
+    width: 250px;
+    border-radius: 3px;
+    margin: 20 auto;
+  }
 }
 
 .dropdown-choose {
   margin-right: 20px;
-}
-
-.navbar-input {
-  width: 300px !important;
-  border-radius: 3px;
 }
 
 .form-group {

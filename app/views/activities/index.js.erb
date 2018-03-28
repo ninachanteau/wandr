@@ -3,6 +3,12 @@ function loadActivities(innerHTML) {
   wrapper.innerHTML = innerHTML;
 };
 
+function changeTitle(title) {
+  const navbarTitle = document.querySelector('.navbar-title');
+  navbarTitle.innerHTML = title;
+}
+
+changeTitle('<%= j render "shared/navbar_title", trip: @trip, icon: "university" %>');
 
 loadActivities(`'<%= j render "index", activities: @activities, participation: @participation, trip_dates: @trip_dates, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
 
