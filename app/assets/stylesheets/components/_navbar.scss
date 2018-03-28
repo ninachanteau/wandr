@@ -79,10 +79,18 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   .form-control {
     width: 250px;
     border-radius: 3px;
     margin: 20 auto;
+    height: 39px !important;
+    padding: 0px !important;
+    font-weight: lighter;
+    color: #999fb5 !important;
+  }
+  .quick-add-url-container {
+    height: 39px;
   }
 }
 
