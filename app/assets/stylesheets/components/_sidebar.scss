@@ -7,19 +7,21 @@
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: $yellow;
+  background-color: white;
   box-shadow: 1px 0px 5px rgba(0,0,0,0.2);
 
  ul {
   list-style: none;
   margin-top: 30px;
+  margin-left: 20px;
+  border: none;
  }
  i {
-  color: $light-yellow;
+  color: $middle-gray;
   font-size: 32px;
-  padding: 15px 0px;
+  padding: 10px 0px;
   &:hover {
-    color: white;
+    color: $light-gray;
   }
  }
  li .fa-university {
@@ -30,6 +32,12 @@
 .sidebar-item {
   cursor: pointer;
   position: relative;
+}
+
+.sidebar-container a.active {
+  i {
+    color: $gray;
+  }
 }
 
 .sidebar-wagon-brand img {

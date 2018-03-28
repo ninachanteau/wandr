@@ -1,9 +1,9 @@
 .wrapper {
-  background-color: white;
-  margin: !important 0px;
-  min-width: (100vw);
-  min-height: (100vh);
-  background: linear-gradient(-190deg, white 62%, $light-yellow 62%);
-  background-attachment: fixed !important;
-  background-repeat: no-repeat !important;
+  background-color: $yellow;
+  // margin: !important 0px;
+  // min-width: (100vw);
+  // min-height: (100vh);
+  // background: linear-gradient(-190deg, $yellow 62%, $light-yellow 62%);
+  // background-attachment: fixed !important;
+  // background-repeat: no-repeat !important;
 }

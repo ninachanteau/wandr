@@ -1,8 +1,10 @@
 
 import "bootstrap";
-import "../plugins/flatpickr"
+import "../plugins/flatpickr";
 
-import {RefreshForm} from "../components/form_url"
+import "../components/sidebar";
+
+import {RefreshForm} from "../components/form_url";
 RefreshForm();
 
 import { autocomplete } from '../components/autocomplete';

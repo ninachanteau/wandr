@@ -1,6 +1,23 @@
 <div class="navbar-wagon">
   <!-- Logo -->
 
+<div class="navbar-wagon-left">
+  <% if params[:controller] == "transportations" && params[:action] == "index"%>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-plane title-icon"></i></div>
+  <% elsif params[:controller] == "accommodations" && params[:action] == "index"%>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-home title-icon"></i></div>
+  <% elsif params[:controller] == "restaurants" && params[:action] == "index" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-cutlery title-icon"></i></div>
+  <% elsif params[:controller] == "activities" && params[:action] == "index" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-university" style="color: #AAAAAA"></i></div>
+  <% elsif params[:controller] == "trips" && params[:action] == "show"%>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong>
+      <% if @trip.start_date.present? %>
+        <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">

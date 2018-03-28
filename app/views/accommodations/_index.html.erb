@@ -1,10 +1,10 @@
 <div class="new-container">
 <div class="container">
 
-  <div class="header">
-    <div class="title text-center"> <h2><%= trip.name  %>  ...  <i class="fa fa-home title-icon"></i></h2>
+  <!-- <div class="header">
+    <div class="title text-center"> <h2><%#= trip.name  %>  ...  <i class="fa fa-home title-icon"></i></h2>
     </div>
-  </div>
+  </div> -->
 
 </div>
 
@@ -17,6 +17,8 @@
       <div class="card-index-ctn">
         <% my_accommodations.order(:start_date).each do |accom| %>
         <div class="index-card">
+          <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path accom.photo.url ,crop: :fill %>');"></div>
+          <div class="index-content">
           <div class="index-name">
             <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
           </div>
@@ -76,6 +78,7 @@
               <% end %>
             <% end %>
           </div>
+          </div>
         </div>
         <div class="index-card card-back hidden">
           <div class="index-nights">
@@ -89,7 +92,7 @@
             <p><%= accom.email%></p>
             <p><%= accom.phone_number%></p>
           </div>
-        </div>
+          </div>
       <% end %>
       </div>
     </div>
@@ -176,14 +179,18 @@
         <% accommodations.each do |accom| %>
           <% if accom.start_date != Date.today  %>
               <div class="index-card">
+                <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path accom.photo.url ,crop: :fill %>');"></div>
+                <div class="index-content">
                 <div class="index-name">
                   <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-                  <% if accom.start_date %>
-                  <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
+
+                  <% if start_date && end_date %>
+                    <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
                   <% end %>
                 </div>
+
                 <div class="index-price">
                   <%= number_with_precision(accom.total_price, precision: 2)%>€
                 </div>
@@ -250,6 +257,7 @@
                   <p><%= accom.phone_number%></p>
                 </div>
               </div>
+            </div>
             <% end %>
             <% end %>
             </div>
