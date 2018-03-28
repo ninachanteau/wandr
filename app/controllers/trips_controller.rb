@@ -1,6 +1,7 @@
 # require 'icalendar'
 
 class TripsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :calendar
 
   def index
     @restaurant = Restaurant.new
@@ -273,7 +274,6 @@ class TripsController < ApplicationController
     end
 
     cal = Icalendar::Calendar.new
-
     @events.each do |event|
       cal_event = Icalendar::Event.new
       cal_event.dtstart = event[:start]
@@ -281,7 +281,6 @@ class TripsController < ApplicationController
       cal_event.summary = event[:title]
       cal.add_event(cal_event)
     end
-
     cal.publish
     render plain: cal.to_ical, content_type: 'text/plain'
   end
