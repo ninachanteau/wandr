@@ -61,15 +61,16 @@ class ActivitiesController < ApplicationController
   def update
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.find(params[:id])
-    @activity = Activity.find(params[:id])
-    @activity.update(status: params[:status])
+    @activity.same_reservation.each { |resa| resa.update(status: params[:status]) }
+    # @activity.update(status: params[:status])
     redirect_to trip_activities_path(@trip)
   end
 
   def destroy
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.find(params[:id])
-    @activity.destroy
+    @activity.same_reservation.each { |resa| resa.destroy }
+    # @activity.destroy
     redirect_to trip_activities_path(@trip)
   end
 
