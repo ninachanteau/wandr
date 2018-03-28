@@ -9,6 +9,20 @@ function changeTitle(title) {
   navbarTitle.innerHTML = title;
 }
 
+// function returnCard(backCard) {
+//   const plusReturn = document.querySelectorAll(".plus-return");
+//     plusReturn.forEach((element) => {
+//       element.addEventListener("mouseover", (event) => {
+//         const selectedCard = event.currentTarget.querySelector("index-card");
+//         const hiddenCard = event.currentTarget.querySelector("index-card.hidden");
+//           plusReturn.forEach((elem) => {
+//             elem.querySelector("index-card.hidden").classList.remove("hidden");
+//           });
+//         selectedCard.classList.toggle("hidden");
+//       });
+//     });
+// }
+
 changeTitle('<%= j render "shared/navbar_title", trip: @trip, icon: "home" %>');
 
 
