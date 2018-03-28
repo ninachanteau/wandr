@@ -4,8 +4,18 @@
   margin-top: 0px;
 }
 
+.trips-card {
+  position: relative;
+  margin: 20px;
+  padding: 20px;
+  background-color: $white-transparent;
+  border-radius: 5px;
+  min-height: 160px;
+  max-width: 1050px;
+}
+
 .trip-title {
-  margin-top: 30px;
+  margin-top: 0px;
 }
 
 .add-card {

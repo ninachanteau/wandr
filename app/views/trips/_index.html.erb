@@ -1,20 +1,21 @@
 <div class="new-container">
 <div class="container">
 
-  <h2 class="trip-title">Upcoming trips</h2>
-  <div class="row">
-    <% future_trips.order(:start_date).each do |future_trip| %>
+  <div class="trips-card">
+    <h2 class="trip-title">Upcoming trips</h2>
+    <div class="row">
+      <% future_trips.order(:start_date).each do |future_trip| %>
+        <div class="col-sm-6 col-md-4">
+          <%= render 'shared/card', trip: future_trip %>
+        </div>
+      <% end %>
       <div class="col-sm-6 col-md-4">
-        <%= render 'shared/card', trip: future_trip %>
-      </div>
-    <% end %>
-    <div class="col-sm-6 col-md-4">
-      <div class="card add-card">
+        <div class="card add-card">
           <div type="button" data-toggle="modal" data-target="#myModal">
-                    <i class="fa fa-plus-circle btn-card"></i>
-                  </div>
+            <i class="fa fa-plus-circle btn-card"></i>
+          </div>
 
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-header">
@@ -40,50 +41,50 @@
                         </div>
                       </div>
                     </div>
-                  </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <h2 class="trip-title">Wishlists</h2>
-  <div class="row">
-    <% wishlist_trips.order(:destination).each do |wishlist_trip| %>
-      <div class="col-sm-6 col-md-4">
-        <%= render 'shared/card', trip: wishlist_trip %>
-      </div>
-    <% end %>
-    <div class="col-sm-6 col-md-4">
-      <div class="card add-card">
-<!--         <div> <%#= link_to new_trip_path do %>
-          <i class="fa fa-plus-circle btn-card"></i>
-        <#% end %></div> -->
-        <div type="button" data-toggle="modal" data-target="#myModal">
-          <i class="fa fa-plus-circle btn-card"></i>
+  <div class="trips-card">
+    <h2 class="trip-title">Wishlists</h2>
+    <div class="row">
+      <% wishlist_trips.order(:destination).each do |wishlist_trip| %>
+        <div class="col-sm-6 col-md-4">
+          <%= render 'shared/card', trip: wishlist_trip %>
         </div>
+      <% end %>
+      <div class="col-sm-6 col-md-4">
+        <div class="card add-card">
+          <div type="button" data-toggle="modal" data-target="#myModal">
+            <i class="fa fa-plus-circle btn-card"></i>
+          </div>
 
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title text-center" id="myModalLabel">Add a Trip</h4>
-              </div>
-              <div class="modal-body">
-                <%= simple_form_for(trip) do |f| %>
-                  <%= f.input :name, placeholder: "Name", label: false %>
-                  <%= f.input :destination, placeholder: "Destination", label: false %>
-                  <%= f.input :photo %>
-                  <%= f.input :description, placeholder: "Description", label: false %>
-                  <div class="row">
-                    <div class="col-xs-6">
-                  <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Start Date", label: false, data_altinput: true, data_enabletime: true%>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title text-center" id="myModalLabel">Add a Trip</h4>
+                </div>
+                <div class="modal-body">
+                  <%= simple_form_for(trip) do |f| %>
+                    <%= f.input :name, placeholder: "Name", label: false %>
+                    <%= f.input :destination, placeholder: "Destination", label: false %>
+                    <%= f.input :photo %>
+                    <%= f.input :description, placeholder: "Description", label: false %>
+                    <div class="row">
+                      <div class="col-xs-6">
+                    <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Start Date", label: false, data_altinput: true, data_enabletime: true%>
+                      </div>
+                      <div class="col-xs-6">
+                    <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "End Date", label: false, data_altinput: true, data_enabletime: true %>
+                      </div>
                     </div>
-                    <div class="col-xs-6">
-                  <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "End Date", label: false, data_altinput: true, data_enabletime: true %>
-                    </div>
-                  </div>
-                  <%= f.submit "Add trip", class: "btn btn-info", style: "width: 100%" %>
-                <% end %>
+                    <%= f.submit "Add trip", class: "btn btn-info", style: "width: 100%" %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>
@@ -92,15 +93,17 @@
     </div>
   </div>
 
-  <h2 class="trip-title">Past trips</h2>
-  <div class="row">
-    <% past_trips.order(end_date: :desc).each do |past_trip| %>
-      <div class="col-sm-6 col-md-4">
-        <%= render 'shared/card', trip: past_trip %>
-      </div>
-    <% end %>
+  <div class="trips-card">
+    <h2 class="trip-title">Past trips</h2>
+    <div class="row">
+      <% past_trips.order(end_date: :desc).each do |past_trip| %>
+        <div class="col-sm-6 col-md-4">
+          <%= render 'shared/card', trip: past_trip %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+  </div>
 </div>
 
 

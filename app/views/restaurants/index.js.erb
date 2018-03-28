@@ -3,6 +3,13 @@ function loadRestaurants(innerHTML) {
   wrapper.innerHTML = innerHTML;
 };
 
+function changeTitle(title) {
+  const navbarTitle = document.querySelector('.navbar-title');
+  navbarTitle.innerHTML = title;
+}
+
+changeTitle('<%= j render "shared/navbar_title", trip: @trip, icon: "cutlery" %>');
+
 loadRestaurants(`'<%= j render "index", restaurants: @restaurants, participation: @participation, trip: @trip, restaurant: @restaurant, my_restaurants: @my_restaurants, avatar: @avatar, trip_dates: @trip_dates %>'`);
 
 function removeNotification() {
