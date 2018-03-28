@@ -67,9 +67,11 @@
                   <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-                  <% if activ.date %>
-                  <p class="ind-date"><%= activ.date.strftime("%b %d, %Y") %> @ <%= activ.date.strftime("%H:%M") %></p>
-                  <% end %>
+                  <div class="ind-date">
+                    <% if activ.date %>
+                    <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="index-address">
                   <p class="ind-address"><%= activ.address%></p>
@@ -149,9 +151,11 @@
                     <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
                   </div>
                   <div class="index-date">
-                    <% if activ.date %>
-                    <p class="ind-date"><%= activ.date.strftime("%b %d, %Y") %> @ <%= activ.date.strftime("%H:%M") %></p>
-                    <% end %>
+                    <div class="ind-date">
+                      <% if activ.date %>
+                      <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                      <% end %>
+                    </div>
                   </div>
                   <div class="index-address">
                     <p class="ind-address"><%= activ.address%></p>

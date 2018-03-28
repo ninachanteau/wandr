@@ -36,6 +36,7 @@
   position: absolute;
   left: 25px;
   top: 90px;
+
 }
 
 .calendar {
@@ -70,8 +71,10 @@
 }
 
 .calendar-map-container {
-  background-color: $white-transparent;
+  background-color: $white-middle-transparent;
   border: black;
   padding: 10px;
+  margin: 10px;
   display: inline-block;
+  border-radius: 2px;
 }

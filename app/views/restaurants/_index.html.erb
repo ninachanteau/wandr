@@ -61,9 +61,6 @@
             </div>
           </div>
 
-<!--           <div class="index-title">
-            <h4 class="ind-title">Upcoming Restaurants</h4>
-          </div> -->
           <div class="card-index-ctn">
             <% my_restaurants.each do |resto| %>
             <div class="index-card">
@@ -76,7 +73,7 @@
                 <div class="index-date">
                   <div class="ind-date">
                     <% if resto.date %>
-                      <p ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
+                      <p ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                     <% else %>
                       <p>Not scheduled yet</p>
                     <% end %>
@@ -167,7 +164,7 @@
               <div class="index-date">
                 <div class="date">
                   <% if resto.date %>
-                    <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
+                    <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                   <% else %>
                     <p class="ind-date">Not scheduled yet</p>
                   <% end %>

@@ -42,15 +42,7 @@
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
-  .index-name {
-    height: 34px;
-  }
-  .index-date {
-    height: 15px;
-  }
-  .index-address {
-    height: 15px;
-  }
+
   .index-participants {
     position: absolute;
     top: 5px;
@@ -77,21 +69,19 @@
 }
 
 .ind-name {
-  margin-top: 60px;
-  font-size: 20px;
+  padding-top: 30px;
+  font-size: 16px;
   font-weight: bolder;
   }
-.index-date {
-  margin-top: 15px;
-  .ind-date {
-    font-size: 14px;
-  }
+.ind-date p {
+  font-size: 14px;
+  font-weight: 300;
+  padding-top: 35px;
 }
-.index-address {
-  margin-top: 30px;
-  .ind-address {
-    font-size: 12px;
-  }
+
+.ind-address {
+  font-size: 10px;
+  padding-top: 15px;
 }
 
 .plus-return {
@@ -101,12 +91,3 @@
   color: $middle-gray;
 }
 
-// .wishlist-card {
-//   min-width: 300px;
-//   min-height: 350px;
-// }
-
-
-// .table-status {
-//   text-align: right;
-// }
