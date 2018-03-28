@@ -55,10 +55,6 @@
   flex-wrap: wrap;
 }
 
-// .transpo-title {
-//     padding-left: 12px;
-//     color: white;
-//   }
 
 .transportation-card {
   margin-right: 10px !important;
@@ -87,25 +83,13 @@
   }
 }
 
-// .transpo-time {
-//   display: flex;
-//   justify-content: space-between;
-//   margin-top: 50px;
-//   .departure {
-//     max-width: 100px;
-//   }
-//   .arrival {
-//     max-width: 100px;
-//   }
-// }
-
 .details-card {
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
   .little-plane {
     position: absolute;
-    top: 40px;
+    top: -20px;
     left: 115px;
     height: 15px;
     color: $middle-gray;
