@@ -60,9 +60,9 @@
 
 
 
-          <div class="transportations-title">
+<!--           <div class="transportations-title">
             <h4 class="transpo-title">Upcoming travel plans</h4>
-          </div>
+          </div> -->
           <div class="cards-ctn">
             <% if participation %>
               <% my_transportations.each do |transpo| %>
@@ -137,9 +137,9 @@
             <i class="fa fa-plus-circle plus-btn"></i>
           <% end %>
         </div>
-        <div class="transportations-title">
+<!--         <div class="transportations-title">
           <h4 class="transpo-title">Other travel plans</h4>
-        </div>
+        </div> -->
         <div class="cards-ctn">
           <% transportations.each do |transpo| %>
             <% if transpo.participation.user != current_user %>

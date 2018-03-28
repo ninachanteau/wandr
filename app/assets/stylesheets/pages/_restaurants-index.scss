@@ -5,9 +5,9 @@
 }
 
 .restaurants-card {
+  margin: 20px 10px 20px 10px;
   position: relative;
-  margin: 20px;
-  padding: 20px;
+  padding: 10px;
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
@@ -29,11 +29,11 @@
   flex-wrap: wrap;
 }
 
-.ind-title {
-  padding-left: 12px;
-  margin-top: 0px;
-  color: white;
-  }
+// .ind-title {
+//   padding-left: 12px;
+//   margin-top: 0px;
+//   color: white;
+//   }
 
 .index-card {
   background-color: white;
