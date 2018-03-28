@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "https//wandrio.herokuapp.com" }
+  config.action_mailer.default_url_options = { host: "https//wandr.online" }
   # Verifies that versions and hashed value of the package contents in the project's package.json
   config.webpacker.check_yarn_integrity = false
 
