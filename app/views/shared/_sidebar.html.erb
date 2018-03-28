@@ -13,7 +13,7 @@
           <%# if @trip && @trip.id.present? %>
       <ul class="list-icons nav nav-tabs" id="myTab" role="tablist">
           <% if @trip.id %>
-            <li class="nav-item"> <%= link_to trip_path(@trip), class: "nav-link active", remote: true do %>
+            <li class="nav-item"> <%= link_to trip_path(@trip), class: "nav-link active" do %>
               <%= render 'shared/globe-icon' %>
             <% end %></li>
           <% end %>

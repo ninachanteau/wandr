@@ -80,7 +80,7 @@
           </div>
   </div>
 
-  <div class="trips-card gray-card">
+  <div class="trips-card">
       <% past_trips.order(end_date: :desc).each do |past_trip| %>
         <div class="trip-card">
           <%= render 'shared/card', trip: past_trip %>

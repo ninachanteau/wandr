@@ -1,14 +1,8 @@
-
 import "bootstrap";
-import "../plugins/flatpickr";
 
 import "../components/sidebar";
-
-import {RefreshForm} from "../components/form_url";
-RefreshForm();
-
-import { autocomplete } from '../components/autocomplete';
-autocomplete();
-
+import { RefreshForm } from "../components/form_url";
 import { displayCalendar } from '../plugins/fullcalendar';
+
+RefreshForm();
 displayCalendar();
