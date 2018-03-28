@@ -1,70 +1,65 @@
 <div class="new-container">
-<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="participants-container">
+          <% trip.participations.each do |particip| %>
+            <div class="participant text-center">
+              <% if particip.user %>
+                <%= cl_image_tag particip.user.avatar, class: "avatar-large" %>
+              <% else %>
+                <%= image_tag "default-user.jpg", class: "avatar-large" %>
+              <% end %>
+              <p><%= particip.pseudo %></p>
+            </div>
+          <% end %>
 
+            <!-- Button trigger modal -->
+            <div type="button" data-toggle="modal" data-target="#myModal">
+              <i class="fa fa-plus-circle btn-card btn-participants"></i>
+            </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="participants-container">
-        <% trip.participations.each do |particip| %>
-          <div class="participant text-center">
-            <% if particip.user %>
-              <%= cl_image_tag particip.user.avatar, class: "avatar-large" %>
-            <% else %>
-              <%= image_tag "default-user.jpg", class: "avatar-large" %>
-            <% end %>
-            <p><%= particip.pseudo %></p>
-          </div>
-        <% end %>
-
-          <!-- Button trigger modal -->
-          <div type="button" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus-circle btn-card btn-participants"></i>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myModalLabel">Add a participant to the trip</h4>
-                </div>
-                <div class="modal-body">
-                  <%= simple_form_for [trip, participation] do |f| %>
-                    <%= f.input :email, placeholder: "Email", label: false%>
-                    <%= f.input :pseudo, placeholder: "Pseudo", label: false %>
-                    <%= f.submit "Add a participant", class: "btn btn-info", style: "width: 100%" %>
-                  <% end %>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title text-center" id="myModalLabel">Add a participant to the trip</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for [trip, participation] do |f| %>
+                      <%= f.input :email, placeholder: "Email", label: false%>
+                      <%= f.input :pseudo, placeholder: "Pseudo", label: false %>
+                      <%= f.submit "Add a participant", class: "btn btn-info", style: "width: 100%" %>
+                    <% end %>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-<!--           Export pdf -->
-          <%= link_to recap_trip_path(@trip, :format => 'pdf') do %>
-            <i class="fa fa-file-pdf-o pdf-link"></i>
-          <% end %>
+  <!--           Export pdf -->
+            <%= link_to recap_trip_path(@trip, :format => 'pdf') do %>
+              <i class="fa fa-file-pdf-o pdf download-link"></i>
+            <% end %>
 
-<!--           Export calendar -->
-          <%= link_to calendar_trip_path(@trip) do %>
-            <i class="fa fa-calendar pdf-link" aria-hidden="true"></i>
-          <% end %>
-
-    </div>
-    </div>
-    <div class="col-md-6">
-      <div id="calendar" data-events="<%= events.to_json %>"></div>
-    </div>
-    <div class="col-md-6">
-      <div id="map" data-markers="<%= markers.to_json %>"></div>
+  <!--           Export calendar -->
+            <%= link_to "https://calendar.google.com/calendar/render?cid=#{calendar_trip_url(@trip)}", target: "_blank" do %>
+              <i class="fa fa-calendar calendar download-link" aria-hidden="true"></i>
+            <% end %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div id="calendar" data-events="<%= events.to_json %>"></div>
+      </div>
+      <div class="col-md-6">
+        <div id="map" data-markers="<%= markers.to_json %>"></div>
+      </div>
     </div>
   </div>
-
-
-</div>
 </div>
 
 
