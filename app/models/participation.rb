@@ -17,8 +17,8 @@ class Participation < ApplicationRecord
 
   private
 
-  # def send_join_trip_email
-  #  ParticipationMailer.join_trip(self).deliver_now
-  # end
+  def send_join_trip_email
+    ParticipationMailer.join_trip(self).deliver_now
+  end
 
 end
