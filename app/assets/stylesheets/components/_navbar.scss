@@ -78,26 +78,20 @@
 .navbar-wagon-right {
   display: flex;
   align-items: center;
-<<<<<<< HEAD
-  justify-content: space-around;
-=======
-  justify-content: space-between;
 
->>>>>>> b414a70407d7cffe45b12576771a29ff761dc855
+  justify-content: space-around;
+
   .form-control {
     width: 250px;
     border-radius: 3px;
     margin: 20 auto;
     height: 39px !important;
-<<<<<<< HEAD
-=======
     padding: 0px !important;
     font-weight: lighter;
     color: #999fb5 !important;
   }
   .quick-add-url-container {
     height: 39px;
->>>>>>> b414a70407d7cffe45b12576771a29ff761dc855
   }
 }
 
