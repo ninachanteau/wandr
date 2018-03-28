@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :participations, only: [:create, :edit, :update, :destroy]
     get :recap, on: :member
+    get :calendar, on: :member
   end
 
   resources :restaurants, only: [:create, :edit, :update]
