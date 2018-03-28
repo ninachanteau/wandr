@@ -4,7 +4,7 @@ class AccommodationsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
     @my_accommodations_unsorted = @current_participation.accommodations
-    @my_accommodations = @my_accommodations_unsorted.select(&:date).sort_by(&:date) + @my_accommodations_unsorted.reject(&:date)
+    @my_accommodations = @my_accommodations_unsorted.select(&:start_date).sort_by(&:start_date) + @my_accommodations_unsorted.reject(&:start_date)
     @trip_participants =  @trip.participations
     @all_reservations = Accommodation.where(trip_id: @trip.id)
     @all_accommodations = []
@@ -12,7 +12,8 @@ class AccommodationsController < ApplicationController
       @all_accommodations << @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).first unless @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).nil?
     end
     session[:notifications][params[:trip_id]][:accommodation] = Time.now
-    @accommodations = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
+    @accommodations_unsorted = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
+    @accommodations = @accommodations_unsorted.select(&:start_date).sort_by(&:start_date) + @accommodations_unsorted.reject(&:start_date)
     @accommodation = Accommodation.new
     @trip_dates = {
       start_date: @trip.start_date,
