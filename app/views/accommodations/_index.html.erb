@@ -61,11 +61,19 @@
                   </div>
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                  <p>Who will be attending?</p>
+                <p>Who will be attending?</p>
+                  <% trip.participations.each do |participant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar-large accomadation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar-large accomadation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% end %>
+                <% end %>
+           <!--      <div style="visibility: hidden"> -->
                 <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
                   <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
                 <% end %>
-                <br>
+              <!--   </div> -->
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
               <% end %>

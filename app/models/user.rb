@@ -14,12 +14,10 @@ class User < ApplicationRecord
 
   def new_count(trip, method_name)
     @new_items = method_name.all.select do |item|
-      # if trip
-      #   item.created_at > self.last_sign_in_at && item.trip.id == trip.id
-      # else
-        item.created_at > self.last_sign_in_at && item.trip_id == trip.id
+      if item.trip
+      item.created_at > self.last_sign_in_at && item.trip.id == trip.id
       end
-    # end
+    end
     return @new_items.count
   end
 end
