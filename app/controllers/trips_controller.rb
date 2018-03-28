@@ -272,12 +272,14 @@ class TripsController < ApplicationController
       end
     end
 
+    cal = Icalendar::Calendar.new
+
     @events.each do |event|
-      event = Icalendar::Event.new
-      event.dtstart = event[:start]
-      event.dtend = event[:end]
-      event.summary = event[:title]
-      cal.add_event(event)
+      cal_event = Icalendar::Event.new
+      cal_event.dtstart = event[:start]
+      cal_event.dtend = event[:end]
+      cal_event.summary = event[:title]
+      cal.add_event(cal_event)
     end
 
     cal.publish
