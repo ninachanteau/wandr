@@ -13,8 +13,24 @@ function updateForm(innerHTML) {
   form.innerHTML = innerHTML
 }
 
+function selectParticipant() {
+  const participantsAvatar = document.querySelectorAll(".activity-participant-avatar");
+  if (participantsAvatar) {
+    participantsAvatar.forEach((avatar) => {
+      avatar.addEventListener('click', (e) => {
+        const targetId = avatar.dataset.participationId;
+        console.log(document.getElementById(`activity_participations_pseudo_${targetId}`));
+        document.getElementById(`activity_participations_pseudo_${targetId}`).click();
+        avatar.classList.toggle('avatar-large-selected');
+        // TODO modify avatar
+      });
+    });
+  }
+}
+
 <% if request.referrer.include?('trips') %>
   updateForm("<%= j render 'trips/navbar_activities/update_form', activity: @activity, trips: @trips, trip:  @trip %>");
+  selectParticipant();
 <% else %>
   getForm("<%= j render 'trips/navbar_activities/edit_form', activity: @activity, trips: @trips, trip: @trip %>");
   openModal();

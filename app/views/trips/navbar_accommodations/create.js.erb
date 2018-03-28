@@ -13,9 +13,25 @@ function updateForm(innerHTML) {
   form.innerHTML = innerHTML
 }
 
+function selectParticipant() {
+  const participantsAvatar = document.querySelectorAll(".accomadation-participant-avatar");
+  if (participantsAvatar) {
+    participantsAvatar.forEach((avatar) => {
+      avatar.addEventListener('click', (e) => {
+        const targetId = avatar.dataset.participationId;
+        document.getElementById(`accommodation_participations_pseudo_${targetId}`).click();
+        avatar.classList.toggle('avatar-large-selected');
+        // TODO modify avatar
+      });
+    });
+  }
+}
+
+
 <% if request.referrer.include?('trips') %>
   // openModal();
   updateForm("<%= j render 'trips/navbar_accommodations/update_form', accommodation: @accommodation, trips: @trips, trip:  @trip %>");
+  selectParticipant()
 <% else %>
   openModal();
   getForm("<%= j render 'trips/navbar_accommodations/edit_form', accommodation: @accommodation, trips: @trips, trip: @trip %>");
