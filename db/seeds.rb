@@ -12,7 +12,7 @@ Trip.destroy_all
 
 puts "Creating 4 trips"
 
-<<<<<<< HEAD
+
 barcelona = Trip.create(
  destination: "Barcelona",
  description: "Trip to Barcelona for Elsa's 30th",
@@ -92,7 +92,7 @@ first_name: "Alex",
 last_name: "Smadja",
 password: "123456",
 remote_avatar_url: "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/29543098_10215116936744465_3595477249990075681_n.jpg?_nc_cat=0&_nc_eui2=v1%3AAeEC2-E-EPYNojIXayOXoirl5JSKnlQ4RsME5K_714Nlfx1-ElObyILJHPoCBu5o0umauwQaamIv9KIiJpA7ejD5Hm1bJz5Yzql8-mzWNbMlKA&oh=c4c082e1ea326b7859bb3beadf4ec777&oe=5B312742")
->>>>>>> master
+
 
 puts "Users created"
 puts "------"
