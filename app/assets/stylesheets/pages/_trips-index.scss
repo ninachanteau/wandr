@@ -1,0 +1,36 @@
+.new-container {
+  margin-left: 100px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.trip-title {
+  margin-top: 30px;
+}
+
+.add-card {
+  background-color: $white-transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-card {
+  color: white;
+  font-size: 48px;
+}
+
+.modal-content {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  color: $gray;
+}
+
+.modal-backdrop {
+  background-color: rgba(255,255,255, 0.8);
+}
+
+.pac-container {
+  z-index: 1051 !important;
+}

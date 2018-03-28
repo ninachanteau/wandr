@@ -1,16 +1,23 @@
-<%= simple_form_for @accommodation do |f| %>
-  <%= f.input :name %>
-  <%= f.input :address %>
-  <%= f.input :phone_number %>
-  <%= f.input :email %>
-  <%= f.input :url %>
-  <%= f.input :description %>
-  <%= f.input :photo %>
-  Reservation:
-  <%= f.input :reference_number %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.input :end_date %>
-  <%= f.input :participation_id %>
-  <%= f.button :submit %>
-<% end %>
+<h2 class="text-center">Edit accommodation</h2>
+
+<div class="new-container">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <img src="<%= @accommodation.photo %>" size="16" alt="Edit Entry">
+
+      <%= simple_form_for @accommodation, url: trips_navbar_accommodation_path method: :patch, do |f| %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :phone_number %>
+        <%= f.input :email %>
+        <%= f.input :url %>
+        <%= f.input :photo %>
+        <%= f.select :trip, options_for_select(@trips) %>
+        <%= f.button :submit, class: "btn btn-info btn-form", style: "margin-bottom: 20px" %>
+        <%= f.submit "Update accommodation", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+</div>

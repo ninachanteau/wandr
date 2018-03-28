@@ -1,0 +1,161 @@
+
+
+.title {
+  padding-bottom: 30px;
+  padding-top: 20px;
+}
+
+.title-icon {
+  color: $middle-gray;
+}
+
+.add-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.plus-btn {
+  color: white;
+  font-size: 40px;
+  display: flex;
+  justify-content: flex-start;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  &:hover {
+    text-decoration: none !important;
+  }
+}
+
+.transportations-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.transportations-ctn {
+  flex-grow: 1;
+}
+
+.transportations-card {
+  position: relative;
+  margin: 20px;
+  padding: 10px;
+  background-color: $white-transparent;
+  border-radius: 5px;
+  min-height: 160px;
+  max-width: 1050px;
+  align-items: center;
+}
+
+.cards-ctn {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.transpo-title {
+    padding-left: 12px;
+    color: white;
+  }
+
+.transportation-card {
+  margin-right: 10px !important;
+  margin-bottom: 10px !important;
+  background-color: white;
+  height: 300px;
+  width: 250px;
+  margin: 10px;
+  display: block;
+  border-radius: 15px;
+  position: relative;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  border-left: 4px dashed $light-gray;
+  &:hover {
+    background-color : $white-middle-transparent;
+  }
+  .transpo-avatar {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+  }
+  .transpo-status {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+}
+
+// .transpo-time {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 50px;
+//   .departure {
+//     max-width: 100px;
+//   }
+//   .arrival {
+//     max-width: 100px;
+//   }
+// }
+
+.details-card {
+  border-radius: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  .little-plane {
+    position: absolute;
+    top: 40px;
+    left: 115px;
+    height: 15px;
+    color: $middle-gray;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.2;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .info-card {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .date-card {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+  // .departure {
+  //   margin-top: 70px;
+  // }
+  // .arrival {
+  //   margin-top: 20px;
+  // }
+  .ticket-price {
+    margin-top: 20px;
+  }
+}
+
+.reference-card {
+  // border-top: 4px dashed $light-gray;
+  border-radius: 15px;
+  border-top: 1px dotted $middle-gray;
+  .reference {
+    font-size: 20px;
+    font-weight: bolder;
+    padding-top: 15px;
+    color: $middle-gray;
+  }
+}
+
+.status-dropdown-item {
+  text-decoration: none !important;
+  color: $gray;
+  &:hover {
+    color: $yellow;
+  }
+}
+
+

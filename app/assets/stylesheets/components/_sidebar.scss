@@ -1,23 +1,80 @@
 .sidebar-container {
+  z-index: 500;
   position: fixed;
+  display: block;
   width: 100px;
   height: 100vh;
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: $yellow;
+  background-color: white;
   box-shadow: 1px 0px 5px rgba(0,0,0,0.2);
+
  ul {
   list-style: none;
-  margin-top: 60px;
+  margin-top: 30px;
+  margin-left: 20px;
+  border: none;
  }
  i {
-  color: white;
+  color: $middle-gray;
   font-size: 32px;
-  padding: 15px 0px;
+  padding: 10px 0px;
   &:hover {
     color: $light-gray;
-    font-size: 36px;
   }
  }
+ li .fa-university {
+  font-weight: 25px;
+ }
+}
+
+.sidebar-item {
+  cursor: pointer;
+  position: relative;
+}
+
+.nav-link {
+  border: none;
+  &:hover {
+    border: none;
+  }
+}
+
+.nav-tabs > li > a {
+  border: none;
+  &:hover {
+    border: none;
+  }
+}
+
+.sidebar-container a.active {
+  i {
+    color: rgb(100, 100, 100);
+  }
+}
+
+.sidebar-wagon-brand img {
+  height: 50px;
+  margin-left: 20px;
+  margin-top: 15px;
+}
+
+.notification {
+  border-radius: 50%;
+  color: white;
+  font-size: 8px;
+  background-color: red;
+}
+
+.notification-position {
+  position: absolute;
+  bottom: 24px;
+  right: 14px;
+  height: 12px;
+  width: 12px;
+}
+
+.notification-holder {
+  position: relative;
 }

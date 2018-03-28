@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180320143416) do
+ActiveRecord::Schema.define(version: 20180327110958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,12 +32,15 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.integer "number_of_rooms"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "trip_id"
+    t.text "description"
     t.index ["participation_id"], name: "index_accommodations_on_participation_id"
+    t.index ["trip_id"], name: "index_accommodations_on_trip_id"
   end
 
   create_table "activities", force: :cascade do |t|
-    t.date "date"
-    t.time "start_time"
     t.string "status"
     t.bigint "participation_id"
     t.string "address"
@@ -49,7 +52,12 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "trip_id"
+    t.datetime "date"
     t.index ["participation_id"], name: "index_activities_on_participation_id"
+    t.index ["trip_id"], name: "index_activities_on_trip_id"
   end
 
   create_table "participations", force: :cascade do |t|
@@ -60,13 +68,12 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
     t.index ["trip_id"], name: "index_participations_on_trip_id"
     t.index ["user_id"], name: "index_participations_on_user_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
-    t.time "start_time"
-    t.date "date"
     t.string "status"
     t.bigint "participation_id"
     t.string "address"
@@ -78,23 +85,30 @@ ActiveRecord::Schema.define(version: 20180320143416) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
+    t.bigint "trip_id"
+    t.datetime "date"
     t.index ["participation_id"], name: "index_restaurants_on_participation_id"
+    t.index ["trip_id"], name: "index_restaurants_on_trip_id"
   end
 
   create_table "transportations", force: :cascade do |t|
     t.bigint "participation_id"
     t.string "type"
-    t.date "departure_date"
-    t.date "arrival_date"
     t.string "departure_port"
     t.string "arrival_port"
     t.string "reference_number"
     t.string "status"
     t.float "price_per_person"
-    t.time "arrival_time"
-    t.time "departure_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "departure_port_latitude"
+    t.float "departure_port_longitude"
+    t.float "arrival_port_latitude"
+    t.float "arrival_port_longitude"
+    t.datetime "departure_date"
+    t.datetime "arrival_date"
     t.index ["participation_id"], name: "index_transportations_on_participation_id"
   end
 

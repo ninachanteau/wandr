@@ -1,107 +1,12 @@
-<div class="container">
 
-  <div class="header">
-    <div class="title"> <h2><%= @trip.name  %>  >  <i class="fa fa-plane"></i></h2>
-    </div>
-    <div class="add-btn"><%= link_to "+", new_trip_transportation_path  %></div>
-  </div>
-
-  <div class="transportations-container">
-
-    <div class="user-transportations">
-      <h3>Your transportation</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">From</th>
-            <th scope="col">To</th>
-            <th scope="col">#</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% if @participation %>
-            <% @transportations.each do |transpo| %>
-              <% if transpo.participation.user_id == current_user.id %>
-              <tr>
-                <td class="departure">
-                  <p><%= transpo.departure_port%></p>
-                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
-                </td>
-                <td class="arrival">
-                  <p><%= transpo.arrival_port%></p>
-                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
-                </td>
-                <td class="reference">
-                  <%= transpo.reference_number%>
-                </td>
-                <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
-                </td>
-                <td>
-                  <p class="<%= transpo.status%>"><%= transpo.status%></p>
-                </td>
-                <td>
-                  <%= cl_image_tag @avatar, class: "avatar", crop: :fill%>
-                </td>
-              </tr>
-              <% end %>
-            <% end %>
-          <% else %>
-            <p>No transportation currently saved for you</p>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="other-transportations">
-      <h3>Other participants' transportation</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">From</th>
-            <th scope="col">To</th>
-            <th scope="col">#</th>
-            <th scope="col">Price</th>
-            <th scope="col">Status</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @transportations.each do |transpo| %>
-            <% if transpo.participation.user != current_user %>
-              <tr>
-                <td class="departure">
-                  <p><%= transpo.departure_port%></p>
-                  <p><%= transpo.departure_date%> - <%= transpo.departure_time%></p>
-                </td>
-                <td class="arrival">
-                  <p><%= transpo.arrival_port%></p>
-                  <p><%= transpo.arrival_date%> - <%= transpo.arrival_time%></p>
-                </td>
-                <td class="reference">
-                  <%= transpo.reference_number%>
-                </td>
-                <td class="price-status">
-                  <p class="ticket-price"><%= transpo.price_per_person%> €</p>
-                </td>
-                <td>
-                  <p class="<%= transpo.status%>"><%= transpo.status%></p>
-                </td>
-                <td>
-                  <%= cl_image_tag transpo.participation.user.avatar, class: "avatar", crop: :fill%>
-                </td>
-              </tr>
-            <% end %>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-
-
-
+<%= render "index",
+  transportations: @transportations,
+  trip_participants: @trip_participants,
+  participation: @participation,
+  trip: @trip,
+  transportation: @transportation,
+  participation: @participation,
+  my_transportations: @my_transportations,
+  avatar: @avatar,
+  trip_dates: @trip_dates
+%>

@@ -1,5 +1,24 @@
 .home-banner {
-  height: 100vh;
+  min-height: calc(100vh - 130px);
   width: 100vw;
   background-size: cover;
+}
+
+.home-title {
+  margin-top: 50px;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 80px;
+  color: white;
+}
+
+.home-subtitle {
+  font-weight: 300;
+  margin-bottom: 100px;
+  color: white;
+}
+
+.btn-home {
+  display: flex;
+  justify-content: center;
 }

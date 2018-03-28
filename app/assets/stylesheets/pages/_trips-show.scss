@@ -1,0 +1,54 @@
+.participants-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 20px;
+  margin-bottom: 15px;
+}
+
+.participant {
+  margin-right: 18px;
+  p {
+    font-size: 15px;
+    color: $gray;
+  }
+}
+
+.btn-participants {
+  margin-bottom: 30px;
+}
+
+.pdf-link {
+  color: white;
+  font-size: 36px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  &:hover {
+    color: $light-gray;
+  }
+}
+
+#map {
+  height: 450px;
+  flex: 0 0 450px;
+  position: sticky !important;
+  top: 0 !important;
+  border-radius: 4px;
+}
+
+.info-window {
+  a {
+  color: $gray;
+  }
+  a:hover {
+    text-decoration: none;
+    color: $yellow;
+  }
+}
+
+#calendar {
+  height: 450px;
+  flex: 0 0 450px;
+  position: sticky !important;
+  top: 0 !important;
+}

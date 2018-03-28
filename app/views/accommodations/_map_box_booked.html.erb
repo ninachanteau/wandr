@@ -1,0 +1,6 @@
+<div class="info-window text-center">
+  <h4><%= link_to accommodation.name, trip_accommodations_path(@trip) %> <%= render 'shared/booked-icon' %></h4>
+  <h6>From: <%= accommodation.start_date.strftime("%b %d, %Y") %></h6>
+  <h6>To: <%= accommodation.end_date.strftime("%b %d, %Y") %></h6>
+  <p><%= accommodation.address %></p>
+</div>

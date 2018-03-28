@@ -1,0 +1,29 @@
+<div class="new-container">
+  <div class="container">
+
+    <div class="header">
+      <div class="title text-center"> <h2><%= @trip.name  %>  ...  <i class="fa fa-star title-icon"></i></h2>
+      </div>
+    </div>
+
+<h4>New activity</h4>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <%= simple_form_for [@trip, @activity] do |f| %>
+          <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control' %>
+          <%= f.input :name, label: "Name", class: 'form-control' %>
+          <%= f.input :url, label: "Link", class: 'form-control' %>
+          <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+          <%= f.input :address, label: "Address", class: 'form-control' %>
+          <%= f.input :phone_number, label: "Phone number", class: 'form-control' %>
+          <%= f.input :email, label: "Email", class: 'form-control' %>
+          <%= f.input :description, label: "Description", class: 'form-control' %>
+          <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control' %>
+          <!-- Add participants -->
+          <%= f.submit class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

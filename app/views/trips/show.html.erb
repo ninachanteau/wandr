@@ -1,1 +1,10 @@
-<h2><%= @trip.destination %></h2>
+
+
+
+<%= render "show",
+  trip: @trip,
+  participation: @participation,
+  events: @events,
+  markers: @markers
+%>
+

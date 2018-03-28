@@ -3,32 +3,48 @@ require "nokogiri"
 
 class RestaurantsController < ApplicationController
 
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+    @my_restaurants = @current_participation.restaurants
+    @all_reservations = Restaurant.where(trip_id: @trip.id)
+    @all_restaurants = []
+    @trip.all_restaurants.each do |key, _value|
+      @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
+    end
+    @restaurants_unsorted = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
+    @restaurants = @restaurants_unsorted.select(&:date).sort_by(&:date) + @restaurants_unsorted.reject(&:date)
+    session[:notifications][params[:trip_id]][:restaurant] = Time.now
+    @restaurant = Restaurant.new
+    @trip_dates = {
+      start_date: @trip.start_date,
+      end_date: @trip.end_date
+    }
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
 
   def new
     @restaurant = Restaurant.new
+    @trip = Trip.find(params[:trip_id])
+    @restaurant.trip = @trip
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    url = @restaurant.url
-    html_content = open(url).read
-    doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
-    @restaurant.name = name_array[0]
-    street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
-    city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
-    country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
-    @restaurant.address = street_array[0]+","+city_array[0]+" "+country_array[0]
-    description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    @restaurant.description = description_array.last
-    phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
-    @restaurant.phone_number = phone_array[5]
-    img_array = doc.search('.page_images img').map{ |i| i['src'] }
-    @restaurant.remote_photo_url = img_array[1]
-    if @restaurant.save
-      redirect_to edit_restaurant_path(@restaurant)
+    @trip = Trip.find(params[:trip_id])
+    @restaurant.trip = @trip
+    @trip_participants =  @trip.participations
+    @resto_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
+    if @restaurant.save!
+      @resto_participants.each do |part|
+        @restaurant.add_participant(part)
+      end
+        redirect_to trip_restaurants_path(@trip)
     else
-      render 'trips/index'
+      render 'new'
     end
   end
 
@@ -37,8 +53,17 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    @trip = Trip.find(params[:trip_id])
     @restaurant = Restaurant.find(params[:id])
-    redirect_to root_path
+    @restaurant.update(status: params[:status])
+    redirect_to trip_restaurants_path(@trip)
+  end
+
+  def destroy
+    @trip = Trip.find(params[:trip_id])
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    redirect_to trip_restaurants_path(@trip)
   end
 
   private
@@ -48,7 +73,7 @@ class RestaurantsController < ApplicationController
   end
 
   def restaurant_params
-    params.require(:restaurant).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
+    params.require(:restaurant).permit(:date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
   end
 end
 

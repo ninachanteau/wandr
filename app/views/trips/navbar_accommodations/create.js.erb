@@ -1,0 +1,22 @@
+function openModal() {
+  const button = document.getElementById("Modalbutton");
+  button.click();
+}
+
+function getForm() {
+  const form = document.getElementById("EditForm");
+  form.innerHTML = "<%= j render 'trips/navbar_accommodations/edit_form', accommodation: @accommodation, trips: @trips, trip: @trip %>"
+}
+
+function updateForm() {
+  const form = document.getElementById("UpdateForm");
+  form.innerHTML = "<%= j render 'trips/navbar_accommodations/update_form', accommodation: @accommodation, trips: @trips, trip:  @trip %>"
+}
+
+<% if request.referrer.include?('trips') %>
+  updateForm();
+  openModal();
+<% else %>
+  getForm();
+  openModal();
+<% end %>

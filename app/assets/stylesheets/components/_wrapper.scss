@@ -1,6 +1,9 @@
 .wrapper {
-  width: calc(100vw - 80px);
-  margin-left: 100px;
-  min-height: calc(100vh - 60px);
-  background-color: $light-gray;
+  background-color: $yellow;
+  // margin: !important 0px;
+  // min-width: (100vw);
+  // min-height: (100vh);
+  // background: linear-gradient(-190deg, $yellow 62%, $light-yellow 62%);
+  // background-attachment: fixed !important;
+  // background-repeat: no-repeat !important;
 }

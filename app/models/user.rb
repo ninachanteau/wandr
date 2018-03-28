@@ -10,4 +10,15 @@ class User < ApplicationRecord
   has_many :accommodations, through: :participations
   has_many :restaurants, through: :participations
   has_many :activities, through: :participations
+  validates_uniqueness_of :email
+
+  def new_count(trip, method_name)
+    @new_items = method_name.all.select do |item|
+      item.created_at > self.last_sign_in_at && item.trip.id == trip.id
+    end
+    return @new_items.count
+  end
 end
+
+
+

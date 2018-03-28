@@ -3,31 +3,52 @@ require "nokogiri"
 
 class AccommodationsController < ApplicationController
 
+  def index
+    @trip = Trip.find(params[:trip_id])
+    @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+    @my_accommodations = @current_participation.accommodations
+    @trip_participants =  @trip.participations
+    @all_reservations = Accommodation.where(trip_id: @trip.id)
+    @all_accommodations = []
+    @trip.all_accommodations.each do |key, _value|
+      @all_accommodations << @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).first unless @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).nil?
+    end
+    session[:notifications][params[:trip_id]][:accommodation] = Time.now
+    @accommodations = @all_accommodations.reject { |resa| resa unless (resa.same_reservation & @my_accommodations).empty? }
+    @accommodation = Accommodation.new
+    @trip_dates = {
+      start_date: @trip.start_date,
+      end_date: @trip.end_date
+    }
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
   def new
     @accommodation = Accommodation.new
+    @trip = Trip.find(params[:trip_id])
+    @accommodation.trip = @trip
+    # render 'accommodations/new'
   end
 
   def create
     @accommodation = Accommodation.new(accommodation_params)
-    url = @accommodation.url
-    html_content = open(url).read
-    doc = Nokogiri::HTML(html_content)
-    name_array = doc.search('.heading_title').map { |element| element.text.strip.to_s }
-    @accommodation.name = name_array[0]
-    street_array = doc.search('.street-address').map { |element| element.text.strip.to_s }
-    city_array = doc.search('.locality').map { |element| element.text.strip.to_s }
-    country_array = doc.search('.country-name').map { |element| element.text.strip.to_s }
-    @accommodation.address = street_array[0]+","+city_array[0]+" "+country_array[0]
-    description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
-    @accommodation.description = description_array.last
-    phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
-    @accommodation.phone_number = phone_array[5]
-    img_array = doc.search('.page_images img').map{ |i| i['src'] }
-    @accommodation.remote_photo_url = img_array[1]
-    if @accommodation.save
-      redirect_to edit_accommodation_path(@accommodation)
+    @trip = Trip.find(params[:trip_id])
+    @accommodation.trip = @trip
+    @trip_participants =  @trip.participations
+    @acc_participants = @trip_participants.select { |part| part if params[part.pseudo] == "1"}
+    if @accommodation.end_date && @accommodation.start_date
+      @accommodation.number_of_nights = @accommodation.end_date - @accommodation.start_date
+    end
+    if @accommodation.save!
+      @acc_participants.each do |part|
+        @accommodation.add_participant(part)
+      end
+      redirect_to trip_accommodations_path(@trip)
     else
-      render 'trips/index'
+      render 'new'
     end
   end
 
@@ -36,8 +57,17 @@ class AccommodationsController < ApplicationController
   end
 
   def update
+    @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
-    redirect_to root_path
+    @accommodation.update(status: params[:status])
+    redirect_to trip_accommodations_path(@trip)
+  end
+
+  def destroy
+    @trip = Trip.find(params[:trip_id])
+    @accommodation = Accommodation.find(params[:id])
+    @accommodation.destroy
+    redirect_to trip_accommodations_path(@trip)
   end
 
   private
@@ -47,6 +77,6 @@ class AccommodationsController < ApplicationController
   end
 
   def accommodation_params
-    params.require(:accommodation).permit(:start_time, :date, :status, :participation_id, :address, :name, :photo, :phone_number, :description, :url, :email)
+    params.require(:accommodation).permit(:start_date, :end_date, :status, :reference_number, :number_of_nights, :participation_id, :address, :name, :photo, :phone_number, :url, :email, :total_price, :number_of_rooms)
   end
 end

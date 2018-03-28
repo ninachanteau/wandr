@@ -1,0 +1,17 @@
+function loadTransportations(innerHTML) {
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = innerHTML;
+};
+
+
+loadTransportations(`'<%= j render "index", transportations: @transportations, trip_participants: @trip_participants, trip: @trip, transportation: @transportation, participation: @participation, trip_dates: @trip_dates, my_transportations: @my_transportations, avatar: @avatar %>'`);
+
+function removeNotification() {
+  const notification = document.getElementById('transportations-notif');
+  if (notification) {
+    notification.remove();
+  }
+}
+
+removeNotification()
+
