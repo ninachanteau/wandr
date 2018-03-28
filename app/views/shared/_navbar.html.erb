@@ -36,27 +36,23 @@
           </select>
         </form>
         </div>
-        <% if params["type"] == "restaurant"  %>
+        <div class="url-form form-control">
+          <% if params["type"] == "restaurant"  %>
             <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
-              <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
+              <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter url", label: false %>
             <% end %>
-        <% elsif params["type"] == "accommodation" %>
-          <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
+          <% elsif params["type"] == "accommodation" %>
+            <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
+            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter url", label: false %>
+            <% end %>
+          <% elsif params["type"] == "activity" %>
+            <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
+            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter url", label: false %>
+            <% end %>
           <% end %>
-        <% elsif params["type"] == "activity" %>
-          <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input", placeholder: "Enter url", label: false %>
-          <% end %>
-        <% end %>
-        <div>
-      <% end %>
-        <div>
-
         </div>
-        <div></div>
-        <div></div>
-      </div>
+        <% end %>
+
 
       <!-- Logo -->
       <div class="dropdown">
