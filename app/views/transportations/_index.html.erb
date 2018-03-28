@@ -129,15 +129,8 @@
         </div>
       </div>
 
+      <% unless transportations == [] %>
       <div class="other-transportations transportations-card">
-        <div>
-          <%= link_to do %>
-            <i class="fa fa-plus-circle plus-btn"></i>
-          <% end %>
-        </div>
-        <div class="transportations-title">
-          <h4 class="transpo-title">Other travel plans</h4>
-        </div>
         <div class="cards-ctn">
           <% transportations.each do |transpo| %>
               <div class="transportation-card">
@@ -190,7 +183,6 @@
 
     </div>
   </div>
-
 </div>
 </div>
 
