@@ -47,7 +47,7 @@
             <% end %>
 
   <!--           Export calendar -->
-            <%= link_to "https://calendar.google.com/calendar/render?cid=#{calendar_trip_url(@trip)}", target: "_blank" do %>
+            <%= link_to "https://calendar.google.com/calendar/render?cid=#{calendar_trip_url(@trip, user_id: current_user.id)}", target: "_blank" do %>
               <i class="fa fa-calendar calendar download-link" aria-hidden="true"></i>
             <% end %>
         </div>
