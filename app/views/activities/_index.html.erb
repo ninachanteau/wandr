@@ -1,11 +1,6 @@
 <div class="new-container">
   <div class="container">
 
-    <!-- <div class="header">
-      <div class="title text-center"> <h2><%#= trip.name  %>  ...  <i class="fa fa-university" style="color: #AAAAAA"></i></h2>
-      </div>
-    </div> -->
-
     <div class="activities-container">
 
       <div class="activities-ctn">
@@ -17,7 +12,7 @@
           <div class="card-index-ctn">
             <% my_activities.order(:date).each do |activ| %>
               <div class="index-card">
-                <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url ,crop: :fill %>');"></div>
+                <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url, crop: :fill %>');"></div>
                 <div class="index-content">
                 <div class="index-name">
                   <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
@@ -145,12 +140,12 @@
           </div>
 
           <div class="index-title">
-            <h4>All activities</h4>
+            <h4 class="ind-title">All activities</h4>
           </div>
           <div class="card-index-ctn">
             <% activities.each do |activity| %>
               <div class="index-card">
-                <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url ,crop: :fill %>');"></div>
+                <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url ,crop: :fill, position: :center %>');"></div>
                 <div class="index-content">
                   <div class="index-name">
                     <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>

@@ -1,11 +1,6 @@
 <div class="new-container">
 <div class="container">
 
-  <!-- <div class="header">
-    <div class="title text-center"> <h2><%#= trip.name  %>  ...  <i class="fa fa-plane title-icon"></i></h2>
-    </div>
-  </div> -->
-
   <div class="transportations-container">
     <div class="transportations-ctn">
       <div class="user-transportations transportations-card">
@@ -74,15 +69,21 @@
                 <% if transpo.participation.user_id == current_user.id %>
                   <div class="transportation-card">
                     <div class="details-card">
-                      <div class="departure"><p>FROM:<strong> <%= transpo.departure_port%></strong></p></div>
-                      <div class="date-time">
-                        <p ><%= transpo.departure_date.strftime("%b %d, %Y") %> @ <%= transpo.departure_date.strftime("%H:%M") %></p>
+                      <div><i class="fa fa-plane little-plane"></i></div>
+                      <div class="info-card">
+                        <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p></div>
+                        <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p></div>
                       </div>
-                      <div class="arrival"><p>TO: <strong><%= transpo.arrival_port%></strong></p></div>
-                      <div class="date-time">
-                        <p ><%= transpo.arrival_date.strftime("%b %d, %Y") %> @ <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                      <div class="date-card">
+                        <div class="date-time">
+                        <p ><%= transpo.departure_date.strftime("%b %d, %Y") %>  <%= transpo.departure_date.strftime("%H:%M") %></p>
                       </div>
-                      <div class="price-status"><p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p></div>
+                      <div class="date-time">
+                        <p class="text-right" ><%= transpo.arrival_date.strftime("%b %d, %Y") %>  <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                      </div>
+                      </div>
+
+                      <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p></div>
                     </div>
                     <div class="reference-card"><p class="reference text-center"><%= transpo.reference_number%></p></div>
                     <div class="transpo-status">
@@ -145,16 +146,21 @@
 
               <div class="transportation-card">
                 <div class="details-card">
-                  <div class="departure"><p>FROM:<strong> <%= transpo.departure_port%></strong></p></div>
-                    <div class="date-time">
-                      <p ><%= transpo.departure_date.strftime("%b %d, %Y") %> @ <%= transpo.departure_date.strftime("%H:%M") %></p>
-                    </div>
-                    <div class="arrival"><p>TO:<strong> <%= transpo.arrival_port%></strong></p></div>
-                    <div class="date-time">
-                      <p ><%= transpo.arrival_date.strftime("%b %d, %Y") %> @ <%= transpo.arrival_date.strftime("%H:%M") %></p>
-                    </div>
-                  <div class="price-status"><p class="ticket-price"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€</p>
+                  <div><i class="fa fa-plane little-plane"></i></div>
+                  <div class="info-card">
+                    <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p></div>
+                    <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p></div>
                   </div>
+                  <div class="date-card">
+                    <div class="date-time">
+                    <p ><%= transpo.departure_date.strftime("%b %d, %Y") %>  <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  </div>
+                  <div class="date-time">
+                    <p class="text-right" ><%= transpo.arrival_date.strftime("%b %d, %Y") %>  <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  </div>
+                  </div>
+
+                  <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p></div>
                 </div>
                 <div class="reference-card"><p class="reference text-center">
                   <%= transpo.reference_number%></p>
