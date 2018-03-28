@@ -165,13 +165,13 @@
                 </div>
                 <div class="transpo-status">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="btn btn-light">
                         <% if transpo.status == "Wishlist" %>
                           <%= render 'shared/wishlist-icon' %>
                         <% else %>
                           <%= render 'shared/booked-icon' %>
                         <% end %>
-                    </button>
+                    </div>
                   </div>
                 </div>
                 <div class="transpo-participants">
