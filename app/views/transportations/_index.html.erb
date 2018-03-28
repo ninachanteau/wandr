@@ -172,30 +172,6 @@
                           <%= render 'shared/booked-icon' %>
                         <% end %>
                     </button>
-                    <div class="dropdown-menu">
-                      <% if transpo.status == "Booked" %>
-                        <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/wishlist-icon'  %>
-                            Wishlist
-                          </span>
-                        <% end %>
-                      <% elsif transpo.status == "Wishlist" %>
-                        <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/booked-icon'  %>
-                            Booked
-                          </span>
-                        <% end %>
-                      <% end %>
-                      <div class="dropdown-divider"></div>
-                      <%= link_to trip_transportation_path(trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/delete-icon'  %>
-                            Delete
-                          </span>
-                      <% end %>
-                    </div>
                   </div>
                 </div>
                 <div class="transpo-participants">

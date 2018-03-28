@@ -65,8 +65,7 @@ end
 def destroy
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.find(params[:id])
-  @transportation.same_reservation.each { |resa| resa.destroy }
-  # @transportation.destroy
+  @transportation.destroy
   redirect_to trip_transportations_path(@trip)
 end
 
