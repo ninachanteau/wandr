@@ -5,22 +5,17 @@
 }
 
 .restaurants-card {
-  margin: 20px 10px 20px 10px;
+  margin: 0px 10px 20px 10px;
   position: relative;
   padding: 10px;
   background-color: $white-transparent;
   border-radius: 5px;
   min-height: 160px;
-  max-width: 1050px;
+  max-width: 1052px;
 }
 
 .restaurants-ctn {
   flex-grow: 1;
-}
-
-.restaurants-card {
-  min-height: 160px;
-  margin: 20px;
 }
 
 .card-index-ctn {
