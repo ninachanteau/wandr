@@ -19,6 +19,7 @@
   margin-bottom: 30px;
   color: white;
   font-size: 46px;
+  cursor: pointer;
 }
 
 .download-link {
@@ -33,13 +34,13 @@
 
 .pdf {
   position: absolute;
-  right: 0px;
+  left: 25px;
   top: 90px;
 }
 
 .calendar {
   position: absolute;
-  right: 45px;
+  left: -20px;
   top: 90px;
 }
 
