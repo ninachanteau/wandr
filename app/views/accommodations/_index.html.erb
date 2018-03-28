@@ -1,13 +1,6 @@
 <div class="new-container">
 <div class="container">
 
-  <!-- <div class="header">
-    <div class="title text-center"> <h2><%#= trip.name  %>  ...  <i class="fa fa-home title-icon"></i></h2>
-    </div>
-  </div> -->
-
-</div>
-
 <div class="accommodations-container">
   <div class="accommodations-ctn">
     <div class="accommodations-card">
@@ -30,8 +23,7 @@
           <div class="index-price">
             <%= number_with_precision(accom.total_price, precision: 2)%>€
           </div>
-<!--           <div class="index-address">
-          </div> -->
+<!--           <div><i class="fa fa-plus plus-return"></i></div> -->
           <div class="index-status">
             <div class="ind-status">
               <div class="btn-group">
@@ -173,7 +165,7 @@
 
 
       <div class="index-title">
-        <h4>All accommodation</h4>
+        <h4 class="ind-title">All accommodation</h4>
       </div>
       <div class="card-index-ctn">
         <% accommodations.each do |accom| %>
@@ -194,9 +186,6 @@
                 <div class="index-price">
                   <%= number_with_precision(accom.total_price, precision: 2)%>€
                 </div>
-      <!--           <div class="index-address">
-
-                </div> -->
                 <div class="index-status">
                   <div class="ind-status">
                     <div class="btn-group">

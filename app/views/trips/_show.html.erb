@@ -1,14 +1,6 @@
 <div class="new-container">
 <div class="container">
 
-  <h2><strong><%= trip.destination %></strong>
-      <% if trip.start_date.present? %>
-        <%= trip.start_date.strftime("%b %d, %Y") %> - <%= trip.end_date.strftime("%b %d, %Y") %>
-      <% end %>
-  </h2>
-  <%= link_to recap_trip_path(@trip), :format => 'pdf' do %>
-    <i class="fa fa-file-pdf-o name-link"></i>
-  <% end %>
 
   <div class="row">
     <div class="col-md-12">
@@ -23,7 +15,6 @@
             <p><%= particip.pseudo %></p>
           </div>
         <% end %>
-<!--         <div class="btn btn-info" style="width: 150px">Add participant</div> -->
 
           <!-- Button trigger modal -->
           <div type="button" data-toggle="modal" data-target="#myModal">
@@ -51,6 +42,11 @@
               </div>
             </div>
           </div>
+
+<!--           Export pdf -->
+          <%= link_to recap_trip_path(@trip), :format => 'pdf' do %>
+            <i class="fa fa-file-pdf-o name-link pdf-link"></i>
+          <% end %>
 
       </div>
     </div>

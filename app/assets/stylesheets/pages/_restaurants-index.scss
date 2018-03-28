@@ -6,7 +6,7 @@
 
 .restaurants-card {
   position: relative;
-  margin: 30px 20px;
+  margin: 20px;
   padding: 20px;
   background-color: $white-transparent;
   border-radius: 5px;
@@ -20,6 +20,7 @@
 
 .restaurants-card {
   min-height: 160px;
+  margin: 20px;
 }
 
 .card-index-ctn {
@@ -30,13 +31,15 @@
 
 .ind-title {
   padding-left: 12px;
+  margin-top: 0px;
+  color: white;
   }
 
 .index-card {
   background-color: white;
   height: 200px;
   width: 380px;
-  margin: 10px 10px 20px 35px;
+  margin: 10px;
   display: flex;
   border-radius: 5px;
   position: relative;
@@ -46,7 +49,7 @@
     background-color: $white-middle-transparent;
   }
   .index-photo {
-    width: 120px;
+    width: 140px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
@@ -56,6 +59,7 @@
     left: 20px;
     .index-avatar {
       margin-left: -15px;
+      border: 2px solid white;
     }
   }
   .index-status {
@@ -89,6 +93,13 @@
   .ind-address {
     font-size: 12px;
   }
+}
+
+.plus-return {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: $middle-gray;
 }
 
 // .wishlist-card {
