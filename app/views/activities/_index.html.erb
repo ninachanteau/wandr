@@ -159,7 +159,7 @@
                     <div class="modal-body">
                       <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
                       </div>
-                      <%= simple_form_for [trip, activity] do |f| %>
+                      <%= simple_form_for [trip, activ], url: trip_activity_path(trip, activ), method: :patch  do |f| %>
                         <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
                         <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
                         <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
@@ -295,7 +295,7 @@
                       <div class="modal-body">
                         <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
                         </div>
-                        <%= simple_form_for [trip, activity] do |f| %>
+                        <%= simple_form_for [trip, activ], url: trip_activity_path(trip, activ), method: :patch  do |f| %>
                           <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
                           <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
                           <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
