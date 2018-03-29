@@ -13,16 +13,13 @@ class User < ApplicationRecord
   validates_uniqueness_of :email
 
   def new_count(trip, method_name)
-    @new_items = method_name.all.select do |item|
-      if item.trip
-      item.created_at > self.last_sign_in_at && item.trip.id == trip.id
+    #if method_name == Accommodation || Activity || Restaurant
+      @new_items = method_name.select do |item|
+        if item.trip
+          item.created_at > self.last_sign_in_at && item.trip.id == trip.id #&& item.same_reservation == false
+        end
       end
-    end
-    @new_items.delete_if do |item|
-      if item.name
-        method_name.where(name: item.name).count != 0
-      end
-    end
+    #end
     return @new_items.count
   end
 end
