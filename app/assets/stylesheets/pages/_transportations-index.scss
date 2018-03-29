@@ -129,4 +129,11 @@
   }
 }
 
-
+.delete-card-transpo {
+  position: absolute;
+  bottom: 60px;
+  right: 10px;
+  i {
+    color: $middle-gray;
+  }
+}
