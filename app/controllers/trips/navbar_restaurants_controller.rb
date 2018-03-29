@@ -61,7 +61,7 @@ class Trips::NavbarRestaurantsController < ApplicationController
     else
       @trip = params["restaurant"]["trip"]
       @restaurant.trip = Trip.find(@trip)
-      @restaurant.update(activity_params)
+      @restaurant.update(restaurant_params)
       redirect_to root_path
     end
   end
