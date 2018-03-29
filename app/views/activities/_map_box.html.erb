@@ -1,0 +1,38 @@
+<div class="info-window text-center">
+<!--   <h4><%#= link_to activity.name, trip_activities_path(@trip) %> <%#= render 'shared/booked-icon' %></h4>
+  <h6>On: <%#= activity.date.strftime("%b %d, %Y") %> @ <%#= activity.date.strftime("%H:%M") %></h6>
+  <p><%= activity.address %></p> -->
+
+  <div class="index-card">
+    <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url, crop: :fill %>');">
+    </div>
+    <div class="index-content">
+      <div class="index-name">
+        <p class="ind-name"><%= link_to activity.name, trip_activities_path(@trip), class: "name-link", target: "_blank" %></p>
+      </div>
+      <div class="index-date">
+        <div class="ind-date">
+          <% if activity.date %>
+            <p><%= activity.date.strftime("%b %d, %Y").upcase %> @ <%= activity.date.strftime("%H:%M").upcase %></p>
+          <% else %>
+            <p>Not scheduled yet</p>
+          <% end %>
+        </div>
+      </div>
+      <div class="index-address">
+        <p class="ind-address"><%= activity.address%></p>
+      </div>
+      <div class="index-status">
+        <div class="ind-status">
+          <div class="btn-group">
+            <% if activity.status == "Wishlist" %>
+              <%= render 'shared/wishlist-icon' %>
+            <% else %>
+              <%= render 'shared/booked-icon' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
