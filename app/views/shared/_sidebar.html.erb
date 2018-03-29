@@ -1,5 +1,5 @@
 
-<% unless params[:action] == "home"  %>
+<% unless params[:action] == "home" || (params[:controller] =="trips" && params[:action] == "index")  %>
  <% if user_signed_in? || params[:token].present? %>
   <div class="sidebar-container">
     <div class="sidebar-item">
@@ -9,8 +9,6 @@
       <% end %>
     </div>
 
-    <%# unless params[:action] == "index"  %>
-          <%# if @trip && @trip.id.present? %>
       <ul class="list-icons nav nav-tabs" id="myTab" role="tablist">
           <% if @trip.id %>
             <li class="nav-item"> <%= link_to trip_path(@trip), class: "nav-link active" do %>
