@@ -1,14 +1,14 @@
-.activities-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+.new-container {
+  position: relative;
 }
 
 .activities-card {
   position: relative;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin: 0px 10px 20px 10px;
   padding: 10px;
-  background-color: $white-transparent;
   border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
@@ -27,21 +27,6 @@
 .index-content {
   display: block;
   width: 240px;
-}
-
-.activities-ctn {
-  flex-grow: 1;
-}
-
-.activities-card {
-  min-height: 160px;
-  align-items: center;
-}
-
-.card-index-ctn {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
 }
 
 .ind-name {

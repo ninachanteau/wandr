@@ -68,11 +68,7 @@
       <% end %>
       <!-- Logo -->
       <div class="dropdown">
-        <%# if current_user.avatar.present? %>
         <%= image_tag current_user.avatar.url, class: "avatar navbar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
-        <%# else %>
-          <%#= image_tag "http://www.clker.com/cliparts/m/3/I/C/c/2/grey-silhouette-of-man-hi.png", class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
-        <%# end %>
         <ul class="dropdown-menu navbar-dropdown-menu">
           <li>
             <%= link_to edit_user_registration_path do %><%= t(".edit", default: "Edit Profile") %>
