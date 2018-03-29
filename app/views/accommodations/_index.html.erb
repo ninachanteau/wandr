@@ -95,7 +95,9 @@
             <div class="index-date">
                 <div class="ind-date">
                   <% if accom.start_date %>
-                  <p><%= accom.start_date.strftime("%b %d, %Y").upcase%></br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                    <p><%= accom.start_date.strftime("%b %d, %Y").upcase%></br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                  <% else %>
+                    <p>Not scheduled yet</p>
                   <% end %>
                 </div>
             </div>
@@ -246,7 +248,9 @@
                 <div class="index-date">
                     <div class="ind-date">
                       <% if accom.start_date %>
-                      <p><%= accom.start_date.strftime("%b %d, %Y").upcase%> </br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                        <p><%= accom.start_date.strftime("%b %d, %Y").upcase%> </br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                      <% else %>
+                        <p>Not scheduled yet</p>
                       <% end %>
                     </div>
                 </div>

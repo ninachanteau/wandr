@@ -80,6 +80,8 @@
                     <div class="ind-date">
                       <% if activ.date %>
                         <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                      <% else %>
+                        <p>Not scheduled yet</p>
                       <% end %>
                     </div>
                   </div>
@@ -217,6 +219,8 @@
                       <div class="ind-date">
                         <% if activ.date %>
                           <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                        <% else %>
+                          <p>Not scheduled yet</p>
                         <% end %>
                       </div>
                     </div>
