@@ -42,17 +42,19 @@
             </div>
 
   <!--           Export pdf -->
+            <div class="btn btn-pdf download-link">
             <%= link_to recap_trip_path(@trip, :format => 'pdf') do %>
-             <i class="fa fa-share pdf download-link" aria-hidden="true"></i></div>
+             save as <i class="fa fa-file-pdf-o"></i></div>
             <% end %>
 
   <!--           Export calendar -->
+            <div class="btn btn-calendar download-link">
             <%= link_to "https://calendar.google.com/calendar/render?cid=#{calendar_trip_url(@trip, user_id: current_user.id)}", target: "_blank" do %>
-              <i class="fa fa-calendar calendar download-link" aria-hidden="true"></i>
+              export to <i class="fa fa-calendar"></i></div>
             <% end %>
         </div>
       </div>
-      <div class="calendar-map-container white-card">
+      <div class="calendar-map-container">
         <div class="col-md-6">
         <div id="calendar" data-events="<%= events.to_json %>"></div>
         </div>

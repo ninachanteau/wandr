@@ -18,31 +18,39 @@
 .btn-participants {
   margin-bottom: 30px;
   color: white;
-  font-size: 46px;
+  font-size: 56px;
   cursor: pointer;
 }
 
-.download-link {
+.btn-pdf {
+  position: absolute;
   color: white;
-  font-size: 36px;
-  margin-bottom: 30px;
-  margin-left: 20px;
-  &:hover {
-    color: $light-gray;
+  font-size: 16px;
+  left: 130px;
+  top: 95px;
+  background-color: $yellow;
+  padding: 9px 14px;
+  border-radius: 2px;
+  border: 2px solid white;
+  a {
+    color: white;
+    text-decoration: none;
   }
 }
 
-.pdf {
+.btn-calendar {
   position: absolute;
-  left: 25px;
-  top: 90px;
-
-}
-
-.calendar {
-  position: absolute;
-  left: -20px;
-  top: 90px;
+  color: $yellow;
+  font-size: 16px;
+  left: -5px;
+  top: 95px;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 2px;
+  a {
+    color: $yellow;
+    text-decoration: none;
+  }
 }
 
 #map {
@@ -71,7 +79,7 @@
 }
 
 .calendar-map-container {
-  background-color: $white-middle-transparent;
+  background-color: rgba(255,255,255,0.8);
   border: black;
   padding: 10px;
   margin: 10px;

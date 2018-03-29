@@ -18,6 +18,11 @@ class User < ApplicationRecord
       item.created_at > self.last_sign_in_at && item.trip.id == trip.id
       end
     end
+    @new_items.delete_if do |item|
+      if item.name
+        method_name.where(name: item.name).count != 0
+      end
+    end
     return @new_items.count
   end
 end

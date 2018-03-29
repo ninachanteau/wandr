@@ -1,14 +1,29 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <div class="navbar-wagon-left">
-    <% if params[:controller] == "trips" && params[:action] == "show"%>
-      <div class="navbar-title"><strong><%= @trip.destination %></strong>
-        <% if @trip.start_date.present? %>
-          <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+
+<div class="navbar-wagon-left">
+  <% if params[:controller] == "trips" && params[:action] == "show"%>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong>
+      <% if @trip.start_date.present? %>
+        <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
+      <% end %>
+    </div>
+  <% elsif params[:controller] == "accommodations" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-home  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "activities" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-university  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "transportations" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-plane  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "restaurants" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-cutlery  title-icon"></i>
+    </div>
+  <% end %>
+</div>
+
+
   <!-- Right Navigation -->
   <% if user_signed_in? %>
     <div class="navbar-wagon-right">
