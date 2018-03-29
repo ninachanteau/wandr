@@ -1,18 +1,17 @@
 
-<%= session[:notifications] %>
-<% unless params[:action] == "home"  %>
- <% if user_signed_in? || params[:token].present? %>
-  <div class="sidebar-container">
-    <div class="sidebar-item">
 
-      <%= link_to root_path, class: "sidebar-wagon-brand" do %>
-        <%= image_tag "logo.png", height: 50 %>
-      <% end %>
-    </div>
-
-    <%# unless params[:action] == "index"  %>
-          <%# if @trip && @trip.id.present? %>
+<% unless params[:action] == "home" || (params[:controller] =="trips" && params[:action] == "index") %>
+  <% if user_signed_in? || params[:token].present? %>
+    <div class="sidebar-container">
+      <div class="sidebar-item">
+        <%= link_to root_path, class: "sidebar-wagon-brand" do %>
+          <%= image_tag "logo.png", height: 50 %>
+        <% end %>
+      </div>
+      <%# unless params[:action] == "index"  %>
+        <%# if @trip && @trip.id.present? %>
       <ul class="list-icons nav nav-tabs" id="myTab" role="tablist">
+
           <% if @trip.id %>
             <li class="nav-item"> <%= link_to trip_path(@trip), class: "nav-link active" do %>
               <%= render 'shared/globe-icon' %>
@@ -126,6 +125,7 @@
               <% end %>
             <% end %>
           <% end %>
+
             </li>
           <% end %>
         <% end %>
@@ -138,7 +138,7 @@
       <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="transportations-tab">Transportations</div>
       <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
     </div> -->
-  </div>
+
 
 <%# end %>
-<% end %>
+

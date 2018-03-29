@@ -1,73 +1,69 @@
 <div class="new-container">
   <div class="container">
 
-    <div class="activities-container">
+    <!-- Button trigger modal -->
+    <div type="button" data-toggle="modal" data-target="#ActivityModal">
+      <i class="fa fa-plus-circle plus-btn"></i>
+    </div>
 
-      <div class="activities-ctn">
-
-        <div class="activities-card white-card">
-
-          <!-- Button trigger modal -->
-          <div type="button" data-toggle="modal" data-target="#ActivityModal">
-            <i class="fa fa-plus-circle plus-btn"></i>
+    <!-- Modal -->
+    <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="myAModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
           </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="ActivityModal" tabindex="-1" role="dialog" aria-labelledby="myAModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myAModalLabel">Add an activity</h4>
-                </div>
-                <div class="modal-body">
-                  <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
+          <div class="modal-body">
+            <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
+            </div>
+            <%= simple_form_for @activity, url: trip_trips_navbar_activities_path, method: :post, remote: true do |f| %>
+              <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+              <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+            <% end %>
+            <br>
+            <div id="UpdateForm">
+              <%= simple_form_for [trip, activity] do |f| %>
+                <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
+                <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
+                <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+                <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                <div class="row">
+                  <div class="col-xs-6">
+                  <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
                   </div>
-                  <%= simple_form_for @activity, url: trip_trips_navbar_activities_path, method: :post, remote: true do |f| %>
-                    <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                    <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
-                  <% end %>
-                  <br>
-                  <div id="UpdateForm">
-                    <%= simple_form_for [trip, activity] do |f| %>
-                      <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
-                      <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
-                      <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                      <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
-                      <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
-                      <div class="row">
-                        <div class="col-xs-6">
-                        <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
-                        </div>
-                        <div class="col-xs-6">
-                        <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
-                        </div>
-                      </div>
-                      <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
-                      <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                      <!-- Add participants -->
-                      <p>Who will be attending?</p>
-                        <% trip.participations.each do |participant| %>
-                          <% if participant.user %>
-                            <%= cl_image_tag participant.user.avatar, class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
-                          <% else %>
-                            <%= image_tag "default-user.jpg", class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
-                          <% end %>
-                        <% end %>
-                      <div style="visibility: hidden">
-                        <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
-                          <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
-                        <% end %>
-                      </div>
-                      <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+                  <div class="col-xs-6">
+                  <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                  </div>
+                </div>
+                <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
+                <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+                <!-- Add participants -->
+                <p>Who will be attending?</p>
+                  <% trip.participations.each do |participant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
                     <% end %>
-                  </div>
+                  <% end %>
+                <div style="visibility: hidden">
+                  <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                    <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                  <% end %>
                 </div>
-              </div>
+                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+              <% end %>
             </div>
           </div>
-          <!-- end of modal -->
-          <div class="card-index-ctn">
+        </div>
+      </div>
+    </div>
+    <!-- end of modal -->
+
+        <div class="activities-card">
+
             <% my_activities.each do |activ| %>
               <div class="index-card">
                 <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url, crop: :fill %>');">
@@ -80,6 +76,8 @@
                     <div class="ind-date">
                       <% if activ.date %>
                         <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                      <% else %>
+                        <p>Not scheduled yet</p>
                       <% end %>
                     </div>
                   </div>
@@ -94,7 +92,7 @@
                   <div class="index-status">
                     <div class="ind-status">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           <% if activ.status == "Wishlist" %>
                             <%= render 'shared/wishlist-icon' %>
                           <% else %>
@@ -196,15 +194,10 @@
                 </div>
               </div>
             <% end %>
-          </div>
         </div>
 
         <% unless activities == [] %>
           <div class="activities-card">
-            <div class="index-title">
-              <h4 class="ind-title">All activities</h4>
-            </div>
-            <div class="card-index-ctn">
               <% activities.each do |activ| %>
                 <div class="index-card">
                   <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url ,crop: :fill, position: :center %>');">
@@ -217,6 +210,8 @@
                       <div class="ind-date">
                         <% if activ.date %>
                           <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                        <% else %>
+                          <p>Not scheduled yet</p>
                         <% end %>
                       </div>
                     </div>
@@ -231,7 +226,7 @@
                     <div class="index-status">
                       <div class="ind-status">
                           <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <% if activ.status == "Wishlist" %>
                               <%= render 'shared/wishlist-icon' %>
                             <% else %>
@@ -332,13 +327,9 @@
                   </div>
                 </div>
               <% end %>
-            </div>
           </div>
         <% end %>
 
-
-      </div>
-    </div>
   </div>
 </div>
 

@@ -3,22 +3,22 @@
   <h4 class="modal-title text-center" id="myModalLabel">Add Accommodation</h4>
 </div>
 <div class="modal-body">
-<%= simple_form_for accommodation, url: trips_navbar_accommodation_path(accommodation), method: :patch do |f| %>
-<div class="new-container">
-<div class="container">
-  <div class="row">
-    <div class="col-xs-10">
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :phone_number %>
-        <%= f.input :email %>
-        <%= f.input :url %>
-        <%= f.input :photo %>
-        <%= f.select :trip, options_for_select(trips) %>
-        <%= f.button :submit, class: "btn btn-info btn-form", style: "margin: 20px" %>
-      <% end %>
+  <%= simple_form_for accommodation, url: trips_navbar_accommodation_path(accommodation), method: :patch do |f| %>
+    <div class="new-container">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-10">
+            <%= f.input :name %>
+            <%= f.input :address %>
+            <%= f.input :phone_number %>
+            <%= f.input :email %>
+            <%= f.input :url %>
+            <%= f.input :photo %>
+            <%= f.select :trip, options_for_select(trips) %>
+            <%= f.submit "Save Accommodation", class: "btn btn-info btn-form", style: "width: 100%; margin-top: 10px" %>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-</div>
+  <% end %>
 </div>

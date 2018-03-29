@@ -8,7 +8,14 @@
 }
 
 .participant {
-  margin-right: 18px;
+  margin-right: 10px;
+  .btn-avatar {
+    cursor: default !important;
+    padding: 5px;
+}
+  .avatar-participant {
+    border: 2px solid white !important;
+  }
   p {
     font-size: 15px;
     color: $gray;
@@ -16,6 +23,7 @@
 }
 
 .btn-participants {
+  margin-left: 2px;
   margin-bottom: 30px;
   color: white;
   font-size: 56px;

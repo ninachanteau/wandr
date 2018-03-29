@@ -40,8 +40,8 @@ const accommodationStartDate = document.getElementById("accommodation_start_date
 if (accommodationStartDate) {
   flatpickr("#accommodation_start_date", {
     altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
+    // altFormat: "F j, Y",
+    // dateFormat: "Y-m-d",
     enableTime: true,
     'static': true,
     minDate: findTripDates().start_date,
@@ -54,8 +54,8 @@ const restaurantDate = document.getElementById("restaurant_date");
 if (restaurantDate) {
   flatpickr("#restaurant_date", {
     altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
+    // altFormat: "F j, Y",
+    // dateFormat: "Y-m-d",
     enableTime: true,
     'static': true,
     minDate: findTripDates().start_date,
@@ -67,8 +67,8 @@ const activityDate = document.getElementById("activity_date");
 if (activityDate) {
   flatpickr("#activity_date", {
     altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
+    // altFormat: "F j, Y",
+    // dateFormat: "Y-m-d",
     enableTime: true,
     'static': true,
     minDate: findTripDates().start_date,

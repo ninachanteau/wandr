@@ -1,71 +1,68 @@
 <div class="new-container">
   <div class="container">
 
-    <div class="restaurants-container">
-      <div class="restaurants-ctn">
-        <div class="restaurants-card white-card">
+        <div type="button" data-toggle="modal" data-target="#myModal">
+          <i class="fa fa-plus-circle plus-btn"></i>
+        </div>
 
-          <div type="button" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus-circle plus-btn"></i>
-          </div>
-
-          <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myModalLabel">Add a restaurant</h4>
-                </div>
-                <!-- Add participants -->
-                <div class="modal-body">
-                  <!-- New form_tag -->
-                  <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
-                  <%= simple_form_for @restaurant, url: trip_trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title text-center" id="myModalLabel">Add a restaurant</h4>
+              </div>
+              <!-- Add participants -->
+              <div class="modal-body">
+                <!-- New form_tag -->
+                <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>"></div>
+                <%= simple_form_for @restaurant, url: trip_trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
+                  <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
+                  <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+                <% end %>
+                <br>
+                <div id="UpdateForm">
+                  <%= simple_form_for [trip, restaurant] do |f| %>
+                    <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
+                    <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
                     <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                    <%= f.submit "Quick Add", class: 'btn btn-info', style: 'width: 100%' %>
+                    <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
+                    <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
+                    <div class="row">
+                      <div class="col-xs-6">
+                      <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
+                      </div>
+                      <div class="col-xs-6">
+                      <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
+                      </div>
+                    </div>
+                    <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
+                    <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+                    <!-- Add participants -->
+                    <p>Who will be attending?</p>
+                      <% trip.participations.each do |participant| %>
+                        <% if participant.user %>
+                          <%= cl_image_tag participant.user.avatar, class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+                        <% else %>
+                          <%= image_tag "default-user.jpg", class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+                        <% end %>
+                      <% end %>
+                    <div style="visibility: hidden">
+                      <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                        <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                      <% end %>
+                    </div>
+                    <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
-                  <br>
-                  <div id="UpdateForm">
-                    <%= simple_form_for [trip, restaurant] do |f| %>
-                      <%= f.input :date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', data_altinput: true, data_enabletime: true, placeholder: "Date", label: false %>
-                      <%= f.input :name, class: 'form-control', placeholder: "Name", label: false %>
-                      <%= f.input :url, class: 'form-control', placeholder: "Url", label: false %>
-                      <!-- Ici on pourrait suggérer l'adresse , tel etc directement en scrapant l'url par AJAX - semaine prochaine -->
-                      <%= f.input :address, class: 'form-control', placeholder: "Address", label: false %>
-                      <div class="row">
-                        <div class="col-xs-6">
-                        <%= f.input :phone_number, class: 'form-control', placeholder: "Phone number", label: false %>
-                        </div>
-                        <div class="col-xs-6">
-                        <%= f.input :email, class: 'form-control', placeholder: "Email", label: false %>
-                        </div>
-                      </div>
-                      <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
-                      <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                      <!-- Add participants -->
-                      <p>Who will be attending?</p>
-                        <% trip.participations.each do |participant| %>
-                          <% if participant.user %>
-                            <%= cl_image_tag participant.user.avatar, class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
-                          <% else %>
-                            <%= image_tag "default-user.jpg", class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
-                          <% end %>
-                        <% end %>
-                      <div style="visibility: hidden">
-                        <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
-                          <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
-                        <% end %>
-                      </div>
-                      <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
-                    <% end %>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <div class="card-index-ctn">
+        <div class="restaurants-card">
+
             <% my_restaurants.each do |resto| %>
               <div class="index-card">
                 <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');">
@@ -96,7 +93,7 @@
                       <div class="status">
                         <div class="ind-status">
                           <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <% if resto.status == "Wishlist" %>
                                 <%= render 'shared/wishlist-icon' %>
                               <% else %>
@@ -202,38 +199,41 @@
                 </div>
               </div>
             <% end %>
-          </div>
-
         </div>
 
         <% unless restaurants == [] %>
           <div class="restaurants-card">
-            <div class="card-index-ctn">
               <% restaurants.each do |resto| %>
                 <div class="index-card">
-                  <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');"></div>
+                  <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');">
+                  </div>
                   <div class="index-content">
                     <div class="index-name">
                       <p class="ind-name"><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></p>
                     </div>
                     <div class="index-date">
-                      <div class="date">
+                      <div class="ind-date">
                         <% if resto.date %>
-                          <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
+                          <p ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                         <% else %>
-                          <p class="ind-date">Not scheduled yet</p>
+                          <p>Not scheduled yet</p>
                         <% end %>
                       </div>
                     </div>
                     <div class="index-address">
                       <p class="ind-address"><%= resto.address%></p>
                     </div>
+                    <div class="edit-card">
+                      <div type="button" data-toggle="modal" data-target="#EditModal">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </div>
+                    </div>
                     <div class="index-status">
                       <div class="status">
                         <div class="ind-status">
                           <div class="btn-group">
 
-                            <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <% if resto.status == "Wishlist" %>
                                 <%= render 'shared/wishlist-icon' %>
                               <% else %>
@@ -257,13 +257,14 @@
                                   </span>
                                 <% end %>
                               <% end %>
-                              <div class="dropdown-divider"></div>
-                                <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/delete-icon'  %>
-                                    Delete
-                                  </span>
-                                <% end %>
+                              <div class="dropdown-divider">
+                              </div>
+                              <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                                <span>
+                                  <%= render 'shared/delete-icon'  %>
+                                  Delete
+                                </span>
+                              <% end %>
                             </div>
 
                           </div>
@@ -293,20 +294,9 @@
                   </div>
                 </div>
               <% end %>
-            </div>
+
           </div>
         <% end %>
 
-
-      </div>
-    </div>
   </div>
 </div>
-
-<!--     <div class=" wishlist-card hidden-xs">
-      <h4>Wishlist:</h4>
-    </div> -->
-<!--
-    </div>
-  </div>
-</div> -->
