@@ -3,7 +3,7 @@
 
   <div class="transportations-container">
     <div class="transportations-ctn">
-      <div class="user-transportations transportations-card">
+      <div class="user-transportations transportations-card white-card">
 
         <!-- Button trigger modal -->
         <div type="button" data-toggle="modal" data-target="#myModal">
@@ -44,14 +44,19 @@
                   <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
                   <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                 <!-- Add participants -->
-                  <p>Who will be attending?</p>
-                    <%= form_tag(trip_transportations_path, method: :post) %>
-                    <% trip.participations.each do |part| %>
-                        <%= check_box_tag part.pseudo%>
-                        <%= h part.pseudo -%>
-                        <br>
-                      <% end %>
-                      <br>
+                <p>Who will be attending?</p>
+                  <% trip.participations.each do |participant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% end %>
+                <% end %>
+                <div style="visibility: hidden">
+                <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                  <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                <% end %>
+                </div>
                   <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                 <% end %>
               </div>
@@ -59,15 +64,11 @@
           </div>
         </div>
 
-        <div class="transportations-title">
-          <h4 class="transpo-title">Upcoming travel plans</h4>
-        </div>
         <div class="cards-ctn">
           <% if participation %>
             <% my_transportations.each do |transpo| %>
               <div class="transportation-card">
                 <div class="details-card">
-                  <div><i class="fa fa-plane little-plane"></i></div>
                   <div class="info-card">
                     <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p></div>
                     <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p></div>
@@ -135,7 +136,6 @@
           <% transportations.each do |transpo| %>
               <div class="transportation-card">
                 <div class="details-card">
-                  <div><i class="fa fa-plane little-plane"></i></div>
                   <div class="info-card">
                     <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p>
                     </div>
@@ -180,7 +180,7 @@
           <% end %>
         </div>
       </div>
-
+      <% end %>
     </div>
   </div>
 </div>

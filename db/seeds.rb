@@ -262,18 +262,6 @@ back_nyc_nina = Transportation.new(
 back_nyc_nina.participation = nina_nyc
 back_nyc_nina.save!
 
-go_lisbon_nina = Transportation.new(
-  departure_port: "Aéroport CDG Terminal 1",
-  arrival_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
-  departure_date: "Fri, 09 Mar 2018 14:00:00 UTC +00:00,",
-  arrival_date: "Fri, 09 Mar 2018 16:00:00 UTC +00:00,",
-  status: "Booked",
-  price_per_person: 75.00,
-  reference_number: "HYTGLI"
-  )
-go_lisbon_nina.participation = nina_lisbon
-go_lisbon_nina.save!
-
 back_lisbon_nina = Transportation.new(
   departure_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
   arrival_port: "Aéroport CDG Terminal 1",
@@ -285,6 +273,18 @@ back_lisbon_nina = Transportation.new(
   )
 back_lisbon_nina.participation = nina_lisbon
 back_lisbon_nina.save!
+
+go_lisbon_nina = Transportation.new(
+  departure_port: "Aéroport CDG Terminal 1",
+  arrival_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
+  departure_date: "Fri, 09 Mar 2018 14:00:00 UTC +00:00,",
+  arrival_date: "Fri, 09 Mar 2018 16:00:00 UTC +00:00,",
+  status: "Booked",
+  price_per_person: 75.00,
+  reference_number: "HYTGLI"
+  )
+go_lisbon_nina.participation = nina_lisbon
+go_lisbon_nina.save!
 
 go_lisbon_julia = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
@@ -1123,7 +1123,7 @@ activity_lisbon_julia.participation = julia_lisbon
 activity_lisbon_julia.save!
 
 activity_nyc_nina = Activity.create(
-  name: "Solomon R. Guggenheim Museum",
+  name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
   date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",
@@ -1138,7 +1138,7 @@ activity_nyc_nina.participation = nina_nyc
 activity_nyc_nina.save!
 
 activity_nyc_elsa = Activity.create(
-  name: "Solomon R. Guggenheim Museum",
+  name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
   date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",

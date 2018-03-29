@@ -13,8 +13,24 @@ function updateForm(innerHTML) {
   form.innerHTML = innerHTML
 }
 
+function selectParticipant() {
+  const participantsAvatar = document.querySelectorAll(".restaurant-participant-avatar");
+  if (participantsAvatar) {
+    participantsAvatar.forEach((avatar) => {
+      avatar.addEventListener('click', (e) => {
+        const targetId = avatar.dataset.participationId;
+        console.log(document.getElementById(`restaurant_participations_pseudo_${targetId}`));
+        document.getElementById(`restaurant_participations_pseudo_${targetId}`).click();
+        avatar.classList.toggle('avatar-large-selected');
+        // TODO modify avatar
+      });
+    });
+  }
+}
+
 <% if request.referrer.include?('trips') %>
   updateForm("<%= j render 'trips/navbar_restaurants/update_form', restaurant: @restaurant, trips: @trips, trip:  @trip %>");
+  selectParticipant()
 <% else %>
   getForm("<%= j render 'trips/navbar_restaurants/edit_form', restaurant: @restaurant, trips: @trips, trip: @trip %>");
   openModal();

@@ -24,6 +24,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  cursor: pointer;
   &:hover {
     text-decoration: none !important;
   }
@@ -44,11 +45,14 @@
   position: relative;
   padding: 10px;
   background-color: $white-transparent;
-  border-radius: 5px;
+  border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
 }
 
+.white-card {
+  background-color: rgba(255,255,255,0.6) !important;
+}
 
 .cards-ctn {
   display: flex;
@@ -56,10 +60,6 @@
   flex-wrap: wrap;
 }
 
-// .transpo-title {
-//     padding-left: 12px;
-//     color: white;
-//   }
 
 .transportation-card {
   margin-right: 10px !important;
@@ -93,29 +93,17 @@
   }
 }
 
-// .transpo-time {
-//   display: flex;
-//   justify-content: space-between;
-//   margin-top: 50px;
-//   .departure {
-//     max-width: 100px;
-//   }
-//   .arrival {
-//     max-width: 100px;
-//   }
-// }
-
 .details-card {
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
-  .little-plane {
-    position: absolute;
-    top: 40px;
-    left: 115px;
-    height: 15px;
-    color: $middle-gray;
-  }
+  // .little-plane {
+  //   position: absolute;
+  //   top: -20px;
+  //   left: 115px;
+  //   height: 15px;
+  //   color: $middle-gray;
+  // }
   p {
     font-size: 14px;
     line-height: 1.2;
@@ -132,19 +120,12 @@
     display: flex;
     justify-content: space-between;
   }
-  // .departure {
-  //   margin-top: 70px;
-  // }
-  // .arrival {
-  //   margin-top: 20px;
-  // }
   .ticket-price {
     margin-top: 20px;
   }
 }
 
 .reference-card {
-  // border-top: 4px dashed $light-gray;
   border-radius: 15px;
   border-top: 1px dotted $middle-gray;
   .reference {

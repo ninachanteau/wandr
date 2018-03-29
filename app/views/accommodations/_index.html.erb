@@ -3,7 +3,7 @@
 
 <div class="accommodations-container">
   <div class="accommodations-ctn">
-    <div class="accommodations-card">
+    <div class="accommodations-card white-card">
 
       <!-- Button trigger modal -->
       <div type="button" data-toggle="modal" data-target="#myModal">
@@ -61,11 +61,19 @@
                   </div>
                 </div>
                 <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-                  <p>Who will be attending?</p>
+                <p>Who will be attending?</p>
+                  <% trip.participations.each do |participant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar-large accomadation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar-large accomadation-participant-avatar", data: { participation_id: participant.id } %>
+                    <% end %>
+                <% end %>
+           <!--      <div style="visibility: hidden"> -->
                 <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
                   <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
                 <% end %>
-                <br>
+              <!--   </div> -->
                 <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                                 <!-- Add participants -->
               <% end %>
@@ -75,9 +83,6 @@
         </div>
       </div>
 
-<!--       <div class="index-title">
-        <h4 class="ind-title">Upcoming accommodation </h4>
-      </div> -->
       <div class="card-index-ctn">
         <% my_accommodations.each do |accom| %>
         <div class="index-card">
@@ -88,14 +93,15 @@
               <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
             </div>
             <div class="index-date">
-              <% if accom.start_date %>
-              <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
-              <% end %>
+                <div class="ind-date">
+                  <% if accom.start_date %>
+                  <p><%= accom.start_date.strftime("%b %d, %Y").upcase%></br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                  <% end %>
+                </div>
             </div>
             <div class="index-price">
-              <%= number_with_precision(accom.total_price, precision: 2)%>€
+              <p class="ind-price"><%= number_with_precision(accom.total_price, precision: 2)%>€</p>
             </div>
-<!--           <div><i class="fa fa-plus plus-return"></i></div> -->
           <div class="index-status">
             <div class="ind-status">
               <div class="btn-group">
@@ -172,14 +178,14 @@
                   <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-
-                  <% if accom.start_date && accom.end_date %>
-                    <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
-                  <% end %>
+                    <div class="ind-date">
+                      <% if accom.start_date %>
+                      <p><%= accom.start_date.strftime("%b %d, %Y").upcase%> </br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                    <% end %>
+                    </div>
                 </div>
-
                 <div class="index-price">
-                  <%= number_with_precision(accom.total_price, precision: 2)%>€
+                  <p class="ind-price"><%= number_with_precision(accom.total_price, precision: 2)%>€</p>
                 </div>
                 <div class="index-status">
                   <div class="ind-status">
@@ -248,9 +254,6 @@
         </div>
       </div>
 
-<!--       <div class=" wishlist-card hidden-xs">
-        <h4>Wishlist:</h4>
-      </div> -->
     </div>
     </div>
   </div>

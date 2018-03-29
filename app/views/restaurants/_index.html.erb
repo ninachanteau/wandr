@@ -3,7 +3,7 @@
 
     <div class="restaurants-container">
       <div class="restaurants-ctn">
-        <div class="restaurants-card">
+        <div class="restaurants-card white-card">
 
           <div type="button" data-toggle="modal" data-target="#myModal">
             <i class="fa fa-plus-circle plus-btn"></i>
@@ -45,14 +45,19 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-                  <p>Who will be attending?</p>
-                  <%= form_tag(trip_restaurants_path, method: :post) %>
-                    <% trip.participations.each do |part| %>
-                        <%= check_box_tag part.pseudo%>
-                        <%= h part.pseudo -%>
-                        <br>
-                      <% end %>
-                      <br>
+                    <p>Who will be attending?</p>
+                      <% trip.participations.each do |participant| %>
+                        <% if participant.user %>
+                          <%= cl_image_tag participant.user.avatar, class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+                        <% else %>
+                          <%= image_tag "default-user.jpg", class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+                        <% end %>
+                    <% end %>
+                    <div style="visibility: hidden">
+                    <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+                      <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+                    <% end %>
+                    </div>
                     <%= f.submit class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
                   </div>
@@ -61,9 +66,6 @@
             </div>
           </div>
 
-<!--           <div class="index-title">
-            <h4 class="ind-title">Upcoming Restaurants</h4>
-          </div> -->
           <div class="card-index-ctn">
             <% my_restaurants.each do |resto| %>
             <div class="index-card">
@@ -76,7 +78,7 @@
                 <div class="index-date">
                   <div class="ind-date">
                     <% if resto.date %>
-                      <p ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
+                      <p ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                     <% else %>
                       <p>Not scheduled yet</p>
                     <% end %>
@@ -167,7 +169,7 @@
               <div class="index-date">
                 <div class="date">
                   <% if resto.date %>
-                    <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y") %> @ <%= resto.date.strftime("%H:%M") %></p>
+                    <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                   <% else %>
                     <p class="ind-date">Not scheduled yet</p>
                   <% end %>

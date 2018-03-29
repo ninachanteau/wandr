@@ -49,7 +49,7 @@
             <% end %>
 
             <%= link_to recap_trip_path(@trip, :format => 'pdf') do %>
-              <i class="fa fa-share pdf download-link" aria-hidden="true"></i>
+             <i class="fa fa-share pdf download-link" aria-hidden="true"></i></div>
             <% end %>
 
   <!--           Export calendar -->
@@ -58,7 +58,7 @@
             <% end %>
         </div>
       </div>
-      <div class="calendar-map-container">
+      <div class="calendar-map-container white-card">
         <div class="col-md-6">
         <div id="calendar" data-events="<%= events.to_json %>"></div>
         </div>
@@ -71,5 +71,7 @@
   </div>
 </div>
 
-
+<%= content_for :after_js do %>
+  <%= javascript_pack_tag "map" %>
+<% end %>
 

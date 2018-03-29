@@ -5,7 +5,7 @@
 
       <div class="activities-ctn">
 
-        <div class="activities-card">
+        <div class="activities-card white-card">
 
           <!-- Button trigger modal -->
           <div type="button" data-toggle="modal" data-target="#ActivityModal">
@@ -46,11 +46,19 @@
                     <%= f.input :description, class: 'form-control', placeholder: "Description", label: false %>
                     <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
                     <!-- Add participants -->
-                      <p>Who will be attending?</p>
+                    <p>Who will be attending?</p>
+                      <% trip.participations.each do |participant| %>
+                        <% if participant.user %>
+                          <%= cl_image_tag participant.user.avatar, class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
+                        <% else %>
+                          <%= image_tag "default-user.jpg", class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
+                        <% end %>
+                    <% end %>
+                    <div style="visibility: hidden">
                     <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
                       <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
                     <% end %>
-                    <br>
+                    </div>
                     <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
                   <% end %>
                 </div>
@@ -67,9 +75,11 @@
                   <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-                  <% if activ.date %>
-                  <p class="ind-date"><%= activ.date.strftime("%b %d, %Y") %> @ <%= activ.date.strftime("%H:%M") %></p>
-                  <% end %>
+                  <div class="ind-date">
+                    <% if activ.date %>
+                    <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                    <% end %>
+                  </div>
                 </div>
                 <div class="index-address">
                   <p class="ind-address"><%= activ.address%></p>
@@ -149,9 +159,11 @@
                     <p class="ind-name"><%= link_to activ.name, activ.url, class: "name-link", target: "_blank" %></p>
                   </div>
                   <div class="index-date">
-                    <% if activ.date %>
-                    <p class="ind-date"><%= activ.date.strftime("%b %d, %Y") %> @ <%= activ.date.strftime("%H:%M") %></p>
-                    <% end %>
+                    <div class="ind-date">
+                      <% if activ.date %>
+                      <p><%= activ.date.strftime("%b %d, %Y").upcase %> @ <%= activ.date.strftime("%H:%M").upcase %></p>
+                      <% end %>
+                    </div>
                   </div>
                   <div class="index-address">
                     <p class="ind-address"><%= activ.address%></p>

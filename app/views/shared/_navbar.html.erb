@@ -1,15 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
 <div class="navbar-wagon-left">
-  <% if params[:controller] == "transportations" && params[:action] == "index"%>
-    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-plane title-icon"></i></div>
-  <% elsif params[:controller] == "accommodations" && params[:action] == "index"%>
-    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-home title-icon"></i></div>
-  <% elsif params[:controller] == "restaurants" && params[:action] == "index" %>
-    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-cutlery title-icon"></i></div>
-  <% elsif params[:controller] == "activities" && params[:action] == "index" %>
-    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-university" style="color: #AAAAAA"></i></div>
-  <% elsif params[:controller] == "trips" && params[:action] == "show"%>
+  <% if params[:controller] == "trips" && params[:action] == "show"%>
     <div class="navbar-title"><strong><%= @trip.destination %></strong>
       <% if @trip.start_date.present? %>
         <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
@@ -92,6 +84,9 @@
     </div>
 
     <% else %>
+    <div class="navbar-wagon-left">
+      <%= image_tag "logo.png", height: 50, class: "logo-navbar" %>
+    </div>
 
     <div class="navbar-wagon-right">
       <!-- Login link (when logged out) -->
@@ -100,17 +95,6 @@
       </div>
     <% end %>
 
-  <!-- Dropdown list appearing on mobile only -->
-  <!-- <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
-      </ul>
-    </div>
-  </div> -->
 </div>
       <a href="#" id="Modalbutton" data-toggle="modal" data-target="#UrlModal"></a>
       <!-- Modal -->
