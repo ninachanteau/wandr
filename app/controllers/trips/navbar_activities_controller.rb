@@ -27,6 +27,7 @@ class Trips::NavbarActivitiesController < ApplicationController
     description_array = doc.search('.additional_info .content').map { |element| element.text.strip.to_s }
     @activity.description = description_array.last if description_array.last.present?
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
+    @activity.status = "Wishlist"
     @activity.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
     @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}

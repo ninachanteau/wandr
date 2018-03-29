@@ -22,6 +22,7 @@ class Trips::NavbarRestaurantsController < ApplicationController
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @restaurant.phone_number = phone_array[5] if phone_array[5].present?
     @trips =  current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
+    @restaurant.status = "Wishlist"
     if params[:trip_id].present?
     @trip = Trip.find(params[:trip_id])
     @restaurant.trip = @trip
@@ -60,7 +61,7 @@ class Trips::NavbarRestaurantsController < ApplicationController
     else
       @trip = params["restaurant"]["trip"]
       @restaurant.trip = Trip.find(@trip)
-      @restaurant.update(activity_params)
+      @restaurant.update(restaurant_params)
       redirect_to root_path
     end
   end
