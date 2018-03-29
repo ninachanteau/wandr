@@ -203,7 +203,6 @@
               </div>
             <% end %>
           </div>
-
         </div>
 
         <% unless restaurants == [] %>
@@ -211,7 +210,8 @@
             <div class="card-index-ctn">
               <% restaurants.each do |resto| %>
                 <div class="index-card">
-                  <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');"></div>
+                  <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path resto.photo.url ,crop: :fill %>');">
+                  </div>
                   <div class="index-content">
                     <div class="index-name">
                       <p class="ind-name"><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></p>
@@ -227,6 +227,11 @@
                     </div>
                     <div class="index-address">
                       <p class="ind-address"><%= resto.address%></p>
+                    </div>
+                    <div class="edit-card">
+                      <div type="button" data-toggle="modal" data-target="#EditModal">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </div>
                     </div>
                     <div class="index-status">
                       <div class="status">
@@ -257,13 +262,14 @@
                                   </span>
                                 <% end %>
                               <% end %>
-                              <div class="dropdown-divider"></div>
-                                <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/delete-icon'  %>
-                                    Delete
-                                  </span>
-                                <% end %>
+                              <div class="dropdown-divider">
+                              </div>
+                              <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                                <span>
+                                  <%= render 'shared/delete-icon'  %>
+                                  Delete
+                                </span>
+                              <% end %>
                             </div>
 
                           </div>
@@ -300,6 +306,7 @@
 
       </div>
     </div>
+
   </div>
 </div>
 
