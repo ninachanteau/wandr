@@ -24,12 +24,16 @@
   position: relative;
 }
 
-.gray-card {
-  background-color: rgba(170,170,170,0.8);
+.light-card {
+  background-color: rgba(255,255,255,0.2);
 }
 
 .white-card {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255,255,255,0.8);
+}
+
+.border-card {
+  border-left: 5px solid white;
 }
 
 .btn-card {
