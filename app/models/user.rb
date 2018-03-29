@@ -15,11 +15,12 @@ class User < ApplicationRecord
   def new_count(trip, method_name)
     #if method_name == Accommodation || Activity || Restaurant
       @new_items = method_name.select do |item|
-        if item.trip
-          item.created_at > self.last_sign_in_at && item.trip.id == trip.id #&& item.same_reservation == false
+        if item.trip && item.trip.id == trip.id
+          item.created_at < self.current_sign_in_at #&& item.same_reservation == false
         end
       end
     #end
+
     return 0
   end
 end
