@@ -39,7 +39,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('departure-yellow.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/transportations/map_box_departure", locals: { transportation: transportation }) }
+            infoWindow: { content: render_to_string(partial: "/transportations/map_box", locals: { transportation: transportation }) }
           }
           @markers << {
             lat: transportation.arrival_port_latitude,
@@ -47,7 +47,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('arrival-yellow.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/transportations/map_box_arrival", locals: { transportation: transportation }) }
+            infoWindow: { content: render_to_string(partial: "/transportations/map_box", locals: { transportation: transportation }) }
           }
           @events << {
             color: "#AAAAAA",
@@ -102,7 +102,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('restaurant-yellow.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/restaurants/map_box_booked", locals: { restaurant: restaurant }) }
+            infoWindow: { content: render_to_string(partial: "/restaurants/map_box", locals: { restaurant: restaurant }) }
           }
           @events << {
             color: "#AAAAAA",
@@ -116,7 +116,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('restaurant.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/restaurants/map_box_wishlist", locals: { restaurant: restaurant }) }
+            infoWindow: { content: render_to_string(partial: "/restaurants/map_box", locals: { restaurant: restaurant }) }
           }
         end
       end
@@ -133,7 +133,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('activity-yellow.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/activities/map_box_booked", locals: { activity: activity }) }
+            infoWindow: { content: render_to_string(partial: "/activities/map_box", locals: { activity: activity }) }
           }
           @events << {
             color: "#AAAAAA",
@@ -147,7 +147,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('activity.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/activities/map_box_wishlist", locals: { activity: activity }) }
+            infoWindow: { content: render_to_string(partial: "/activities/map_box", locals: { activity: activity }) }
           }
         end
       end

@@ -1,0 +1,42 @@
+<div class="info-window text-center">
+<!--   <h4><%#= link_to restaurant.name, trip_restaurants_path(@trip) %> <%#= render 'shared/booked-icon' %></h4>
+  <h6>On: <%#= restaurant.date.strftime("%b %d, %Y") %> @ <%#= restaurant.date.strftime("%H:%M") %></h6>
+  <p><%= restaurant.address %></p> -->
+
+  <div class="index-card">
+    <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path restaurant.photo.url ,crop: :fill %>');">
+    </div>
+    <div class="index-content">
+      <div class="card-details">
+        <div class="index-name">
+          <p class="ind-name"><%= link_to restaurant.name, trip_restaurants_path(@trip), class: "name-link" %></p>
+        </div>
+        <div class="index-date">
+          <div class="ind-date">
+            <% if restaurant.date %>
+              <p ><%= restaurant.date.strftime("%b %d, %Y").upcase %> @ <%= restaurant.date.strftime("%H:%M").upcase %></p>
+            <% else %>
+              <p>Not scheduled yet</p>
+            <% end %>
+          </div>
+        </div>
+        <div class="index-address">
+          <p class="ind-address"><%= restaurant.address%></p>
+        </div>
+        <div class="index-status">
+          <div class="status">
+            <div class="ind-status">
+              <div class="btn-group">
+                <% if restaurant.status == "Wishlist" %>
+                  <%= render 'shared/wishlist-icon' %>
+                <% else %>
+                  <%= render 'shared/booked-icon' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
