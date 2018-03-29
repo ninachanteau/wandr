@@ -69,7 +69,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('accommodation-yellow.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/accommodations/map_box_booked", locals: { accommodation: accommodation }) }
+            infoWindow: { content: render_to_string(partial: "/accommodations/map_box", locals: { accommodation: accommodation }) }
           }
           @events << {
             color: "#AAAAAA",
@@ -85,7 +85,7 @@ class TripsController < ApplicationController
             icon: {
               url: view_context.image_path('accommodation.svg')
             },
-            infoWindow: { content: render_to_string(partial: "/accommodations/map_box_wishlist", locals: { accommodation: accommodation }) }
+            infoWindow: { content: render_to_string(partial: "/accommodations/map_box", locals: { accommodation: accommodation }) }
           }
         end
       end
