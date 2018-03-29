@@ -1,6 +1,5 @@
 <div class="new-container">
-<div class="container">
-
+  <div class="container">
     <!-- Button trigger modal -->
     <div type="button" data-toggle="modal" data-target="#myModal">
       <i class="fa fa-plus-circle plus-btn"></i>
@@ -79,8 +78,16 @@
       </div>
     </div>
 
-    <div class="accommodations-card">
+    <div class="tabs">
+      <a class="tab active" onclick="clickTab('#mine')" href="#">
+        <p>your choices</p>
+      </a>
+      <a class="tab" onclick="clickTab('#others')">
+        <p>other options</p>
+      </a>
+    </div>
 
+    <div id="mine" class="accommodations-card tabcontent">
         <% my_accommodations.each do |accom| %>
         <div class="index-card">
           <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path accom.photo.url ,crop: :fill %>');">
@@ -230,8 +237,11 @@
       </div>
       <% end %>
     </div>
-  <% unless accommodations == [] %>
-    <div class="accommodations-card">
+  </div>
+
+  <div id="others" class="accommodations-card tabcontent">
+    <% unless accommodations == [] %>
+
         <% accommodations.each do |accom| %>
           <% if accom.start_date != Date.today  %>
               <div class="index-card">
@@ -381,7 +391,7 @@
 
           </div>
         </div>
-      </div>
+
         <% end %>
         <% end %>
     </div>
