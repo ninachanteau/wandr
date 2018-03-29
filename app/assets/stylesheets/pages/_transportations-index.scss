@@ -24,6 +24,7 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  cursor: pointer;
   &:hover {
     text-decoration: none !important;
   }
@@ -44,7 +45,7 @@
   position: relative;
   padding: 10px;
   background-color: $white-transparent;
-  border-radius: 5px;
+  border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
 }
@@ -119,19 +120,12 @@
     display: flex;
     justify-content: space-between;
   }
-  // .departure {
-  //   margin-top: 70px;
-  // }
-  // .arrival {
-  //   margin-top: 20px;
-  // }
   .ticket-price {
     margin-top: 20px;
   }
 }
 
 .reference-card {
-  // border-top: 4px dashed $light-gray;
   border-radius: 15px;
   border-top: 1px dotted $middle-gray;
   .reference {

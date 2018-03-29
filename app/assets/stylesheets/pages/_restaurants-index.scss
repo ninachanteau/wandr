@@ -9,7 +9,7 @@
   position: relative;
   padding: 10px;
   background-color: $white-transparent;
-  border-radius: 5px;
+  border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
 }
@@ -24,11 +24,6 @@
   flex-wrap: wrap;
 }
 
-// .ind-title {
-//   padding-left: 12px;
-//   margin-top: 0px;
-//   color: white;
-//   }
 
 .index-card {
   background-color: white;
@@ -36,27 +31,18 @@
   width: 380px;
   margin: 10px;
   display: flex;
-  border-radius: 5px;
+  border-radius: 2px;
   position: relative;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  // border-left: 4px dashed $light-gray;
   &:hover {
     background-color: $white-middle-transparent;
   }
   .index-photo {
-    width: 140px;
+    width: 220px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
   }
-  .index-name {
-    height: 34px;
-  }
-  .index-date {
-    height: 15px;
-  }
-  .index-address {
-    height: 15px;
-  }
+
   .index-participants {
     position: absolute;
     top: 5px;
@@ -79,25 +65,23 @@
 }
 .index-content {
   display: block;
-  width: 240px;
+  width: 160px;
 }
 
 .ind-name {
-  margin-top: 60px;
-  font-size: 20px;
+  padding-top: 30px;
+  font-size: 16px;
   font-weight: bolder;
   }
-.index-date {
-  margin-top: 15px;
-  .ind-date {
-    font-size: 14px;
-  }
+.ind-date p {
+  font-size: 14px;
+  font-weight: 300;
+  padding-top: 35px;
 }
-.index-address {
-  margin-top: 30px;
-  .ind-address {
-    font-size: 12px;
-  }
+
+.ind-address {
+  font-size: 10px;
+  padding-top: 15px;
 }
 
 .plus-return {
@@ -107,12 +91,3 @@
   color: $middle-gray;
 }
 
-// .wishlist-card {
-//   min-width: 300px;
-//   min-height: 350px;
-// }
-
-
-// .table-status {
-//   text-align: right;
-// }

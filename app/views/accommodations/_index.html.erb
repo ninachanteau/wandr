@@ -83,9 +83,6 @@
         </div>
       </div>
 
-<!--       <div class="index-title">
-        <h4 class="ind-title">Upcoming accommodation </h4>
-      </div> -->
       <div class="card-index-ctn">
         <% my_accommodations.each do |accom| %>
         <div class="index-card">
@@ -96,14 +93,15 @@
               <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
             </div>
             <div class="index-date">
-              <% if accom.start_date %>
-              <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
-              <% end %>
+                <div class="ind-date">
+                  <% if accom.start_date %>
+                  <p><%= accom.start_date.strftime("%b %d, %Y").upcase%></br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                  <% end %>
+                </div>
             </div>
             <div class="index-price">
-              <%= number_with_precision(accom.total_price, precision: 2)%>€
+              <p class="ind-price"><%= number_with_precision(accom.total_price, precision: 2)%>€</p>
             </div>
-<!--           <div><i class="fa fa-plus plus-return"></i></div> -->
           <div class="index-status">
             <div class="ind-status">
               <div class="btn-group">
@@ -180,14 +178,14 @@
                   <p class="ind-name"><%= link_to accom.name, accom.url, class: "name-link", target: "_blank" %></p>
                 </div>
                 <div class="index-date">
-
-                  <% if accom.start_date && accom.end_date %>
-                    <p class="ind-date"><%= accom.start_date.strftime("%b %d, %Y")%> @ <%= accom.end_date.strftime("%b %d, %Y")%></p>
-                  <% end %>
+                    <div class="ind-date">
+                      <% if accom.start_date %>
+                      <p><%= accom.start_date.strftime("%b %d, %Y").upcase%> </br> <%= accom.end_date.strftime("%b %d, %Y").upcase%></p>
+                    <% end %>
+                    </div>
                 </div>
-
                 <div class="index-price">
-                  <%= number_with_precision(accom.total_price, precision: 2)%>€
+                  <p class="ind-price"><%= number_with_precision(accom.total_price, precision: 2)%>€</p>
                 </div>
                 <div class="index-status">
                   <div class="ind-status">
@@ -256,9 +254,6 @@
         </div>
       </div>
 
-<!--       <div class=" wishlist-card hidden-xs">
-        <h4>Wishlist:</h4>
-      </div> -->
     </div>
     </div>
   </div>

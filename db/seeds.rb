@@ -1123,7 +1123,7 @@ activity_lisbon_julia.participation = julia_lisbon
 activity_lisbon_julia.save!
 
 activity_nyc_nina = Activity.create(
-  name: "Solomon R. Guggenheim Museum",
+  name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
   date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",
@@ -1138,7 +1138,7 @@ activity_nyc_nina.participation = nina_nyc
 activity_nyc_nina.save!
 
 activity_nyc_elsa = Activity.create(
-  name: "Solomon R. Guggenheim Museum",
+  name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
   date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",
