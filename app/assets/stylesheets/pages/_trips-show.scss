@@ -22,27 +22,45 @@
   cursor: pointer;
 }
 
-.download-link {
+// .download-link {
+//   color: white;
+//   font-size: 36px;
+//   margin-bottom: 30px;
+//   margin-left: 20px;
+//   &:hover {
+//     color: $light-gray;
+//   }
+// }
+
+.btn-pdf {
+  position: absolute;
   color: white;
-  font-size: 36px;
-  margin-bottom: 30px;
-  margin-left: 20px;
-  &:hover {
-    color: $light-gray;
+  font-size: 20px;
+  left: 130px;
+  top: 90px;
+  background-color: $yellow;
+  padding: 8px 13px;
+  border-radius: 15px;
+  border: 3px solid white;
+  a {
+    color: white;
+    text-decoration: none;
   }
 }
 
-.pdf {
+.btn-calendar {
   position: absolute;
-  left: 25px;
+  color: $yellow;
+  font-size: 20px;
+  left: 0px;
   top: 90px;
-
-}
-
-.calendar {
-  position: absolute;
-  left: -20px;
-  top: 90px;
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 15px;
+  a {
+    color: $yellow;
+    text-decoration: none;
+  }
 }
 
 #map {
