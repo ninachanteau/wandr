@@ -16,7 +16,7 @@ class ActivitiesController < ApplicationController
     end
     @activities_unsorted = @all_activities.reject { |resa| resa unless (resa.same_reservation & @my_activities).empty? }
     @activities = @activities_unsorted.select(&:date).sort_by(&:date) + @activities_unsorted.reject(&:date)
-    session[:notifications][params[:trip_id]][:activity] = Time.now
+    session[:notifications][:activity] = Time.now
     @activity = Activity.new
     @trip_dates = {
       start_date: @trip.start_date,
