@@ -20,7 +20,7 @@ class User < ApplicationRecord
         end
       end
     #end
-    return @new_items.count
+    return 0
   end
 end
 
