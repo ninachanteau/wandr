@@ -217,11 +217,11 @@
                       <p class="ind-name"><%= link_to resto.name, resto.url, class: "name-link", target: "_blank" %></p>
                     </div>
                     <div class="index-date">
-                      <div class="date">
+                      <div class="ind-date">
                         <% if resto.date %>
-                          <p class="ind-date" ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
+                          <p ><%= resto.date.strftime("%b %d, %Y").upcase %> @ <%= resto.date.strftime("%H:%M").upcase %></p>
                         <% else %>
-                          <p class="ind-date">Not scheduled yet</p>
+                          <p>Not scheduled yet</p>
                         <% end %>
                       </div>
                     </div>
