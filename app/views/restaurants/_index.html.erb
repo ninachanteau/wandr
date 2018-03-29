@@ -89,43 +89,29 @@
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                       </div>
                     </div>
+                    <div class="delete-card">
+                      <%= link_to trip_restaurant_path(trip, resto), method: :delete do %>
+                        <span>
+                          <%= render 'shared/delete-icon'  %>
+                        </span>
+                      <% end %>
+                    </div>
                     <div class="index-status">
-                      <div class="status">
-                        <div class="ind-status">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <% if resto.status == "Wishlist" %>
-                                <%= render 'shared/wishlist-icon' %>
-                              <% else %>
-                                <%= render 'shared/booked-icon' %>
-                              <% end %>
-                            </button>
-                            <div class="dropdown-menu">
-                              <% if resto.status == "Booked" %>
-                                <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/wishlist-icon'  %>
-                                    Wishlist
-                                  </span>
-                                <% end %>
-                              <% elsif resto.status == "Wishlist" %>
-                                <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/booked-icon'  %>
-                                    Booked
-                                  </span>
-                                <% end %>
-                              <% end %>
-                              <div class="dropdown-divider">
-                              </div>
-                              <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/delete-icon'  %>
-                                    Delete
-                                  </span>
-                              <% end %>
-                            </div>
-                          </div>
+                      <div class="ind-status">
+                        <div class="btn-group">
+                          <% if resto.status == "Booked" %>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                                <span>
+                                  <%= render 'shared/booked-icon'  %>
+                                </span>
+                            <% end %>
+                          <% elsif resto.status == "Wishlist" %>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                              <span>
+                                <%= render 'shared/wishlist-icon'  %>
+                              </span>
+                            <% end %>
+                          <% end %>
                         </div>
                       </div>
                     </div>
@@ -182,9 +168,9 @@
                         <p>Who will be attending?</p>
                         <% trip.participations.each do |participant| %>
                             <% if participant.user %>
-                              <%= cl_image_tag participant.user.avatar, class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
+                              <%= cl_image_tag participant.user.avatar, class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
                             <% else %>
-                              <%= image_tag "default-user.jpg", class: "avatar-large activity-participant-avatar", data: { participation_id: participant.id } %>
+                              <%= image_tag "default-user.jpg", class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
                             <% end %>
                         <% end %>
                         <div style="visibility: hidden">
@@ -228,46 +214,29 @@
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                       </div>
                     </div>
+                    <div class="delete-card">
+                      <%= link_to trip_restaurant_path(trip, resto), method: :delete do %>
+                        <span>
+                          <%= render 'shared/delete-icon'  %>
+                        </span>
+                      <% end %>
+                    </div>
                     <div class="index-status">
-                      <div class="status">
-                        <div class="ind-status">
-                          <div class="btn-group">
-
-                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              <% if resto.status == "Wishlist" %>
-                                <%= render 'shared/wishlist-icon' %>
-                              <% else %>
-                                <%= render 'shared/booked-icon' %>
-                              <% end %>
-                            </button>
-
-                            <div class="dropdown-menu">
-                              <% if resto.status == "Booked" %>
-                                <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/wishlist-icon'  %>
-                                    Wishlist
-                                  </span>
-                                <% end %>
-                              <% elsif resto.status == "Wishlist" %>
-                                <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                  <span>
-                                    <%= render 'shared/booked-icon'  %>
-                                    Booked
-                                  </span>
-                                <% end %>
-                              <% end %>
-                              <div class="dropdown-divider">
-                              </div>
-                              <%= link_to trip_restaurant_path(trip, resto), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                      <div class="ind-status">
+                        <div class="btn-group">
+                          <% if resto.status == "Booked" %>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                                 <span>
-                                  <%= render 'shared/delete-icon'  %>
-                                  Delete
+                                  <%= render 'shared/booked-icon'  %>
                                 </span>
-                              <% end %>
-                            </div>
-
-                          </div>
+                            <% end %>
+                          <% elsif resto.status == "Wishlist" %>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                              <span>
+                                <%= render 'shared/wishlist-icon'  %>
+                              </span>
+                            <% end %>
+                          <% end %>
                         </div>
                       </div>
                     </div>

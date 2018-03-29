@@ -89,41 +89,29 @@
                       <i class="fa fa-pencil" aria-hidden="true"></i>
                     </div>
                   </div>
+                  <div class="delete-card">
+                    <%= link_to trip_activity_path(trip, activ), method: :delete do %>
+                      <span>
+                        <%= render 'shared/delete-icon'  %>
+                      </span>
+                    <% end %>
+                  </div>
                   <div class="index-status">
                     <div class="ind-status">
                       <div class="btn-group">
-                        <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <% if activ.status == "Wishlist" %>
-                            <%= render 'shared/wishlist-icon' %>
-                          <% else %>
-                            <%= render 'shared/booked-icon' %>
-                          <% end %>
-                        </button>
-                        <div class="dropdown-menu">
-                          <% if activ.status == "Booked" %>
-                            <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
-                                <%= render 'shared/wishlist-icon'  %>
-                                Wishlist
-                              </span>
-                            <% end %>
-                          <% elsif activ.status == "Wishlist" %>
-                            <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                        <% if activ.status == "Booked" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                               <span>
                                 <%= render 'shared/booked-icon'  %>
-                                Booked
                               </span>
-                            <% end %>
                           <% end %>
-                          <div class="dropdown-divider">
-                          </div>
-                          <%= link_to trip_activity_path(trip, activ), method: :delete, class: "dropdown-item status-dropdown-item" do %>
+                        <% elsif activ.status == "Wishlist" %>
+                          <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                             <span>
-                              <%= render 'shared/delete-icon'  %>
-                              Delete
+                              <%= render 'shared/wishlist-icon'  %>
                             </span>
                           <% end %>
-                        </div>
+                        <% end %>
                       </div>
                     </div>
                   </div>
@@ -223,41 +211,30 @@
                         <i class="fa fa-pencil" aria-hidden="true"></i>
                       </div>
                     </div>
+                    <div class="delete-card">
+                      <%= link_to trip_activity_path(trip, activ), method: :delete do %>
+                        <span>
+                          <%= render 'shared/delete-icon'  %>
+                        </span>
+                      <% end %>
+                    </div>
                     <div class="index-status">
                       <div class="ind-status">
-                          <div class="btn-group">
-                            <button type="button" class="btn btn-light dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <% if activ.status == "Wishlist" %>
-                              <%= render 'shared/wishlist-icon' %>
-                            <% else %>
-                              <%= render 'shared/booked-icon' %>
-                            <% end %>
-                            </button>
-                            <div class="dropdown-menu">
-                            <% if activ.status == "Booked" %>
-                              <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                <span>
-                                  <%= render 'shared/wishlist-icon'  %>
-                                  Wishlist
-                                </span>
-                              <% end %>
-                            <% elsif activ.status == "Wishlist" %>
-                              <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                        <div class="btn-group">
+                          <% if activ.status == "Booked" %>
+                            <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                                 <span>
                                   <%= render 'shared/booked-icon'  %>
-                                  Booked
                                 </span>
-                              <% end %>
                             <% end %>
-                            <div class="dropdown-divider"></div>
-                            <%= link_to trip_activity_path(trip, activ), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                                <span>
-                                  <%= render 'shared/delete-icon'  %>
-                                  Delete
-                                </span>
-                              <% end %>
-                          </div>
-                          </div>
+                          <% elsif activ.status == "Wishlist" %>
+                            <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                              <span>
+                                <%= render 'shared/wishlist-icon'  %>
+                              </span>
+                            <% end %>
+                          <% end %>
+                        </div>
                       </div>
                     </div>
                     <div class="index-participants">
