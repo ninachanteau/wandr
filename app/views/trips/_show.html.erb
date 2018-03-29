@@ -8,13 +8,17 @@
               <% if particip.user %>
 
                 <!-- <div class="btn btn-avatar" type="button" data-toggle="tooltip" data-placement="top" title= "<%= particip.pseudo %>"> -->
-                <%= cl_image_tag particip.user.avatar, class: "avatar-large avatar-participant" %>
+                <div data-toggle="tooltip" data-placement="bottom" title="<%= particip.pseudo %>">
+                  <%= cl_image_tag particip.user.avatar, class: "avatar-large avatar-participant" %>
+                </div>
 <!--                 </div> -->
 
               <% else %>
+              <div data-toggle="tooltip" data-placement="bottom" title="<%= particip.pseudo %>">
                 <%= image_tag "default-user.jpg", class: "avatar-large avatar-participant" %>
+              </div>
               <% end %>
-              <p><%= particip.pseudo %></p>
+              <!-- <p><%= particip.pseudo %></p> -->
             </div>
           <% end %>
 
