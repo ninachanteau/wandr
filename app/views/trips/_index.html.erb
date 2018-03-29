@@ -8,6 +8,8 @@
           <%= render 'shared/card', trip: future_trip %>
         </div>
       <% end %>
+
+        <div class="add-card">
           <div type="button" data-toggle="modal" data-target="#myModal">
             <i class="fa fa-plus-circle btn-card"></i>
           </div>
@@ -39,6 +41,9 @@
                       </div>
                     </div>
           </div>
+        </div>
+
+
   </div>
 
   <div class="trips-card">
@@ -47,37 +52,6 @@
           <%= render 'shared/card', trip: wishlist_trip %>
         </div>
       <% end %>
-          <div type="button" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus-circle btn-card"></i>
-          </div>
-
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title text-center" id="myModalLabel">Add a Trip</h4>
-                </div>
-                <div class="modal-body">
-                  <%= simple_form_for(trip) do |f| %>
-                    <%= f.input :name, placeholder: "Name", label: false %>
-                    <%= f.input :destination, placeholder: "Destination", label: false %>
-                    <%= f.input :photo %>
-                    <%= f.input :description, placeholder: "Description", label: false %>
-                    <div class="row">
-                      <div class="col-xs-6">
-                    <%= f.input :start_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Start Date", label: false, data_altinput: true, data_enabletime: true%>
-                      </div>
-                      <div class="col-xs-6">
-                    <%= f.input :end_date, as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "End Date", label: false, data_altinput: true, data_enabletime: true %>
-                      </div>
-                    </div>
-                    <%= f.submit "Add trip", class: "btn btn-info", style: "width: 100%" %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
   </div>
 
   <div class="trips-card light-card">
