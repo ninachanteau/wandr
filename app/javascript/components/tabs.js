@@ -12,6 +12,7 @@ function clickTab(tabType) {
 };
 
 
-// tabType = #mine or #others
+// tabType contenu = #mine or #others
+// classes contenu = .tabcontent
 
 

@@ -87,45 +87,35 @@
                       <p class="text-right" ><%= transpo.arrival_date.strftime("%b %d, %Y") %>  <%= transpo.arrival_date.strftime("%H:%M") %></p>
                     </div>
                   </div>
-
-                  <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p></div>
-                </div>
-                <div class="reference-card"><p class="reference text-center"><%= transpo.reference_number%></p></div>
-                <div class="transpo-status">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-status dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <% if transpo.status == "Wishlist" %>
-                        <%= render 'shared/wishlist-icon' %>
-                      <% else %>
-                        <%= render 'shared/booked-icon' %>
-                      <% end %>
-                    </button>
-                    <div class="dropdown-menu">
-                      <% if transpo.status == "Booked" %>
-                        <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/wishlist-icon'  %>
-                            Wishlist
-                          </span>
-                        <% end %>
-                      <% elsif transpo.status == "Wishlist" %>
-                        <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/booked-icon'  %>
-                            Booked
-                          </span>
-                        <% end %>
-                      <% end %>
-                      <div class="dropdown-divider"></div>
-                      <%= link_to trip_transportation_path(trip, transpo), method: :delete, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/delete-icon'  %>
-                            Delete
-                          </span>
-                        <% end %>
-                    </div>
+                  <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p>
                   </div>
                 </div>
+                <div class="reference-card"><p class="reference text-center"><%= transpo.reference_number%></p></div>
+                <div class="delete-card-transpo">
+                  <%= link_to trip_transportation_path(trip, transpo), method: :delete do %>
+                    <span>
+                      <%= render 'shared/delete-icon'  %>
+                    </span>
+                  <% end %>
+                </div>
+                <div class="transpo-status">
+                  <div class="btn-group">
+                    <% if transpo.status == "Booked" %>
+                      <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/booked-icon'  %>
+                          </span>
+                      <% end %>
+                    <% elsif transpo.status == "Wishlist" %>
+                      <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                        <span>
+                          <%= render 'shared/wishlist-icon'  %>
+                        </span>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+
                 <div class="transpo-participants"><%= cl_image_tag avatar, class: "avatar transpo-avatar", crop: :fill%>
                 </div>
               </div>
@@ -161,15 +151,28 @@
                 <div class="reference-card"><p class="reference text-center">
                   <%= transpo.reference_number%></p>
                 </div>
+                <div class="delete-card-transpo">
+                  <%= link_to trip_transportation_path(trip, transpo), method: :delete do %>
+                    <span>
+                      <%= render 'shared/delete-icon'  %>
+                    </span>
+                  <% end %>
+                </div>
                 <div class="transpo-status">
                   <div class="btn-group">
-                    <div class="btn btn-light">
-                        <% if transpo.status == "Wishlist" %>
-                          <%= render 'shared/wishlist-icon' %>
-                        <% else %>
-                          <%= render 'shared/booked-icon' %>
-                        <% end %>
-                    </div>
+                    <% if transpo.status == "Booked" %>
+                      <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                          <span>
+                            <%= render 'shared/booked-icon'  %>
+                          </span>
+                      <% end %>
+                    <% elsif transpo.status == "Wishlist" %>
+                      <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                        <span>
+                          <%= render 'shared/wishlist-icon'  %>
+                        </span>
+                      <% end %>
+                    <% end %>
                   </div>
                 </div>
                 <div class="transpo-participants">
