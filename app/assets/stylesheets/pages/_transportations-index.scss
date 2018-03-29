@@ -1,12 +1,5 @@
-
-
-.title {
-  padding-bottom: 30px;
-  padding-top: 20px;
-}
-
-.title-icon {
-  color: $middle-gray;
+.new-container {
+  position: relative;
 }
 
 .add-btn {
@@ -30,36 +23,17 @@
   }
 }
 
-.transportations-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.transportations-ctn {
-  flex-grow: 1;
-}
-
 .transportations-card {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   margin: 0px 10px 20px 10px;
   position: relative;
   padding: 10px;
-  background-color: $white-transparent;
   border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
 }
-
-.white-card {
-  background-color: rgba(255,255,255,0.6) !important;
-}
-
-.cards-ctn {
-  display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
 
 .transportation-card {
   margin-right: 10px !important;
