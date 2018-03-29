@@ -11,8 +11,8 @@ function displayCalendar() {
         firstDay: 1,
         height: 450,
         header: {
-          left:   'title',
-          center: 'months,weeks,days'
+          left:   'title'
+          // center: 'months,weeks,days',
         },
         buttonText: {
           today:    'today',
