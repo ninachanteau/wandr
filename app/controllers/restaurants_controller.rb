@@ -15,7 +15,7 @@ class RestaurantsController < ApplicationController
     end
     @restaurants_unsorted = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
     @restaurants = @restaurants_unsorted.select(&:date).sort_by(&:date) + @restaurants_unsorted.reject(&:date)
-    session[:notifications][params[:trip_id]][:restaurant] = Time.now
+    #session[:notifications][:restaurant] = Time.now
     @restaurant = Restaurant.new
     @trip_dates = {
       start_date: @trip.start_date,
