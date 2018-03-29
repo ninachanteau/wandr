@@ -25,6 +25,7 @@ class Trips::NavbarAccommodationsController < ApplicationController
     phone_array = doc.search('.blEntry span').map { |element| element.text.strip.to_s }
     @accommodation.phone_number = phone_array[5] if phone_array[5].present?
     img_array = doc.search('.page_images img').map{ |i| i['src'] }
+    @accommodation.status = "Wishlist"
     @accommodation.remote_photo_url = img_array[1] if img_array[1].present?
     @accommodation.number_of_nights = (@accommodation.end_date - @accommodation.start_date).to_i if @accommodation.end_date.present? && @accommodation.start_date.present?
     @trips = current_user.trips.map {|trip| ["#{trip.destination} - #{trip.name}", trip.id]}
