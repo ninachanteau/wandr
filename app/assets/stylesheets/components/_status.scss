@@ -1,11 +1,20 @@
 .wishlist {
-  color: $red;
+  color: $middle-gray;
+  opacity: 0.2;
+  font-size: 30px;
+}
+
+.wishlist:hover {
+  color: $middle-gray;
+  opacity: 1;
 }
 
 .booked {
   color: $green;
+  font-size: 30px;
 }
 
 .past {
   color: $middle-gray;
+  font-size: 30px;
 }
