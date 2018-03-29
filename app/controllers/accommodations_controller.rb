@@ -60,10 +60,7 @@ class AccommodationsController < ApplicationController
     @accommodation = Accommodation.find(params[:id])
     @accommodation.same_reservation.each { |resa| resa.update(status: params[:status]) }
     # @accommodation.update(status: params[:status])
-    respond_to do |format|
-      format.html { redirect_to trip_accommodations_path(@trip) }
-      format.js { j render 'index' }
-    end
+    redirect_to trip_accommodations_path(@trip)
   end
 
   def destroy
