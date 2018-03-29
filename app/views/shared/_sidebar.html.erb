@@ -29,8 +29,7 @@
             <% if current_user.new_count(@trip, Transportation) != 0 && session[:notifications][params[:trip_id]][:transportation] %>
               <div id="transportations-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
-              data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Transportation) %>
+              data-user-id="<%= current_user.id %>">!
                 </div>
               </div>
             <% end %>
@@ -39,7 +38,7 @@
               <div id="transportations-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Transportation) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -53,7 +52,7 @@
               <div id="accommodations-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Accommodation) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -62,7 +61,7 @@
               <div id="accommodations-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Accommodation) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -77,7 +76,7 @@
               <div id="restaurants-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Restaurant) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -86,7 +85,7 @@
               <div id="restaurants-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Restaurant) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -100,7 +99,7 @@
               <div id="activities-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Activity) %>
+                !
                 </div>
               </div>
             <% end %>
@@ -109,7 +108,7 @@
               <div id="activities-notif" class="notification-holder">
                 <div class="notification notification-position text-center"
               data-user-id="<%= current_user.id %>">
-                <%= current_user.new_count(@trip, Activity) %>
+                !
                 </div>
               </div>
             <% end %>
