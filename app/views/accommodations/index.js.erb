@@ -13,7 +13,9 @@ loadAccommodations('<%= j render "index", accommodations: @accommodations, trip_
 
 function changeTitle(title) {
   const navbarTitle = document.querySelector('.navbar-title');
-  navbarTitle.innerHTML = title;
+  if (navbarTitle) {
+    navbarTitle.innerHTML = title;
+  }
 }
 
 changeTitle('<%= j render "shared/navbar_title", trip: @trip, icon: "home" %>');
