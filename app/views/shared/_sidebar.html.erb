@@ -9,8 +9,6 @@
           <%= image_tag "logo.png", height: 50 %>
         <% end %>
       </div>
-      <%# unless params[:action] == "index"  %>
-        <%# if @trip && @trip.id.present? %>
       <ul class="list-icons nav nav-tabs" id="myTab" role="tablist">
 
           <% if @trip.id %>
@@ -128,12 +126,13 @@
           <% end %>
 
             </li>
+
           <% end %>
+
         </ul>
       </div>
       <% end %>
 
     <% end %>
-
 
 
