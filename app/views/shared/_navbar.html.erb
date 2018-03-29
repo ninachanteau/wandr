@@ -1,5 +1,10 @@
 <div class="navbar-wagon">
   <!-- Logo -->
+  <% if params[:controller] == "trips" && params[:action] == "index"%>
+    <div class="navbar-index-logo">
+      <%= image_tag "logo.png", height: 50, class: "logo-navbar" %>
+    </div>
+  <% end %>
 
 <div class="navbar-wagon-left">
   <% if params[:controller] == "trips" && params[:action] == "show"%>
