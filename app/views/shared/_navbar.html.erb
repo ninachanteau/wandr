@@ -1,22 +1,17 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-<div class="navbar-wagon-left">
-  <% if params[:controller] == "trips" && params[:action] == "show"%>
-    <div class="navbar-title"><strong><%= @trip.destination %></strong>
-      <% if @trip.start_date.present? %>
-        <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
+  <div class="navbar-wagon-left">
+    <% if params[:controller] == "trips" && params[:action] == "show"%>
+      <div class="navbar-title"><strong><%= @trip.destination %></strong>
+        <% if @trip.start_date.present? %>
+          <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
   <!-- Right Navigation -->
-
-
-    <% if user_signed_in? %>
-
+  <% if user_signed_in? %>
     <div class="navbar-wagon-right">
-
       <!-- Links when logged in -->
       <% if params[:controller] == "trips" && params[:action] == "index"%>
         <div class="dropdown dropdown-choose">
@@ -40,33 +35,26 @@
             </form>
           <% end %>
         </div>
-
         <div class="quick-add-url-container">
           <% if params["type"] == "restaurant"  %>
             <%= simple_form_for @restaurant, url: trips_navbar_restaurants_path, method: :post, remote: true do |f| %>
               <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter restaurant url", label: false %>
             <% end %>
-        <% elsif params["type"] == "accommodation" %>
-          <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter accommodation url", label: false %>
-          <% end %>
-        <% elsif params["type"] == "activity" %>
-          <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
-            <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter activity url", label: false %>
-
+          <% elsif params["type"] == "accommodation" %>
+            <%= simple_form_for @accommodation, url: trips_navbar_accommodations_path, method: :post, remote: true do |f| %>
+              <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter accommodation url", label: false %>
+            <% end %>
+          <% elsif params["type"] == "activity" %>
+            <%= simple_form_for @activity, url: trips_navbar_activities_path, method: :post, remote: true do |f| %>
+              <%= f.input :url, class: "navbar-input form-control", placeholder: "Enter activity url", label: false %>
+            <% end %>
           <% end %>
         </div>
-        <% end %>
-
-      </div>
-
-
       <% end %>
-
       <!-- Logo -->
       <div class="dropdown">
         <%# if current_user.avatar.present? %>
-          <%= image_tag current_user.avatar.url, class: "avatar navbar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+        <%= image_tag current_user.avatar.url, class: "avatar navbar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
         <%# else %>
           <%#= image_tag "http://www.clker.com/cliparts/m/3/I/C/c/2/grey-silhouette-of-man-hi.png", class: "avatar sidebar-avatar dropdown-toggle", "data-toggle" => "dropdown" %>
         <%# end %>
@@ -83,17 +71,15 @@
       </div>
     </div>
 
-    <% else %>
+  <% else %>
     <div class="navbar-wagon-left">
       <%= image_tag "logo.png", height: 50, class: "logo-navbar" %>
     </div>
-
     <div class="navbar-wagon-right">
       <!-- Login link (when logged out) -->
       <%= link_to t(".sign_in", default: "Sign up"), new_user_registration_path, class: "navbar-wagon-item navbar-wagon-link" %>
-
       </div>
-    <% end %>
+  <% end %>
 
 </div>
       <a href="#" id="Modalbutton" data-toggle="modal" data-target="#UrlModal"></a>
