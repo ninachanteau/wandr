@@ -6,11 +6,21 @@ function openModal() {
 function getForm(innerHTML) {
   const form = document.getElementById("EditFormUrl");
   form.innerHTML = innerHTML
+  // reload forms wepback script
+  const head = document.querySelector("head");
+  const scriptElement = document.createElement('script');
+  scriptElement.src = '<%= javascript_pack_tag "forms" %>'.match(/src="(.*)">/)[1];
+  head.appendChild(scriptElement);
 }
 
 function updateForm(innerHTML) {
   const form = document.getElementById("UpdateForm");
   form.innerHTML = innerHTML
+  // reload forms wepback script
+  const head = document.querySelector("head");
+  const scriptElement = document.createElement('script');
+  scriptElement.src = '<%= javascript_pack_tag "forms" %>'.match(/src="(.*)">/)[1];
+  head.appendChild(scriptElement);
 }
 
 function selectParticipant() {
