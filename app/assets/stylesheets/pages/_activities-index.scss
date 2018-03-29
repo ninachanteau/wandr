@@ -2,12 +2,17 @@
   position: relative;
 }
 
+.activities-tabs {
+  margin-top: -10px;
+  margin-left: 0px;
+}
+
 .activities-card {
   position: relative;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  margin: 0px 10px 20px 10px;
+  margin: -10px -40px -20px -20px;
   padding: 10px;
   border-radius: 2px;
   min-height: 160px;

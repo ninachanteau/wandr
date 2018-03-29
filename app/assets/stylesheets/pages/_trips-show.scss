@@ -9,6 +9,7 @@
 
 .participant {
   margin-right: 10px;
+  margin-bottom: 30px;
   .btn-avatar {
     cursor: default !important;
     padding: 5px;
@@ -34,7 +35,7 @@
   position: absolute;
   color: white;
   font-size: 16px;
-  left: 130px;
+  left: 135px;
   top: 95px;
   background-color: $yellow;
   padding: 9px 14px;
@@ -50,7 +51,7 @@
   position: absolute;
   color: $yellow;
   font-size: 16px;
-  left: -5px;
+  left: 0px;
   top: 95px;
   background-color: white;
   padding: 10px 15px;
@@ -87,10 +88,10 @@
 }
 
 .calendar-map-container {
-  background-color: rgba(255,255,255,0.8);
+  background-color: $light-yellow;
   border: black;
   padding: 10px;
-  margin: 10px;
+  margin: 15px;
   display: inline-block;
   border-radius: 2px;
 }

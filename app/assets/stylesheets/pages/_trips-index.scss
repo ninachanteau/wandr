@@ -12,20 +12,33 @@
 }
 
 .trips-card {
-  margin: 20px 10px 20px -90px;
-  padding: 20px;
-  background-color: $white-transparent;
+  margin: 15px 0px 25px -100px;
+  padding: 0px;
+  // background-color: $white-transparent;
   border-radius: 2px;
-  min-height: 160px;
+  min-height: 250px;
   max-width: 1112px;
+}
+
+.trip-card-title {
+  padding: 5px 5px 5px 20px;
+  border-radius: 2px;
+  background-color: $white-middle-transparent;
+  color: $middle-gray;
+}
+
+.trip-ctn {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
 }
 
+.trip-card {
+  margin: 10px 10px 10px -10px;
+}
+
 .add-card {
   color: $yellow !important;
-  // position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,8 +46,8 @@
   margin-bottom: 15px;
   border-radius: 2px;
   height: 200px;
-  width: 380px;
-  margin: 10px;
+  width: 324px;
+  margin: 20px 10px 10px 0px;
   display: flex;
   border-radius: 2px;
   position: relative;
