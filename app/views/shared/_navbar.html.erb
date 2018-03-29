@@ -7,6 +7,18 @@
         <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
       <% end %>
     </div>
+  <% elsif params[:controller] == "accommodations" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-home  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "activities" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-university  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "transportations" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-plane  title-icon"></i>
+    </div>
+  <% elsif params[:controller] == "restaurants" %>
+    <div class="navbar-title"><strong><%= @trip.destination %></strong> | <%= @trip.name  %>  ...  <i class="fa fa-cutlery  title-icon"></i>
+    </div>
   <% end %>
 </div>
 
