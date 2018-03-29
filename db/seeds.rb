@@ -42,7 +42,7 @@ lisbon = Trip.create!(
 
 puts "Trips created"
 puts "------"
-puts "Creating 6 users"
+puts "Creating 7 users"
 
 nina = User.create!(
 email: "nina.chanteau@hec.edu",
@@ -86,6 +86,13 @@ last_name: "Gounot",
 password: "123456",
 remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/elsagt")
 
+marion = User.create!(
+email: "bergeret.marion@gmail.com",
+first_name: "Marion",
+last_name: "Bergeret",
+password: "123456",
+remote_avatar_url: "https://kitt.lewagon.com/placeholder/users/marion-bergeret")
+
 puts "Users created"
 puts "------"
 puts "Creating 9 participations"
@@ -98,13 +105,13 @@ nina_lisbon.pseudo = nina.first_name
 nina_lisbon.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_lisbon.save!
 
-julia_lisbon = Participation.new
-julia_lisbon.user = julia
-julia_lisbon.trip = lisbon
-julia_lisbon.email = julia.email
-julia_lisbon.pseudo = julia.first_name
-julia_lisbon.remote_avatar_url = "https://scontent-bru2-1.xx.fbcdn.net/v/t1.0-9/20915151_1914427425464496_1029012009906877112_n.jpg?_nc_cat=0&oh=d1804dcaecf38fb1d6f8f196f607ec3d&oe=5B3ECF26"
-julia_lisbon.save!
+marion_lisbon = Participation.new
+marion_lisbon.user = marion
+marion_lisbon.trip = lisbon
+marion_lisbon.email = marion.email
+marion_lisbon.pseudo = marion.first_name
+marion_lisbon.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/marion-bergeret"
+marion_lisbon.save!
 
 nina_nyc = Participation.new
 nina_nyc.user = nina
@@ -286,7 +293,7 @@ go_lisbon_nina = Transportation.new(
 go_lisbon_nina.participation = nina_lisbon
 go_lisbon_nina.save!
 
-go_lisbon_julia = Transportation.new(
+go_lisbon_marion = Transportation.new(
   departure_port: "Aéroport CDG Terminal 1",
   arrival_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
   departure_date: "Fri, 09 Mar 2018 14:00:00 UTC +00:00,",
@@ -295,10 +302,10 @@ go_lisbon_julia = Transportation.new(
   price_per_person: 75.00,
   reference_number: "DRTNKZ"
   )
-go_lisbon_julia.participation = julia_lisbon
-go_lisbon_julia.save!
+go_lisbon_marion.participation = marion_lisbon
+go_lisbon_marion.save!
 
-back_lisbon_julia = Transportation.new(
+back_lisbon_marion = Transportation.new(
   departure_port: "Lisboa, Aeroporto da Portela Lisboa (LIS)",
   arrival_port: "Aéroport CDG Terminal 1",
   departure_date: "Mon, 12 Mar 2018 10:00:00 UTC +00:00,",
@@ -307,8 +314,8 @@ back_lisbon_julia = Transportation.new(
   price_per_person: 43.00,
   reference_number: "DRTNKZ"
   )
-back_lisbon_julia.participation = julia_lisbon
-back_lisbon_julia.save!
+back_lisbon_marion.participation = marion_lisbon
+back_lisbon_marion.save!
 
 puts "Transportations created"
 puts "------"
@@ -514,7 +521,7 @@ hotel_lisbon_nina.trip = lisbon
 hotel_lisbon_nina.participation = nina_lisbon
 hotel_lisbon_nina.save!
 
-hotel_lisbon_julia = Accommodation.create(
+hotel_lisbon_marion = Accommodation.create(
   name: "Memmo Alfama Hotel Lisboa",
   address: "Travessa das Merceeiras, 27 - Alfama, Lisbon, 1100-348, Portugal",
   start_date: "Fri, 09 Mar 2018",
@@ -530,9 +537,9 @@ hotel_lisbon_julia = Accommodation.create(
   description: "Amazing view and perfect location in Alfama",
   remote_photo_url: "https://f22bfca7a5abd176cefa-59c40a19620c1f22577ade10e9206cf5.ssl.cf1.rackcdn.com/u/memmo-alfama-architecture-M-01-r.jpg"
   )
-hotel_lisbon_julia.trip = lisbon
-hotel_lisbon_julia.participation = julia_lisbon
-hotel_lisbon_julia.save!
+hotel_lisbon_marion.trip = lisbon
+hotel_lisbon_marion.participation = marion_lisbon
+hotel_lisbon_marion.save!
 
 hotel_lisbon_nina = Accommodation.create(
   name: "Pousada de Lisboa",
@@ -554,7 +561,7 @@ hotel_lisbon_nina.trip = lisbon
 hotel_lisbon_nina.participation = nina_lisbon
 hotel_lisbon_nina.save!
 
-hotel_lisbon_julia = Accommodation.create(
+hotel_lisbon_marion = Accommodation.create(
   name: "Pousada de Lisboa",
   address: "Praça do Comércio 31-34, 1100-148 Lisboa, Portugal",
   start_date: "Fri, 09 Mar 2018",
@@ -570,9 +577,9 @@ hotel_lisbon_julia = Accommodation.create(
   description: "Luxury hotel with the perfect location",
   remote_photo_url: "https://www.slh.com/globalassets/hotels/p/pousada-de-lisboa/pousadadelisboa_heronew.jpg?width=1024"
   )
-hotel_lisbon_julia.trip = lisbon
-hotel_lisbon_julia.participation = julia_lisbon
-hotel_lisbon_julia.save!
+hotel_lisbon_marion.trip = lisbon
+hotel_lisbon_marion.participation = marion_lisbon
+hotel_lisbon_marion.save!
 
 puts "Accommodation created"
 puts "------"
@@ -833,7 +840,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "A Cevicheria",
   address: "R. Dom Pedro V 129, 1250-096 Lisboa, Portugal",
   date: "Sat, 10 Mar 2018 20:00:00 UTC +00:00,",
@@ -844,9 +851,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "acevicheria@lisbon.com",
   remote_photo_url: "https://media.timeout.com/images/103451712/630/472/image.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "Pensão Amor",
@@ -863,7 +870,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "Pensão Amor",
   address: "Rua Alecrim 19, 1200-014 Lisboa, Portugal",
   date: "Fri, 09 Mar 2018 22:00:00 UTC +00:00,",
@@ -874,9 +881,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "pensaoamor@lisbon.com",
   remote_photo_url: "https://www.heartofeverywhere.com/wp-content/uploads/2016/11/IMG_6061-1-Cópia.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "Time Out Market",
@@ -893,7 +900,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "Time Out Market",
   address: "Av. 24 de Julho 49, 1200-479 Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 12:30:00 UTC +00:00,",
@@ -904,9 +911,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "timeoutmarket@lisbon.com",
   remote_photo_url: "https://i.pinimg.com/originals/c8/dc/4c/c8dc4c46a58262b9ca743bc1b88b023a.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "BytheWine",
@@ -923,7 +930,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "BytheWine",
   address: "1200 014, Rua das Flores 41, Portugal",
   date: "Fri, 09 Mar 2018 18:30:00 UTC +00:00,",
@@ -934,9 +941,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "wine@lisbon.com",
   remote_photo_url: "http://lisboacool.com/sites/default/files/styles/ny_article_horizontal__w720xh480_watermark/public/imagens/artigos/lisboa_cool_sair_by_the_wine_27.jpg?itok=2_cX4s_T"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "Lisboa Tu e Eu",
@@ -953,7 +960,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "Lisboa Tu e Eu",
   address: "R. Adiça 58, 1100-538 Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 19:00:00 UTC +00:00,",
@@ -964,9 +971,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "lisboatueeu@lisbon.com",
   remote_photo_url: "https://i1.wp.com/vandamiranda.pt/wp-content/uploads/2017/07/Lisboa-06.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "Quiosque Ribeira das Naus",
@@ -983,7 +990,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "Quiosque Ribeira das Naus",
   address: "Av. Ribeira das Naus 5, Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 17:00:00 UTC +00:00,",
@@ -994,9 +1001,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "ribeira@lisbon.com",
   remote_photo_url: "https://aperuadetenis.files.wordpress.com/2015/09/dsc_0020.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 restaurant_lisbon_nina = Restaurant.create(
   name: "Pois Café",
@@ -1013,7 +1020,7 @@ restaurant_lisbon_nina.trip = lisbon
 restaurant_lisbon_nina.participation = nina_lisbon
 restaurant_lisbon_nina.save!
 
-restaurant_lisbon_julia = Restaurant.create(
+restaurant_lisbon_marion = Restaurant.create(
   name: "Pois Café",
   address: "R. de São João da Praça 93-95, 1100-521 Lisboa, Portugal",
   date: "Sat, 10 Mar 2018 13:00:00 UTC +00:00,",
@@ -1024,9 +1031,9 @@ restaurant_lisbon_julia = Restaurant.create(
   email: "poiscafe@lisbon.com",
   remote_photo_url: "https://www.likealocalguide.com/media/cache/99/97/999757744ce5721bb317584ceda6d901.jpg"
   )
-restaurant_lisbon_julia.trip = lisbon
-restaurant_lisbon_julia.participation = julia_lisbon
-restaurant_lisbon_julia.save!
+restaurant_lisbon_marion.trip = lisbon
+restaurant_lisbon_marion.participation = marion_lisbon
+restaurant_lisbon_marion.save!
 
 puts "Restaurant created"
 puts "------"
@@ -1047,7 +1054,7 @@ activity_lisbon_nina.trip = lisbon
 activity_lisbon_nina.participation = nina_lisbon
 activity_lisbon_nina.save!
 
-activity_lisbon_julia = Activity.create(
+activity_lisbon_marion = Activity.create(
   name: "Jerónimos Monastery",
   address: "Praça do Império 1400-206 Lisboa, Portugal",
   date: "Sat, 10 Mar 2018 10:00:00 UTC +00:00,",
@@ -1058,9 +1065,9 @@ activity_lisbon_julia = Activity.create(
   email: "mosteirojeronimos@lisbon.com",
   remote_photo_url: "https://www.askideas.com/media/81/Balcony-Inside-Jeronimos-Monastery.jpg"
   )
-activity_lisbon_julia.trip = lisbon
-activity_lisbon_julia.participation = julia_lisbon
-activity_lisbon_julia.save!
+activity_lisbon_marion.trip = lisbon
+activity_lisbon_marion.participation = marion_lisbon
+activity_lisbon_marion.save!
 
 activity_lisbon_nina = Activity.create(
   name: "Lisbon Go 7 Hills Electric Bike Tour",
@@ -1077,7 +1084,7 @@ activity_lisbon_nina.trip = lisbon
 activity_lisbon_nina.participation = nina_lisbon
 activity_lisbon_nina.save!
 
-activity_lisbon_julia = Activity.create(
+activity_lisbon_marion = Activity.create(
   name: "Lisbon Go 7 Hills Electric Bike Tour",
   address: "Praça do Comércio, 1100-148 Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 15:00:00 UTC +00:00,",
@@ -1088,9 +1095,9 @@ activity_lisbon_julia = Activity.create(
   email: "electricbiketour@lisbon.com",
   remote_photo_url: "http://www.cyclinglisbon.com/wp-content/uploads/2017/03/04-1.jpg"
   )
-activity_lisbon_julia.trip = lisbon
-activity_lisbon_julia.participation = julia_lisbon
-activity_lisbon_julia.save!
+activity_lisbon_marion.trip = lisbon
+activity_lisbon_marion.participation = marion_lisbon
+activity_lisbon_marion.save!
 
 activity_lisbon_nina = Activity.create(
   name: "Museu do Fado",
@@ -1107,7 +1114,7 @@ activity_lisbon_nina.trip = lisbon
 activity_lisbon_nina.participation = nina_lisbon
 activity_lisbon_nina.save!
 
-activity_lisbon_julia = Activity.create(
+activity_lisbon_marion = Activity.create(
   name: "Museu do Fado",
   address: "Largo Chafariz de Dentro 1, 1100-139 Lisboa, Portugal",
   date: "Sat, 10 Mar 2018 09:00:00 UTC +00:00,",
@@ -1118,9 +1125,9 @@ activity_lisbon_julia = Activity.create(
   email: "museufado@lisbon.com",
   remote_photo_url: "https://itinari.imgix.net/activity/images/original/f49f1a80-848b-47ad-adf4-c6525d30e587-museu-do-fado-2-2x.jpg?fm=pjpg&ch=DPR&dpr=2&w=800&fit=clip&trim=auto&auto=enhance"
   )
-activity_lisbon_julia.trip = lisbon
-activity_lisbon_julia.participation = julia_lisbon
-activity_lisbon_julia.save!
+activity_lisbon_marion.trip = lisbon
+activity_lisbon_marion.participation = marion_lisbon
+activity_lisbon_marion.save!
 
 activity_nyc_nina = Activity.create(
   name: "Guggenheim Museum",
