@@ -3,6 +3,7 @@
 <% unless params[:action] == "home" || (params[:controller] =="trips" && params[:action] == "index") %>
   <% if user_signed_in? || params[:token].present? %>
     <div class="sidebar-container">
+
       <div class="sidebar-item">
         <%= link_to root_path, class: "sidebar-wagon-brand" do %>
           <%= image_tag "logo.png", height: 50 %>
@@ -127,8 +128,11 @@
             </li>
 
           <% end %>
-        <% end %>
-      </ul>
-<% end %>
+
+        </ul>
+      </div>
+      <% end %>
+
+    <% end %>
 
 

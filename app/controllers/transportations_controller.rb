@@ -16,7 +16,7 @@ def index
   @transportations = @transportations_unsorted.sort_by { |transpo| transpo.departure_date}
   @trip_participants =  @trip.participations
   @transportation = Transportation.new
-  session[:notifications][params[:trip_id]][:transportation] = Time.now
+  #session[:notifications][:transportation] = Time.now
 
   @trip_dates = {
     start_date: @trip.start_date,
