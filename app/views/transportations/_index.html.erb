@@ -87,7 +87,7 @@
                 <div class="reference-card"><p class="reference text-center"><%= transpo.reference_number%></p></div>
                 <div class="transpo-status">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-light dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-light dropdown-status dropdown-status dropdown-toggle" style="background-color: transparent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <% if transpo.status == "Wishlist" %>
                         <%= render 'shared/wishlist-icon' %>
                       <% else %>

@@ -90,9 +90,23 @@
   }
 
   .transpo-status {
+    text-decoration: none !important;
     position: absolute;
     top: 5px;
     right: 5px;
+  }
+}
+
+.dropdown-status {
+  box-shadow: none !important;
+  border-radius: 2px;
+  .dropdown-menu {
+    text-decoration: none !important;
+    padding: 10px !important;
+    border-shadow: 0 2px 5px $middle-gray !important;
+  }
+  .status-dropdown-item {
+    padding: 10px;
   }
 }
 
