@@ -1,7 +1,7 @@
 <div class="new-container">
 <div class="container">
 
-  <div class="trips-card white-card">
+  <div class="trips-card white-card border-card">
 
       <% future_trips.order(:start_date).each do |future_trip| %>
         <div class="trip-card">
@@ -80,7 +80,7 @@
           </div>
   </div>
 
-  <div class="trips-card">
+  <div class="trips-card light-card">
       <% past_trips.order(end_date: :desc).each do |past_trip| %>
         <div class="trip-card">
           <%= render 'shared/card', trip: past_trip %>
