@@ -6,7 +6,11 @@
           <% trip.participations.each do |particip| %>
             <div class="participant text-center">
               <% if particip.user %>
+
+                <!-- <div class="btn btn-avatar" type="button" data-toggle="tooltip" data-placement="top" title= "<%= particip.pseudo %>"> -->
                 <%= cl_image_tag particip.user.avatar, class: "avatar-large avatar-participant" %>
+<!--                 </div> -->
+
               <% else %>
                 <%= image_tag "default-user.jpg", class: "avatar-large avatar-participant" %>
               <% end %>
