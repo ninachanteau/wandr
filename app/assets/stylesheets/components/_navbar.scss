@@ -15,6 +15,11 @@
   justify-content: space-between;
   position: relative;
 }
+
+.navbar-index-logo {
+  margin: -20px;
+}
+
 .navbar-wagon-left .logo-navbar {
   position: absolute;
   left: 10px;
@@ -29,6 +34,7 @@
 
 .navbar-avatar {
     margin-left: 20px;
+    margin-right: -10px;
     cursor: pointer;
   }
 
