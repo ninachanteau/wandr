@@ -12,7 +12,7 @@
           <p class="ind-name"><%= link_to restaurant.name, trip_restaurants_path(@trip), class: "name-link" %></p>
         </div>
         <div class="index-date">
-          <div class="ind-date">
+          <div class="ind-date smaller-text">
             <% if restaurant.date %>
               <p ><%= restaurant.date.strftime("%b %d, %Y").upcase %> @ <%= restaurant.date.strftime("%H:%M").upcase %></p>
             <% else %>

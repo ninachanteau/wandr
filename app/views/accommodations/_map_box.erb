@@ -11,7 +11,7 @@
         <p class="ind-name"><%= link_to accommodation.name, trip_accommodations_path(@trip), class: "name-link" %></p>
       </div>
       <div class="index-date">
-        <div class="ind-date">
+        <div class="ind-date smaller-text">
           <% if accommodation.start_date %>
             <p><%= accommodation.start_date.strftime("%b %d, %Y").upcase%></br> <%= accommodation.end_date.strftime("%b %d, %Y").upcase%></p>
           <% end %>

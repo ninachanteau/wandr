@@ -11,7 +11,7 @@
         <p class="ind-name"><%= link_to activity.name, trip_activities_path(@trip), class: "name-link", target: "_blank" %></p>
       </div>
       <div class="index-date">
-        <div class="ind-date">
+        <div class="ind-date smaller-text">
           <% if activity.date %>
             <p><%= activity.date.strftime("%b %d, %Y").upcase %> @ <%= activity.date.strftime("%H:%M").upcase %></p>
           <% else %>

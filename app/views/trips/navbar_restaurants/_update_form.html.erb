@@ -18,9 +18,9 @@
 <p>Who will be attending?</p>
     <% trip.participations.each do |participant| %>
       <% if participant.user %>
-        <%= cl_image_tag participant.user.avatar, class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+        <%= cl_image_tag participant.user.avatar, class: "avatar-very-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
       <% else %>
-        <%= image_tag "default-user.jpg", class: "avatar-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
+        <%= image_tag "default-user.jpg", class: "avatar-very-large restaurant-participant-avatar", data: { participation_id: participant.id } %>
       <% end %>
   <% end %>
   <div style="visibility: hidden">
