@@ -12,6 +12,10 @@
   opacity: 0.7;
 }
 
+.tabs a:visited {
+  text-decoration: none;
+}
+
 .tabs p {
   margin-bottom: 0;
   font-size: 16px;
@@ -32,15 +36,7 @@
 .tab:last-child {
   border-radius: 0 2px 0 0;
 }
-.tab.active-tab {
-  color: #FFC61B;
-  font-size: 16px;
-  left: -5px;
-  top: 95px;
-  background-color: white;
-  padding: 10px 15px;
-  border-radius: 2px;
-}
+
 
 .tab.active:hover {
   opacity: 1;

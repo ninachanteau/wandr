@@ -1,76 +1,76 @@
 <div class="new-container">
-<div class="container">
-
+  <div class="container">
       <!-- Button trigger modal -->
-      <div type="button" data-toggle="modal" data-target="#myModal">
-        <i class="fa fa-plus-circle plus-btn"></i>
-      </div>
+    <div type="button" data-toggle="modal" data-target="#myModal">
+      <i class="fa fa-plus-circle plus-btn"></i>
+    </div>
 
-      <!-- Modal -->
-      <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h4 class="modal-title text-center" id="myModalLabel">Add a transportation</h4>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title text-center" id="myModalLabel">Add a transportation</h4>
+          </div>
+          <div class="modal-body">
+            <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
             </div>
-            <div class="modal-body">
-              <div id="trip_dates" data-trip-dates="<%= trip_dates.to_json %>">
+            <%= simple_form_for [trip, transportation] do |f| %>
+            <div class="row">
+              <div class="col-xs-6">
+              <%= f.input :departure_port, placeholder: "From", label: false, class: 'form-control' %>
               </div>
-              <%= simple_form_for [trip, transportation] do |f| %>
-              <div class="row">
-                <div class="col-xs-6">
-                <%= f.input :departure_port, placeholder: "From", label: false, class: 'form-control' %>
-                </div>
-                <div class="col-xs-6">
-                <%= f.input :arrival_port, placeholder: "To", label: false, class: 'form-control' %>
-                </div>
+              <div class="col-xs-6">
+              <%= f.input :arrival_port, placeholder: "To", label: false, class: 'form-control' %>
               </div>
-              <div class="row">
-                <div class="col-xs-6">
-                <%= f.input :departure_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Departure Date", label: false, data_altinput: true, data_enabletime: true %>
-                </div>
-                <div class="col-xs-6">
-                <%= f.input :arrival_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Arrival Date", label: false, data_altinput: true, data_enabletime: true %>
-                </div>
-              </div>
-                <%= f.input :price_per_person, placeholder: "Price per person", label: false, class: 'form-control' %>
-                <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
-                <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
-              <!-- Add participants -->
-              <p>Who will be attending?</p>
-                <% trip.participations.each do |participant| %>
-                  <% if participant.user %>
-                    <%= cl_image_tag participant.user.avatar, class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
-                  <% else %>
-                    <%= image_tag "default-user.jpg", class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
-                  <% end %>
-              <% end %>
-              <div style="visibility: hidden">
-              <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
-                <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
-              <% end %>
-              </div>
-                <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
-              <% end %>
             </div>
+            <div class="row">
+              <div class="col-xs-6">
+              <%= f.input :departure_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Departure Date", label: false, data_altinput: true, data_enabletime: true %>
+              </div>
+              <div class="col-xs-6">
+              <%= f.input :arrival_date, as: :string, required: false, input_html: { class: "datepicker" }, class: 'form-control', placeholder: "Arrival Date", label: false, data_altinput: true, data_enabletime: true %>
+              </div>
+            </div>
+              <%= f.input :price_per_person, placeholder: "Price per person", label: false, class: 'form-control' %>
+              <%= f.input :reference_number, placeholder: "Booking reference", label: false, class: 'form-control' %>
+              <%= f.input :status, collection: ["Wishlist", "Booked"], default: "Wishlist", class: 'form-control', label: false %>
+            <!-- Add participants -->
+            <p>Who will be attending?</p>
+              <% trip.participations.each do |participant| %>
+                <% if participant.user %>
+                  <%= cl_image_tag participant.user.avatar, class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
+                <% else %>
+                  <%= image_tag "default-user.jpg", class: "avatar-large transportation-participant-avatar", data: { participation_id: participant.id } %>
+                <% end %>
+            <% end %>
+            <div style="visibility: hidden">
+            <%= f.simple_fields_for :participations, trip.participations.build do |fi| %>
+              <%= fi.input :pseudo, as: :check_boxes, collection: trip.participations, label: false %>
+            <% end %>
+            </div>
+              <%= f.submit "Save", class: 'btn btn-info', style: 'width: 100%' %>
+            <% end %>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tabs transportations-tabs">
-        <a class="tab active" href="#">
-          <p>your choices</p>
-        </a>
-        <a class="tab" href="#">
-          <p>other options</p>
-        </a>
-      </div>
+    <div class="tabs transportations-tabs">
+      <a class="tab active active-tab" href="#my-transportations" data-toggle="tab" role="tab" aria-controls="my-transportations">
+        <p>your choices</p>
+      </a>
+      <a class="tab" href="#other-transportations" data-toggle="tab" role="tab" aria-controls="other-transportations">
+        <p>other options</p>
+      </a>
+    </div>
 
-      <div class="user-transportations transportations-card">
-
+    <div class="tab-content">
+      <div class="tab-pane active" id="my-transportations" role="tabpanel">
+        <div class="user-transportations transportations-card">
           <% if participation %>
             <% my_transportations.each do |transpo| %>
               <div class="transportation-card">
@@ -119,76 +119,76 @@
                 <div class="transpo-participants"><%= cl_image_tag avatar, class: "avatar transpo-avatar", crop: :fill%>
                 </div>
               </div>
-
             <% end %>
           <% else %>
             <p>No transportation currently saved for you</p>
           <% end %>
+        </div>
       </div>
-
-      <% unless transportations == [] %>
-      <div class="other-transportations transportations-card">
+      <div class="tab-pane" id="other-transportations" role="tabpanel">
+        <div class="other-transportations transportations-card">
           <% transportations.each do |transpo| %>
-              <div class="transportation-card">
-                <div class="details-card">
-                  <div class="info-card">
-                    <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p>
-                    </div>
-                    <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p>
-                    </div>
+            <div class="transportation-card">
+              <div class="details-card">
+                <div class="info-card">
+                  <div class="departure"><p><strong> <%= transpo.departure_port.upcase%></strong></p>
                   </div>
-                  <div class="date-card">
-                    <div class="date-time">
-                    <p ><%= transpo.departure_date.strftime("%b %d, %Y") %>  <%= transpo.departure_date.strftime("%H:%M") %></p>
-                    </div>
-                    <div class="date-time">
-                    <p class="text-right" ><%= transpo.arrival_date.strftime("%b %d, %Y") %>  <%= transpo.arrival_date.strftime("%H:%M") %></p>
-                    </div>
-                  </div>
-                  <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p>
+                  <div class="arrival"><p class="text-right"><strong><%= transpo.arrival_port.upcase%></strong></p>
                   </div>
                 </div>
-                <div class="reference-card"><p class="reference text-center">
-                  <%= transpo.reference_number%></p>
+                <div class="date-card">
+                  <div class="date-time">
+                  <p ><%= transpo.departure_date.strftime("%b %d, %Y") %>  <%= transpo.departure_date.strftime("%H:%M") %></p>
+                  </div>
+                  <div class="date-time">
+                  <p class="text-right" ><%= transpo.arrival_date.strftime("%b %d, %Y") %>  <%= transpo.arrival_date.strftime("%H:%M") %></p>
+                  </div>
                 </div>
-                <div class="delete-card-transpo">
-                  <%= link_to trip_transportation_path(trip, transpo), method: :delete do %>
-                    <span>
-                      <%= render 'shared/delete-icon'  %>
-                    </span>
-                  <% end %>
+                <div class="price-status"><p class="ticket-price text-right"><%= number_with_precision(transpo.price_per_person, precision: 2)%>€ TTC</p>
                 </div>
-                <div class="transpo-status">
-                  <div class="btn-group">
-                    <% if transpo.status == "Booked" %>
-                      <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                          <span>
-                            <%= render 'shared/booked-icon'  %>
-                          </span>
-                      <% end %>
-                    <% elsif transpo.status == "Wishlist" %>
-                      <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+              </div>
+              <div class="reference-card"><p class="reference text-center">
+                <%= transpo.reference_number%></p>
+              </div>
+              <div class="delete-card-transpo">
+                <%= link_to trip_transportation_path(trip, transpo), method: :delete do %>
+                  <span>
+                    <%= render 'shared/delete-icon'  %>
+                  </span>
+                <% end %>
+              </div>
+              <div class="transpo-status">
+                <div class="btn-group">
+                  <% if transpo.status == "Booked" %>
+                    <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
                         <span>
-                          <%= render 'shared/wishlist-icon'  %>
+                          <%= render 'shared/booked-icon'  %>
                         </span>
-                      <% end %>
                     <% end %>
-                  </div>
-                </div>
-                <div class="transpo-participants">
-                  <% transpo.participants(participation).each do |participant| %>
-                      <% if participant.user %>
-                        <%= cl_image_tag participant.user.avatar, class: "avatar transpo-avatar" %>
-                      <% else %>
-                        <%= image_tag "default-user.jpg", class: "avatar transpo-avatar" %>
-                      <% end %>
+                  <% elsif transpo.status == "Wishlist" %>
+                    <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
+                      <span>
+                        <%= render 'shared/wishlist-icon'  %>
+                      </span>
+                    <% end %>
                   <% end %>
                 </div>
               </div>
+              <div class="transpo-participants">
+                <% transpo.participants(participation).each do |participant| %>
+                    <% if participant.user %>
+                      <%= cl_image_tag participant.user.avatar, class: "avatar transpo-avatar" %>
+                    <% else %>
+                      <%= image_tag "default-user.jpg", class: "avatar transpo-avatar" %>
+                    <% end %>
+                <% end %>
+              </div>
+            </div>
           <% end %>
+        </div>
       </div>
-      <% end %>
-</div>
+    </div>
+  </div>
 </div>
 
 
