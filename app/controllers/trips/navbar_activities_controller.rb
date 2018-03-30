@@ -60,6 +60,17 @@ class Trips::NavbarActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     if request.referrer.include?('trips')
       @activity.update(activity_params)
+      params[:activity][:participations][:pseudo].each do |part|
+        @activ_participants << Participation.find(part) if part.present?
+      end
+      @activ_participants = []
+      @activ_participants.each do |part|
+        @activity.add_participant(part)
+      end
+      respond_to do |format|
+        format.html { redirect_to trip_activities_path }
+        format.js  # <-- idem
+      end
       @trip = @activity.trip
       @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
       @my_activities = @current_participation.activities
@@ -70,17 +81,6 @@ class Trips::NavbarActivitiesController < ApplicationController
       end
       @activities_unsorted = @all_activities.reject { |resa| resa unless (resa.same_reservation & @my_activities).empty? }
       @activities = @activities_unsorted.select(&:date).sort_by(&:date) + @activities_unsorted.reject(&:date)
-      @activ_participants = []
-      params[:activity][:participations][:pseudo].each do |part|
-        @activ_participants << Participation.find(part) if part.present?
-      end
-      @activ_participants.each do |part|
-        @activity.add_participant(part)
-      end
-      respond_to do |format|
-        format.html { redirect_to trip_activities_path }
-        format.js  # <-- idem
-      end
     else
       @trip = params["activity"]["trip"]
       @activity.trip = Trip.find(@trip)

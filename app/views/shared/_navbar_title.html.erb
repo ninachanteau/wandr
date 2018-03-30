@@ -1,4 +1,4 @@
-<div class="navbar-title"><strong><%= @trip.destination %></strong>
+<div class="navbar-wagon-left"><strong><%= @trip.destination %></strong>
       <% if @trip.start_date.present? %>
         <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
           <% if @trip.start_date.past? %>
