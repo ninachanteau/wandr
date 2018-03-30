@@ -2,22 +2,28 @@
   position: relative;
 }
 
+.restaurants-tabs {
+  margin-top: -10px;
+  margin-left: 0px;
+}
+
 .restaurants-card {
-  margin: 0px 10px 20px 10px;
+  margin: -10px -40px -20px -20px;
   position: relative;
   padding: 10px;
   border-radius: 2px;
   min-height: 160px;
   max-width: 1052px;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 .index-card {
   background-color: white;
+  flex: 0 0 30%;
   height: 200px;
-  width: 380px;
-  margin: 10px;
+  max-width: 324px;
+  margin: 10px 10px 10px 10px;
   display: flex;
   border-radius: 2px;
   position: relative;
@@ -26,7 +32,7 @@
     background-color: $white-middle-transparent;
   }
   .index-photo {
-    width: 220px;
+    width: 40%;
     border-radius: 2px;
   }
 
@@ -52,23 +58,23 @@
 }
 .index-content {
   display: block;
-  width: 160px;
+  width: 60%;
 }
 
 .ind-name {
-  padding-top: 30px;
+  padding-top: 20px;
   font-size: 16px;
   font-weight: bolder;
   }
 .ind-date p {
   font-size: 14px;
   font-weight: 300;
-  padding-top: 35px;
+  padding-top: 20px;
 }
 
 .ind-address {
   font-size: 10px;
-  padding-top: 15px;
+  padding-top: -5px;
 }
 
 .edit-card {
