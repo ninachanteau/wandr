@@ -117,20 +117,22 @@
 }
 
 .badge-yellow {
-  background-color: $yellow;
+  background-color: white;
   margin-left: 15px;
   margin-bottom: 7px;
   padding: 5px 10px;
   border-radius: 4%;
   font-size: 25px;
+  color: $yellow;
 }
 
 .badge-past {
-  background-color: $middle-gray;
+  background-color: white;
   opacity: 0.4;
   margin-left: 15px;
   margin-bottom: 7px;
   padding: 5px 10px;
   border-radius: 4%;
   font-size: 25px;
+  color: $middle-gray;
 }

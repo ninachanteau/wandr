@@ -1,11 +1,11 @@
 .tabs {
-  background: $very-light-yellow;
+  background: $yellow;
   display: flex;
   justify-content: center;
   margin: 5px;
 }
 .tabs a {
-  color: $yellow;
+  color: white;
 }
 .tabs a:hover {
   cursor: pointer;
@@ -22,15 +22,15 @@
   font-size: 16px;
 }
 .tab {
-  color: $yellow;
+  color: white;
   font-size: 16px;
   left: 130px;
   top: 95px;
-  background-color: $very-light-yellow;
+  background-color: $yellow;
   padding: 9px 14px;
   border-radius: 2px;
   &.active {
-    border-bottom: 4px solid $yellow;
+    border-bottom: 4px solid white;
   }
 }
 .tab:first-child {
