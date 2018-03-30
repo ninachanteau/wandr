@@ -1,0 +1,13 @@
+<% if transpo.status == "Booked" %>
+  <%= link_to trip_transportation_path(trip, transpo, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+      <span data-transportation-id="<%= transpo.id %>">
+        <%= render 'shared/booked-icon'  %>
+      </span>
+  <% end %>
+<% elsif transpo.status == "Wishlist" %>
+  <%= link_to trip_transportation_path(trip, transpo, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+    <span data-transportation-id="<%= transpo.id %>">
+      <%= render 'shared/wishlist-icon'  %>
+    </span>
+  <% end %>
+<% end %>

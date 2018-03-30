@@ -49,15 +49,28 @@ class Trips::NavbarRestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if request.referrer.include?('trips')
-      @restaurant.update(restaurant_params)
-      @accom_participants = []
-      params[:restaurant][:participations][:pseudo].each do |part|
-        @accom_participants << Participation.find(part) if part.present?
+      @trip = Trip.find(params[:trip_id])
+      @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
+      @my_restaurants = @current_participation.restaurants
+      @all_reservations = Restaurant.where(trip_id: @trip.id)
+      @all_restaurants = []
+      @trip.all_restaurants.each do |key, _value|
+        @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
       end
-      @accom_participants.each do |part|
+      @restaurants_unsorted = @all_restaurants.reject { |resa| resa unless (resa.same_reservation & @my_restaurants).empty? }
+      @restaurants = @restaurants_unsorted.select(&:date).sort_by(&:date) + @restaurants_unsorted.reject(&:date)
+      @resto_participants = []
+      @restaurant.update(restaurant_params)
+      params[:restaurant][:participations][:pseudo].each do |part|
+        @resto_participants << Participation.find(part) if part.present?
+      end
+      @resto_participants.each do |part|
         @restaurant.add_participant(part)
       end
-      redirect_to trip_restaurants_path
+      respond_to do |format|
+        format.html { redirect_to trip_restaurants_path }
+        format.js  # <-- idem
+      end
     else
       @trip = params["restaurant"]["trip"]
       @restaurant.trip = Trip.find(@trip)

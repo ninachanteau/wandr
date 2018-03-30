@@ -59,7 +59,6 @@ def update
   @trip = Trip.find(params[:trip_id])
   @transportation = Transportation.find(params[:id])
   @transportation.update(status: params[:status])
-  @transportation.save
   respond_to do |format|
     format.html {redirect_to trip_transportations_path(@trip) }
     format.js
