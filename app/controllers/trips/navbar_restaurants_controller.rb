@@ -54,7 +54,6 @@ class Trips::NavbarRestaurantsController < ApplicationController
       @my_restaurants = @current_participation.restaurants
       @all_reservations = Restaurant.where(trip_id: @trip.id)
       @all_restaurants = []
-      binding.pry
       @trip.all_restaurants.each do |key, _value|
         @all_restaurants << @all_reservations.where(name:key[0], date: key[1]).first unless @all_reservations.where(name:key[0], date: key[1]).nil?
       end

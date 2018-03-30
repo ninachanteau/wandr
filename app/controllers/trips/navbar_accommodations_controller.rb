@@ -60,7 +60,6 @@ class Trips::NavbarAccommodationsController < ApplicationController
       @current_participation = Participation.where(trip_id: @trip.id, user_id: current_user.id).first
       @my_accommodations = @current_participation.accommodations
       @all_reservations = Accommodation.where(trip_id: @trip.id)
-      @all_reservations = Accommodation.where(trip_id: @trip.id)
       @all_accommodations = []
       @trip.all_accommodations.each do |key, _value|
         @all_accommodations << @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).first unless @all_reservations.where(name:key[0], start_date: key[1], end_date: key[2]).nil?
