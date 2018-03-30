@@ -61,8 +61,10 @@ class ActivitiesController < ApplicationController
   def update
     @trip = Trip.find(params[:trip_id])
     @activity = Activity.find(params[:id])
-    @activity.same_reservation.each { |resa| resa.update(status: params[:status]) }
-    # @activity.update(status: params[:status])
+    @activity.same_reservation.each do |resa|
+      resa.status = params[:status]
+      resa.update(activity_params)
+    end
     respond_to do |format|
       format.html { redirect_to trip_activities_path(@trip) }
       format.js

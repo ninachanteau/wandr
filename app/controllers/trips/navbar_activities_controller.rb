@@ -67,7 +67,10 @@ class Trips::NavbarActivitiesController < ApplicationController
       @accom_participants.each do |part|
         @activity.add_participant(part)
       end
-      redirect_to trip_activities_path
+      respond_to do |format|
+        format.html { redirect_to trip_activities_path }
+        format.js  # <-- idem
+      end
     else
       @trip = params["activity"]["trip"]
       @activity.trip = Trip.find(@trip)

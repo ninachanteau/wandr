@@ -1,0 +1,11 @@
+function loadRestaurants(innerHTML) {
+  const wrapper = document.querySelector('.wrapper');
+  wrapper.innerHTML = innerHTML;
+  // reload forms wepback script
+  const head = document.querySelector("head");
+  const scriptElement = document.createElement('script');
+  scriptElement.src = '<%= javascript_pack_tag "forms" %>'.match(/src="(.*)">/)[1];
+  head.appendChild(scriptElement);
+};
+
+loadRestaurants(`'<%= j render "../../restaurants/index", restaurants: @restaurants, participation: @participation, trip: @trip, restaurant: @restaurant, my_restaurants: @my_restaurants, avatar: @avatar, trip_dates: @trip_dates %>'`);

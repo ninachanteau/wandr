@@ -56,8 +56,10 @@ class RestaurantsController < ApplicationController
   def update
     @trip = Trip.find(params[:trip_id])
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.same_reservation.each { |resa| resa.update(status: params[:status]) }
-    # @restaurant.update(status: params[:status])
+    @restaurant.same_reservation.each do |resa|
+      resa.status = params[:status]
+      resa.update(restaurant_params)
+    end
     respond_to do |format|
       format.html { redirect_to trip_restaurants_path(@trip) }
       format.js

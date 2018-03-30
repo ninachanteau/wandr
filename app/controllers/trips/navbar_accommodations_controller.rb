@@ -63,7 +63,10 @@ class Trips::NavbarAccommodationsController < ApplicationController
       @accom_participants.each do |part|
         @accommodation.add_participant(part)
       end
-      redirect_to  trip_accommodations_path
+      respond_to do |format|
+        format.html { redirect_to  trip_accommodations_path }
+        format.js  # <-- idem
+      end
     else
       @trip = params["accommodation"]["trip"]
       @accommodation.trip = Trip.find(@trip)
