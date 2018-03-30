@@ -1,1 +1,8 @@
 <strong><%= trip.destination %></strong> | <%= trip.name  %>
+<% if trip.start_date? %>
+  <% if trip.start_date.past? %>
+    <span class="badge badge-past"> Past </span>
+  <% elsif trip.start_date.present? %>
+    <span class="badge badge-yellow"> <%="J-#{Date.today.day - trip.start_date.day}"%> </span>
+  <% end %>
+<% end %>

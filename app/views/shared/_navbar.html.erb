@@ -11,6 +11,11 @@
     <div class="navbar-title"><strong><%= @trip.destination %></strong>
       <% if @trip.start_date.present? %>
         <%= @trip.start_date.strftime("%b %d, %Y") %> - <%= @trip.end_date.strftime("%b %d, %Y") %>
+          <% if @trip.start_date.past? %>
+            <span class="badge badge-past"> Past </span>
+          <% else %>
+            <span class="badge badge-yellow"> <%="J-#{Date.today.day - @trip.start_date.day}"%> </span>
+          <% end %>
       <% end %>
     </div>
   <% elsif params[:controller] == "accommodations" %>
