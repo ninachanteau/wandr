@@ -764,50 +764,50 @@ restaurant_nyc_elsa.trip = nyc
 restaurant_nyc_elsa.participation = elsa_nyc
 restaurant_nyc_elsa.save!
 
-restaurant_nyc_nina = Restaurant.create(
-  name: "Mother's Ruin",
-  address: "18 Spring St, New York, NY 10012, USA",
-  date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
-  status: "Wishlist",
-  phone_number: "+1 234-768-4000",
-  description: "Apparently it is very yumi!",
-  url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com",
-  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
-  )
-restaurant_nyc_nina.trip = nyc
-restaurant_nyc_nina.participation = nina_nyc
-restaurant_nyc_nina.save!
+# restaurant_nyc_nina = Restaurant.create(
+#   name: "Mother's Ruin",
+#   address: "18 Spring St, New York, NY 10012, USA",
+#   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
+#   status: "Wishlist",
+#   phone_number: "+1 234-768-4000",
+#   description: "Apparently it is very yumi!",
+#   url: "http://www.mothersruinnyc.com/",
+#   email: "mothersruin@newyork.com",
+#   remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
+#   )
+# restaurant_nyc_nina.trip = nyc
+# restaurant_nyc_nina.participation = nina_nyc
+# restaurant_nyc_nina.save!
 
-restaurant_nyc_kenza = Restaurant.create(
-  name: "Mother's Ruin",
-  address: "18 Spring St, New York, NY 10012, USA",
-  date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
-  status: "Wishlist",
-  phone_number: "+1 234-768-4000",
-  description: "Apparently it is very yumi!",
-  url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com",
-  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
-  )
-restaurant_nyc_kenza.trip = nyc
-restaurant_nyc_kenza.participation = kenza_nyc
-restaurant_nyc_kenza.save!
+# restaurant_nyc_kenza = Restaurant.create(
+#   name: "Mother's Ruin",
+#   address: "18 Spring St, New York, NY 10012, USA",
+#   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
+#   status: "Wishlist",
+#   phone_number: "+1 234-768-4000",
+#   description: "Apparently it is very yumi!",
+#   url: "http://www.mothersruinnyc.com/",
+#   email: "mothersruin@newyork.com",
+#   remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
+#   )
+# restaurant_nyc_kenza.trip = nyc
+# restaurant_nyc_kenza.participation = kenza_nyc
+# restaurant_nyc_kenza.save!
 
-restaurant_nyc_elsa = Restaurant.create(
-  name: "Mother's Ruin",
-  address: "18 Spring St, New York, NY 10012, USA",
-  date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
-  status: "Wishlist",
-  phone_number: "+1 234-768-4000",
-  description: "Apparently it is very yumi!",
-  url: "http://www.mothersruinnyc.com/",
-  email: "mothersruin@newyork.com",
-  remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
-  )
-restaurant_nyc_elsa.trip = nyc
-restaurant_nyc_elsa.participation = elsa_nyc
-restaurant_nyc_elsa.save!
+# restaurant_nyc_elsa = Restaurant.create(
+#   name: "Mother's Ruin",
+#   address: "18 Spring St, New York, NY 10012, USA",
+#   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
+#   status: "Wishlist",
+#   phone_number: "+1 234-768-4000",
+#   description: "Apparently it is very yumi!",
+#   url: "http://www.mothersruinnyc.com/",
+#   email: "mothersruin@newyork.com",
+#   remote_photo_url: "https://s3-eu-west-1.amazonaws.com/anuevayork/wp-content/uploads/2016/03/16160313/Mejores-brunch-Nueva-York-Mothers-Ruin.jpg"
+#   )
+# restaurant_nyc_elsa.trip = nyc
+# restaurant_nyc_elsa.participation = elsa_nyc
+# restaurant_nyc_elsa.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "The Garret",
