@@ -1,4 +1,5 @@
 <% if @transportation.status == "Booked" %>
+  console.log('<%= @transportation.status %>')
   document.querySelector("[data-transportation-id='<%= @transportation.id %>']").innerHTML = "<%= j render 'shared/wishlist-icon'  %>"
 <% else %>
   document.querySelector("[data-transportation-id='<%= @transportation.id %>']").innerHTML = "<%= j render 'shared/booked-icon'  %>"
