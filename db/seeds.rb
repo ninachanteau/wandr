@@ -689,35 +689,35 @@ restaurant_nyc_elsa.trip = nyc
 restaurant_nyc_elsa.participation = elsa_nyc
 restaurant_nyc_elsa.save!
 
-# restaurant_nyc_nina = Restaurant.create(
-#   name: "Llama Inn",
-#   address: "50 Withers St, Brooklyn, NY 11211, USA",
-#   date: "Sat, 05 May 2018 20:00:00 UTC +00:00,",
-#   status: "Booked",
-#   phone_number: "+1 718-387-3434",
-#   description: "Romantic dinner",
-#   url: "http://www.llamainnnyc.com/",
-#   email: "llamainn@newyork.com",
-#   remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
-#   )
-# restaurant_nyc_nina.trip = nyc
-# restaurant_nyc_nina.participation = nina_nyc
-# restaurant_nyc_nina.save!
+restaurant_nyc_nina = Restaurant.create(
+  name: "Llama Inn",
+  address: "50 Withers St, Brooklyn, NY 11211, USA",
+  date: "Sat, 05 May 2018 20:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+1 718-387-3434",
+  description: "Fusion food",
+  url: "http://www.llamainnnyc.com/",
+  email: "llamainn@newyork.com",
+  remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
+  )
+restaurant_nyc_nina.trip = nyc
+restaurant_nyc_nina.participation = nina_nyc
+restaurant_nyc_nina.save!
 
-# restaurant_nyc_kenza = Restaurant.create(
-#   name: "Llama Inn",
-#   address: "50 Withers St, Brooklyn, NY 11211, USA",
-#   date: "Sat, 05 May 2018 20:00:00 UTC +00:00,",
-#   status: "Booked",
-#   phone_number: "+1 718-387-3434",
-#   description: "Romantic dinner",
-#   url: "http://www.llamainnnyc.com/",
-#   email: "llamainn@newyork.com",
-#   remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
-#   )
-# restaurant_nyc_kenza.trip = nyc
-# restaurant_nyc_kenza.participation = kenza_nyc
-# restaurant_nyc_kenza.save!
+restaurant_nyc_kenza = Restaurant.create(
+  name: "Llama Inn",
+  address: "50 Withers St, Brooklyn, NY 11211, USA",
+  date: "Sat, 05 May 2018 20:00:00 UTC +00:00,",
+  status: "Wishlist",
+  phone_number: "+1 718-387-3434",
+  description: "Fusion food",
+  url: "http://www.llamainnnyc.com/",
+  email: "llamainn@newyork.com",
+  remote_photo_url: "https://idktonight.com/wp-content/uploads/2017/09/LlamaInn.jpg"
+  )
+restaurant_nyc_kenza.trip = nyc
+restaurant_nyc_kenza.participation = kenza_nyc
+restaurant_nyc_kenza.save!
 
 restaurant_nyc_nina = Restaurant.create(
   name: "Lafayette",
