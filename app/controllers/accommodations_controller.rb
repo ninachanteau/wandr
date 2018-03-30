@@ -59,8 +59,7 @@ class AccommodationsController < ApplicationController
     @trip = Trip.find(params[:trip_id])
     @accommodation = Accommodation.find(params[:id])
     @accommodation.same_reservation.each do |resa|
-      resa.status = params[:status]
-      resa.update(accommodation_params)
+      resa.update(status: params[:status])
     end
     respond_to do |format|
       format.html { redirect_to trip_accommodations_path(@trip) }

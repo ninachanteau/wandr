@@ -6,6 +6,7 @@ function loadActivities(innerHTML) {
   const scriptElement = document.createElement('script');
   scriptElement.src = '<%= javascript_pack_tag "forms" %>'.match(/src="(.*)">/)[1];
   head.appendChild(scriptElement);
+  document.querySelector('.modal-backdrop.fade.in').remove();
 };
 
-loadActivities(`'<%= j render "../../activities/index", activities: @activities, participation: @participation, trip_dates: @trip_dates, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
+loadActivities(`'<%= j render "activities/index", activities: @activities, participation: @participation, trip_dates: @trip_dates, trip_participants: @trip_participants, trip: @trip, activity: @activity,  my_activities: @my_activities %>'`);
