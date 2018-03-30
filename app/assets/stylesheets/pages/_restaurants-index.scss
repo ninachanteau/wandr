@@ -32,7 +32,7 @@
     background-color: $white-middle-transparent;
   }
   .index-photo {
-    width: 180px;
+    width: 40%;
     border-radius: 2px;
   }
 
@@ -58,7 +58,7 @@
 }
 .index-content {
   display: block;
-  width: 144px;
+  width: 60%;
 }
 
 .ind-name {
@@ -69,12 +69,12 @@
 .ind-date p {
   font-size: 14px;
   font-weight: 300;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 
 .ind-address {
   font-size: 10px;
-  padding-top: 0px;
+  padding-top: -5px;
 }
 
 .edit-card {
