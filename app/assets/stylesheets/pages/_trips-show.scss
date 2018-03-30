@@ -26,38 +26,38 @@
 .btn-participants {
   margin-left: 2px;
   margin-bottom: 30px;
-  color: white;
+  color: $yellow;
   font-size: 56px;
   cursor: pointer;
 }
 
 .btn-pdf {
   position: absolute;
-  color: white;
+  color: $yellow;
   font-size: 16px;
-  left: 135px;
+  left: 145px;
   top: 95px;
-  background-color: $yellow;
+  background-color: $very-light-yellow;
   padding: 9px 14px;
   border-radius: 2px;
-  border: 2px solid white;
+  border: 2px solid $yellow;
   a {
-    color: white;
+    color: $yellow;
     text-decoration: none;
   }
 }
 
 .btn-calendar {
   position: absolute;
-  color: $yellow;
+  color: $very-light-yellow;
   font-size: 16px;
-  left: 0px;
+  left: 10px;
   top: 95px;
-  background-color: white;
+  background-color: $yellow;
   padding: 10px 15px;
   border-radius: 2px;
   a {
-    color: $yellow;
+    color: $very-light-yellow;
     text-decoration: none;
   }
 }
@@ -88,7 +88,6 @@
 }
 
 .calendar-map-container {
-  background-color: $light-yellow;
   border: black;
   padding: 15px 0;
   margin: 15px;
