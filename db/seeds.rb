@@ -1205,7 +1205,7 @@ activity_nyc_elsa.participation = elsa_nyc
 activity_nyc_elsa.save!
 
 activity_nyc_nina = Activity.create(
-  name: "Chiocago Musical",
+  name: "Chicago Musical",
   address: "219 W 49th St, New York, NY 10019, USA",
   date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
   status: "Booked",
@@ -1220,7 +1220,7 @@ activity_nyc_nina.participation = nina_nyc
 activity_nyc_nina.save!
 
 activity_nyc_kenza = Activity.create(
-  name: "Chiocago Musical",
+  name: "Chicago Musical",
   address: "219 W 49th St, New York, NY 10019, USA",
   date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
   status: "Booked",
@@ -1235,7 +1235,7 @@ activity_nyc_kenza.participation = kenza_nyc
 activity_nyc_kenza.save!
 
 activity_nyc_elsa = Activity.create(
-  name: "Chiocago Musical",
+  name: "Chicago Musical",
   address: "219 W 49th St, New York, NY 10019, USA",
   date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
   status: "Booked",
