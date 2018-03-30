@@ -1,7 +1,9 @@
 <div class="new-container">
 <div class="container">
 
-  <div class="trips-card white-card border-card">
+  <div class="trips-card">
+    <div class="trip-card-title"><h5>Upcoming trips</h5></div>
+      <div class="trip-ctn">
       <% future_trips.order(:start_date).each do |future_trip| %>
         <div class="trip-card">
           <%= render 'shared/card', trip: future_trip %>
@@ -10,7 +12,7 @@
 
         <div class="add-card">
           <div type="button" data-toggle="modal" data-target="#myModal">
-            <i class="fa fa-plus-circle btn-card"></i>
+            <i class="fa fa-plus-circle btn-card btn-card-trips"></i>
           </div>
 
           <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -41,22 +43,29 @@
                     </div>
           </div>
         </div>
+    </div>
   </div>
 
   <div class="trips-card">
+    <div class="trip-card-title"><h5>Wishlist trips</h5></div>
+    <div class="trip-ctn">
       <% wishlist_trips.order(:destination).each do |wishlist_trip| %>
         <div class="trip-card">
           <%= render 'shared/card', trip: wishlist_trip %>
         </div>
       <% end %>
+    </div>
   </div>
 
-  <div class="trips-card light-card">
+  <div class="trips-card">
+    <div class="trip-card-title"><h5>Past trips</h5></div>
+    <div class="trip-ctn">
       <% past_trips.order(end_date: :desc).each do |past_trip| %>
         <div class="trip-card">
           <%= render 'shared/card', trip: past_trip %>
         </div>
       <% end %>
+    </div>
   </div>
 </div>
 </div>
