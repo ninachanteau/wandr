@@ -272,8 +272,8 @@ class TripsController < ApplicationController
     end
 
     cal = Icalendar::Calendar.new
-    cal.append_custom_property("NAME","#{@trip.destination} - Wandr")
-    cal.append_custom_property("X-WR-CALNAME","#{@trip.destination} - Wandr")
+    # cal.append_custom_property("NAME","#{@trip.destination} - Wandr")
+    # cal.append_custom_property("X-WR-CALNAME","#{@trip.destination} - Wandr")
     @events.each do |event|
       cal_event = Icalendar::Event.new
       cal_event.dtstart = event[:start]
