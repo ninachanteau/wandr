@@ -24,7 +24,7 @@
   padding: 5px 5px 5px 20px;
   border-radius: 2px;
   background-color: $white-middle-transparent;
-  color: $middle-gray;
+  color: $gray;
 }
 
 .trip-ctn {
@@ -34,7 +34,7 @@
 }
 
 .trip-card {
-  margin: 10px 10px 10px -10px;
+  margin: 10px 0px 0px 10px;
   flex: 0 0 30%;
 }
 
@@ -49,7 +49,7 @@
   border-radius: 2px;
   height: 200px;
   max-width: 324px;
-  margin: 20px 10px 10px 0px;
+  margin: 20px 10px 10px 20px;
   display: flex;
   border-radius: 2px;
   position: relative;

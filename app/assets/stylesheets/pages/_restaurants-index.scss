@@ -32,7 +32,7 @@
     background-color: $white-middle-transparent;
   }
   .index-photo {
-    width: 40%;
+    flex: 0 0 40%;
     border-radius: 2px;
   }
 
@@ -58,7 +58,7 @@
 }
 .index-content {
   display: block;
-  width: 60%;
+  // width: 60%;
 }
 
 .ind-name {
