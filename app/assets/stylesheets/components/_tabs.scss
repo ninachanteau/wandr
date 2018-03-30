@@ -9,11 +9,11 @@
 .tabs a:hover {
   cursor: pointer;
   text-decoration: none;
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 
 .tabs a:visited {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .tabs p {
