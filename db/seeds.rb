@@ -111,6 +111,14 @@ nina_lisbon.pseudo = nina.first_name
 nina_lisbon.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
 nina_lisbon.save!
 
+nina_norway = Participation.new
+nina_norway.user = nina
+nina_norway.trip = norway
+nina_norway.email = nina.email
+nina_norway.pseudo = nina.first_name
+nina_norway.remote_avatar_url = "https://kitt.lewagon.com/placeholder/users/ninachanteau"
+nina_norway.save!
+
 marion_lisbon = Participation.new
 marion_lisbon.user = marion
 marion_lisbon.trip = lisbon
