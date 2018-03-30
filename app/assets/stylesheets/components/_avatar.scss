@@ -8,6 +8,12 @@
   border-radius: 50%;
   border: 2px solid white;
 }
+
+.avatar-very-large {
+  width: 60px;
+  border-radius: 50%;
+  border: 5px solid white;
+}
 .avatar-bordered {
   width: 30px;
   border-radius: 50%;
@@ -22,9 +28,9 @@
 }
 
 .avatar-large-selected {
-  width: 50px;
+  width: 60px;
   border-radius: 50%;
-  border: 2px solid $yellow;
+  border: 5px solid $yellow;
 }
 
 .accomadation-participant-avatar {
