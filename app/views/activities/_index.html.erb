@@ -61,10 +61,10 @@
     <!-- end of modal -->
     <div class="tabs activities-tabs">
       <a class="tab active active-tab" href="#my-activities" data-toggle="tab" role="tab" aria-controls="my-activities">
-        <p>your choices</p>
+        <p>Yours</p>
       </a>
       <a class="tab" href="#other-activities" data-toggle="tab" role="tab" aria-controls="other-activities">
-        <p>other options</p>
+        <p>Other participants'</p>
       </a>
     </div>
     <div class="tab-content">
@@ -72,7 +72,7 @@
         <div class="activities-card">
           <% my_activities.each do |activ| %>
             <div class="index-card">
-              <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url ,crop: :fill, position: :center %>');">
+              <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url, crop: :fill, position: :center %>');">
               </div>
               <div class="index-content">
                 <div class="index-name">
@@ -194,7 +194,7 @@
         <div class="activities-card">
           <% activities.each do |activ| %>
             <div class="index-card">
-              <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activity.photo.url ,crop: :fill, position: :center %>');">
+              <div class="index-photo" style="background-image: linear-gradient(-225deg, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 50%), url('<%= cl_image_path activ.photo.url, crop: :fill, position: :center %>');">
               </div>
               <div class="index-content">
                 <div class="index-name">

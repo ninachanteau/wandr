@@ -29,6 +29,8 @@
  }
 }
 
+.little-tooltip + .tooltip > .tooltip-inner {font-size: 12px;}
+
 .sidebar-item {
   cursor: pointer;
   position: relative;

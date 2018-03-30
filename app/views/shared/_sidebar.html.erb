@@ -19,9 +19,10 @@
         <% end %>
         <% unless (params[:controller] == "trips" && params[:action] == "index") || (params[:controller] == "pages" && params[:action] == "home") || params[:controller] == "devise_invitable/registrations" %>
           <% if @trip %>
+
             <li class="nav-item <%= 'jaune' if params[:data] == 'transportation' %>" >
               <%= link_to trip_transportations_path(@trip), data: "transportation", remote: true do %>
-                <i class="fa fa-plane" data-toggle="tooltip" data-placement="right" title="Transportations"></i>
+                <i class="fa fa-plane" data-toggle="tooltip" data-placement="right" title="Transportations" class="little-tooltip"></i>
               <% end %>
               <% if params[:trip_id] %>
                 <% if current_user.new_count(@trip, Transportation) != 0 %>
@@ -44,9 +45,10 @@
                 <% end %>
               <% end %>
             </li>
+
             <li class="nav-item">
               <%= link_to trip_accommodations_path(@trip, :data => "home"), remote: true do %>
-                <i class="fa fa-home <%= 'jaune' if params[:data] == 'home' %>" data-toggle="tooltip" data-placement="right" title="Accommodations"></i>
+                <i class="fa fa-home <%= 'jaune' if params[:data] == 'home' %>" data-toggle="tooltip" data-placement="right" title="Accommodations" class="little-tooltip"></i>
               <% end %>
               <% if params[:trip_id] %>
                 <% if current_user.new_count(@trip, Accommodation) != 0%>
@@ -70,9 +72,10 @@
                 <% end %>
               <% end %>
             </li>
+
             <li class="nav-item">
               <%= link_to trip_restaurants_path(@trip), remote: true do %>
-                <i class="fa fa-cutlery" data-toggle="tooltip" data-placement="right" title="Restaurants"></i>
+                <i class="fa fa-cutlery" data-toggle="tooltip" data-placement="right" title="Restaurants" class="little-tooltip"></i>
               <% end %>
               <% if params[:trip_id] %>
                 <% if current_user.new_count(@trip, Restaurant) != 0%>
@@ -96,9 +99,10 @@
                 <% end %>
               <% end %>
             </li>
+
             <li class="nav-item">
               <%= link_to trip_activities_path(@trip), remote: true do %>
-                <i class="fa fa-university" style="font-size: 26px" data-toggle="tooltip" data-placement="right" title="Activities"></i>
+                <i class="fa fa-university" style="font-size: 26px" data-toggle="tooltip" data-placement="right" title="Activities" class="little-tooltip"></i>
               <% end %>
               <% if params[:trip_id] %>
                 <% if current_user.new_count(@trip, Activity) != 0 %>
