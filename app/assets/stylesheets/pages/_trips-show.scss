@@ -87,6 +87,8 @@
   top: 0 !important;
 }
 
+.little-tooltip + .tooltip > .tooltip-inner {font-size: 12px;}
+
 .calendar-map-container {
   border: black;
   padding: 15px 0;

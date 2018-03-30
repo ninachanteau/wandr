@@ -7,7 +7,7 @@
             <div class="participant text-center">
               <% if particip.user %>
 
-                <div data-toggle="tooltip" data-placement="bottom" title="<%= particip.pseudo %>">
+                <div data-toggle="tooltip" data-placement="bottom" title="<%= particip.pseudo %>" class="little-tooltip">
                   <%= cl_image_tag particip.user.avatar, class: "avatar-large avatar-participant" %>
                 </div>
 <!--                 </div> -->
