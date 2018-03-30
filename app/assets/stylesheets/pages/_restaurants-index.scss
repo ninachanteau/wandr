@@ -20,8 +20,9 @@
 }
 .index-card {
   background-color: white;
+  flex: 0 0 30%;
   height: 200px;
-  width: 324px;
+  max-width: 324px;
   margin: 10px 10px 10px 10px;
   display: flex;
   border-radius: 2px;
