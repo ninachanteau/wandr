@@ -18,6 +18,12 @@ costarica = Trip.create!(
  name: "Surf trip",
  remote_photo_url: "https://images.unsplash.com/photo-1519177565-a7201150fec3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a0514ab92a3e5738b157e5e417339d6d&auto=format&fit=crop&w=1568&q=80")
 
+norway = Trip.create!(
+ destination: "Norway",
+ description: "Dive into nature",
+ name: "Quick getaway",
+ remote_photo_url: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Ersfjorden%2C_Norway_%28Unsplash%29.jpg")
+
 namibia = Trip.create!(
  destination: "Namibia",
  description: "Honey moon plans",
