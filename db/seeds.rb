@@ -1070,7 +1070,7 @@ activity_lisbon_marion.participation = marion_lisbon
 activity_lisbon_marion.save!
 
 activity_lisbon_nina = Activity.create(
-  name: "Lisbon Go 7 Hills Electric Bike Tour",
+  name: "Lisbon Go Bike Tour",
   address: "Praça do Comércio, 1100-148 Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 15:00:00 UTC +00:00,",
   status: "Booked",
@@ -1085,7 +1085,7 @@ activity_lisbon_nina.participation = nina_lisbon
 activity_lisbon_nina.save!
 
 activity_lisbon_marion = Activity.create(
-  name: "Lisbon Go 7 Hills Electric Bike Tour",
+  name: "Lisbon Go Bike Tour",
   address: "Praça do Comércio, 1100-148 Lisboa, Portugal",
   date: "Sun, 11 Mar 2018 15:00:00 UTC +00:00,",
   status: "Booked",
