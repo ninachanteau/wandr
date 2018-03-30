@@ -107,14 +107,14 @@
                     <div class="ind-status">
                       <div class="btn-group">
                         <% if activ.status == "Booked" %>
-                          <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
+                          <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                              <span data-activity-id="<%= activ.id %>">
                                 <%= render 'shared/booked-icon'  %>
                               </span>
                           <% end %>
                         <% elsif activ.status == "Wishlist" %>
-                          <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
+                          <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                            <span data-activity-id="<%= activ.id %>">
                               <%= render 'shared/wishlist-icon'  %>
                             </span>
                           <% end %>
@@ -229,14 +229,14 @@
                       <div class="ind-status">
                         <div class="btn-group">
                           <% if activ.status == "Booked" %>
-                            <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                <span>
+                            <%= link_to trip_activity_path(trip, activ, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                                <span data-activity-id="<%= activ.id %>">
                                   <%= render 'shared/booked-icon'  %>
                                 </span>
                             <% end %>
                           <% elsif activ.status == "Wishlist" %>
-                            <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
+                            <%= link_to trip_activity_path(trip, activ, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                              <span data-activity-id="<%= activ.id %>">
                                 <%= render 'shared/wishlist-icon'  %>
                               </span>
                             <% end %>

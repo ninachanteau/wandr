@@ -58,7 +58,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @restaurant.same_reservation.each { |resa| resa.update(status: params[:status]) }
     # @restaurant.update(status: params[:status])
-    redirect_to trip_restaurants_path(@trip)
+    respond_to do |format|
+      format.html { redirect_to trip_restaurants_path(@trip) }
+      format.js
+    end
   end
 
   def destroy
@@ -66,7 +69,10 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.find(params[:id])
     @restaurant.same_reservation.each { |resa| resa.destroy }
     # @restaurant.destroy
-    redirect_to trip_restaurants_path(@trip)
+    respond_to do |format|
+      format.html { redirect_to trip_restaurants_path(@trip) }
+      format.js
+    end
   end
 
   private

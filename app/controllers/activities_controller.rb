@@ -63,7 +63,10 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @activity.same_reservation.each { |resa| resa.update(status: params[:status]) }
     # @activity.update(status: params[:status])
-    redirect_to trip_activities_path(@trip)
+    respond_to do |format|
+      format.html { redirect_to trip_activities_path(@trip) }
+      format.js
+    end
   end
 
   def destroy

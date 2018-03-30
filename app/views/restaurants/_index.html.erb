@@ -110,14 +110,14 @@
                       <div class="ind-status">
                         <div class="btn-group">
                           <% if resto.status == "Booked" %>
-                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                <span>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                                <span data-restaurant-id="<%= resto.id %>">
                                   <%= render 'shared/booked-icon'  %>
                                 </span>
                             <% end %>
                           <% elsif resto.status == "Wishlist" %>
-                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                              <span ddata-restaurant-id="<%= resto.id %>">
                                 <%= render 'shared/wishlist-icon'  %>
                               </span>
                             <% end %>
@@ -235,14 +235,14 @@
                       <div class="ind-status">
                         <div class="btn-group">
                           <% if resto.status == "Booked" %>
-                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                                <span>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                                <span data-restaurant-id="<%= resto.id %>">
                                   <%= render 'shared/booked-icon'  %>
                                 </span>
                             <% end %>
                           <% elsif resto.status == "Wishlist" %>
-                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
+                            <%= link_to trip_restaurant_path(trip, resto, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                              <span data-restaurant-id="<%= resto.id %>">
                                 <%= render 'shared/wishlist-icon'  %>
                               </span>
                             <% end %>
