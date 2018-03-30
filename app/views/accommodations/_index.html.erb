@@ -79,10 +79,10 @@
 
     <div class="tabs accommodations-tabs ">
       <a class="tab active active-tab" href="#my-accommodations" data-toggle="tab" role="tab" aria-controls="my-accommodations">
-        <p>your choices</p>
+        <p>Yours</p>
       </a>
       <a class="tab" href="#other-accommodations" data-toggle="tab" role="tab" aria-controls="other-accommodations">
-        <p>other options</p>
+        <p>Other participants'</p>
       </a>
     </div>
     <div class="tab-content">
@@ -124,14 +124,14 @@
                     <div class="ind-status">
                       <div class="btn-group">
                         <% if accom.status == "Booked" %>
-                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                              <span>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                              <span data-accommodation-id="<%= accom.id %>">
                                 <%= render 'shared/booked-icon'  %>
                               </span>
                           <% end %>
                         <% elsif accom.status == "Wishlist" %>
-                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, remote:true, class: "dropdown-item status-dropdown-item" do %>
+                            <span data-accommodation-id="<%= accom.id %>">
                               <%= render 'shared/wishlist-icon'  %>
                             </span>
                           <% end %>
@@ -267,14 +267,14 @@
                     <div class="ind-status">
                       <div class="btn-group">
                         <% if accom.status == "Booked" %>
-                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Wishlist"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                            <span data-accommodation-id="<%= accom.id %>">
                               <%= render 'shared/booked-icon'  %>
                             </span>
                           <% end %>
                         <% elsif accom.status == "Wishlist" %>
-                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, class: "dropdown-item status-dropdown-item" do %>
-                            <span>
+                          <%= link_to trip_accommodation_path(trip, accom, status: "Booked"), method: :patch, remote: true, class: "dropdown-item status-dropdown-item" do %>
+                            <span data-accommodation-id="<%= accom.id %>">
                               <%= render 'shared/wishlist-icon'  %>
                             </span>
                           <% end %>

@@ -581,7 +581,7 @@ hotel_lisbon_marion.trip = lisbon
 hotel_lisbon_marion.participation = marion_lisbon
 hotel_lisbon_marion.save!
 
-puts "Accommodation created"
+puts "Accommodations created"
 puts "------"
 puts "Creating 25 restaurants"
 
@@ -706,7 +706,7 @@ restaurant_nyc_elsa.save!
 # restaurant_nyc_kenza.save!
 
 restaurant_nyc_nina = Restaurant.create(
-  name: "Lafayette Grand Café & Bakery",
+  name: "Lafayette",
   address: "380 Lafayette St, New York, NY 10003, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
   status: "Wishlist",
@@ -721,7 +721,7 @@ restaurant_nyc_nina.participation = nina_nyc
 restaurant_nyc_nina.save!
 
 restaurant_nyc_kenza = Restaurant.create(
-  name: "Lafayette Grand Café & Bakery",
+  name: "Lafayette",
   address: "380 Lafayette St, New York, NY 10003, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
   status: "Wishlist",
@@ -736,7 +736,7 @@ restaurant_nyc_kenza.participation = kenza_nyc
 restaurant_nyc_kenza.save!
 
 restaurant_nyc_elsa = Restaurant.create(
-  name: "Lafayette Grand Café & Bakery",
+  name: "Lafayette",
   address: "380 Lafayette St, New York, NY 10003, USA",
   date: "Sun, 06 May 2018 13:00:00 UTC +00:00,",
   status: "Wishlist",
@@ -1035,9 +1035,9 @@ restaurant_lisbon_marion.trip = lisbon
 restaurant_lisbon_marion.participation = marion_lisbon
 restaurant_lisbon_marion.save!
 
-puts "Restaurant created"
+puts "Restaurants created"
 puts "------"
-puts "Creating 11 activities"
+puts "Creating 14 activities"
 
 activity_lisbon_nina = Activity.create(
   name: "Jerónimos Monastery",
@@ -1132,7 +1132,7 @@ activity_lisbon_marion.save!
 activity_nyc_nina = Activity.create(
   name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
-  date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
+  date: "Fri, 05 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "+1 278-214-5000",
   description: "Unmissable",
@@ -1147,7 +1147,7 @@ activity_nyc_nina.save!
 activity_nyc_elsa = Activity.create(
   name: "Guggenheim Museum",
   address: "1071 5th Ave, New York, NY 10128, USA",
-  date: "Fri, 04 May 2018 14:00:00 UTC +00:00,",
+  date: "Fri, 05 May 2018 14:00:00 UTC +00:00,",
   status: "Booked",
   phone_number: "+1 278-214-5000",
   description: "Unmissable",
@@ -1204,6 +1204,51 @@ activity_nyc_elsa.trip = nyc
 activity_nyc_elsa.participation = elsa_nyc
 activity_nyc_elsa.save!
 
-puts "Activity created"
+activity_nyc_nina = Activity.create(
+  name: "Chicago Musical",
+  address: "219 W 49th St, New York, NY 10019, USA",
+  date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
+  status: "Booked",
+  phone_number: "+1 212-239-6200",
+  description: "The famous musical, we must see it!",
+  url: "https://www.tripadvisor.fr/Attraction_Review-g60763-d1100218-Reviews-Chicago_the_Musical-New_York_City_New_York.html",
+  email: "chicago@newyork.com",
+  remote_photo_url: "https://i.ytimg.com/vi/_7iHhKF5jQ0/maxresdefault.jpg"
+  )
+activity_nyc_nina.trip = nyc
+activity_nyc_nina.participation = nina_nyc
+activity_nyc_nina.save!
+
+activity_nyc_kenza = Activity.create(
+  name: "Chicago Musical",
+  address: "219 W 49th St, New York, NY 10019, USA",
+  date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
+  status: "Booked",
+  phone_number: "+1 212-239-6200",
+  description: "The famous musical, we must see it!",
+  url: "https://www.tripadvisor.fr/Attraction_Review-g60763-d1100218-Reviews-Chicago_the_Musical-New_York_City_New_York.html",
+  email: "chicago@newyork.com",
+  remote_photo_url: "https://i.ytimg.com/vi/_7iHhKF5jQ0/maxresdefault.jpg"
+  )
+activity_nyc_kenza.trip = nyc
+activity_nyc_kenza.participation = kenza_nyc
+activity_nyc_kenza.save!
+
+activity_nyc_elsa = Activity.create(
+  name: "Chicago Musical",
+  address: "219 W 49th St, New York, NY 10019, USA",
+  date: "Mon, 06 May 2018 22:00:00 UTC +00:00,",
+  status: "Booked",
+  phone_number: "+1 212-239-6200",
+  description: "The famous musical, we must see it!",
+  url: "https://www.tripadvisor.fr/Attraction_Review-g60763-d1100218-Reviews-Chicago_the_Musical-New_York_City_New_York.html",
+  email: "chicago@newyork.com",
+  remote_photo_url: "https://i.ytimg.com/vi/_7iHhKF5jQ0/maxresdefault.jpg"
+  )
+activity_nyc_elsa.trip = nyc
+activity_nyc_elsa.participation = elsa_nyc
+activity_nyc_elsa.save!
+
+puts "Activities created"
 puts "------"
 puts "Finished!"
